@@ -1,0 +1,60 @@
+---
+title: "Atlethic World Record's: obtención de los datos y algunas curiosidades"
+subtitle: | 
+   En el post se describe (un poco) el proceso de obtención de los datos referentes a los récords mundiales de atletismo de la página web de la IAAF. Con los datos obtenidos se presentan algunas curiosidades referentes a los récords mundiales
+date: 2023-07-10
+categories: [WR atletismo, web scraping]
+---
+
+
+## Intro
+
+Según cuenta la Wikipedia [aquí](https://es.wikipedia.org/wiki/Anexo:Plusmarcas_del_mundo_de_atletismo), las plusmarcas del mundo de atletismo, o récords mundiales de atletismo, son ratificadas por [World Athletics](https://worldathletics.org/)^[antes Asociación Internacional de Federaciones de Atletismo (IAAF)] desde 1912. [Aquí](https://es.frwiki.wiki/wiki/Records_du_monde_d%27athl%C3%A9tisme) nos cuentan que la primera lista de récords mundiales masculinos se publicó por primera vez en 1914 y las primeras listas de mujeres en 1936 . Desde 1987, la IAAF estableció una lista de récords mundiales en pista cubierta, aunque desde el 1 de enero de 2000, La regla 260.18a de la IAAF se modificó para que ahora se puedan establecer récords mundiales en un estadio deportivo con o sin techo.
+
+
+
+## Obtención de los datos
+
+Los datos se obtuvieron de la página web de [World Athletics](https://worldathletics.org/). Concretamente la página de acceso a los récords está [aquí](https://worldathletics.org/records/by-category/world-records). En esta página se pueden acceder a 53 categorías de WR para mujeres y 46 para los hombres^[Hay más categorías en las mujeres, entre otras razones porque en ciertas pruebas como el maratón hay WR para carreras mixtas y carreras donde solo participan mujeres].
+
+
+```{r}
+#| echo: false
+#| eval: false
+
+Obtuve los datos con el Qproject `Fran_webscrapping_2022` en 2022, pero en julio de 2023 volví a recopilar los datos y tuve que arreglar un poco el script,  así que lo pase todo al Qproject `my_WR_atletismo`. El proceso tiene las siguientes etapas
+
+1. Con el script `./scripts/01_scrapping_IAAF_v5_WR.R` obtengo un fichero para cada prueba-genero
+
+2. Con `03_fusionar_pruebas_v92_WR.R` fusiono las pruebas y creo nuevas variables. Guardo los datos en el fichero `./datos/df_WR_23-07-10.rds`
+
+3. Hago una query a Wikidata usando la Propiedad de código IAAF. Esto lo hago con el script `04_ir_a_wikidata.R` y guardo los datos obtenidos de Wikidata en el fichero `df_IAAF_wikidata_23-07-10_ok.rds`
+
+4. Finalmente hay que fusionar WR y datos de Wikidata. Esto lo hago con `05_fusionar_wikidata_IAAF.R`
+```
+
+
+Descarté las pruebas de relevos, las pruebas combinadas (heptalon, decathlon) y pruebas digamos "extrañas", como por ejemplo, 1.000 metros, 2.000 metros, 50 kilómetros , etc ... Además como en futuros post quiero hacer una comparativa de rendimineto entre hombres y muyjeres, descarté las carreras de 100 y 110 metros vallas. Finalmente me quedé con las siguientes pruebas:
+
+
+
+```{r}
+library(tidyverse)
+df_2022 <- pjpv.datos.2022::IAAF_WR_2022
+df <- df_2022 %>% 
+  filter(!(prueba.f.9 %in% c("Relevos", "Combinadas",  "Race-walk",  "Carreras (raras)" ))) %>% 
+  filter(!prueba.f %in% c("1000-metres", "2000-metres","one-mile", "3000-metres", "half-marathon", "5-kilometres", "10-kilometres", "50-kilometres" ,"100-kilometres"))
+table <- df %>% 
+  distinct( prueba, prueba.f.9) %>% 
+  mutate(prueba.f.9 = as.character(prueba.f.9)) %>% 
+  mutate(prueba.f.9 = ifelse(!(prueba.f.9 %in% c("Saltos", "Lanzamientos")) , "Carreras",  prueba.f.9  )) %>% 
+  arrange(prueba) %>% 
+  group_by(prueba.f.9) %>% 
+  summarise(from_country = paste(prueba, collapse = ", ")) 
+gt::gt(table)
+```
+
+## Análisis
+
+Veremos cuando tengo tiempo para jugar un poco con los datos. 
+

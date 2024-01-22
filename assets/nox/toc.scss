@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+$toc-color: red;
+$toc-background: green;
+$toc-font-size: 12px;
+$toc-active-border: true;
+$toc-active-border: green;
+
+
+.toc-content{
+   box-shadow: 2px 2px 5px  #606060;
+}
+
+.big-texto {
+  font-size: 170px;
+}
+
+
+.tocify-item {
+  background-color: #424254;
+  box-shadow: 2px 2px 5px  #606060;
+  color: white;
+}

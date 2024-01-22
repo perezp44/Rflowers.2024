@@ -1,0 +1,241 @@
+---
+title: "Ejemplos de ggplot's"
+subtitle: | 
+   Recopilación de ejemplos sobre ggplot2
+date: 2023-07-11
+#draft: true
+categories: [ggplot2, ejemplos]
+---
+
+
+Este post sirve para apuntar ejemplos sobre {ggplot2}
+
+
+-------------------
+
+<br>
+
+
+## Ejemplos
+
+
+
+### Lineas
+
+#### Futbol
+
+Es un ejemplo de tidytuesday que usa datos de fútbol. Hace un gráfico temporal pero con rectángulos hace como el césped de la cancha. Es sencillo y **se puede usar de ejemplo en clase**: <https://twitter.com/KittJonathan/status/1610209812863909890>
+
+
+
+
+```{r}
+#| eval: false
+# TidyTuesday challenge
+# Year : 2023
+# Week : 1
+# Bring your own data : FIFA World Cups
+# https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-11-29
+
+# Load packages ----
+
+library(showtext)
+
+library(tidyverse)
+
+# Import fonts ----
+
+font_add_google(name = "Roboto Slab", family = "roboto slab")
+showtext_auto()
+
+# Import dataset ----
+
+worldcups <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv')
+
+# Data wrangling ----
+
+worldcups <- worldcups |> 
+  # add row with data for 2022 WC
+  dplyr::add_row(year = 2022, host = "Qatar",
+                 winner = "Argentina", second = "France", third = "Croatia", fourth = "Morocco",
+                 goals_scored = 172, teams = 32, games = 64, attendance = 3404052) |> 
+  # calculate number of goals per game
+  dplyr::mutate(goals_per_game = round(goals_scored / games, 2)) |> 
+  # add background strips limits and colours
+  dplyr::mutate(strip_start = 0:21, .before = year) |> 
+  dplyr::mutate(strip_end = 1:22, .before = year) |> 
+  dplyr::mutate(strip_col = rep(c("#6cb239", "#87ca5c"), times = 11), .before = year) |> 
+  # add xpos column
+  dplyr::mutate(xpos = c(0.5:21.5), .before = year)
+
+
+# Create plot ----
+p
+p <- ggplot() +
+  #- truco (como hacer rectangulos) ---------------------
+  geom_rect(data = worldcups,
+            aes(xmin = strip_start, xmax = strip_end,
+                ymin = 0, ymax = 6),
+            fill = worldcups$strip_col) +
+  geom_segment(data = worldcups,
+               aes(x = 0, xend = 22, y = mean(goals_per_game), yend = mean(goals_per_game)),
+               col = "darkgreen", linetype = "dashed", size = 1) +
+  geom_line(data = worldcups,
+            aes(x = xpos, y = goals_per_game),
+            col = "white", linewidth = 3) +
+  geom_text(data = filter(worldcups, goals_per_game == max(goals_per_game)),
+            aes(x = xpos, y = goals_per_game + 0.25, label = goals_per_game),
+            size = 20, family = "roboto slab", col = "darkgreen") +
+  geom_text(data = filter(worldcups, goals_per_game == min(goals_per_game)),
+            aes(x = xpos, y = goals_per_game - 0.25, label = goals_per_game),
+            size = 20, family = "roboto slab", col = "darkgreen") +
+  geom_text(data = worldcups,
+            aes(x = 0.5, y = mean(goals_per_game) - 0.15,
+                label = paste0("Overall average : ", round(mean(goals_per_game), 2))),
+            size = 20, family = "roboto slab", col = "darkgreen", hjust = 0) +
+  geom_text(data = worldcups,
+            aes(x = xpos, y = 0.5, label = year),
+            family = "roboto slab", size = 15, col = "darkgreen") +
+  geom_text(data = worldcups,
+            aes(x = 15, y = 5, label = "FIFA world cups"),
+            family = "roboto slab", size = 50, col = "darkgreen") +
+  geom_text(data = worldcups,
+            aes(x = 15, y = 4.5, label = "Goals per game"),
+            family = "roboto slab", size = 35, col = "darkgreen") +
+  geom_text(data = worldcups,
+            aes(x = 21.75, y = 0.1, label = "J. Kitt | Data : Kaggle"),
+            family = "roboto slab", hjust = 1, size = 10, col = "darkgreen") +
+  theme_void()
+
+p
+# Save plot ----
+#ggsave("2023_01_worldcups.png", p, dpi = 320, width = 12, height = 6)
+```
+
+<br>
+
+### Barras
+
+Sencillo pero usa tipo de letra,  pone nombre y texto dentro de las barras y usa colores y theme. Puede ser **ejemplo de clase**: <https://twitter.com/_jcken/status/1610176700624650243>
+
+```{r}
+#| eval: false
+
+#- https://twitter.com/_jcken/status/1610176700624650243
+#- el repo: https://github.com/jcken95/tidytuesday
+
+my_url <- "https://raw.githubusercontent.com/jcken95/tidytuesday/main/2023/2023-01-03/thesis.csv"
+
+# packages ----
+
+library(tidyverse)
+library(tidytext)
+library(SemNetCleaner)
+library(showtext)
+# data ----
+
+thesis <- readr::read_csv(my_url)
+
+# fonts + clrs ----
+#- truco cambiar fuente ----------------------
+
+showtext_auto()
+font_add_google("Permanent Marker")
+main_font <- "Permanent Marker"
+
+# clrs lifted from vapoRwave
+#devtools::install_github("moldach/vapoRwave")
+
+#- truco mostrar escalas ----------------------
+#scales::show_col(vapoRwave:::newRetro_palette)
+
+bg <- "#4A354F"
+txt <- "#FF4373"
+bars <- "#9239F6"
+# wranging ----
+
+thesis <- thesis %>%
+  anti_join(stop_words, by = "word") %>%  # remove stop words
+  filter(is.na(as.numeric(word))) %>% # remove numbers
+  filter( !(word %in% c("table", "equation", "align", "chapter"))) %>%  # filter out some common latex environments
+  group_by(word) %>%
+  mutate(word = singularize(word[1])) %>%
+  mutate(n_word = length(word)) %>%
+  ungroup() 
+
+top_ten_words <- thesis %>%
+  select(word, n_word) %>%
+  distinct() %>% 
+  arrange(-n_word) %>%
+  slice(1:10) %>%
+  mutate(rank = 1:10)
+
+# plot(s) ----
+
+top_ten_words %>%
+  ggplot() +
+  #- aquí truco para reordenar un factor
+  geom_col(aes(y = reorder(word, rank), x = n_word),
+           colour = bars, fill = bars, width = 0.5) +
+  geom_text(
+    mapping = aes(x = 5, y = word, label = toupper(word)),
+    hjust = 0,
+    nudge_x = 0.25,
+    color = txt,
+    size = 8,
+    family = main_font
+  ) +
+  geom_text(
+    mapping = aes(x = n_word, y = reorder(word, rank), label = n_word),
+    hjust = 1,
+    nudge_x = -5,
+    color = txt,
+    size = 8,
+    family = main_font
+  ) +
+  annotate("text", x = 75, y = 7.6,
+           label = "abbreviation of Gaussian Process",
+           family = main_font,
+           colour = txt,
+           size = 5
+  ) +
+  scale_y_discrete(breaks = NULL) +
+  labs(title = "Thesis Wrapped",
+       subtitle = "Top ten most used words (adjusting for plurals) in my PhD thesis",
+       caption = "#TidyTuesday 03/01/2023 | Data: bring your own! | @_jcken") +
+  xlab("Word Count") +
+  ylab("") +
+  theme(
+    text = element_text(family = main_font, colour = txt),
+    plot.title = element_text(hjust = 0.5, size = 36),
+    plot.subtitle = element_text(hjust = 0.5, size = 20),
+    plot.caption = element_text(hjust = 0.5, size = 16),
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = bg),
+    panel.background = element_rect(fill = bg, colour = bg),
+    axis.title.x = element_text(size = 18),
+    axis.text.x = element_text(family = main_font, colour = txt, size = 16),
+    axis.ticks = element_line(colour = txt)
+  )
+
+# save ----
+#ggsave("2023-01-03.png", height = 1600, width= 1000, units = "px")
+```
+
+<br>
+
+### Infografías
+
+
+- Tanya Shapiro: evolución de Netflix, tiene imágenes etc...: <https://fosstodon.org/@tanya_shapiro/109631504740389462>
+
+- <https://github.com/tashapiro/TidyTuesday/blob/master/2022/W19/nyt_authors.png>
+
+<br>
+
+
+### Lolipop (cambios)
+
+- <https://fosstodon.org/@karat@mstdn.science/109626640570031863>   <https://github.com/tashapiro/TidyTuesday>
+
+

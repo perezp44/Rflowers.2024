@@ -1,0 +1,39 @@
+---
+#title: "<br>**Bienvenidos al curso!!!**<br>"
+image: imagenes/my-last-blogs.png
+about:
+  #- https://quarto.org/docs/websites/website-about.html#templates
+  template: trestles  #- {jolla, solana, trestles}
+  #- https://quarto.org/docs/websites/website-about.html#image
+  image-width: 35em  #- 39
+  image-shape: rectangle
+  #- https://quarto.org/docs/websites/website-about.html#links
+  links:
+    - icon: github
+      href: https://github.com/perezp44
+    - icon: twitter
+      href: https://twitter.com/pjpv4444
+    - icon: envelope
+      url: "mailto:<pedro.j.perez@uv.es>"
+---
+
+Bienvenidos a mi nueva web con (I hope) **mis últimos 2 blogs**:
+
+<br>
+
+
+- [R & flowers (2024)](blog_Rflowers.qmd) : es un blog para registrar algunos análisis que hago pero que, si no los escribo para el blog, se acaban perdiendo. 
+
+<br>
+
+- [TBits](blog_TBits.qmd): es un blog para escribir pequeñas píldoras/post para mis cursos 
+
+
+<br><br>
+
+
+> Remember kids, the only difference between screwing around and science is writing it down  --- Adam Savage de [MythBusters](https://es.wikipedia.org/wiki/MythBusters)
+
+
+
+

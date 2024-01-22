@@ -1,0 +1,114 @@
+---
+title: "¿Existe sesgo de género en los premios literarios?"
+subtitle: | 
+   Se analiza la presencia y posibles pautas del sesgo de género en los premios literarios usando R y datos de Wikidata
+date: 2024-01-22
+categories: [premios literarios, Wikidata]
+---
+
+# Intro
+
+El objetivo del post es analizar, utilizando datos de [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page), la existencia y pautas del posible **sesgo de genero en los premios literarios**.
+
+En el [post anterior](../2023-07-12_premios-literarios_01/index.qmd){target="_blank"} hablé (un poco) de cómo obtuve los datos y que los resultados que obtuve fueron presentados en las [XIII Jornadas de usuarios de R](https://eventum.upf.edu/101896/detail/ii-congreso-de-r-y-xiii-jornadas-de-usuarios-de-r.html) en noviembre de 2023.
+
+La versión final de las slides que utilicé para hacer la presentación en las Jornadas pueden verse [aquí](https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/title-slide) o en el iframe de más abajo.
+
+<br>
+
+```{=html}
+<iframe width="700" height="450" src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/title-slide" title="Sesgo de género y premios literarios(Un análisis con R y datos de Wikidata)"></iframe>
+```
+# Principales resultados
+
+Un resumen rápido de los principales resultados:
+
+1.  Por supuesto que hay sesgo de género en los premios literarios. Por supuesto no es un resultado novedoso, pero con los datos recopilados en Wikidata en noviembre de 2023, podemos dar un número concreto que lo evidencie: tan sólo **el 28,08%** de los premios literarios concedidos **recayeron en mujeres**.
+
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/5/1"></iframe>
+```
+2.  Hay grandes diferencias (en cuanto al sesgo de género) por países y áreas geográficas
+
+::: columns
+::: {.column width="45%"}
+```{=html}
+<iframe width="600" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/6/2"></iframe>
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+```{=html}
+<iframe width="600" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/6/3"></iframe>
+```
+:::
+:::
+
+3.  Hay grandes diferencias en el porcentaje de mujeres galardonadas por premio literario. Por ejemplo, en "Premios de la Asociación de Novelistas Románticos" el 98% de galardonados fueron mujeres, 😉 😉; mientras que si vas hacia abajo en la tabla, tan sólo el 14,17% de los premios Nobel fueron mujeres (fila 140 de la tabla). No soy experto en literatura, pero a mi juicio (poco experto) los premios más tochos 😉 parecen mostrar mayor sesgo de género.
+
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/6/4"></iframe>
+```
+
+
+
+4. Un resultado esperanzador es que parece que en los últimos años el sesgo en los premios literarios muestra una tendencia general a reducirse ... pero, otra vez a mi juicio poco experto, los premios más reconocidos^[... premios más tochos 😉 ] parecen mostrar una reducción del sesgo menos rápida.
+
+
+::: columns
+::: {.column width="45%"}
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/7/1"></iframe>
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/7/2"></iframe>
+```
+:::
+:::
+
+
+5. ¿Y qué ocurre con los premios españoles? Bueno, las pautas son parecidas a las pautas generales: presencia de un fuerte sesgo de genero que va reduciendo en los últimos tiempo, pero otra vez (según mi apreciación personal), la reducción del sesgo es más lenta en los premios más prestigiosos. Juzga por ti mismo:
+
+
+
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/8/1"></iframe>
+```
+
+Sí, los premios donde hay un porcentaje de premios a mujeres cercano al 50% suelen ser premios infantiles, mientras que premios digamos "más sesudos" como el Cervantes (12,5%) o el premio Nacional de Narrativa (14,89%), muestran porcentajes de mujeres galardonadas mucho menores.
+
+
+Para ir acabando el post mostraros dos visualizaciones más, esta vez centrada en los premios literarios españoles más conocidos y prestigiosos. El segundo gráfico es una réplica de [este plot](https://twitter.com/c_gebhard/status/1510146260052766724) que @c_gebhard mostró en "X" y parece haber sido borrado.
+
+
+
+::: columns
+::: {.column width="45%"}
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/8/2"></iframe>
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{=html}
+<iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/8/3"></iframe>
+```
+:::
+:::
+
+
+<br>
+
+Para finalizar, recordar que los datos se obtuvieron mediante queries a Wikidata en octubre de 2023. Wikidata es una de las mayores bases de datos del mundo y es fantástica ... pero no está exenta de omisiones/errores etc... etc... Como sabemos, Wikidata es una base de datos abierta que permite a usuarios de todo el mundo contribuir y editar información; no es una fuente de datos oficial, ojala existiera; pero, en general, la fiabilidad y amplitud de Wikidata suelen ser excelentes. Gracias Wikidata!!
+
+
+
+

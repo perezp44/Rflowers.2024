@@ -1,0 +1,32 @@
+/*-- scss:defaults --*/
+
+/*-- scss:defaults cosas nuevas para tunear --*/
+
+
+// Color system
+$white:    #F5F6FA !default;
+$gray-100: #F4F4F4 !default;
+$my-blog: #F1F3F4 !default;
+
+
+
+// Colours
+$body-bg: $my-blog !default;
+//$body-color: $black !default;
+
+
+// Fonts
+//$headings-font-family:   'lcars-h', sans-serif !default;
+//$font-family-sans-serif: 'lcars', sans-serif !default;
+
+
+
+// https://quarto.org/docs/output-formats/html-themes.html#table-of-contents
+
+$toc-active-border: green !default;
+
+.toc-active .nav-link.active {
+    //color: red !important;
+    //background-color: yellow;
+    font-weight: bold;
+}

@@ -1,0 +1,119 @@
+---
+title: "Municipios españoles más poblados (1842-2021) "
+subtitle: | 
+   Utilizando datos de los censos históricos y del Padrón se presentan visualizaciones con el el ranking de ciudades españolas más pobladas desde el censo de 1842 hasta la actualidad. 
+date: 2022-07-14
+categories: [datos INE, Censos históricos, población, municipios, ranking de población]
+---
+
+
+**Nota:** Este post lo empecé en julio de 2022. Tenía los gráficos y demás, pero lo tuve que abandonar. Ahora, un año después, julio de 2023, lo estoy retomando; pero solo voy a poner algunos gráficos y tablas de los que hice. Poco más. No pienso redactar mucho 😉.
+
+
+<br>
+
+## Introducción
+
+Voy a utilizar datos de los censos históricos de población del INE^[En [este post](../2022-07-12_censos-historicos_01/index.qmd) expliqué el proceso que seguí para obtener los datos] para analizar la evolución del ranking de municipios españoles más poblados. Al lío!!
+
+
+## Ranking de municipios más poblados
+
+Voy a mostrar en una tabla y un gráfico el ranking de los municipios mas poblados en cada censo. Mostraré solo los municipios que en alguno de los censos haya estado entre los 20 municipios mas poblados. Para que la tabla y los gráficos se vean razonablemente bien voy a mostrar los resultados de solo algunos de los censos y para acercarnos más a la situación actual, usaré también datos de población del Padrón de 2021.
+
+### Tabla
+
+```{r, include = FALSE}
+my_folder_post <- "/blog_01/2022-07-14_censos-historicos_03/"
+my_script <- "01_script_tabla_rankings.R" 
+path_file <- paste0(here::here(), my_folder_post,  my_script)
+```
+
+
+```{r, results = "hold"}
+#| echo: false
+knitr::spin_child(path_file)
+```
+
+
+```{r}
+#| column: page
+#| echo: false
+DT::datatable(df_ok, filter = 'top', extensions = "Scroller",
+              class = 'cell-border stripe',
+              options = list(autoWidth = TRUE,deferRender = TRUE,
+                             scroller = TRUE, scrollY = 750 ))
+```
+
+<br>
+
+Por hacer un mínimo comentario de los resultados mostrados en la tabla, señalar que Madrid ha estado siempre en el puesto 1 o 2, Barcelona siempre en segundo lugar excepto en los censos de 1910 y 1930. Cádiz pasó de ser la octava ciudad más poblada en 1842, para estar actualmente (2021) en el 57. Lorca ha seguido una evolución similar, del noveno puesto al 67. Hospitalet de LLobregat ha experimentado un gran aumento en su puesto en el ranking: era un municipio relativamente pequeño que ocupaba el puesto 1042 en el año 1842, para estar actualmente en el puesto número 16. Por su parte Caravaca de la Cruz era el 16º municipio por población en 1842 para descender hasta el puesto 313 en el Padrón de 2021.
+
+### Gráfico
+
+Las tablas están muy bien si necesitas sabes los valores exactos de una variable o si quieres ver algún detalle, pero para ver la evolución es mejor un gráfico. Vamos a ello.
+
+En el primer gráfico mostraré la evolución del ranking de población para los municipios que alguna vez, en algún censo, estuvieron entre los 20 municipios más poblados.
+
+
+```{r, include = FALSE}
+my_folder_post <- "/blog_01/2022-07-14_censos-historicos_03/"
+my_script <- "02_script_rank-plot_01.R" 
+path_file <- paste0(here::here(), my_folder_post,  my_script)
+```
+
+
+```{r}
+#| include: false
+knitr::spin_child(path_file)
+```
+
+
+::: {.column-page}
+```{r}
+#| echo: false
+#| fig.width: 15
+#| fig-asp: 0.57
+p
+```
+:::
+
+
+<br>
+
+Ahora, el mismo gráfico pero con `plotly` para añadirle un poco de interactividad.
+
+::: {.column-page}
+```{r}
+plotly::ggplotly(p, height = 850, tooltip = c("year", "rank_1"))
+```
+:::
+
+
+<br>
+
+Lógicamente en los gráficos se aprecia mejor la evolución del ranking de municipios por población. Por ejemplo Lorca empezó, allá por 1842, siendo el noveno municipio español más poblado, pero fue descendiendo en el ranking hasta el puesto 20 en 1950, y a partir de ahí desaparece del gráfico porque su ranking esta por debajo del nº 50.
+
+<br>
+
+### Más gráficos
+
+Probé algunos gráficos más, quedan chulos, pero no son muy útiles porque hay demasiada información. Los tengo en el script `03_ej_caso_901_censos-historicos_ok.R`. Pero será para otro día
+
+
+
+## Otros posibles temas 
+
+Obtuve los datos de los censos históricos en 2022. Es  2023 y no me apetece seguir con estos datos, en realidad lo que me apetece es usar otros datos, pero dejo apuntados algunos temas que se podrían analizar con estos datos.
+
+- **Municipios desaparecidos**: por ejemplo ¿qué provincia ha presentado una mayor desaparición/fusión de municipios en el tiempo? por ejemplo un mapa con los municipios desaparecidos y aparecidos en la época moderna del Padrón
+
+
+- **Importancia histórica de las provincias** en cuanto a población;  es decir, que porcentaje representa la población de cada provincia sobre la población española. Igual puedes tratar de usar un gráfico parecido a [este](https://twitter.com/_ansgar/status/1538167029114580992)
+
+
+- **Importancia histórica de las capitales de provincia**: por ejemplo ver el % que representa la población de la capital de la provincia respecto a la población provincial
+
+
+- **Concentración de la población en ciudades**: ¿está más concentrada la población en ciudades grandes? por ejemplo ver la evolución del número de municipios que acumulan el 50%  de la población
+

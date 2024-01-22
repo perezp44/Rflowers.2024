@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pedro J. Pérez">
+
+<title>My last blog’s (2024-9999) - Censos históricos (1842-2011): obtención de los datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../imagenes/ababol_redondeado.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../assets/quarto_yaml_styles.css">
+<link rel="stylesheet" href="../assets/my_css_file.css">
+<meta property="og:title" content="My last blog’s (2024-9999) - Censos históricos (1842-2011): obtención de los datos">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://perezp44.github.io/Rflowers.2024/blog_Rflowers/2022-07-12_censos-historicos_01/imagenes/thumbnail.png">
+<meta property="og:site-name" content="My last blog's (2024-9999)">
+<meta property="og:image:height" content="426">
+<meta property="og:image:width" content="640">
+<meta name="twitter:title" content="My last blog’s (2024-9999) - Censos históricos (1842-2011): obtención de los datos">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://perezp44.github.io/Rflowers.2024/blog_Rflowers/2022-07-12_censos-historicos_01/imagenes/thumbnail.png">
+<meta name="twitter:creator" content="@pjpv4444">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="426">
+<meta name="twitter:image-width" content="640">
+</head>
+
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../imagenes/ababol_redondeado.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">My last blog’s (2024-9999)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house-door" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog_Rflowers.html" rel="" target="">
+ <span class="menu-text">R &amp; flowers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog_TBits.html" rel="" target="">
+ <span class="menu-text">TBits</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Pedro J. Pérez</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/perezp44" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/pjpv4444" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:pedro.j.perez@uv.es" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Censos históricos (1842-2011): obtención de los datos</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">datos INE</div>
+                <div class="quarto-category">Censos históricos</div>
+                <div class="quarto-category">población</div>
+                <div class="quarto-category">municipios</div>
+                <div class="quarto-category">web scraping</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-heading">Afiliación</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://perezp44.github.io/pjperez.web/">Pedro J. Pérez</a> <a href="https://orcid.org/0000-0001-9375-6330" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://www.uv.es">
+              Universitat de València
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de Publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">12 de julio de 2022</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de modificación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">22 de enero de 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a></li>
+  <li><a href="#obtención-de-los-datos-web-scraping" id="toc-obtención-de-los-datos-web-scraping" class="nav-link" data-scroll-target="#obtención-de-los-datos-web-scraping"><span class="header-section-number">2</span> Obtención de los datos (Web scraping)</a></li>
+  <li><a href="#qué-variables-hay-en-los-datos" id="toc-qué-variables-hay-en-los-datos" class="nav-link" data-scroll-target="#qué-variables-hay-en-los-datos"><span class="header-section-number">3</span> ¿Qué variables hay en los datos?</a></li>
+  <li><a href="#cifras-oficiales-de-población" id="toc-cifras-oficiales-de-población" class="nav-link" data-scroll-target="#cifras-oficiales-de-población"><span class="header-section-number">4</span> ¿Cifras oficiales de población?</a></li>
+  <li><a href="#qué-voy-a-hacer-con-los-datos" id="toc-qué-voy-a-hacer-con-los-datos" class="nav-link" data-scroll-target="#qué-voy-a-hacer-con-los-datos"><span class="header-section-number">5</span> ¿Qué voy a hacer con los datos?</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">6</span> Referencias</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/perezp44/Rflowers.2024/edit/master/blog_Rflowers/2022-07-12_censos-historicos_01/index.qmd" class="toc-action">Editar esta página</a></p><p><a href="https://github.com/perezp44/Rflowers.2024/issues/new" class="toc-action">Informar de un problema</a></p></div></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full column-body" id="quarto-document-content">
+
+
+
+
+<p>Se describe el proceso de obtención y procesado de los datos de los censos históricos de población en España (1842-2011) que ofrece el INE.</p>
+<p><br></p>
+<section id="introducción" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">1</span> Introducción</h2>
+<p>A todos nos gusta saber cuantos habitantes tiene nuestro pueblo; y como nos dice <a href="https://www.youtube.com/watch?v=KZmLI7eYjmw" target="_blank">el conde Draco</a> esto se hace en los censos. Un <strong>censo</strong> de población es una operación estadística cuyo principal objetivo es hacer un recuento de la población, así como de sus principales características sociales y demográficas. En este post describo el proceso que tuve que hacer para <strong>obtener y procesar los datos de los censos históricos de población</strong> en España que ofrece el INE en su web. En posteriores posts se supone que los usaré para hacer algunas visualizaciones y análisis, como por ejemplo, la evolución del ranking de capitales de provincia más pobladas o la evolución de la importancia (en términos de población) de las capitales provinciales en su propia provincia; además, seguro que utilizo estos datos en mi curso de introducción a R en la UV. Son datos chulos y no exigen mucha carga mental para analizarlos.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Objetivo:</strong> Obtener los datos de los censos históricos (1842-2011) ofrecidos por el INE.</p>
+</div></div></section>
+<section id="obtención-de-los-datos-web-scraping" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="obtención-de-los-datos-web-scraping"><span class="header-section-number">2</span> Obtención de los datos (Web scraping)</h2>
+<p>El INE ofrece <a href="https://www.ine.es/inebaseweb/libros.do?tntp=71807#" target="_blank">aquí</a> acceso a los censos realizados en España durante el periodo 1857-1970<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. El acceso es a través de documentos pdf, de forma que, para poder recopilar los datos allí contenidos se tendrían que procesar a mano (no way!!) o por tecnologías OCR (hay que saber mucho y ser un poco orfebre!!)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>; así que me olvidé de los pdf’s y me fui al segundo punto de acceso a los datos, concretamente <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736176998&amp;menu=resultados&amp;idp=1254735572981" target="_blank">aquí</a> para <strong>obtener los datos por Web scraping</strong>. En este segundo punto de acceso se ofrecen datos de los censos <strong>para el periodo 1842-2011</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Obtendremos los datos mediante <strong>web scraping</strong></p>
+</div></div><p>Esta segunda forma de obtener los datos, por Web scraping, tampoco es que sea extremadamente fácil ya que el INE, ofrece un buscador en el que puedes hacer consultas para un sólo municipio (o provincia), de forma que, habría que hacer cerca de 12.000 consultas a mano para descargarse los datos de población de todos los municipios españoles que han existido desde 1842. Factible, pero mejor si se hacen las peticiones de datos mediante un proceso automatizado y descargas los datos mediante Web scraping. De esta forma se recogen los datos en menos de una hora.</p>
+<p>Sería así de fácil si el INE ofreciese un listado de códigos para los municipios que han existido a lo largo de la historia en España para así poder hacer las consultas, pero esto no es así. El INE ofrece un listado de códigos municipales <a href="https://www.ine.es/daco/daco42/codmun/codmunmapa.htm" target="_blank">aquí</a> <strong>pero sólo</strong> para los municipios “actuales”, así que el proceso para obtener los datos tuvo varias etapas:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>El proceso de scraping tuvo <strong>varias etapas</strong></p>
+</div></div><ul>
+<li><p>De los datos de la revisión del padrón municipal extraje los códigos de los municipios que han existido en España en el periodo 1996 y 1998-2021: un total de 8.120 códigos municipales. Con estos códigos hice peticiones a la web del INE para generar las tablas con sus datos y poder hacer Web scraping para extraer los datos de población de los censos históricos de esos 8.120 municipios.</p></li>
+<li><p>En las tablas de cada municipio, además de los datos de población<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, se ofrece una serie de notas con información sobre fenómenos como el cambio de nombre de los municipios y sus alteraciones municipales<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Al <strong>procesar estas anotaciones</strong>, buscando conjuntos de dígitos de 5 o 6 dígitos, se consiguieron recuperar 2.924 códigos municipales adicionales. Son códigos que no aparecen en los datos del Padrón porque estos municipios se extinguieron antes de 1998.</p></li>
+<li><p>Con los códigos de estos 2.924 “nuevos” municipios se hicieron nuevas peticiones al INE, de las cuales surgieron nuevas notas de alteraciones municipales, que a su vez proporcionaron nuevos códigos municipales.</p></li>
+<li><p>Se tuvo que <strong>repetir este proceso 5 veces</strong> hasta que de las notas de la última vuelta no surgieron nuevos códigos municipales. En total había escrapeado un total de 11.882 municipios: 8.120 en la primera vuelta, 2.924 en la segunda, 767, 69, y finalmente 2 nuevos municipios en la quinta y última ronda.</p></li>
+</ul>
+<p>Parecía que todo estaba bien, que había conseguido localizar todos los municipios existentes en la web del INE, pero … no me fiaba ya que del procesado de texto siempre suele haber errores, así que gracias a que conozco a Francisco J. Goerlich, seguramente la persona que más sabe de estos temas<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, conseguí detectar que <strong>me faltaban aún 28 municipios por encontrar</strong>. El fallo no fue causado por mi proceso de scraping sino por “fallos” en las anotaciones en las tablas del INE.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Tras las 5 vueltas del scraping se recopilaron datos de <strong>11.882 códigos municipales</strong> …</p>
+</div></div><p>De los 28 municipios que el scraping no detectó, en 4 de ellos el motivo fue que había fallos<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> en las notas que hubieran permitido detectarlos. En los restantes 24 municipios que no se detectaron, la razón fue similar: son municipios que solo aparecen en el primer censo que registra el INE, el de 1842, y en su nota al pie solo pone algo como “Este municipio que aparece en el Censo de 1842, …, no se le localiza en el Censo de 1857”, pero no dice si se integraron en otro municipio o se volatilizaron, de forma que era imposible detectarlos mediante el proceso de Web scraping.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>… pero aún faltaban 28 municipios.</p>
+</div></div><p>Tras este proceso, tenía los datos de los <strong>11.910 municipios</strong> que han existido en España, a juzgar por la información que aparece en los censos históricos del INE 1842-2011<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Al final se obtuvieron datos de 11.910 municipios.</p>
+</div></div></section>
+<section id="qué-variables-hay-en-los-datos" class="level2 page-columns page-full" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="qué-variables-hay-en-los-datos"><span class="header-section-number">3</span> ¿Qué variables hay en los datos?</h2>
+<p>Los datos del INE contienen, tal y como se explica <a href="https://www.ine.es/intercensal/" target="_blank">aquí</a>, una tabla para cada uno de los municipios que han sido censados en España desde 1842. Para cada municipio se recogen <strong>3 variables</strong>: población de hecho, población de derecho y número de hogares. Además se recogen, en las notas al pie de la tabla, determinadas alteraciones municipales. Como ejemplo, <a href="https://www.ine.es/intercensal/intercensal.do?search=1&amp;error1=Debe+introducir+un+nombre+de+municipio.&amp;error2=Debe+introducir+al+menos+3+caracteres.&amp;cmbTipoBusq=0&amp;textoMunicipio=Pancrudo&amp;btnBuscarDenom=Consultar+selecci%C3%B3n" target="_blank">aquí</a> puedes ver la tabla para Pancrudo que, como se aprecia en las notas, incorporó a Portalrubio en el censo de 1981.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>3 variables</strong>: hogares, población de hecho y población de derecho.</p>
+</div></div><p>En la tabla se aprecia que hay <strong>dos variables de población</strong>: la de hecho y la de derecho. Para mis análisis utilizaré la <strong>población de derecho</strong>, salvo en los censos de 1857 y 1860 en los que como no hay registro para la población de derecho, la sustituiré por la de hecho, para así tener una serie completa de población para todos los censos del periodo 1842-2011. Es posible que en algunos análisis añada también los datos del Padrón (1998-2021).</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Usare la <strong>población de derecho</strong>, salvo cuando esta no esté disponible.</p>
+</div></div></section>
+<section id="cifras-oficiales-de-población" class="level2 page-columns page-full" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="cifras-oficiales-de-población"><span class="header-section-number">4</span> ¿Cifras oficiales de población?</h2>
+<p>Voy a utilizar estos datos para hacer algunos análisis y visualizaciones, así que cabe preguntarse si son datos “oficiales” de población y si están libres de errores. En principio los datos que he obtenido por web scraping de la web del INE deberían ser las “cifras oficiales” de población de los municipios españoles, pero en <a href="https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/" target="_blank">Goerlich y otros (2015)</a> señalan, concretamente en los apartados 2.2.6, 2.2.7 y 2.2.8, diversos errores de transcripción<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><a href="https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/" target="_blank">Goerlich y otros (2015)</a> detectaron errores de transcripción.</p>
+</div></div><p>Sin embargo, esos errores detectados prácticamente no afectan a los análisis y visualizaciones que haré en el blog. En concreto, los errores detectados que afectan a las capitales de provincia son menores, solo detectándose diferencias importantes en Ceuta, Melilla y Madrid en el censo de 1991<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>, así que para los análisis que voy a hacer en el blog doy por buenos los datos que figuran <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736176998&amp;menu=resultados&amp;idp=1254735572981" target="_blank">aquí</a> en la web del INE.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Esos errores afectarían mínimamente a los resultados mostrados en el blog.</p>
+</div></div><p>Mi objetivo no es hacer un artículo científico, sino tan solo, hacer algunos análisis y visualizaciones que describan, a grandes rasgos, la evolución histórica de la población municipal en España, para usarlos en mis clases, así que yo los voy a dar por buenos.</p>
+<p>Tampoco voy a tratar de corregir la población por las alteraciones municipales que hayan ocurrido; es decir no trato de obtener series homogéneas de población, entre otras cosas porque ya lo ha hecho Paco Goerlich!!</p>
+<p>Supongo que un historiador podrá decir mucho sobre la validez, cambios de criterios y demás infortunios acaecidos a lo largo de los distintos censos. Yo aquí voy a dar por buenos los datos: son del INE!! 😇</p>
+<p>Bueno pues ya he dejado medio descrito el proceso de obtención de los datos así que cierro el post: ya los usaré en futuros post.</p>
+</section>
+<section id="qué-voy-a-hacer-con-los-datos" class="level2 page-columns page-full" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="qué-voy-a-hacer-con-los-datos"><span class="header-section-number">5</span> ¿Qué voy a hacer con los datos?</h2>
+<p>La verdad es que los datos cuesta un poquito acceder a ellos, menos mal que venía de un proyecto en el que había escrapeado los resultados de atletismo de la IAAF, que después me había llevado a escrapear datos de premios literarios, vamos que estaba entrenado en scraping y en una tarde lo tenía (casi) hecho, pero … y … y al final tenía los datos!!! 😀 Demasiado jaleo para lo que voy a hacer<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> pero, …</p>
+<p>OK, vale, pero ¿qué vas a hacer? Pues aún no lo sé del todo, pero seguro que juego con ellos para satisfacer mi curiosidad y preparar posibles ejercicios para el próximo curso.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Veremos que hago con estos datos …</p>
+</div></div><p><br><br></p>
+</section>
+<section id="referencias" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="referencias"><span class="header-section-number">6</span> Referencias</h2>
+<p>(Algunos artículos que hablan de la evolución histórica de la población y/o de los censos históricos)</p>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-albet_i_mas_mapa_1970" class="csl-entry" role="listitem">
+Albet i Mas, Abel. 1970. <span>«El mapa municipal en <span>España</span>: estructura, evolución y problemáticas»</span>. <em>Geopolítica(s). Revista de estudios sobre espacio y poder</em> 10 (1): 11-40. <a href="https://doi.org/10.5209/GEOP.63834">https://doi.org/10.5209/GEOP.63834</a>.
+</div>
+<div id="ref-pais_asi_2021" class="csl-entry" role="listitem">
+País, Ediciones El. 2021. <span>«Así ha cambiado <span>España</span> desde los primeros censos del siglo <span>XVIII</span>»</span>. <em>Verne</em>. <a href="https://verne.elpais.com/verne/2021/03/01/articulo/1614584363_382946.html">https://verne.elpais.com/verne/2021/03/01/articulo/1614584363_382946.html</a>.
+</div>
+<div id="ref-prieto_evolucion_2016" class="csl-entry" role="listitem">
+Prieto, Gonzalo. 2016. <span>«La evolución de <span>Madrid</span> a lo largo de la historia»</span>. <em>Geografía Infinita</em>. <a href="https://www.geografiainfinita.com/2016/01/historia-del-plano-de-madrid/">https://www.geografiainfinita.com/2016/01/historia-del-plano-de-madrid/</a>.
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.ine.es/explica/docs/historia_censos.pdf" target="_blank">En esta publicación del INE</a> puede encontrase una pequeña reseña de los principales censos históricos hechos en España<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La verdad es que probé los paquetes <code>tesseract</code> y <code>tabulizer</code> y no lo hacían mal, pero hacía falta mucho más trabajo para llegar a algo medio decente. Intenté probar el paquete <code>daiR</code> que da acceso a la Google Cloud Document AI API, que se supone que es la caña para extraer texto y tablas de pdf’s, <strong>PERO</strong> es un servicio de pago. No parecía muy caro, pero no lo probé.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Para censos anteriores puede verse <a href="https://www.ine.es/explica/docs/historia_censos.pdf">esta publicación</a> del INE<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Concretamente se ofrece la población de derecho, la población de hecho y el número de hogares.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Por ejemplo si son absorbidos por otro municipio; como por ejemplo Vallecas, que existía como municipio independiente en el censo de 1940 pero pasó a estar integrado en el municipio de Madrid en el censo de 1950.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Y de muchos otros (temas) 🙂.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Los 4 municipios son San Quirce de Riopisuerga (09342), Gátova (12066), Rivas de Tereso (26504) y Los Hueros (28511). El fallo consistió en que su código municipal estaba incompleto en la nota que hubiese permitido detectarlos; concretamente su código municipal solo tenía 3 dígitos en lugar de los 5 habituales.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Señalar que existen casos digamos “extraños”, como por ejemplo el municipio de Gatova que cambió su código de 12066 a 46092 al incorporarse a la provincia de Valencia, desde la de Castellón, en el censo de 2001. ¿Son municipios diferentes? Bueno, podemos pensar que sí, ya que tienen códigos municipales diferentes.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Esos errores de transcripción se describen en detalle en los apartados 2.2.6, 2.2.7 y 2.2.8 de <a href="https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/" target="_blank">este libro</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Como ejemplo, señalar que, en el caso de Madrid, la población que figura en la web del INE para el censo de 1991 es de 2.909.792, mientras que en el Censo original es de 3.010.492. Este error supone un 3,46%.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Además, seguro que lo que haga ya estará hecho seguramente en <a href="https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/" target="_blank">este libro</a>. Tiene 354 páginas!!!! No voy a mirar mucho por si acaso!!<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reutilizar</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.es">https://creativecommons.org/licenses/by/4.0/deed.es</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp("https:\/\/perezp44\.github\.io\/Rflowers\.2024\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© 2024 Pedro J. Pérez</div>   
+    <div class="nav-footer-center">Hecho con <a href="https://quarto.org">quarto</a></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/perezp44">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/pjpv4444">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:pedro.j.perez@uv.es">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.de/citations?user=MFlgHdcAAAAJ&amp;hl=en"><i class="ai ai-google-scholar" role="img"></i></a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0001-9375-6330"><i class="ai ai-orcid" role="img"></i></a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

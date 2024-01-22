@@ -1,0 +1,126 @@
+# options specified here will apply to all posts in this folder
+lang: es   #- {es, en}
+
+# Enable CC licence appendix
+license: "CC BY"
+
+# Enable banner style title blocks: https://quarto.org/docs/authoring/title-blocks.html
+title-block-banner: true  
+#title-block-style: none   #- none, plain, default (no funciona)
+# Enable banner style title blocks: https://quarto.org/docs/authoring/title-blocks.html
+#title-block-banner: true   #- no me funciona
+#title-block-style: none    #- none, plain, default (no me funciona)
+#title-block-banner: imagenes/economia.gif
+
+
+# Default for table of contents
+toc: true
+toc-depth: 3
+toc-location: left
+toc-title: Índice
+number-sections: true
+number-depth: 2
+smooth-scroll: true
+#toc-background: "#1874CD"
+
+
+# Default knitr options
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+
+#- Default author
+author:
+  - name: Pedro J. Pérez
+    url: https://perezp44.github.io/pjperez.web/
+    affiliation: Universitat de València
+    affiliation-url: https://www.uv.es
+    orcid: 0000-0001-9375-6330
+
+# Fechas
+# la fecha de creación la pongo en el .qmd
+#date: "`r format(Sys.time(), '%d %B, %Y')`"
+#date: 2022-10-10
+#date-format: short
+#date: today
+
+date-modified: last-modified
+
+
+# Default fields for citation
+#citation: true
+
+# Footnotes 
+footnotes-hover: true 
+
+# image as thumbnail
+# image: "imagenes/thumbnail.png"
+
+#- https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/16-code-tools/
+#- https://quarto.org/docs/output-formats/html-code.html
+#code-fold: false
+#code-link: true
+code-overflow: scroll   #- {scroll, wrap}
+#code-block-bg: true
+highlight-style: github
+code-copy: true
+code-tools: false
+#code-summary: "Show the code"
+#code-link: true
+
+#code-block-border-left: "#31BAE9"
+#- https://quarto.org/docs/authoring/cross-references.html#options
+
+crossref:
+  fig-title: Gráfico     # (default is "Figure")
+  tbl-title: Tabla    # (default is "Table")
+  #title-delim: —     # (default is ":")
+  
+  
+format: 
+  html:
+#- https://quarto.org/docs/output-formats/html-themes.html
+#- https://quarto.org/docs/websites/website-blog.html#themes
+    #theme: minty
+    theme: 
+      - superhero #sketchy #slate #- litera  superhero darkly minty
+      - assets/ember_blog.scss #- 
+    #backgroundcolor: "#F1F3F4"
+    #self-contained: true  #- ya no la usa la nueva version de pandoc
+    #standalone: true  
+    link-external-icon: false
+    link-external-newwindow: true
+    html-math-method: katex
+    citations-hover: true
+    #css: assets/styles.css
+    fig-cap-location: bottom
+    #title-block-banner: "red"
+    #title-block-banner-color: "red"
+# comments:
+#   hypothesis: 
+#     theme: clean
+editor_options: 
+  chunk_output_type: console
+  
+# filters:
+#   - social-share
+#   
+# share:
+#   permalink: "https://perezp44.github.io/taller.primer.blog/materiales.html/"
+#   description: "awesome page"
+#   twitter: true
+#   linkedin: true
+#   email: true
+
+page-layout: full
+
+fields: [image, date, description, categories, title, author, reading-time]
+
+# embed-resources: true
+# self-contained: true
+
+
+css: assets/my_css_file.css 
+image: "imagenes/thumbnail.png"

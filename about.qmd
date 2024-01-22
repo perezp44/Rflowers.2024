@@ -1,0 +1,39 @@
+---
+title: Pedro J. Pérez
+image: imagenes/foto_pedro-perez.jpg
+about:
+  #- https://quarto.org/docs/websites/website-about.html#templates
+  template: trestles  #- {jolla, solana, trestles}
+  #- https://quarto.org/docs/websites/website-about.html#image
+  image-width: 7em
+  image-shape: rectangle
+  #- https://quarto.org/docs/websites/website-about.html#links
+  links:
+    - icon: github
+      href: https://github.com/perezp44
+      target: _blank
+    - icon: twitter
+      href: https://twitter.com/pjpv4444
+      target: _blank
+    - icon: envelope
+      url: "mailto:<pedro.j.perez@uv.es>"
+format:
+  html:
+    code-tools: false
+---
+
+Mi nombre es Pedro J. Pérez. Soy **profesor** del departamento de Análisis Económico de la **Universitat de València**. Mi página web en la UV es: <https://www.uv.es/pjperez/>
+
+
+Me gusta aprender y trastear con R; vamos, que aún soy un **entusiasta de R**. Me divierto!!
+
+A pesar de haber tenido ya unos cuantos blogs, no soy bloguero, mas bien soy un creador y **liquidador de blogs**. [Aquí](https://www.uv.es/pjperez/mys_blogs.html){target="_blank"}, puedes ver un listado **no exhaustivo** de los blogs que he liquidado.
+
+
+La verdad es que **me gusta escribir posts**, tienes mucha más libertad que al escribir un informe o un artículo académico; además, los posts **no tienen porque estar perfectos**, cuando te apetece los puedes dejar; además, aunque los posts no estén acabados del todo, el pensar que alguien puede leerlos **te hace pensar y reflexionar** sobre lo que escribes.
+
+> Remember kids, the only difference between screwing around and science is writing it down  --- Adam Savage de [MythBusters](https://es.wikipedia.org/wiki/MythBusters)
+
+<br>
+
+

@@ -1,0 +1,32 @@
+---
+title: "Bitacora (Rflowers.2024)"
+author: "Pedro J. Pérez"
+format: 
+  html:
+    theme: minty  #- https://quarto.org/docs/output-formats/html-themes.html
+    #-https://quarto.org/docs/websites/website-blog.html#themes
+    backgroundcolor: "#F1F3F4"
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    smooth-scroll: true
+    embed-resources: true
+    link-external-icon: true
+    link-external-newwindow: true
+    html-math-method: mathjax
+    citations-hover: false
+    footnotes-hover: true
+---
+
+Espero que sea mi blog redefinitivo 
+
+
+## Problems
+
+- en el segundo post de los censos históricos no se muestra la tabla  (tampoco conseguía referenciarla y por eso deje de referenciarla)
+
+- lo mismo me pasa con el tercer post decensos históricos
+
+
+## TODO
+

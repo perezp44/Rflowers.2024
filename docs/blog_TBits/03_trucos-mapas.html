@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Pedro J. Pérez">
+<title>My last blog’s (2024-9999) - Maps (trucos)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../imagenes/ababol_redondeado.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="../assets/quarto_yaml_styles.css">
+<link rel="stylesheet" href="assets/my_css_file.css">
+<meta property="og:title" content="My last blog’s (2024-9999) - Maps (trucos)">
+<meta property="og:description" content="Recopilación de truquillos sobre GIS">
+<meta property="og:image" content="https://perezp44.github.io/Rflowers.2024/blog_TBits/imagenes/thumbnail.png">
+<meta property="og:site-name" content="My last blog's (2024-9999)">
+<meta name="twitter:title" content="My last blog’s (2024-9999) - Maps (trucos)">
+<meta name="twitter:description" content="Recopilación de truquillos sobre GIS">
+<meta name="twitter:image" content="https://perezp44.github.io/Rflowers.2024/blog_TBits/imagenes/thumbnail.png">
+<meta name="twitter:creator" content="@pjpv4444">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../imagenes/ababol_redondeado.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">My last blog’s (2024-9999)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="../index.html" rel="" target=""><i class="bi bi-house-door" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../blog_Rflowers.html" rel="" target="">
+ <span class="menu-text">R &amp; flowers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog_TBits.html" rel="" target="">
+ <span class="menu-text">TBits</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">Pedro J. Pérez</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/perezp44" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/pjpv4444" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:pedro.j.perez@uv.es" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-right">
+      <h1 class="title">Maps (trucos)</h1>
+            <p class="subtitle lead"></p>
+<p>Recopilación de truquillos sobre GIS</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">maps</div>
+                <div class="quarto-category">GIS</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-heading">Afiliación</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://perezp44.github.io/pjperez.web/">Pedro J. Pérez</a> <a href="https://orcid.org/0000-0001-9375-6330" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://www.uv.es">
+              Universitat de València
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de Publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">11 de julio de 2023</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de modificación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">11 de julio de 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Índice</h2>
+   
+  <ul>
+<li><a href="#datos" id="toc-datos" class="nav-link active" data-scroll-target="#datos"><span class="header-section-number">1</span> Datos</a></li>
+  <li>
+<a href="#trucos" id="toc-trucos" class="nav-link" data-scroll-target="#trucos"><span class="header-section-number">2</span> Trucos</a>
+  <ul class="collapse">
+<li><a href="#ilya-katalinsky" id="toc-ilya-katalinsky" class="nav-link" data-scroll-target="#ilya-katalinsky">Ilya Katalinsky</a></li>
+  </ul>
+</li>
+  <li><a href="#ejemplos" id="toc-ejemplos" class="nav-link" data-scroll-target="#ejemplos"><span class="header-section-number">3</span> Ejemplos</a></li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/perezp44/Rflowers.2024/edit/master/blog_TBits/03_trucos-mapas.qmd" class="toc-action">Editar esta página</a></p><p><a href="https://github.com/perezp44/Rflowers.2024/issues/new" class="toc-action">Informar de un problema</a></p></div></div></nav>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content"><p>Este post sirve para apuntar trucos sobre {GIS}</p>
+<section id="datos" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="datos">
+<span class="header-section-number">1</span> Datos</h2>
+<ul>
+<li>Mundo</li>
+</ul>
+<div class="cell" data-hash="03_trucos-mapas_cache/html/unnamed-chunk-1_2cb607c5dbc7ac7e2e13d56943ed2cca">
+<details><summary>Código</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>world <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span><span class="fu">map_data</span>(<span class="st">"world"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Eurostat</li>
+</ul>
+<div class="cell" data-hash="03_trucos-mapas_cache/html/unnamed-chunk-2_698a287d700a13da52e85bb3af047ac1">
+<details><summary>Código</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(eurostat)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>greece <span class="ot">&lt;-</span> eurostat_geodata_60_2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="fu">filter</span>(LEVL_CODE <span class="sc">==</span> <span class="dv">3</span>, stringr<span class="sc">::</span><span class="fu">str_sub</span>(geo, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> <span class="st">"EL"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#- https://twitter.com/geokaramanis/status/1611052804109635584</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>nuts2 <span class="ot">&lt;-</span> eurostat_geodata_60_2016 <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">filter</span>(levl_code <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># Get world coastline, to be used as "background"</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>world_coast <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">read_sf</span>(<span class="st">"https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/COAS_RG_10M_2016_3035.geojson"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#- para el zoom (incluye Canarias y Turquía)</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">22.5</span>, <span class="dv">44</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="fl">70.5</span>)) <span class="sc">+</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+</section><section id="trucos" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="trucos">
+<span class="header-section-number">2</span> Trucos</h2>
+<section id="ilya-katalinsky" class="level3"><h3 class="anchored" data-anchor-id="ilya-katalinsky">Ilya Katalinsky</h3>
+<p>Dice que mejora mucho las coropleta si quitamos los bordes exteriores de las geometrías: <a href="https://ikashnitsky.github.io/2023/map-borders/index.html" class="uri">https://ikashnitsky.github.io/2023/map-borders/index.html</a>. Geometrías de Eurostat (NUTS-3)</p>
+<div class="cell" data-hash="03_trucos-mapas_cache/html/unnamed-chunk-3_e6c61c3b54d25ae46f03eec80f30ffc5">
+<details><summary>Código</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#- esto crea un objeto con las innerlines de unas geometrias</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(rmapshaper)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>bord <span class="ot">&lt;-</span> greece <span class="sc">%&gt;%</span> <span class="fu">ms_innerlines</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-hash="03_trucos-mapas_cache/html/unnamed-chunk-4_0691d1c817365aff95a3b63cb975b71f">
+<details><summary>Código</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(sf)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">set.seed</span>(<span class="dv">911</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># subset Greence, NUTS-3 regions</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="fu">library</span>(eurostat)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>greece <span class="ot">&lt;-</span> eurostat_geodata_60_2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="fu">filter</span>(LEVL_CODE <span class="sc">==</span> <span class="dv">3</span>,</span>
+<span id="cb4-11"><a href="#cb4-11"></a>           <span class="fu">str_sub</span>(geo, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> <span class="st">"EL"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="co"># create random values for filling the polygons</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="fu">mutate</span>(<span class="at">random =</span> <span class="fu">runif</span>(<span class="fu">length</span>(id))) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="fu">select</span>(id, geometry, random) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">3035</span>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co"># plot with polygon outlines</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>greece <span class="sc">%&gt;%</span> </span>
+<span id="cb4-19"><a href="#cb4-19"></a>    <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>    <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> random), <span class="at">color =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Polygons outlined"</span>)<span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">begin =</span> .<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="fu">theme_map</span>()<span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>    <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="st">"#eeffff"</span>))</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>gg_outline <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#- AQUI: el truco es crear las innerlines y meterlo en otro geom</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="co"># produce border lines with rmapshaper::ms_innerlines()</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="fu">library</span>(rmapshaper)</span>
+<span id="cb4-31"><a href="#cb4-31"></a>bord <span class="ot">&lt;-</span> greece <span class="sc">%&gt;%</span> <span class="fu">ms_innerlines</span>()</span>
+<span id="cb4-32"><a href="#cb4-32"></a></span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="co"># now plot without polygon outlines and with borders as lines</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>greece <span class="sc">%&gt;%</span> </span>
+<span id="cb4-35"><a href="#cb4-35"></a>    <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>    <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> random), <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bord, <span class="at">color =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Borders as lines"</span>) <span class="sc">+</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">begin =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a>    <span class="fu">theme_map</span>()<span class="sc">+</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>    <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="st">"#eeffff"</span>))</span>
+<span id="cb4-42"><a href="#cb4-42"></a></span>
+<span id="cb4-43"><a href="#cb4-43"></a><span class="co"># put side by side</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-45"><a href="#cb4-45"></a>(</span>
+<span id="cb4-46"><a href="#cb4-46"></a>    gg_outline <span class="sc">+</span> gg_bord </span>
+<span id="cb4-47"><a href="#cb4-47"></a>)  <span class="sc">+</span> </span>
+<span id="cb4-48"><a href="#cb4-48"></a>    <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)<span class="sc">+</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>    <span class="fu">plot_annotation</span>(</span>
+<span id="cb4-50"><a href="#cb4-50"></a>        <span class="at">caption =</span> <span class="st">"! Look at the islands"</span>, </span>
+<span id="cb4-51"><a href="#cb4-51"></a>        <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="st">"#eeffff"</span>))</span>
+<span id="cb4-52"><a href="#cb4-52"></a>    )</span>
+<span id="cb4-53"><a href="#cb4-53"></a>gg_bord <span class="ot">&lt;-</span> <span class="fu">last_plot</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+</section></section><section id="ejemplos" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="ejemplos">
+<span class="header-section-number">3</span> Ejemplos</h2>
+<p>Nuevo proyecto/concurso (<strong>MapPromptMonday</strong>): <a href="https://github.com/MapPromptMonday/MapPromptMonday" class="uri">https://github.com/MapPromptMonday/MapPromptMonday</a> ### Chulisima coropleta</p>
+<p><a href="https://twitter.com/nrennie35/status/1610198066547814401" class="uri">https://twitter.com/nrennie35/status/1610198066547814401</a></p>
+<div class="cell" data-hash="03_trucos-mapas_cache/html/unnamed-chunk-5_cee9336294a67499d644b139315e5393">
+<details><summary>Código</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(MetBrewer)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># load fonts</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">font_add_google</span>(<span class="st">"Roboto Slab"</span>, <span class="st">"slab"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">font_add_google</span>(<span class="st">"Roboto"</span>, <span class="st">"roboto"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># load data (no chuta)</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>pop <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"2023/2023-01-03/data/population_aged_70plus_years_both_sexes_percent.csv"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a>doctors <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"2023/2023-01-03/data/medical_doctors_per_1000_people.csv"</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co"># data wrangling</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>pop <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span> </span>
+<span id="cb5-16"><a href="#cb5-16"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>country, <span class="at">values_to =</span> <span class="st">"pop"</span>, <span class="at">names_to =</span> <span class="st">"year"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>doctors <span class="ot">&lt;-</span> doctors <span class="sc">|&gt;</span> </span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>country, <span class="at">values_to =</span> <span class="st">"doctors"</span>, <span class="at">names_to =</span> <span class="st">"year"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a>plot_data <span class="ot">&lt;-</span> pop <span class="sc">|&gt;</span> </span>
+<span id="cb5-20"><a href="#cb5-20"></a>  <span class="fu">full_join</span>(doctors, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country"</span>, <span class="st">"year"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-21"><a href="#cb5-21"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> doctors<span class="sc">/</span>pop) <span class="sc">|&gt;</span> </span>
+<span id="cb5-22"><a href="#cb5-22"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-23"><a href="#cb5-23"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb5-24"><a href="#cb5-24"></a>  <span class="fu">slice_max</span>(year)</span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="co"># world map</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="fu">sort</span>(<span class="fu">unique</span>(world<span class="sc">$</span>region))</span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="fu">sort</span>(<span class="fu">unique</span>(plot_data<span class="sc">$</span>country))</span>
+<span id="cb5-30"><a href="#cb5-30"></a>plot_data <span class="ot">&lt;-</span> plot_data <span class="sc">%&gt;%</span> <span class="co">#old = new</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> </span>
+<span id="cb5-32"><a href="#cb5-32"></a>           <span class="fu">recode</span>(country, </span>
+<span id="cb5-33"><a href="#cb5-33"></a>                  <span class="st">"United Kingdom"</span> <span class="ot">=</span> <span class="st">"UK"</span>, </span>
+<span id="cb5-34"><a href="#cb5-34"></a>                  <span class="st">"United States"</span> <span class="ot">=</span> <span class="st">"USA"</span>,</span>
+<span id="cb5-35"><a href="#cb5-35"></a>                  <span class="st">"Congo, Dem. Rep."</span> <span class="ot">=</span> <span class="st">"Democratic Republic of the Congo"</span>,</span>
+<span id="cb5-36"><a href="#cb5-36"></a>                  <span class="st">"Cote d'Ivoire"</span> <span class="ot">=</span> <span class="st">"Ivory Coast"</span>,</span>
+<span id="cb5-37"><a href="#cb5-37"></a>                  <span class="st">"Congo, Rep."</span> <span class="ot">=</span> <span class="st">"Republic of Congo"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-38"><a href="#cb5-38"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb5-39"><a href="#cb5-39"></a>map_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world, plot_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="st">"country"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">"Antarctica"</span>)</span>
+<span id="cb5-41"><a href="#cb5-41"></a>map_data<span class="sc">$</span>label <span class="ot">=</span> <span class="st">"Doctors in an ageing population"</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a>  </span>
+<span id="cb5-43"><a href="#cb5-43"></a></span>
+<span id="cb5-44"><a href="#cb5-44"></a><span class="co"># subtitle</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a>st <span class="ot">&lt;-</span> <span class="st">"This map show the number of doctors per thousand people, rescaled by the percentage of the population aged over 70, revealing which countries* may be more likely to struggle in providing care for an elderly population.</span><span class="sc">\n\n</span><span class="st">* using most recent available data for each country."</span> </span>
+<span id="cb5-46"><a href="#cb5-46"></a></span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="co"># plot</span></span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="fu">ggplot</span>(<span class="at">data =</span> map_data,</span>
+<span id="cb5-49"><a href="#cb5-49"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(long,</span>
+<span id="cb5-50"><a href="#cb5-50"></a>                     lat,</span>
+<span id="cb5-51"><a href="#cb5-51"></a>                     <span class="at">map_id =</span> region,</span>
+<span id="cb5-52"><a href="#cb5-52"></a>                     <span class="at">fill =</span> <span class="fu">log10</span>(ratio))) <span class="sc">+</span></span>
+<span id="cb5-53"><a href="#cb5-53"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> map_data,</span>
+<span id="cb5-54"><a href="#cb5-54"></a>           <span class="at">color =</span> <span class="st">"#EADEDA"</span>,</span>
+<span id="cb5-55"><a href="#cb5-55"></a>           <span class="at">size =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb5-56"><a href="#cb5-56"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">60</span>, <span class="dv">120</span>)) <span class="sc">+</span></span>
+<span id="cb5-57"><a href="#cb5-57"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colours =</span> <span class="fu">met.brewer</span>(<span class="st">"Hokusai2"</span>, <span class="at">n =</span> <span class="dv">20</span>),</span>
+<span id="cb5-58"><a href="#cb5-58"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.8</span>, <span class="fl">0.7</span>),</span>
+<span id="cb5-59"><a href="#cb5-59"></a>                       <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.6</span>, <span class="fl">0.5</span>),</span>
+<span id="cb5-60"><a href="#cb5-60"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Fewer doctors"</span>, <span class="st">"More doctors"</span>)</span>
+<span id="cb5-61"><a href="#cb5-61"></a>                       ) <span class="sc">+</span></span>
+<span id="cb5-62"><a href="#cb5-62"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label) <span class="sc">+</span></span>
+<span id="cb5-63"><a href="#cb5-63"></a>  <span class="fu">labs</span>(<span class="at">tag =</span> usefunc<span class="sc">::</span><span class="fu">str_wrap_break</span>(st, <span class="dv">120</span>),</span>
+<span id="cb5-64"><a href="#cb5-64"></a>       <span class="at">caption =</span> <span class="st">"N. Rennie | Data: Gapminder"</span>) <span class="sc">+</span></span>
+<span id="cb5-65"><a href="#cb5-65"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_colourbar</span>(<span class="at">ticks =</span> <span class="cn">FALSE</span>)) <span class="sc">+</span></span>
+<span id="cb5-66"><a href="#cb5-66"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-67"><a href="#cb5-67"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EADEDA"</span>, <span class="at">colour =</span> <span class="st">"#EADEDA"</span>),</span>
+<span id="cb5-68"><a href="#cb5-68"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#EADEDA"</span>, <span class="at">colour =</span> <span class="st">"#EADEDA"</span>),</span>
+<span id="cb5-69"><a href="#cb5-69"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"slab"</span>, <span class="at">lineheight =</span> <span class="fl">0.4</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb5-70"><a href="#cb5-70"></a>                                  <span class="at">colour =</span> <span class="st">"#EADEDA"</span>, <span class="at">size =</span> <span class="dv">48</span>,</span>
+<span id="cb5-71"><a href="#cb5-71"></a>                                  <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">10</span>, </span>
+<span id="cb5-72"><a href="#cb5-72"></a>                                                  <span class="at">l =</span> <span class="dv">10</span>, </span>
+<span id="cb5-73"><a href="#cb5-73"></a>                                                  <span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb5-74"><a href="#cb5-74"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#1B5681"</span>, <span class="at">colour =</span> <span class="st">"#1B5681"</span>),</span>
+<span id="cb5-75"><a href="#cb5-75"></a>        <span class="at">plot.tag.position =</span> <span class="fu">c</span>(<span class="fl">0.03</span>, <span class="fl">0.78</span>),</span>
+<span id="cb5-76"><a href="#cb5-76"></a>        <span class="at">plot.tag =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"roboto"</span>,<span class="at">lineheight =</span> <span class="fl">0.4</span>, <span class="at">size =</span> <span class="dv">24</span>,</span>
+<span id="cb5-77"><a href="#cb5-77"></a>                                <span class="at">colour =</span> <span class="st">"#0E3F62"</span>, <span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb5-78"><a href="#cb5-78"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"roboto"</span>, <span class="at">lineheight =</span> <span class="fl">0.4</span>,</span>
+<span id="cb5-79"><a href="#cb5-79"></a>                                    <span class="at">size =</span> <span class="dv">24</span>, <span class="at">hjust =</span> <span class="fl">0.03</span>,</span>
+<span id="cb5-80"><a href="#cb5-80"></a>                                    <span class="at">colour =</span> <span class="st">"#0E3F62"</span>),</span>
+<span id="cb5-81"><a href="#cb5-81"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"roboto"</span>, <span class="at">lineheight =</span> <span class="fl">0.4</span>,</span>
+<span id="cb5-82"><a href="#cb5-82"></a>                                   <span class="at">size =</span> <span class="dv">24</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb5-83"><a href="#cb5-83"></a>                                   <span class="at">colour =</span> <span class="st">"#0E3F62"</span>),</span>
+<span id="cb5-84"><a href="#cb5-84"></a>        <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="dv">2</span>,<span class="st">"cm"</span>),</span>
+<span id="cb5-85"><a href="#cb5-85"></a>        <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>,<span class="st">"cm"</span>),</span>
+<span id="cb5-86"><a href="#cb5-86"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.645</span>, <span class="sc">-</span><span class="fl">0.005</span>),</span>
+<span id="cb5-87"><a href="#cb5-87"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-88"><a href="#cb5-88"></a>        <span class="at">legend.direction =</span> <span class="st">"horizontal"</span>,</span>
+<span id="cb5-89"><a href="#cb5-89"></a>        <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Karamanis con datos de Eurostat: <a href="https://twitter.com/geokaramanis/status/1611052804109635584" class="uri">https://twitter.com/geokaramanis/status/1611052804109635584</a>
+</li>
+</ul>
+
+
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reutilizar</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.es">https://creativecommons.org/licenses/by/4.0/deed.es</a></div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp("https:\/\/perezp44\.github\.io\/Rflowers\.2024\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">© 2024 Pedro J. Pérez</div>   
+    <div class="nav-footer-center">Hecho con <a href="https://quarto.org">quarto</a></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/perezp44">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/pjpv4444">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:pedro.j.perez@uv.es">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.de/citations?user=MFlgHdcAAAAJ&amp;hl=en"><i class="ai ai-google-scholar" role="img"></i></a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0001-9375-6330"><i class="ai ai-orcid" role="img"></i></a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

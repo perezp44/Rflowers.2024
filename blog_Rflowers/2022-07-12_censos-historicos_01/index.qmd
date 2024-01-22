@@ -1,0 +1,139 @@
+---
+title: "Censos históricos (1842-2011): obtención de los datos"
+# subtitle: | 
+#   Utilizando datos de los censos históricos (1842-2011) y del Padrón, se muestra el ranking de ciudades españolas más pobladas.
+date: 2022-07-12
+categories: [datos INE, Censos históricos, población, municipios, web scraping]
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+Se describe el proceso de obtención y procesado de los datos de los censos históricos de población en España (1842-2011) que ofrece el INE.
+
+<br>
+
+## Introducción
+
+A todos nos gusta saber cuantos habitantes tiene nuestro pueblo; y como nos dice [el conde Draco](https://www.youtube.com/watch?v=KZmLI7eYjmw){target="_blank"} esto se hace en los censos. Un **censo** de población es una operación estadística cuyo principal objetivo es hacer un recuento de la población, así como de sus principales características sociales y demográficas. En este post describo el proceso que tuve que hacer para **obtener y procesar los datos de los censos históricos de población** en España que ofrece el INE en su web. En posteriores posts se supone que los usaré para hacer algunas visualizaciones y análisis, como por ejemplo, la evolución del ranking de capitales de provincia más pobladas o la evolución de la importancia (en términos de población) de las capitales provinciales en su propia provincia; además, seguro que utilizo estos datos en mi curso de introducción a R en la UV. Son datos chulos y no exigen mucha carga mental para analizarlos.
+
+::: column-margin
+**Objetivo:** Obtener los datos de los censos históricos (1842-2011) ofrecidos por el INE.
+:::
+
+## Obtención de los datos (Web scraping)
+
+El INE ofrece [aquí](https://www.ine.es/inebaseweb/libros.do?tntp=71807#){target="_blank"} acceso a los censos realizados en España durante el periodo 1857-1970[^1]. El acceso es a través de documentos pdf, de forma que, para poder recopilar los datos allí contenidos se tendrían que procesar a mano (no way!!) o por tecnologías OCR (hay que saber mucho y ser un poco orfebre!!)[^2]; así que me olvidé de los pdf's y me fui al segundo punto de acceso a los datos, concretamente [aquí](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176998&menu=resultados&idp=1254735572981){target="_blank"} para **obtener los datos por Web scraping**. En este segundo punto de acceso se ofrecen datos de los censos **para el periodo 1842-2011**.^[Para censos anteriores puede verse [esta publicación](https://www.ine.es/explica/docs/historia_censos.pdf) del INE]
+
+[^1]: [En esta publicación del INE](https://www.ine.es/explica/docs/historia_censos.pdf){target="_blank"} puede encontrase una pequeña reseña de los principales censos históricos hechos en España
+
+[^2]: La verdad es que probé los paquetes `tesseract` y `tabulizer` y no lo hacían mal, pero hacía falta mucho más trabajo para llegar a algo medio decente. Intenté probar el paquete `daiR` que da acceso a la Google Cloud Document AI API, que se supone que es la caña para extraer texto y tablas de pdf's, **PERO** es un servicio de pago. No parecía muy caro, pero no lo probé.
+
+::: column-margin
+Obtendremos los datos mediante **web scraping**
+:::
+
+Esta segunda forma de obtener los datos, por Web scraping, tampoco es que sea extremadamente fácil ya que el INE, ofrece un buscador en el que puedes hacer consultas para un sólo municipio (o provincia), de forma que, habría que hacer cerca de 12.000 consultas a mano para descargarse los datos de población de todos los municipios españoles que han existido desde 1842. Factible, pero mejor si se hacen las peticiones de datos mediante un proceso automatizado y descargas los datos mediante Web scraping. De esta forma se recogen los datos en menos de una hora.
+
+Sería así de fácil si el INE ofreciese un listado de códigos para los municipios que han existido a lo largo de la historia en España para así poder hacer las consultas, pero esto no es así. El INE ofrece un listado de códigos municipales [aquí](https://www.ine.es/daco/daco42/codmun/codmunmapa.htm){target="_blank"} **pero sólo** para los municipios "actuales", así que el proceso para obtener los datos tuvo varias etapas:
+
+::: column-margin
+El proceso de scraping tuvo **varias etapas**
+:::
+
+-   De los datos de la revisión del padrón municipal extraje los códigos de los municipios que han existido en España en el periodo 1996 y 1998-2021: un total de 8.120 códigos municipales. Con estos códigos hice peticiones a la web del INE para generar las tablas con sus datos y poder hacer Web scraping para extraer los datos de población de los censos históricos de esos 8.120 municipios.
+
+-   En las tablas de cada municipio, además de los datos de población[^3], se ofrece una serie de notas con información sobre fenómenos como el cambio de nombre de los municipios y sus alteraciones municipales[^4]. Al **procesar estas anotaciones**, buscando conjuntos de dígitos de 5 o 6 dígitos, se consiguieron recuperar 2.924 códigos municipales adicionales. Son códigos que no aparecen en los datos del Padrón porque estos municipios se extinguieron antes de 1998.
+
+-   Con los códigos de estos 2.924 "nuevos" municipios se hicieron nuevas peticiones al INE, de las cuales surgieron nuevas notas de alteraciones municipales, que a su vez proporcionaron nuevos códigos municipales.
+
+-   Se tuvo que **repetir este proceso 5 veces** hasta que de las notas de la última vuelta no surgieron nuevos códigos municipales. En total había escrapeado un total de 11.882 municipios: 8.120 en la primera vuelta, 2.924 en la segunda, 767, 69, y finalmente 2 nuevos municipios en la quinta y última ronda.
+
+[^3]: Concretamente se ofrece la población de derecho, la población de hecho y el número de hogares.
+
+[^4]: Por ejemplo si son absorbidos por otro municipio; como por ejemplo Vallecas, que existía como municipio independiente en el censo de 1940 pero pasó a estar integrado en el municipio de Madrid en el censo de 1950.
+
+Parecía que todo estaba bien, que había conseguido localizar todos los municipios existentes en la web del INE, pero ... no me fiaba ya que del procesado de texto siempre suele haber errores, así que gracias a que conozco a Francisco J. Goerlich, seguramente la persona que más sabe de estos temas[^5], conseguí detectar que **me faltaban aún 28 municipios por encontrar**. El fallo no fue causado por mi proceso de scraping sino por "fallos" en las anotaciones en las tablas del INE.
+
+[^5]: Y de muchos otros (temas) 🙂.
+
+::: column-margin
+Tras las 5 vueltas del scraping se recopilaron datos de **11.882 códigos municipales** ...
+:::
+
+De los 28 municipios que el scraping no detectó, en 4 de ellos el motivo fue que había fallos[^7] en las notas que hubieran permitido detectarlos. En los restantes 24 municipios que no se detectaron, la razón fue similar: son municipios que solo aparecen en el primer censo que registra el INE, el de 1842, y en su nota al pie solo pone algo como "Este municipio que aparece en el Censo de 1842, ..., no se le localiza en el Censo de 1857", pero no dice si se integraron en otro municipio o se volatilizaron, de forma que era imposible detectarlos mediante el proceso de Web scraping. 
+
+[^7]: Los 4 municipios son San Quirce de Riopisuerga (09342), Gátova (12066), Rivas de Tereso (26504) y Los Hueros (28511). El fallo consistió en que su código municipal estaba incompleto en la nota que hubiese permitido detectarlos; concretamente su código municipal solo tenía 3 dígitos en lugar de los 5 habituales.
+
+::: column-margin
+... pero aún faltaban 28 municipios.
+:::
+
+Tras este proceso, tenía los datos de los **11.910 municipios** que han existido en España, a juzgar por la información que aparece en los censos históricos del INE 1842-2011[^8].
+
+[^8]: Señalar que existen casos digamos "extraños", como por ejemplo el municipio de Gatova que cambió su código de 12066 a 46092 al incorporarse a la provincia de Valencia, desde la de Castellón, en el censo de 2001. ¿Son municipios diferentes? Bueno, podemos pensar que sí, ya que tienen códigos municipales diferentes.
+
+::: column-margin
+Al final se obtuvieron datos de 11.910 municipios.
+:::
+
+## ¿Qué variables hay en los datos?
+
+Los datos del INE contienen, tal y como se explica [aquí](https://www.ine.es/intercensal/){target="_blank"}, una tabla para cada uno de los municipios que han sido censados en España desde 1842. Para cada municipio se recogen **3 variables**: población de hecho, población de derecho y número de hogares. Además se recogen, en las notas al pie de la tabla, determinadas alteraciones municipales. Como ejemplo, [aquí](https://www.ine.es/intercensal/intercensal.do?search=1&error1=Debe+introducir+un+nombre+de+municipio.&error2=Debe+introducir+al+menos+3+caracteres.&cmbTipoBusq=0&textoMunicipio=Pancrudo&btnBuscarDenom=Consultar+selecci%C3%B3n){target="_blank"} puedes ver la tabla para Pancrudo que, como se aprecia en las notas, incorporó a Portalrubio en el censo de 1981.
+
+::: column-margin
+**3 variables**: hogares, población de hecho y población de derecho.
+:::
+
+En la tabla se aprecia que hay **dos variables de población**: la de hecho y la de derecho. Para mis análisis utilizaré la **población de derecho**, salvo en los censos de 1857 y 1860 en los que como no hay registro para la población de derecho, la sustituiré por la de hecho, para así tener una serie completa de población para todos los censos del periodo 1842-2011. Es posible que en algunos análisis añada también los datos del Padrón (1998-2021).
+
+::: column-margin
+Usare la **población de derecho**, salvo cuando esta no esté disponible.
+:::
+
+## ¿Cifras oficiales de población?
+
+Voy a utilizar estos datos para hacer algunos análisis y visualizaciones, así que cabe preguntarse si son datos "oficiales" de población y si están libres de errores. En principio los datos que he obtenido por web scraping de la web del INE deberían ser las "cifras oficiales" de población de los municipios españoles, pero en [Goerlich y otros (2015)](https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/){target="_blank"} señalan, concretamente en los apartados 2.2.6, 2.2.7 y 2.2.8, diversos errores de transcripción[^9].
+
+[^9]: Esos errores de transcripción se describen en detalle en los apartados 2.2.6, 2.2.7 y 2.2.8 de [este libro](https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/){target="_blank"}
+
+::: column-margin
+[Goerlich y otros (2015)](https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/){target="_blank"} detectaron errores de transcripción.
+:::
+
+Sin embargo, esos errores detectados prácticamente no afectan a los análisis y visualizaciones que haré en el blog. En concreto, los errores detectados que afectan a las capitales de provincia son menores, solo detectándose diferencias importantes en Ceuta, Melilla y Madrid en el censo de 1991[^10], así que para los análisis que voy a hacer en el blog doy por buenos los datos que figuran [aquí](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176998&menu=resultados&idp=1254735572981){target="_blank"} en la web del INE.
+
+[^10]: Como ejemplo, señalar que, en el caso de Madrid, la población que figura en la web del INE para el censo de 1991 es de 2.909.792, mientras que en el Censo original es de 3.010.492. Este error supone un 3,46%.
+
+::: column-margin
+Esos errores afectarían mínimamente a los resultados mostrados en el blog.
+:::
+
+Mi objetivo no es hacer un artículo científico, sino tan solo, hacer algunos análisis y visualizaciones que describan, a grandes rasgos, la evolución histórica de la población municipal en España, para usarlos en mis clases, así que yo los voy a dar por buenos.
+
+Tampoco voy a tratar de corregir la población por las alteraciones municipales que hayan ocurrido; es decir no trato de obtener series homogéneas de población, entre otras cosas porque ya lo ha hecho Paco Goerlich!!
+
+Supongo que un historiador podrá decir mucho sobre la validez, cambios de criterios y demás infortunios acaecidos a lo largo de los distintos censos. Yo aquí voy a dar por buenos los datos: son del INE!! 😇
+
+Bueno pues ya he dejado medio descrito el proceso de obtención de los datos así que cierro el post: ya los usaré en futuros post.
+
+## ¿Qué voy a hacer con los datos?
+
+La verdad es que los datos cuesta un poquito acceder a ellos, menos mal que venía de un proyecto en el que había escrapeado los resultados de atletismo de la IAAF, que después me había llevado a escrapear datos de premios literarios, vamos que estaba entrenado en scraping y en una tarde lo tenía (casi) hecho, pero ... y ... y al final tenía los datos!!! 😀 Demasiado jaleo para lo que voy a hacer[^11] pero, ...
+
+[^11]: Además, seguro que lo que haga ya estará hecho seguramente en [este libro](https://www.fbbva.es/publicaciones/cambios-en-la-estructura-y-localizacion-de-la-poblacion-una-vision-de-largo-plazo-1842-2011/){target="_blank"}. Tiene 354 páginas!!!! No voy a mirar mucho por si acaso!!
+
+OK, vale, pero ¿qué vas a hacer? Pues aún no lo sé del todo, pero seguro que juego con ellos para satisfacer mi curiosidad y preparar posibles ejercicios para el próximo curso.
+
+::: column-margin
+Veremos que hago con estos datos ...
+:::
+
+<br><br>
+
+## Referencias
+
+(Algunos artículos que hablan de la evolución histórica de la población y/o de los censos históricos)
+
+::: {#refs}
+:::

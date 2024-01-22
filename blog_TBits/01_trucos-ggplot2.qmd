@@ -1,0 +1,123 @@
+---
+title: "Entendiendo cosillas de ggplot2"
+subtitle: | 
+   A ver si refresco/aprendo cosas de ggplot2
+date: 2023-07-10
+#draft: true
+categories: [ggplot2, trucos, geoms]
+---
+
+## 1. Text size & resolution
+
+Hace poco retome el blog y tuve que trastear un poco para presentar unos plots más o menos decentes, asi que cuando de casualidad he visto [este post](https://www.christophenicault.com/post/understand_size_dimension_ggplot2/) me he dicho que tenía que volver a leerlo, y aquí estoy.
+
+- Recuerda los [consejos de Hadley](https://perezp44.github.io/intro.to.quarto/blog/24_imagenes.html#tama%C3%B1o-de-las-im%C3%A1genes)
+
+- Recuerda tb como ajustaste el tamaño en el tercer post sobre censos históricos (con div's)
+
+### Ideas
+
+- A screen is basically a matrix of pixels^[Un pixel es the smallest element that can be displayed]
+
+- Mi pantalla tiene una resolución de 1920 (ancho) x 1080 (alto) pixeles; 96 pixels per inch. Puedes obtenre estos datos con `xdpyinfo | grep -B 2 resolution`
+
+- Una imagen (guardada en disco) es una matriz de puntos
+
+- ggplot and ggsave works in physical dimension (in, cm, or mm). To go from the dimension in inches to a number of dots, ggsave uses the number of dots per inches (dpi).
+
+- So if we create a plot in ggplot and save it with a dimension of 12 x 10 with the default dpi of 300 for ggsave, the file will be a matrix of (12 * 300) x (10 * 300) = 3600 x 3000 dots.
+
+- Now if you open that file on your computer, each dots represent a pixel, which means that the image has a resolution of 3600 x 3000 px.
+
+- The relation is : (size in inches) = (screen size in pixel) / PPI or (screen size in pixel) = DPI * (size in inches)
+
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+theme_set(theme_bw())
+```
+
+Then open a new graphic device with x11() (or quartz(), or windows() depending on your system) with a dimension of 1920 x 1200.
+
+```{r}
+#| eval: false
+x11()
+```
+
+```{r}
+#| eval: false
+plt <- penguins %>%
+  ggplot(aes(bill_length_mm, bill_depth_mm, color = species)) +
+  geom_point()
+
+ggsave("test.png", plot = plt, dpi = 300)
+
+dev.off()
+```
+
+
+
+## 2. Palettes
+
+- Toot de Andrew Heiss [aquí](https://fediscience.org/@andrew/110695840410830751)
+
+
+
+## 3. Geoms
+
+
+### geom_image()
+
+
+
+```{r}
+library(cropcircles)
+library(dplyr)
+library(ggimage)
+
+# breaking bad images
+x <- c(1, 3, 9, 8)
+images <- glue::glue("https://openpsychometrics.org/tests/characters/test-resources/pics/BB/{x}.jpg")
+
+df <- tibble(y = 1:4, images = images) |> 
+  mutate(images_circle = circle_crop(images))
+
+df |> 
+  ggplot() +
+  geom_image(aes(1.5, y, image = images), size = 0.15) +
+  geom_image(aes(3.5, y, image = images_circle), size = 0.15) +
+  xlim(0, 5) +
+  ylim(0, 5) +
+  coord_fixed()
+```
+
+
+## 4. Trucos
+
+### Fuentes
+
+
+```{r}
+#| eval: false
+library(showtext)
+# Import fonts ----
+font_add_google(name = "Roboto Slab", family = "roboto slab")
+font_add_google("Permanent Marker")
+main_font <- "Permanent Marker"
+showtext_auto() 
+
+```
+
+
+### Guardar gráficos
+
+```{r}
+#| eval: false
+ggsave("2023_01_worldcups.png", p, dpi = 320, width = 12, height = 6)
+
+ggsave("2023-01-03.png", height = 1600, width= 1000, units = "px")
+
+```
+
+<br>

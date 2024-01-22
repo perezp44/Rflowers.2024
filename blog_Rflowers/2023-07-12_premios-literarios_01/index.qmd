@@ -1,0 +1,48 @@
+---
+title: "Premios literarios: obtención de los datos"
+subtitle: | 
+   Se describe (un poco) el proceso de obtención de datos referentes a premios literarios en Wikidata
+date: 2023-07-10
+categories: [premios literarios, Wikidata]
+---
+
+
+
+# Intro
+
+Resulta que vi [este tweet](https://twitter.com/c_gebhard/status/1510146260052766724) que mostraba los pocos premios Nobel que ganan las mujeres y pensé que por qué no hacerlo para los principales premios literarios españoles.
+
+# Obtención de los datos
+
+En primer lugar pensé sólo en buscar datos de los premios literarios españoles de mayor prestigio, pero enseguida me di cuenta que esto no me iba a gustar. La razón es que para encontrar el listado de premios y premiados era un martirio: los datos estaban en diferentes webs y en múltiples formatos: no había una forma razonable de homogeneizarlos y recopilarlos. Por lo tanto me dije: venga, no te gusta tanto [Wikidata](https://www.wikidata.org/wiki/Wikidata:Introduction/es) pues a Wikidata!!
+
+La verdad es que no me fue fácil del todo. Primero intenté hacer una query de todos las personas que habían recibido un premio literario, pero nunca me llegaba a proporcionar resultados, creo que el [Wikidata Query System](https://query.wikidata.org/) me devolvía siempre un mensaje algo como "Time limit exceded", no recuerdo bien.
+
+Al final cambié de enfoque y escribí una query para obtener los premiados de un único premio y esta sí funcionaba, así que solo tenía que ejecutar esta consulta para todos los identificadores de premios literarios que hubiese en Wikidata.
+
+La estrategia final para obtener los datos tuvo 2 etapas:
+
+  1. Una primera query para obtener los identificadores de premios literarios
+  
+  2. Desde R, mediante un bucle for, lanzar secuencialmente, para todos los identificadores de premios literarios obtenidos, la query que me daba los premiados de un único premio
+  
+  
+Por supuesto hubo "several problems" durante el proceso, pero al final reto conseguido. Tenía los scripts para obtener datos de galardonados con premios literarios allá por principios de septiembre de 2022^[ahora estoy retomando el blog en enero de 2024], pero nunca encontré tiempo para analizar y trabajar los datos.
+
+
+Más adelante 2 tweets, [este](https://twitter.com/mlpoulter/status/1594709259635363842) y [este](https://twitter.com/mlpoulter/status/1594712573374504963) me hicieron volver a pensar en el proyecto. En concreto, el segundo tweet de Martin L Poulter ya había contestado a la cuestión que quería afrontar: ¿Hay sesgo de género en los premios literarios? Dije, bueno ,ya no merece la pena seguir el proyecto, pero luego pensé que sí, que con los datos que había recopilado se podían tratar de contestar múltiples preguntas cómo: ¿Hay diferencias por países/áreas geográficas? ¿Cual ha sido la evolución del sesgo de genero en el tiempo? etc ...
+
+Vamos que tenía en la cabeza hacer algo con los datos, pero no fue hasta que decidí ir a las [XIII Jornadas R](https://eventum.upf.edu/101896/detail/ii-congreso-de-r-y-xiii-jornadas-de-usuarios-de-r.html) en Barcelona cuando retome el proyecto, allá por septiembre de 2023. Finalmente aceptaron la ponencia y me puse a ello.
+
+
+# Análisis
+
+Una vez me aceptaron la ponencia para las [XIII Jornadas R](https://eventum.upf.edu/101896/detail/ii-congreso-de-r-y-xiii-jornadas-de-usuarios-de-r.html) lance otra vez las queries a Wikidata desde R el 7 de octubre de 2023 para obtener datos lo más actualizados posibles y me puse a analizar los datos y hacer tablas y visualizaciones^[Nota para mi: los análisis los hice en el proyecto `./slides_Barcelona_R-2023`].
+
+La versión final de las slides que utilicé para hacer la presentación en las Jornadas pueden verse [aquí](https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/title-slide) o en el iframe de más abajo.
+
+<br>
+
+```{=html}
+<iframe width="780" height="500" src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/title-slide" title="Sesgo de género y premios literarios(Un análisis con R y datos de Wikidata)"></iframe>
+```

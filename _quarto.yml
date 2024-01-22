@@ -1,0 +1,100 @@
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 4444
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+website:
+  title: "My last blog's (2024-9999)"
+  favicon: imagenes/ababol_redondeado.ico
+  site-url: https://perezp44.github.io/Rflowers.2024/
+  repo-url: https://github.com/perezp44/Rflowers.2024
+  repo-actions: [edit, issue]
+  repo-branch: master  #- edit page in Github https://github.com/quarto-dev/quarto-cli/discussions/4826
+  open-graph: true #-https://quarto.org/docs/websites/website-tools.html#twitter-cards
+  twitter-card:
+    creator: "@pjpv4444"
+    card-style: summary_large_image
+  navbar:
+    pinned: true
+    background: "#F1F3F4"   # "#F8F8F8"   # "#C0B9A0"  # "#e9e8f0"   #- color de R-ladies    # secondary
+    #background: primary #- pink
+    collapse-below: lg
+    logo: "imagenes/ababol_redondeado.png"
+    left: 
+      - icon: house-door
+        href: index.html
+    right:
+      - text: "R & flowers"
+        href: blog_Rflowers.qmd 
+      - text: "TBits"
+        href: blog_TBits.qmd  
+      - about.qmd
+      - icon: github
+        href: https://github.com/perezp44
+        target: _blank
+      - icon: twitter
+        href: https://twitter.com/pjpv4444
+        target: _blank
+      - icon: envelope
+        url: "mailto:pedro.j.perez@uv.es"
+  page-footer:
+    left: "© 2024 Pedro J. Pérez"
+    center: "Hecho con [quarto](https://quarto.org)"
+    right:
+      - icon: github
+        href: https://github.com/perezp44
+        target: _blank
+      - icon: twitter
+        href: https://twitter.com/pjpv4444
+        target: _blank
+      - icon: envelope
+        url: "mailto:pedro.j.perez@uv.es"
+      - text: <i class="ai ai-google-scholar" role="img"></i>
+        href: https://scholar.google.de/citations?user=MFlgHdcAAAAJ&hl=en
+      - text: <i class="ai ai-orcid" role="img"></i>
+        href: https://orcid.org/0000-0001-9375-6330
+
+    
+format:
+  html:
+    page-layout: full
+    #theme: ember.scss  #- de danielle Navarro(https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/)
+    theme: 
+      - cosmo #sketchy #slate #- litera  superhero darkly
+      - assets/quarto_yaml_ember.scss 
+    css: 
+      - assets/quarto_yaml_styles.css
+    toc: true
+    code-line-numbers: true
+    code-copy: true
+    code-overflow: wrap    #- {wrap, scroll}
+    code-fold: true
+    code-tools: false
+    #code-summary: "Show the code"
+    code-link: true
+    link-external-newwindow: true
+    
+lang: es   #- {es, en}
+
+
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+execute:
+  freeze: true  # re-render only when source changes
+  echo: true
+  message: false
+  warning: false
+  eval: true
+  cache: true
+  
+#editor: visual
+
+#embed-resources: true
+
+highlight-style: monochrome
+
+#title-block-banner: true  #- {true, false, "#FFDDFF",  "image.jpg"}

@@ -1,0 +1,81 @@
+---
+title: "Bitacora (sesgo de genero en premios literarios)"
+author: Pedro J. Pérez
+date: "Abril de 2022 (actualizado el `r format(Sys.time(), '%d %B %Y')`)"
+output:
+  html_document:
+    css: !expr here::here("assets", "bitacora.css")  
+    theme: paper
+    highlight: textmate
+    self_contained: yes
+    number_sections: no
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+---
+
+```{r chunk_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE, 
+                      cache = FALSE, cache.path = "/caches/", comment = "#>",
+                      #fig.width = 7, fig.height= 7,   
+                      #out.width = 7, out.height = 7, 
+                      # fig.asp = 7/9, out.width = "60%",  (lo q yo usaba)
+                      collapse = TRUE,  fig.show = "hold",
+                      fig.asp = 0.618, fig.width = 6, out.width = "70%", fig.align = "center")
+```
+
+```{r, echo = FALSE, message = FALSE}
+options(scipen = 999) #- quitar notación científica
+options("yaml.eval.expr" = TRUE)  #- pa que no se queje el yaml de evaluar expr: https://github.com/viking/r-yaml/issues/47
+library(tidyverse)
+```
+
+--------------------------------------
+
+
+# 1. Intro
+
+Resulta que vi [este tweet](https://twitter.com/c_gebhard/status/1510146260052766724) que mostraba los pocos Nobeles que ganan las mujeres y pensé que xq no hacerlo para premios literarios españoles.
+<https://www.lecturalia.com/portada/premios-literarios>
+
+- [Premios literarios en España en Wiki](https://es.wikipedia.org/wiki/Categor%C3%ADa:Premios_literarios_de_Espa%C3%B1a)
+
+
+Los premios literarios más prestigiosos son los que pone [aquí](https://www.comunidadbaratz.com/blog/los-premios-literarios-mas-importantes-entregados-en-espana-que-debes-conocer/), pero voy a seleccionar:
+
+
+- Premio de Literatura en Lengua Castellana Miguel de Cervantes: 
+<https://www.wikidata.org/wiki/Q81466> <https://es.wikipedia.org/wiki/Premio_Miguel_de_Cervantes>
+
+Es el máximo reconocimiento a los escritores españoles e hispanoamericanos cuya obra ha contribuido a enriquecer el patrimonio literario en lengua española. Cualquier escritor cuya obra esté escrita, en su parte esencial o totalmente, en español puede ser propuesto. Pueden presentar candidatos las Academias de la Lengua Española, los autores premiados en anteriores convocatorias, las instituciones vinculadas a la literatura en lengua castellana y los propios miembros del jurado. Estos premios se otorgan desde 1975, se falla a finales de año y se entregan el 23 de abril en el Paraninfo de la Universidad de Alcalá de Henares, cuna del escritor, por los Reyes de España. El considerado como Nobel de Literatura en castellano está dotado con 125.000 euros.
+
+
+- Premio Nacional de las Letras
+<https://www.culturaydeporte.gob.es/cultura/libro/premios/listado-de-premios/premios-nacionales/letras-espanolas/presentacion.html>
+
+## Lo retome en diciembre de 2022
+
+Sí, lo retome en diciembre de 2022 después de ver [este tweet](https://twitter.com/mlpoulter/status/1594709259635363842) busca si los ganadores de un premio están identificados en otra base de datos. La query está [aquí](https://query.wikidata.org/#%23title%3AIdentifier%20coverage%20for%20Booker%20authors%20(winners%20and%20nominees)%0ASELECT%20%3FidLabel%20%3FidDescription%20(round(COUNT(DISTINCT%20%3Fitem)*1000%2F%3Ftotal)%2F10%20AS%20%3Fpercent)%0AWITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20VALUES%20%3Faward%7Bwd%3AQ160082%20wd%3AQ2052291%7D%0A%3Fitem%20wdt%3AP166%7Cwdt%3AP1411%20%3Faward.%0A%20%20%20%20%3Fitem%20wdt%3AP31%20wd%3AQ5.%0A%20%20%7D%0A%7D%20AS%20%25subquery%0AWITH%20%7B%20SELECT%20(COUNT(%3Fitem)%20AS%20%3Ftotal)%20WHERE%20%7B%0A%20%20INCLUDE%20%25subquery%20%7D%0A%20%20%7D%20AS%20%25total%0A%20%20WHERE%20%7B%0A%20%20INCLUDE%20%25subquery%20.%0A%20%20INCLUDE%20%25total%20.%0A%20%20%3Fid%20wikibase%3ApropertyType%20wikibase%3AExternalId%3B%20wikibase%3Aclaim%20%3Fp%3B%20wikibase%3AstatementProperty%20%3Fps%3B%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ19595382.%0A%20%20%3Fitem%20%3Fp%20%5B%20%3Fps%20%3Fvalue%20%5D%20.%0A%20%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%20GROUP%20BY%20%3Ftotal%20%3FidLabel%20%3FidDescription%0AORDER%20BY%20DESC(%3Fpercent))
+
+- [Este tweet](https://twitter.com/mlpoulter/status/1594712573374504963) da la query para edad de os ganadores y ganadoras de premio literarios. La query [aquí](https://query.wikidata.org/#%23defaultView%3ABarChart%0A%23title%3AGender%20balance%20(%25age%20women)%20for%20literary%20awards%0ASELECT%20%20%3Faward%20%3FawardLabel%20(ROUND(%3Fwomen%20*%201000%2F(%3Fmen%20%2B%20%3Fwomen)%20)%2F%2010%20AS%20%3Fpercent)%20WHERE%20%7B%0A%7B%20%20SELECT%20(COUNT(%3Frecipient_male)%20AS%20%3Fmen)%20(COUNT(%3Frecipient_female)%20AS%20%3Fwomen)%20%3Faward%20WHERE%20%7B%0A%20%20%20%20%3Faward%20wdt%3AP31%20wd%3AQ378427%20.%0A%20%20%20%20%7B%20%0A%20%20%20%20%20%20%3Frecipient_male%20wdt%3AP166%20%3Faward%20.%0A%20%20%20%20%20%20%3Frecipient_male%20wdt%3AP21%20wd%3AQ6581097%20.%0A%20%20%20%20%7D%0A%20%20%20%20UNION%20%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%3Frecipient_female%20wdt%3AP166%20%3Faward%20.%0A%20%20%20%20%20%20%3Frecipient_female%20wdt%3AP21%20wd%3AQ6581072%20.%0A%20%20%20%20%7D%20%20%0A%20%20%7D%0A%20%20GROUP%20BY%20%3Faward%20HAVING(%3Fmen%20%2B%20%3Fwomen%20%3E%2050)%0A%20%20%20%20%20%20%20%20%20%20%20%7D%0ASERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%20ORDER%20BY%20%3Fpercent)
+
+Wikidata querie sobre otros premios ganados por los ganadores de ...[aquí](https://query.wikidata.org/#%23title%3AOther%20awards%20won%20by%20Booker%20winners%20(people)%0A%23defaultView%3ABubbleChart%0ASELECT%20(COUNT(%3Fitem)%20AS%20%3Fcount)%20%3Fotheraward%20%3FotherawardLabel%20WHERE%20%7B%0A%20%20VALUES%20%3Faward%7Bwd%3AQ160082%20wd%3AQ2052291%7D%0A%20%20%3Fitem%20wdt%3AP166%20%3Faward.%0A%23UNION%7B%20%3Fitem%20wdt%3AP1411%20%3Faward.%20BIND(%22nominated%22%20AS%20%3Frel)%20%7D%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ5.%0A%20%20%3Fitem%20p%3AP166%20%3Fs.%3Fs%20ps%3AP166%20%3Fotheraward%20FILTER(%3Fotheraward%20NOT%20IN(wd%3AQ160082%2C%20wd%3AQ2052291))%0A%20%20OPTIONAL%7B%3Fs%20pq%3AP585%20%3Ftime%7D%0ASERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22%20%7D%0A%7D%20GROUP%20BY%20%3Fotheraward%20%3FotherawardLabel%0AORDER%20BY%20DESC(%3Fcount))
+
+- [otra query](https://query.wikidata.org/#%23title%3AOther%20awards%20won%20by%20Booker%20winners%20(people)%0ASELECT%20DISTINCT%20%3Fitem%20%3FitemLabel%20%3FawardLabel%20%3FotherawardLabel%20(YEAR(%3Ftime)%20AS%20%3Fyear)%20WHERE%20%7B%0A%20%20VALUES%20%3Faward%7Bwd%3AQ160082%20wd%3AQ2052291%7D%0A%20%20%3Fitem%20wdt%3AP166%20%3Faward.%0A%23UNION%7B%20%3Fitem%20wdt%3AP1411%20%3Faward.%20BIND(%22nominated%22%20AS%20%3Frel)%20%7D%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ5.%0A%20%20%3Fitem%20p%3AP166%20%3Fs.%3Fs%20ps%3AP166%20%3Fotheraward%20FILTER(%3Fotheraward%20NOT%20IN(wd%3AQ160082%2C%20wd%3AQ2052291))%0A%20%20OPTIONAL%7B%3Fs%20pq%3AP585%20%3Ftime%7D%0ASERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22%20%7D%0A%7D%20ORDER%20BY%20%3FitemLabel%20%3Fyear)  otros premios ganados por
+
+
+
+## 2. Proceso obtención de datos
+
+
+# zz. TODO
+
+- Scholia: <https://tools.wmflabs.org/scholia/award/Q35637> puedes ver instantáneamente premiados de cualquier premio
+
+- pedazo gráfico, el de los monigotes: <https://twitter.com/c_gebhard/status/1510146260052766724>
+
+- Este gráfico para premiados por paise: <https://github.com/bydata/30DayChartChallenge#day-01--part-to-whole>
+
+- treemapa para poder hacer <https://twitter.com/leeolney3/status/1511599406797234177>
