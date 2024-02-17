@@ -84,9 +84,9 @@ format:
 #- https://quarto.org/docs/output-formats/html-themes.html
 #- https://quarto.org/docs/websites/website-blog.html#themes
     #theme: minty
-    theme: 
-      - superhero #sketchy #slate #- litera  superhero darkly minty
-      - assets/ember_blog.scss #- 
+    #theme: 
+    #  - superhero #sketchy #slate #- litera  superhero darkly minty
+    #  - assets/ember_blog.scss #- 
     #backgroundcolor: "#F1F3F4"
     #self-contained: true  #- ya no la usa la nueva version de pandoc
     #standalone: true  
@@ -123,4 +123,4 @@ fields: [image, date, description, categories, title, author, reading-time]
 
 
 css: assets/my_css_file.css 
-image: "imagenes/thumbnail.png"
+#image: "imagenes/thumbnail.png"

@@ -15,6 +15,7 @@ listing:
   field-display-names:
     # title: "Report"
     date_format: medium
-image: imagenes/thumbnail.jpg
+#image: "imagenes/my-last-blogs_2.png"
 ---
 
+Sí, la idea de `TBits` me sigue pareciendo buena, pero aún no he creado ningún "Tbit".

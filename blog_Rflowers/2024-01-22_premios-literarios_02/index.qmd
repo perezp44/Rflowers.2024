@@ -14,6 +14,8 @@ En el [post anterior](../2023-07-12_premios-literarios_01/index.qmd){target="_bl
 
 La versión final de las slides que utilicé para hacer la presentación en las Jornadas pueden verse [aquí](https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/title-slide) o en el iframe de más abajo.
 
+Aquí simplemente me apoyaré en las slides para mostrar algunos de los principales resultados. Mucho mejor ver las slides!! 😉
+
 <br>
 
 ```{=html}
@@ -52,11 +54,9 @@ Un resumen rápido de los principales resultados:
 ```{=html}
 <iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/6/4"></iframe>
 ```
+4.  Un resultado esperanzador es que parece que en los últimos años el sesgo en los premios literarios muestra una tendencia general a reducirse ... pero, otra vez a mi juicio poco experto, los premios más reconocidos[^1] parecen mostrar una reducción del sesgo menos rápida.
 
-
-
-4. Un resultado esperanzador es que parece que en los últimos años el sesgo en los premios literarios muestra una tendencia general a reducirse ... pero, otra vez a mi juicio poco experto, los premios más reconocidos^[... premios más tochos 😉 ] parecen mostrar una reducción del sesgo menos rápida.
-
+[^1]: ... premios más tochos 😉
 
 ::: columns
 ::: {.column width="45%"}
@@ -64,8 +64,10 @@ Un resumen rápido de los principales resultados:
 <iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/7/1"></iframe>
 ```
 :::
+
 ::: {.column width="10%"}
 :::
+
 ::: {.column width="45%"}
 ```{=html}
 <iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/7/2"></iframe>
@@ -73,21 +75,14 @@ Un resumen rápido de los principales resultados:
 :::
 :::
 
-
-5. ¿Y qué ocurre con los premios españoles? Bueno, las pautas son parecidas a las pautas generales: presencia de un fuerte sesgo de genero que va reduciendo en los últimos tiempo, pero otra vez (según mi apreciación personal), la reducción del sesgo es más lenta en los premios más prestigiosos. Juzga por ti mismo:
-
-
+5.  ¿Y qué ocurre con los premios españoles? Bueno, las pautas son parecidas a las pautas generales: presencia de un fuerte sesgo de genero que va reduciendo en los últimos tiempo, pero otra vez (según mi apreciación personal), la reducción del sesgo es más lenta en los premios más prestigiosos. Juzga por ti mismo:
 
 ```{=html}
 <iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/8/1"></iframe>
 ```
-
 Sí, los premios donde hay un porcentaje de premios a mujeres cercano al 50% suelen ser premios infantiles, mientras que premios digamos "más sesudos" como el Cervantes (12,5%) o el premio Nacional de Narrativa (14,89%), muestran porcentajes de mujeres galardonadas mucho menores.
 
-
 Para ir acabando el post mostraros dos visualizaciones más, esta vez centrada en los premios literarios españoles más conocidos y prestigiosos. El segundo gráfico es una réplica de [este plot](https://twitter.com/c_gebhard/status/1510146260052766724) que @c_gebhard mostró en "X" y parece haber sido borrado.
-
-
 
 ::: columns
 ::: {.column width="45%"}
@@ -95,8 +90,10 @@ Para ir acabando el post mostraros dos visualizaciones más, esta vez centrada e
 <iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/8/2"></iframe>
 ```
 :::
+
 ::: {.column width="10%"}
 :::
+
 ::: {.column width="45%"}
 ```{=html}
 <iframe width="700" height="450" border:5px solid peru src="https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/#/8/3"></iframe>
@@ -104,11 +101,6 @@ Para ir acabando el post mostraros dos visualizaciones más, esta vez centrada e
 :::
 :::
 
-
 <br>
 
 Para finalizar, recordar que los datos se obtuvieron mediante queries a Wikidata en octubre de 2023. Wikidata es una de las mayores bases de datos del mundo y es fantástica ... pero no está exenta de omisiones/errores etc... etc... Como sabemos, Wikidata es una base de datos abierta que permite a usuarios de todo el mundo contribuir y editar información; no es una fuente de datos oficial, ojala existiera; pero, en general, la fiabilidad y amplitud de Wikidata suelen ser excelentes. Gracias Wikidata!!
-
-
-
-

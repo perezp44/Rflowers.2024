@@ -84,9 +84,9 @@ format:
 #- https://quarto.org/docs/output-formats/html-themes.html
 #- https://quarto.org/docs/websites/website-blog.html#themes
     #theme: minty
-    theme: 
-      - darkly #sketchy #slate #- litera  superhero darkly minty
-      - assets/ember_blog.scss #- 
+    #theme: 
+     # - darkly #sketchy #slate #- litera  superhero darkly minty
+     # - assets/ember_blog.scss #- 
     #backgroundcolor: "#F1F3F4"
     #self-contained: true  #- ya no la usa la nueva version de pandoc
     #standalone: true  
