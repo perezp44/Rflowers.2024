@@ -9,14 +9,38 @@ about:
   image-shape: rectangle
   #- https://quarto.org/docs/websites/website-about.html#links
   links:
-    - icon: github
-      href: https://github.com/perezp44
-      target: _blank
-    - icon: twitter
-      href: https://twitter.com/pjpv4444
+    - icon: globe
+      text: UV web
+      href: https://www.uv.es/pjperez/
       target: _blank
     - icon: envelope
+      text: email
       url: "mailto:<pedro.j.perez@uv.es>"
+    - icon: mastodon
+      text: Mastodon 
+      href: https://fosstodon.org/@pjperez
+      target: _blank
+    - icon: github
+      text: Github
+      href: https://github.com/perezp44
+      target: _blank
+    - icon: google
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=PXaWcW4AAAAJ&hl=en
+      target: _blank
+    - icon: globe
+      text: ORCID
+      href: https://orcid.org/0000-0001-9375-6330
+      target: _blank
+  
+ #- icon: twitter
+ #href: https://twitter.com/pjpv4444
+ 
+ #- icon: stack-overflow
+ #   - icon: linkedin
+
+
+       
 format:
   html:
     code-tools: false

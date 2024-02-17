@@ -9,12 +9,29 @@ about:
   image-shape: rectangle
   #- https://quarto.org/docs/websites/website-about.html#links
   links:
-    - icon: github
-      href: https://github.com/perezp44
-    - icon: twitter
-      href: https://twitter.com/pjpv4444
+    - icon: globe
+      text: UV web
+      href: https://www.uv.es/pjperez/
+      target: _blank
     - icon: envelope
+      text: email
       url: "mailto:<pedro.j.perez@uv.es>"
+    - icon: mastodon
+      text: Mastodon 
+      href: https://fosstodon.org/@pjperez
+      target: _blank
+    - icon: github
+      text: Github
+      href: https://github.com/perezp44
+      target: _blank
+    - icon: google
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=PXaWcW4AAAAJ&hl=en
+      target: _blank
+    - icon: globe
+      text: ORCID
+      href: https://orcid.org/0000-0001-9375-6330
+      target: _blank
 ---
 
 Bienvenidos a mi nueva web con (I hope) **mis últimos 2 blogs**:
@@ -29,8 +46,9 @@ Bienvenidos a mi nueva web con (I hope) **mis últimos 2 blogs**:
 - [TBits](blog_TBits.qmd): es un blog para escribir pequeñas píldoras/post para mis cursos 
 
 
-<br><br>
+<br><br><br><br>
 
+And ...  
 
 > Remember kids, the only difference between screwing around and science is writing it down  --- Adam Savage de [MythBusters](https://es.wikipedia.org/wiki/MythBusters)
 

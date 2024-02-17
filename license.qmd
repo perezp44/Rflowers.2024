@@ -1,0 +1,11 @@
+---
+comments: false
+date: "2021-07-25"
+title: "Licencia"
+---
+
+My posts from the blogs  [R & flowers](blog_Rflowers.qmd)  and [TBits](blog_TBits.qmd) are released under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+
+<center>
+{{< fa brands creative-commons size=2xl >}} {{< fa brands creative-commons-by size=2xl >}} {{< fa brands creative-commons-sa size=2xl >}}
+</center>

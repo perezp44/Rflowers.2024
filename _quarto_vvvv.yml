@@ -1,0 +1,121 @@
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 4444
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+website:
+  title: "My last blog's (2024-9999)"
+  favicon: imagenes/ababol_redondeado.ico
+  site-url: https://perezp44.github.io/Rflowers.2024/
+  repo-url: https://github.com/perezp44/Rflowers.2024
+  #repo-actions: [edit, issue]
+  repo-branch: master  #- edit page in Github https://github.com/quarto-dev/quarto-cli/discussions/4826
+  open-graph: true #-https://quarto.org/docs/websites/website-tools.html#twitter-cards
+  twitter-card:
+    creator: "@pjpv4444"
+    card-style: summary_large_image
+  navbar:
+    pinned: true
+    background: "#F1F3F4"   # "#F8F8F8"   # "#C0B9A0"  # "#e9e8f0"   #- color de R-ladies    # secondary
+    #background: primary #- pink
+    collapse-below: lg
+    logo: "imagenes/ababol_redondeado.png"
+    left: 
+      - icon: house-door
+        href: index.html
+    right:
+      - text: "R & flowers"
+        href: blog_Rflowers.qmd 
+        target: _blank
+      - text: "TBits"
+        href: blog_TBits.qmd  
+        target: _blank
+      - about.qmd
+    tools:
+      - icon: github
+        href: https://github.com/perezp44
+        target: _blank
+      - icon: envelope
+        url: "mailto:pedro.j.perez@uv.es"
+      - icon: mastodon
+        text: Mastodon
+        href: https://fosstodon.org/@pjperez
+        target: _blank
+    
+        #- icon: twitter
+        #href: https://twitter.com/pjpv4444
+        #target: _blank
+  # page-footer:
+  #   left: "© 2024 Pedro J. Pérez"
+  #   center: "Hecho con [Quarto](https://quarto.org)"
+  #   right:
+  #     - icon: github
+  #       href: https://github.com/perezp44
+  #       target: _blank
+  #     - icon: envelope
+  #       url: "mailto:pedro.j.perez@uv.es"
+  #     - text: <i class="ai ai-google-scholar" role="img"></i>
+  #       href: https://scholar.google.de/citations?user=MFlgHdcAAAAJ&hl=en
+  #     - text: <i class="ai ai-orcid" role="img"></i>
+  #       href: https://orcid.org/0000-0001-9375-6330
+  #       #- icon: twitter
+  #       #href: https://twitter.com/pjpv4444
+  #       #target: _blank
+
+#- Silvia Canelon: https://github.com/spcanelon/silvia/blob/main/_quarto.yml
+  page-footer:  
+    left: >-
+     &#169; 2024 Pedro J. Pérez &#8729; Hecho con [Quarto](https://quarto.org)
+    right: |
+      <a class="link-dark me-1" href="https://fosstodon.org/@pjperez" title="mastodon" target="_blank" rel="noopener">{{< fa brands mastodon >}}</a>
+      <a class="link-dark me-1" href="https://github.com/perezp44" title="github" target="_blank" rel="noopener">{{< fa brands github >}}</a>
+      <a class="link-dark me-1" href="https://orcid.org/0000-0001-9375-6330" title="orcid" target="_blank" rel="noopener">{{< ai orcid >}}</a>
+      <a class="link-dark me-1" href="https://scholar.google.com/citations?user=PXaWcW4AAAAJ&hl=en" title="Google Scholar" target="_blank"rel="noopener">{{< ai google-scholar >}}</a>
+      
+
+    
+    
+    
+format:
+  html:
+    page-layout: full
+    #theme: ember.scss  #- de danielle Navarro(https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/)
+    theme: 
+      - cosmo #sketchy #slate #- litera  superhero darkly
+      - assets/quarto_yaml_ember.scss 
+    css: 
+      - assets/quarto_yaml_styles.css
+    toc: true
+    code-line-numbers: true
+    code-copy: true
+    code-overflow: wrap    #- {wrap, scroll}
+    code-fold: true
+    code-tools: false
+    #code-summary: "Show the code"
+    code-link: true
+    link-external-newwindow: true
+    
+lang: es   #- {es, en}
+
+
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+execute:
+  freeze: true  # re-render only when source changes
+  echo: true
+  message: false
+  warning: false
+  eval: true
+  cache: true
+  
+#editor: visual
+
+#embed-resources: true
+
+highlight-style: monochrome
+
+#title-block-banner: true  #- {true, false, "#FFDDFF",  "image.jpg"}
