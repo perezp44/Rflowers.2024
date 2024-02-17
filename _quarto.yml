@@ -71,11 +71,13 @@ website:
     left: >-
      &#169; 2024 Pedro J. Pérez &#8729; 
      <a class="link-dark me-1" href="https://fosstodon.org/@pjperez" title="mastodon" target="_blank" rel="noopener">{{< fa brands mastodon >}}</a>
+     &#8729;
      <a class="link-dark me-1" href="https://github.com/perezp44" title="github" target="_blank" rel="noopener">{{< fa brands github >}}</a>
+     &#8729;
      <a class="link-dark me-1" href="https://orcid.org/0000-0001-9375-6330" title="orcid" target="_blank" rel="noopener">{{< ai orcid >}}</a>
+     &#8729;
      <a class="link-dark me-1" href="https://scholar.google.com/citations?user=PXaWcW4AAAAJ&hl=en" title="Google Scholar" target="_blank"rel="noopener">{{< ai google-scholar >}}</a>
-     &#8729; 
-     Hecho con [Quarto](https://quarto.org)
+    #center: Hecho con [Quarto](https://quarto.org)
     right: 
       - text: "Licencia"
         aria-label: "License Details"
