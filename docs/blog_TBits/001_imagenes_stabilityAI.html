@@ -103,18 +103,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../assets/quarto_yaml_styles.css">
 <link rel="stylesheet" href="assets/my_css_file.css">
 <meta property="og:title" content="My last blog’s (2024-9999) - Imágenes con stabilityAI">
-<meta property="og:description" content="Aprendiendo cómo generar imágenes con R y stabilityAI">
-<meta property="og:image" content="https://perezp44.github.io/Rflowers.2024/blog_TBits/imagenes/my-last-blogs_2.png">
+<meta property="og:description" content="Aprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes.">
+<meta property="og:image" content="https://perezp44.github.io/Rflowers.2024/blog_TBits/imagenes/thumbnail_mulo.png">
 <meta property="og:site_name" content="My last blog's (2024-9999)">
-<meta property="og:image:height" content="188">
-<meta property="og:image:width" content="387">
+<meta property="og:image:height" content="426">
+<meta property="og:image:width" content="640">
 <meta name="twitter:title" content="My last blog’s (2024-9999) - Imágenes con stabilityAI">
-<meta name="twitter:description" content="Aprendiendo cómo generar imágenes con R y stabilityAI">
-<meta name="twitter:image" content="https://perezp44.github.io/Rflowers.2024/blog_TBits/imagenes/my-last-blogs_2.png">
+<meta name="twitter:description" content="Aprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes.">
+<meta name="twitter:image" content="https://perezp44.github.io/Rflowers.2024/blog_TBits/imagenes/thumbnail_mulo.png">
 <meta name="twitter:creator" content="@pjpv4444">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="188">
-<meta name="twitter:image-width" content="387">
+<meta name="twitter:image-height" content="426">
+<meta name="twitter:image-width" content="640">
 </head>
 <body class="floating nav-fixed">
 
@@ -164,10 +164,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title column-page-right">
       <h1 class="title">Imágenes con stabilityAI</h1>
             <p class="subtitle lead"></p>
-<p>Aprendiendo cómo generar imágenes con R y stabilityAI</p>
+<p>Aprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes.</p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">IA</div>
                 <div class="quarto-category">stabilityAI</div>
+                <div class="quarto-category">imágenes</div>
               </div>
                   </div>
   </div>
@@ -201,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Fecha de modificación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">4 de marzo de 2024</p>
+        <p class="date-modified">5 de marzo de 2024</p>
       </div>
     </div>
       
@@ -216,6 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#conectando-r-con-la-api-de-stability.ai" id="toc-conectando-r-con-la-api-de-stability.ai" class="nav-link active" data-scroll-target="#conectando-r-con-la-api-de-stability.ai"><span class="header-section-number">1</span> Conectando R con la API de stability.ai</a></li>
   <li><a href="#generando-im%C3%A1genes" id="toc-generando-imágenes" class="nav-link" data-scroll-target="#generando-im%C3%A1genes"><span class="header-section-number">2</span> Generando imágenes</a></li>
   <li><a href="#un-poco-sobre-la-api-de-stability.ai" id="toc-un-poco-sobre-la-api-de-stability.ai" class="nav-link" data-scroll-target="#un-poco-sobre-la-api-de-stability.ai"><span class="header-section-number">3</span> Un poco sobre la API de stability.ai</a></li>
+  <li><a href="#m%C3%A1s-cosas" id="toc-más-cosas" class="nav-link" data-scroll-target="#m%C3%A1s-cosas"><span class="header-section-number">4</span> Más cosas</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/perezp44/Rflowers.2024/edit/master/blog_TBits/001_imagenes_stabilityAI.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/perezp44/Rflowers.2024/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -223,13 +225,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-right" id="quarto-document-content"><p>Vamos a usar el paquete <a href="https://github.com/schochastics/stabilityAI">stabilityAI</a> de David Schoch para conectarnos a la API de <a href="https://stability.ai/">stability.ai</a> para generar imágenes partiendo de prompts textuales.</p>
+<p>Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes.</p>
+<p><br></p>
 <section id="conectando-r-con-la-api-de-stability.ai" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="conectando-r-con-la-api-de-stability.ai">
 <span class="header-section-number">1</span> Conectando R con la API de stability.ai</h2>
-<p>Para conectarnos a la API de stability.ai hemos de seguir los siguientes pasos:</p>
+<p>Para conectarnos a la API de <code>stability.ai</code> hemos de seguir los siguientes pasos:</p>
 <ol type="1">
 <li>
 <p>Instalar el paquete</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"schochastics/stabilityAI"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"schochastics/stabilityAI"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </li>
 <li>
 <p>Generar una API key en <a href="https://stability.ai/">stability.ai</a>. Para ello hay que ir <a href="https://platform.stability.ai/">aquí</a>. donde nos logearemos con nuestra cuenta de Google para después generar una API key.</p>
@@ -237,12 +241,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>
 <p>Una vez tengas la API-key has de copiarla en el fichero <code>.Renviron</code>. Para ello ejecuta en R:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Se abrirá el fichero <code>.Renviron</code> en RStudio o en el editor de texto que tengas configurado. Has de añadir a ese fichero la siguiente linea:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>STABILITYAI_API_KEY<span class="ot">=</span><span class="st">"xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">STABILITYAI_API_KEY</span><span class="op">=</span><span class="st">"xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ya hemos terminado el proceso de configuración. Ya podemos generar imágenes desde R.</p>
 <p>Este proceso nos da acceso a una serie de modelos. Veamoslos</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>stabilityAI<span class="sc">::</span><span class="fu">get_engines_list</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">stabilityAI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stabilityAI/man/get_engines_list.html">get_engines_list</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </li>
 </ol>
 <div class="cell">
@@ -256,23 +260,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6 Stability-AI Stable Diffusion XL Beta v2.2.2</code></pre>
 </div>
 </div>
+<p><br></p>
 </section><section id="generando-imágenes" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="generando-imágenes">
 <span class="header-section-number">2</span> Generando imágenes</h2>
-<p>Vamos a generar alguna imagen. Por ejemplo con pequeñas varientes de este promtp:</p>
+<p>Vamos a generar alguna imagen. Para ello usé pequeñas variantes de este promtp:</p>
 <blockquote class="blockquote">
 <p>El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público”</p>
 </blockquote>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>my_IA_img <span class="ot">&lt;-</span> stabilityAI<span class="sc">::</span><span class="fu">generate_txt2img</span>(</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="at">text_prompts =</span> <span class="st">"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="co">#style_preset = "pixel-art"</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="co">#- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_IA_img</span> <span class="op">&lt;-</span> <span class="fu">stabilityAI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stabilityAI/man/generate_txt2img.html">generate_txt2img</a></span><span class="op">(</span></span>
+<span>  text_prompts <span class="op">=</span> <span class="st">"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público"</span>,</span>
+<span>  <span class="co">#style_preset = "pixel-art"</span></span>
+<span>  <span class="co">#- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage</span></span>
+<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>La API de StabilityAI nos devuelve la imagen pero codificada en base64. Para convertirla a un fichero de imagen podemos ejecutar el siguiente código:</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>stabilityAI<span class="sc">::</span><span class="fu">base64_to_img</span>(my_IA_img ,<span class="st">"./imagenes/my_IA_img_00"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">stabilityAI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stabilityAI/man/base64_to_img.html">base64_to_img</a></span><span class="op">(</span><span class="va">my_IA_img</span> ,<span class="st">"./imagenes/my_IA_img_00"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Generé 4 imágenes modificando ligeramente el promt. Este es el resultado:</p>
@@ -314,11 +319,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">3</span> Un poco sobre la API de stability.ai</h2>
 <p>La documentación de la API de <code>stability.ai</code> está <a href="https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage">aquí</a> pero no he jugado muvho con ella. sólo he probado a cambiar el estilo de la imagen. Por ejemplo, si queremos que la imagen tenga un estilo de pixel-art, hemos de añadir el parámetro <code>style_preset = "pixel-art"</code>. Los posibles estilos son: <code>3d-model</code>, <code>analog-film</code>, <code>anime</code>, <code>cinematic</code>, <code>comic-book</code>, <code>digital-art</code>, <code>enhance</code>, <code>fantasy-art</code>, <code>isometric</code>, <code>line-art</code>, <code>low-poly</code>, <code>modeling-compound</code>, <code>neon-punk</code>, <code>origami</code>, <code>photographic</code>, <code>pixel-art</code>, y <code>tile-texture</code>.</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>my_IA_img <span class="ot">&lt;-</span> stabilityAI<span class="sc">::</span><span class="fu">generate_txt2img</span>(</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="at">text_prompts =</span> <span class="st">"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="at">style_preset =</span> <span class="st">"pixel-art"</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="co">#- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_IA_img</span> <span class="op">&lt;-</span> <span class="fu">stabilityAI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stabilityAI/man/generate_txt2img.html">generate_txt2img</a></span><span class="op">(</span></span>
+<span>  text_prompts <span class="op">=</span> <span class="st">"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar"</span>,</span>
+<span>  style_preset <span class="op">=</span> <span class="st">"pixel-art"</span></span>
+<span>  <span class="co">#- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage</span></span>
+<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -326,20 +331,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>(A)</figcaption></figure>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>my_IA_img <span class="ot">&lt;-</span> stabilityAI<span class="sc">::</span><span class="fu">generate_txt2img</span>(</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="at">text_prompts =</span> <span class="st">"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">style_preset =</span> <span class="st">"neon-punk"</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="co">#- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_IA_img</span> <span class="op">&lt;-</span> <span class="fu">stabilityAI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stabilityAI/man/generate_txt2img.html">generate_txt2img</a></span><span class="op">(</span></span>
+<span>  text_prompts <span class="op">=</span> <span class="st">"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar"</span>,</span>
+<span>  style_preset <span class="op">=</span> <span class="st">"neon-punk"</span></span>
+<span>  <span class="co">#- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage</span></span>
+<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="./imagenes/my_IA_img_06.png" class="img-fluid figure-img"></p>
 <figcaption>(A)</figcaption></figure>
 </div>
+</section><section id="más-cosas" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="más-cosas">
+<span class="header-section-number">4</span> Más cosas</h2>
+<p>Evidentemente se puede acceder a los modelos de <a href="https://stability.ai/">stability.ai</a> sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde <a href="https://beta.dreamstudio.ai/generate">Dream Studio</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.</p>
+<p>Sí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo <a href="https://publicdomainreview.org/">The Public Domain Review</a>. Otras como <a href="https://unsplash.com/">Unsplash</a> o <a href="https://www.pexels.com/">Pexels</a> permiten descargar imágenes de forma gratuita y legal.</p>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilizar</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.es">CC BY 4.0</a></div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+<ol>
+<li id="fn1"><p>Este link supongo que se quedará obsoleto en nada<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilizar</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.es">CC BY 4.0</a></div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

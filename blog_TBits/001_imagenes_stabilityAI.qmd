@@ -1,18 +1,23 @@
 ---
 title: "Imágenes con stabilityAI"
 subtitle: | 
-   Aprendiendo cómo generar imágenes con R y stabilityAI
+   Aprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes.
 date: 2024-03-01
 #draft: true
-categories: [IA, stabilityAI]
-image: "imagenes/my-last-blogs_2.png"
+categories: [IA, stabilityAI, imágenes]
+image: "imagenes/thumbnail_mulo.png"
+code-line-numbers: false
 ---
 
 Vamos a usar el paquete [stabilityAI](https://github.com/schochastics/stabilityAI) de David Schoch para conectarnos a la API de [stability.ai](https://stability.ai/) para generar imágenes partiendo de prompts textuales.
 
+Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes.
+
+<br>
+
 ## Conectando R con la API de stability.ai
 
-Para conectarnos a la API de stability.ai hemos de seguir los siguientes pasos:
+Para conectarnos a la API de `stability.ai` hemos de seguir los siguientes pasos:
 
 1) Instalar el paquete
 
@@ -53,10 +58,11 @@ aa <- stabilityAI::get_engines_list() |> dplyr::select(1)
 aa
 ```
 
+<br>
 
 ## Generando imágenes
 
-Vamos a generar alguna imagen. Por ejemplo con pequeñas varientes de este promtp: 
+Vamos a generar alguna imagen. Para ello usé pequeñas variantes de este promtp: 
 
 > El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público"
 
@@ -118,4 +124,11 @@ my_IA_img <- stabilityAI::generate_txt2img(
 
 ![(A)](./imagenes/my_IA_img_06.png)
 
+
+
+## Más cosas
+
+Evidentemente se puede acceder a los modelos  de [stability.ai](https://stability.ai/) sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde [Dream Studio](https://beta.dreamstudio.ai/generate)^[Este link supongo que se quedará obsoleto en nada]. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.
+
+Sí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo [The Public Domain Review](https://publicdomainreview.org/). Otras como [Unsplash](https://unsplash.com/) o [Pexels](https://www.pexels.com/) permiten descargar imágenes de forma gratuita y legal.
 

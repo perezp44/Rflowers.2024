@@ -1,5 +1,5 @@
 ---
-title: "TBits //aún en beta//"
+title: "TBits"
 subtitle: "Pequeños bits para clase"
 page-layout: full
 title-block-banner: true
@@ -18,4 +18,4 @@ listing:
 #image: "imagenes/my-last-blogs_2.png"
 ---
 
-Sí, la idea de `TBits` me sigue pareciendo buena, pero aún no he creado ningún "Tbit".
+La idea es ir colgando aquí pequeños ejercicios/ejemplos etc... que hago en clase, o cosillas que leo y medio aprendo. Si no las apuntas se olvidan más rápido.
