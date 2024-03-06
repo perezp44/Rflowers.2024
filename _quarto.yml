@@ -101,12 +101,17 @@ format:
     code-overflow: wrap    #- {wrap, scroll}
     code-fold: true
     code-tools: false
+    #anchor-sections: true
+    #fig-cap-location: margin
+    #reference-location: margin
+    footnotes-hover: true
     #code-summary: "Show the code"
     code-link: true
     link-external-newwindow: true
+    highlight-style: monokai
+
     
 lang: es   #- {es, en}
-
 
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
@@ -117,11 +122,12 @@ execute:
   warning: false
   eval: true
   cache: true
+  code-overflow: scroll  #- {wrap, scroll}
   
 #editor: visual
 
 #embed-resources: true
 
-highlight-style: monochrome
+#highlight-style: monochrome
 
 #title-block-banner: true  #- {true, false, "#FFDDFF",  "image.jpg"}

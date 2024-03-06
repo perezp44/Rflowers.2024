@@ -1,5 +1,5 @@
 ---
-title: "Bitacora (cursos SFPIE 2024)"
+title: "Bitacora (my last blog's)"
 author: "Pedro J. Pérez"
 date: "2024-02-06"
 output:
@@ -26,10 +26,24 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
-Documentando y diseñando los cursos SFPIE para 2024
+Espero que sean mis blog re-definitivos
+
+------------------------------------------------------------------------
+
+<br>
+
+## TODO
+
+- El coloreado de los chunks es muy simple. Mejóralo. Por ejemplo el de Ilya Kashnitsky
+
+- Además las lineas largad de los chunks se cortan. Mejorarlo
 
 
-## Curso intro a R
+
+## TBits
+
+- Conjuntos de datos. Mete a Civio: <https://datos.civio.es/>
+
 
 
 
