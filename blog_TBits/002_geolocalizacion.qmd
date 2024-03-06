@@ -1,0 +1,249 @@
+---
+title: "Geolocalización con R"
+subtitle: | 
+   Aprendiendo cómo geolocalizar con R. Suele ser otro de los ejercicios que hago en clase
+date: 2024-03-05
+#draft: true
+categories: [GIS, geolocalizacion, mapas]
+#image: "imagenes/thumbnail_mulo.png"
+#code-line-numbers: false
+---
+
+
+
+## Intro: ¿Geo qué?
+
+Según la Wikipedia, la [geolocalización](https://es.wikipedia.org/wiki/Geolocalizaci%C3%B3n) es el proceso de determinar la ubicación o la posición geográfica de un objeto en la superficie terrestre. Es decir:
+
+> La geocodificación consite en, partiendo de una dirección o del nombre de un lugar, obtener sus coordenadas. 
+
+Por su parte, la [geocodificación inversa](https://es.wikipedia.org/wiki/Geocodificaci%C3%B3n_inversa) realiza la tarea opuesta: partiendo de unas coordenadas, obtener una dirección dirección física o un topónimo. Este proceso permite la identificación de direcciones postales, lugares o subdivisiones territoriales tales como parajes, barrios, códigos postales, municipios, provincias o país a partir de un par de coordenadas .
+
+En nuestro caso, la geolocalización consistirá en obtener la latitud y longitud de una dirección postal. Por supuesto lo haremos con R. Es un ejercicio que suelo hacer en clase: antes de que se inicien las clases, pido a los matriculados  que contesten a un cuestionario. Allí les pido, entre otras cuestiones, que me indiquen su lugar de nacimiento: país y municipio. Obviamente usamos estos datos en clase para geolocalizar el lugar de nacimiento de los estudiantes.
+
+
+## Ejemplo 
+
+Vamos a usar [estos datos](https://docs.google.com/spreadsheets/d/1731na00Pck0mE0zx3k217wf6FntW2APTDXw2nliylB0/edit#gid=1571489266) de ejemplo. Como ves es un archivo Ggoogle Sheets. Los datos ya están casi arreglados del todo. Los arreglé así:
+
+
+
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(googlesheets4)  
+
+#- obtener el sheet (hay que autorizar)
+lista_sheets <- googlesheets4::gs4_find()  
+id_sheet <- lista_sheets %>% filter(name == "Programación y manejo de datos (2019-2020) (respuestas)") %>% pull(id)
+my_sheet <- googlesheets4::read_sheet(id_sheet)   
+
+#- arreglando (un poco) los datos
+df <- my_sheet %>% 
+  janitor::clean_names(df) %>% 
+  dplyr::select(1, 2, pregunta_9, pregunta_10) 
+  
+names(df) <- c("year", "nombre", "lugar_nac", "cancion")
+
+df <- df %>% mutate(year = stringr::str_extract(year, "^[0-9]{4}"))
+df <- df %>% tidyr::separate(lugar_nac, into = c("pais", "municipio"), sep = " - ") 
+df <- df %>% tidyr::separate(cancion, into = c("grupo", "cancion", "ruta"), sep = " - ") 
+df <- df %>% mutate(across(grupo:ruta, ~ str_remove(.x, "(<|< )")))
+df <- df %>% mutate(across(grupo:ruta, ~ str_remove(.x, "(>| >)" )))
+df <- df %>% mutate(across(pais:ruta, ~ str_squish(.x)))
+
+#- guardando en Google Drive
+my_ss <- googlesheets4::gs4_create(name = "matriculados_BigData_blog", sheets = "respuestas")
+write_sheet(df, ss = my_ss, sheet = "respuestas")
+```
+
+Los datos arreglados, como hemos visto antes, los guardé en un Google Sheet. Para leerlos en R, usamos el paquete `gsheet`. Además, vamos a quitar los NA's con `tidyr::drop_na()`.
+
+
+```{r}
+library(tidyverse)
+library(sf)
+
+df <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1731na00Pck0mE0zx3k217wf6FntW2APTDXw2nliylB0/edit?usp=sharing")  %>% 
+  tidyr::drop_na()
+```
+
+
+
+Fíjate que en `df` hay dos columnas con información sobre el lugar de nacimiento: `pais` y `municipio`. Con está información podemos geolocalizar el lugar de nacimiento de los matriculados. Para ello, vamos a usar el paquete `tidygeocoder` que internamente hace uso de [Nominatim](https://nominatim.org/), un servicio de geolocalización de código abierto asociado a [OpenStreetMap](https://www.openstreetmap.org/). Concretamente, para geolocalizar, usaremos la función `tidygeocoder::geocode()`. 
+
+
+
+```{r}
+#| eval: false
+df_geocoded <- df %>% 
+  tidygeocoder::geocode(city = municipio, country = pais, method = "osm")
+```
+
+Otra forma de hacerlo, quizás la más común, es poner toda la información sobre, en este caso, el lugar de nacimiento, en una sola columna, que llamaremos  `text_to_geocode`, que será la que usaremos para geolocalizar. Veámoslo
+
+
+
+```{r}
+#| eval: false
+df_geocoded <- df %>% 
+    dplyr::mutate(text_to_geocode = paste(municipio, pais, sep = ", "), .after = municipio) %>%
+    tidygeocoder::geocode(address = text_to_geocode, method = "osm")
+```
+
+De cualquiera de las  2 maneras tendríamos en `df_geocoded` dos nuevas columnas llamadas `long` y `lat` que contienen la longitud y la latitud, del lugar de nacimiento de los matriculados. Ya tenemos la información geolocalizada!!!
+
+
+```{r}
+#| eval: false
+#| echo: false
+#- guardo los datos ya geolocalizados
+my_carpeta <- pjpv.pkg.ff.2024::pjp_ruta_a_carpeta()
+rio::export(df_geocoded, paste0(my_carpeta, "/datos/df_geocoded.rds"))
+```
+
+
+
+```{r}
+#| echo: false
+#- importo los datos ya geolocalizados
+df_geocoded <- rio::import(paste0("./datos/df_geocoded.rds"))
+```
+
+
+Bueno , pues ya estaría  😊 ... pero, ya que estamos, vamos a hacer un mapa para visualizar donde nacieron los matriculados a mi curso de R.
+
+## Visualización
+
+Antes de hacer el mapa, hay que convertir la longitud y latitud en un objeto `sf`. Para ello:
+
+```{r}
+df_plot <- df_geocoded %>% 
+  sf::st_as_sf(coords = c("long", "lat"), crs = 4326)
+```
+
+
+Una vez hecho esto podemos usar distintas estrategias/paquetes para hacer el mapa:
+
+<br>
+
+
+### Con `mapview`
+
+```{r}
+mapview::mapview(df_plot)
+```
+
+Por supuesto el plot se puede mejorar (y mucho), pero para eso tendrás que ir a la documentación de [mapview](https://r-spatial.github.io/mapview/index.html).   
+
+```{r}
+mapview::mapview(df_plot, zcol = c("municipio"))
+```
+
+<br>
+
+
+
+### Con `leaflet`
+
+La documentación de `leaflet` está [aquí](https://rstudio.github.io/leaflet/). 
+
+```{r}
+leaflet::leaflet(data = df_plot) %>% 
+  leaflet::addTiles() %>%
+  leaflet::addMarkers(popup = ~ as.character(municipio), label = ~ as.character(municipio))
+```
+
+<br>
+
+### Con `ggplot2` y `sf`
+
+Este enfoque lo trabajamos bastante en clase. ya lo veremos, pero aquí voy a usar el código de [este post](https://ikashnitsky.phd/2023/geocoding/). Hace un gráfico muy-muy chulo. Tal como:
+
+
+```{r}
+# get world map outline (geometrías de los países)
+world_outline <- spData::world |> sf::st_as_sf()
+
+# let's use a fancy projection
+world_outline_robinson <- world_outline |> 
+    sf::st_transform(crs = "ESRI:54030")
+
+country_borders <- world_outline_robinson |> 
+    rmapshaper::ms_innerlines()
+```
+
+Ahora ya podemos hacer el mapa.
+
+
+```{r}
+#| out.width: "100%"
+world_outline_robinson |> 
+    filter(!iso_a2 == "AQ") |> # get rid of Antarctica
+    ggplot()+
+    geom_sf(fill = "#269999", color = NA)+
+    geom_sf(data = country_borders, size = .25, color = "#269999" |> prismatic::clr_lighten())+
+    geom_sf(
+        data = df_plot, fill = "#dafa26", 
+        color = "#dafa26" |> prismatic::clr_darken(),
+        size = 1.5, shape = 21
+    )+
+    coord_sf(datum = NA)+
+    theme_minimal(base_family = "Atkinson Hyperlegible")+
+    labs(
+        title = "Lugar de nacimiento de los matriculados en curso Big Data",
+        subtitle = "Universitat de València. GECO, 2020-23",
+        caption = "Pedo J. Pérez con super-ayuda de @ikashnitsky.phd"
+    )+
+    theme(
+        text = element_text(color = "#ccffff"),
+        plot.background = element_rect(fill = "#042222", color = NA),
+        axis.text = element_blank(),
+        plot.title = element_text(face = 2, size = 13, color = "#ccffff")
+    )
+```
+
+<br>
+
+### Con `tmap`
+
+Por último, vamos a hacer el mapa con `tmap`. La documentación está [aquí](https://mtennekes.github.io/tmap/).
+
+```{r}
+library(tmap)
+tm_shape(world_outline_robinson) +
+  tm_polygons('#f0f0f0f0', border.alpha = 0.2) +
+tm_shape(df_plot) +
+  tm_bubbles(size = 0.05)
+```
+
+
+Recordar que los mapas se pueden mejorar mucho. Lo veremos, al menos un poco, en clase
+
+<br>
+
+## Algunos detalles
+
+Para geolocalizar he usado 2 paquetes: primero usé [ggmap](https://github.com/dkahle/ggmap), pero se volvió un servicio de pago, así que cambié a [tidygeocoder](https://jessecambon.github.io/tidygeocoder/index.html). 
+
+
+`tidygeocoder` es un paquete que permite hacer geolocalización y geolocalización inversa. Internamente, `tidygeocoder` hace uso de distintos servicios de geolocalización, como Nominatim, Google Maps, Bing Maps, OpenCage, etc. Puede ver detalles [aquí](https://jessecambon.github.io/tidygeocoder/articles/geocoder_services.html).
+
+
+Por supuesto, hay más paquetes, como por ejemplo [rgeocodio](https://github.com/hrbrmstr/rgeocodio), pero no los he usado.
+
+Recientemente ha salido un nuevo paquete para geolocalizar: [arcgeocoder](https://dieghernan.github.io/arcgeocoder/), pero tampoco lo he usado.
+
+
+<br>
+
+## Biblio
+
+- [Geocode address text strings using tidygeocoder](https://ikashnitsky.phd/2023/geocoding/) de Ilya Kashnitsky
+
+- [Geocoding in R](https://www.sesync.org/resources/geocoding-r) de Andrés García y SESYNC
+
+- [R: Mapping and Geospatial](https://guides.library.duke.edu/r-geospatial/geocode>). Duke University Libraries
+
+
