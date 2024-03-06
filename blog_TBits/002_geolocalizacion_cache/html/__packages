@@ -9,5 +9,6 @@ stringr
 forcats
 lubridate
 sf
-gsheet
+leaflet
 tmap
+leafpop

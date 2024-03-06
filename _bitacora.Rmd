@@ -34,15 +34,23 @@ Espero que sean mis blog re-definitivos
 
 ## TODO
 
-- El coloreado de los chunks es muy simple. Mejóralo. Por ejemplo el de Ilya Kashnitsky
+- En los chunks, las lineas largas se cortan con los nº de linea. No he podido arreglarlo con lo de ` code-overflow: scroll  #- {wrap, scroll}`
 
-- Además las lineas largad de los chunks se cortan. Mejorarlo
+- Decidir cómo dejar el footer: no m acaba de gustar
 
 
+
+--------------------------
+
+<br>
 
 ## TBits
 
+Tiene q hacer estos `Tbits`:
+
 - Conjuntos de datos. Mete a Civio: <https://datos.civio.es/>
+
+- Puede hacer uno con los vídeos de Youtube que pusieron y poner quien es más popular. En [este post](https://compassionate-benz-9a12b2.netlify.app/blog/automated-youtube-dashboard/) , Isabella hace un fledashboard- El flex final está [aquí](https://ivelasq.github.io/rladies-video-feed/)
 
 
 

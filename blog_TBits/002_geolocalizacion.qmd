@@ -150,6 +150,7 @@ mapview::mapview(df_plot, zcol = c("municipio"))
 La documentación de `leaflet` está [aquí](https://rstudio.github.io/leaflet/). 
 
 ```{r}
+library(leaflet)
 leaflet::leaflet(data = df_plot) %>% 
   leaflet::addTiles() %>%
   leaflet::addMarkers(popup = ~ as.character(municipio), label = ~ as.character(municipio))
@@ -223,6 +224,91 @@ Recordar que los mapas se pueden mejorar mucho. Lo veremos, al menos un poco, en
 
 <br>
 
+## Otro ejemplo
+
+En el curso de R para profes solía hacer este otro ejemplo: gelocalizar el centro que ofrece el curso, el SFPIE. Era algo como:
+
+
+```{r}
+#- creo un df con la información postal del SFPIE
+df <- data.frame(adress = "Facultad de Economía", 
+                 street = "Avinguda dels tarongers", 
+                 city = "Valencia", 
+                 postalcode = "46022",
+                 country = "Spain")
+
+df <- df %>% mutate(text_to_geocode = paste( street, city, country, sep = ", "))
+
+#- geolocalizamos con el pkg tidygeocoder 
+df <- df %>% tidygeocoder::geocode(text_to_geocode, method = "osm")
+# df <- df %>% tidygeocoder::geocode(street = street, city = city, postalcode = postalcode, country = country, method = "osm")
+```
+
+<br>
+
+Una vez hecha la geolocalización vamos a visualizar el lugar en un mapa. Para ello, vamos a usar `leaflet`.
+
+
+```{r}
+#| code-fold: false
+map <- leaflet::leaflet() %>%
+       leaflet::addTiles() %>% 
+       leaflet::setView(lng = df$long, lat = df$lat, zoom = 16) 
+map
+```
+
+<br>
+
+Vamos a poner un marcador en el mapa para que se vea mejor el lugar exacto donde está el SFPIE.
+
+
+```{r}
+#| code-fold: false
+map <- map %>% 
+       addMarkers(lng = df$long, lat = df$lat, popup = "Facultat") %>% 
+       addPopups(lng = df$long, lat = df$lat, popup = "Facultat") 
+map
+```
+
+<br>
+
+Con `leaflet` se pueden hacer muchas mas cosas; ejemplos [aquí](https://rstudio.github.io/leaflet/basemaps.html). Por ejmeplo, vamos a hacer que si pinchas en el marker, se vea una imagen
+
+
+```{r}
+#| code-fold: false
+library(leafpop)
+img <-  "https://www.uv.es/recursos/fatwirepub/ccurl/12/318/P01.jpg"
+
+map2 <- leaflet::leaflet() %>%
+       leaflet::addTiles() %>% 
+       leaflet::setView(lng = df$long, lat = df$lat, zoom = 16) %>% 
+  addCircleMarkers(lng = df$long, lat = df$lat, group = "pnt") %>%
+  addPopupImages(img, group = "pnt")
+
+map2
+```
+
+
+<br>
+
+Otro posibilidad es usar diferentes "providers". Infoprmación [aquí](http://leaflet-extras.github.io/leaflet-providers/preview/)
+
+
+```{r}
+#| code-fold: false
+#- hay muchos "providers": http://leaflet-extras.github.io/leaflet-providers/preview/
+#- por ejemplo:
+# map2 %>% addProviderTiles(providers$Stamen.Toner)
+# map2 %>% addProviderTiles(providers$Stamen.Terrain)
+# map2 %>% addProviderTiles(providers$Esri.NatGeoWorldMap)
+
+map2 %>% addProviderTiles(providers$MtbMap) #- con carril bici
+```
+
+
+<br>
+
 ## Algunos detalles
 
 Para geolocalizar he usado 2 paquetes: primero usé [ggmap](https://github.com/dkahle/ggmap), pero se volvió un servicio de pago, así que cambié a [tidygeocoder](https://jessecambon.github.io/tidygeocoder/index.html). 
@@ -234,6 +320,10 @@ Para geolocalizar he usado 2 paquetes: primero usé [ggmap](https://github.com/d
 Por supuesto, hay más paquetes, como por ejemplo [rgeocodio](https://github.com/hrbrmstr/rgeocodio), pero no los he usado.
 
 Recientemente ha salido un nuevo paquete para geolocalizar: [arcgeocoder](https://dieghernan.github.io/arcgeocoder/), pero tampoco lo he usado.
+
+
+
+
 
 
 <br>

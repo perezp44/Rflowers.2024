@@ -1,0 +1,22 @@
+---
+title: "Datos para los trabajos"
+subtitle: | 
+   Un listado donde encontrar datos para los trabajos de clase.
+date: 2024-03-06
+draft: true
+categories: [datos]
+#image: "imagenes/thumbnail_mulo.png"
+#code-line-numbers: false
+---
+
+
+En mis cursos sobre R **solemos hacer trabajos** en grupo e individuales. Para **facilitar la búsqueda de datos** a los estudiantes he confeccionado este listado
+
+
+## Datos para estudiantes
+
+
+
+- Papers con datos: [Harvard Dataverse](https://dataverse.harvard.edu/)
+
+- <- encontar papers de economia con datos: http://skranz.github.io//r/2023/03/08/FindingEconomicArticles6.html
