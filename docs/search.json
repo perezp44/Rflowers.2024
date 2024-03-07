@@ -207,7 +207,7 @@
     "href": "blog_TBits/001_imagenes_stabilityAI.html#más-cosas",
     "title": "Imágenes con stabilityAI",
     "section": "\n4 Más cosas",
-    "text": "4 Más cosas\nEvidentemente se puede acceder a los modelos de stability.ai sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde Dream Studio1. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.\nSí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo The Public Domain Review. Otras como Unsplash o Pexels permiten descargar imágenes de forma gratuita y legal."
+    "text": "4 Más cosas\nEvidentemente se puede acceder a los modelos de stability.ai sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde Dream Studio1. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.\nSí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo The Public Domain Review o Open Culture. Otras como Unsplash o Pexels permiten descargar imágenes de forma gratuita y legal."
   },
   {
     "objectID": "blog_TBits/001_imagenes_stabilityAI.html#footnotes",
@@ -215,6 +215,62 @@
     "title": "Imágenes con stabilityAI",
     "section": "Notas",
     "text": "Notas\n\nEste link supongo que se quedará obsoleto en nada↩︎"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html",
+    "href": "blog_TBits/003_datos_para_estudiantes.html",
+    "title": "Datos para los trabajos",
+    "section": "",
+    "text": "En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para facilitar la búsqueda de datos a los estudiantes he confeccionado este listado con fuentes de datos.\nAlgunos de los trabajos ya hechos por los estudiantes puedes verlos aquí. La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc…, etc…, pero los deportes y la música nunca faltan."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n1 Diversas fuentes de datos",
+    "text": "1 Diversas fuentes de datos\n\nGoogle Dataset Search: esta herramienta puede ser útil para encontrar datos. Aquí tienes un post, aquí el articulo de lanzamiento del producto en 2018 y aquí las FAQ’s. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!\nKaggle. Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos aquí.\nData is plural. Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está aquí y aquí con más información.\nHugging Face. Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.\nCivio. Es una ONG que trabaja con datos para intentar aumentar la transparencia y controlar a los poderes públicos. Evidentemente, tienen una sección de datos abiertos.\nTidy Tuesday. Es un proyecto semanal de datos organizado por la comunidad de R. Cada semana se hacen visualizaciones sobre un nuevo conjunto de datos\nFiveThirtyEight. FiveThirtyEight, a veces llamado 538, es un blog estadounidense que se centra en el análisis político y encuestas, aunque también hace análisis de datos sobre otras temáticas. En este repo se encuentran los datos utilizados en los artículos.Aquí tiene un indice de los datos. Hay un paquete de R, también llamado fivethirtyeight que igual puede ayudar a cargar los datos.\nOur World in data. Es una publicación que hace análisis empíricos sobre las condiciones de vida. Trata temas como la pobreza, educación, salud … Hay un paquete de R, owidR que facilita el uso de esos datos.\nGapminder es una fundación sueca sin ánimo que utiliza datos para cambiar ciertas concepciones erróneas sobre problemas globales. Los datos los tiene aquí\nBuzzFeedNews es un periódico que ofrece artículos/historias basadas en datos. Aquí tienes un listado de artículos y datos, y [aquí]((https://github.com/BuzzFeedNews) el repo de Github con el código de los artículos. En clase solemos replicar este gráfico chulo. El artículo donde aparece el gráfico está está aquí,y el código está aquí.\nEuropean Data Journalism Network (EDJNet) is a network of media organisations from all across Europe, producing and promoting data-driven coverage of European issues. Los datos aquí.\nReal World Data Science, un proyecto de la Royal Statistical Society que presenta real-world applications of data science. Aquí están los casos de estudio.\nInformation is Beautiful provee de más de 300 datasets: aquí y aquí\nLIS, The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, lissyrtools.\nThe Global economy recopila datos económicos de 200 países. Para descargar los datos, aquí"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
+    "title": "Datos para los trabajos",
+    "section": "\n2 Estadísticas oficiales",
+    "text": "2 Estadísticas oficiales\nEn Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc… etc… son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.\n\n\nEurostat: eurostat. Es fantástico. Haremos varios ejemplos en clase. Aquí el portal de datos de Eurostat.\nBanco de España: tidyBdE. No lo he usado. Aquí el portal de datos del Banco de España.\n\n\nCódigodf &lt;- tidyBdE::bde_catalog_load(\n  catalog = c(\"ALL\"),\n  parse_dates = TRUE,\n  cache_dir = NULL,\n  update_cache = FALSE,\n  verbose = FALSE\n)\n\n\n\nBanco Central Europeo: ecb. No lo he usado. Aquí el portal de datos del BCE y aquí los datasets.\nThe World Bank. Los indicadores aquí. hay varios paquetes: WDI, wbstats. Aquí un bookdown sobre la API del Worls Bank.\nOCDE. Los datos aquí. Hay un paquete de R, oecd que facilita el acceso a esos datos. Aquí un post.\nUN population Dividion: population estimates from 1950 to the present for 237 countries or áreas. Aquí un paquete de R.\nUN comtrade database: datos detallados de comercio global. Aquí un post sobre cómo usar su API con R."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n3 Más datos",
+    "text": "3 Más datos\nAlgunos conjuntos de datos que en su día me llamaron la atención, seguramente pensé que podrían usarse para los trabajos.\n\nDatos de olimpiadas (medallas, altura y peso) aquí\nDatos de refugiados de la UNHCR, la agencia de refugiados de la ONU, aquí. Hay un paquete de R, refugees, que facilita el acceso a esos datos. Aquí un gráfico de Nicola Rennie con estos datos.\nScrappeando datos del TOUR de Francia\nAtlas of the Offshore World es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n4 Papers con datos",
+    "text": "4 Papers con datos\n\nHarvard Dataverse: u servicio de Harvad con artículos científicos que hacen públicos sus datos.\nFinding Economic Articles with Data:: un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
+    "title": "Datos para los trabajos",
+    "section": "\n5 Otros listados",
+    "text": "5 Otros listados\n\nRebecca Carter\nInterview Query\n30+ Free Datasets for Your Data Science Projects in 2024"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
+    "title": "Datos para los trabajos",
+    "section": "\n6 Para docencia",
+    "text": "6 Para docencia\n\nEl paqueteRdatasets agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está aquí\nEl paquete HistData contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#apis",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#apis",
+    "title": "Datos para los trabajos",
+    "section": "\n7 API’s",
+    "text": "7 API’s\n\n\nPublic APIs es a collective list of free APIs for use in software and web development. No vamos a ver cómo acceder a API’s, pero no está mal tenerlas en este listado."
   },
   {
     "objectID": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html",
@@ -319,7 +375,7 @@
     "href": "blog_TBits.html",
     "title": "TBits",
     "section": "",
-    "text": "La idea es ir colgando aquí pequeños ejercicios/ejemplos etc… que hago en clase, o cosillas que leo y medio aprendo. Si no las apuntas se olvidan más rápido.\n\n\n\n\n\n\n   \n     \n     \n       Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Autor/a\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nImágenes con stabilityAI\n\n\nAprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes. \n\n\n\nIA\n\n\nstabilityAI\n\n\nimágenes\n\n\n\n\n\n\n\n\n\n1 mar 2024\n\n\nPedro J. Pérez\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nGeolocalización con R\n\n\nAprendiendo cómo geolocalizar con R. Suele ser otro de los ejercicios que hago en clase \n\n\n\nGIS\n\n\ngeolocalizacion\n\n\nmapas\n\n\n\n\n\n\n\n\n\n5 mar 2024\n\n\nPedro J. Pérez\n\n\n8 minutos\n\n\n\n\n\n\nNo hay resultados"
+    "text": "La idea es ir colgando aquí pequeños ejercicios/ejemplos etc… que hago en clase, o cosillas que leo y medio aprendo. Si no las apuntas se olvidan más rápido.\n\n\n\n\n\n\n   \n     \n     \n       Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Autor/a\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nImágenes con stabilityAI\n\n\nAprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes. \n\n\n\nIA\n\n\nstabilityAI\n\n\nimágenes\n\n\n\n\n\n\n\n\n\n1 mar 2024\n\n\nPedro J. Pérez\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nGeolocalización con R\n\n\nAprendiendo cómo geolocalizar con R. Suele ser otro de los ejercicios que hago en clase \n\n\n\nGIS\n\n\ngeolocalizacion\n\n\nmapas\n\n\n\n\n\n\n\n\n\n5 mar 2024\n\n\nPedro J. Pérez\n\n\n8 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nDatos para los trabajos\n\n\nUn listado donde encontrar datos para los trabajos de clase. \n\n\n\ndatos\n\n\n\n\n\n\n\n\n\n6 mar 2024\n\n\nPedro J. Pérez\n\n\n6 minutos\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "license.html",

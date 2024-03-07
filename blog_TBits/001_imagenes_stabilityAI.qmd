@@ -130,5 +130,5 @@ my_IA_img <- stabilityAI::generate_txt2img(
 
 Evidentemente se puede acceder a los modelos  de [stability.ai](https://stability.ai/) sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde [Dream Studio](https://beta.dreamstudio.ai/generate)^[Este link supongo que se quedará obsoleto en nada]. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.
 
-Sí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo [The Public Domain Review](https://publicdomainreview.org/). Otras como [Unsplash](https://unsplash.com/) o [Pexels](https://www.pexels.com/) permiten descargar imágenes de forma gratuita y legal.
+Sí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo [The Public Domain Review](https://publicdomainreview.org/) o [Open Culture](https://www.openculture.com/). Otras como [Unsplash](https://unsplash.com/) o [Pexels](https://www.pexels.com/) permiten descargar imágenes de forma gratuita y legal.
 

@@ -3,20 +3,144 @@ title: "Datos para los trabajos"
 subtitle: | 
    Un listado donde encontrar datos para los trabajos de clase.
 date: 2024-03-06
-draft: true
+#draft: true
 categories: [datos]
-#image: "imagenes/thumbnail_mulo.png"
+image: "imagenes/img_datos_03.png"
 #code-line-numbers: false
 ---
 
 
-En mis cursos sobre R **solemos hacer trabajos** en grupo e individuales. Para **facilitar la búsqueda de datos** a los estudiantes he confeccionado este listado
+En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para **facilitar la búsqueda de datos** a los estudiantes he confeccionado este listado con fuentes de datos.
+
+Algunos de los trabajos ya hechos por los estudiantes puedes verlos [aquí](https://perezp44.github.io/intro-ds-23-24-web/05-trabajos-estudiantes.html). La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc..., etc..., pero los deportes y la música nunca faltan.
 
 
-## Datos para estudiantes
+
+## Diversas fuentes de datos
+
+
+- [Google Dataset Search](https://datasetsearch.research.google.com/): esta herramienta puede ser útil para encontrar datos.  [Aquí](https://datos.gob.es/es/noticia/google-lanza-un-nuevo-buscador-de-datos-abiertos) tienes un post, [aquí](https://blog.research.google/2018/09/building-google-dataset-search-and.html) el articulo de lanzamiento del producto en 2018 y [aquí](https://support.google.com/webmasters/community?hl=en&gpf=#!topic/webmasters/nPq4BW6iPIA&visit_id=638453437540843694-2557286311&rd=1) las FAQ's. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!
+
+- [Kaggle](https://www.kaggle.com/). Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos [aquí](https://www.kaggle.com/datasets).
+
+- [Data is plural](https://www.data-is-plural.com/). Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está [aquí](https://www.data-is-plural.com/archive/) y [aquí](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0) con más información.
+
+- [Hugging Face](https://huggingface.co/datasets). Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.
+
+- [Civio](https://datos.civio.es/). Es una ONG que trabaja con datos para intentar aumentar la transparencia y controlar a los poderes públicos. Evidentemente, tienen una sección de datos abiertos.
+
+
+- [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday). Es un  proyecto semanal de datos organizado por la comunidad de R. Cada semana se hacen visualizaciones sobre un nuevo conjunto de datos
+
+- [FiveThirtyEight](https://fivethirtyeight.com/). FiveThirtyEight, a veces llamado 538, es un blog estadounidense que se centra en el análisis político y encuestas, aunque también hace análisis de datos sobre otras temáticas. En [este repo](https://github.com/fivethirtyeight/data) se encuentran los datos utilizados en los artículos.[Aquí](https://github.com/fivethirtyeight/data/blob/master/index.csv) tiene un indice de los datos. Hay un paquete de R, también llamado [fivethirtyeight](https://github.com/rudeboybert/fivethirtyeight) que igual puede ayudar a cargar los datos.
+
+- [Our World in data](https://ourworldindata.org/). Es una publicación que hace análisis empíricos sobre las condiciones de vida. Trata temas como la pobreza, educación, salud ... Hay un paquete de R,  [owidR](https://github.com/piersyork/owidR) que  facilita el uso de esos datos.
+  
+- [Gapminder](https://www.gapminder.org/) es una fundación sueca sin ánimo que utiliza datos para cambiar ciertas concepciones erróneas sobre problemas globales. Los datos los tiene [aquí](https://www.gapminder.org/data/)
+
+-   [BuzzFeedNews](https://www.buzzfeednews.com/) es un periódico que ofrece artículos/historias basadas en datos. [Aquí](https://github.com/BuzzFeedNews/everything) tienes un listado de artículos y datos, y [aquí]((https://github.com/BuzzFeedNews) el repo de Github con el código de los artículos. En clase solemos replicar este [gráfico chulo](https://twitter.com/paldhous/status/1190022664808783872/photo/1). El artículo donde aparece el gráfico está  está [aquí](https://www.buzzfeednews.com/article/lamvo/social-sentinel-school-officials-shootings-flag-social-media),y el código está [aquí](https://buzzfeednews.github.io/2019-10-social-sentinel/).
+
+- [European Data Journalism Network (EDJNet)](https://www.europeandatajournalism.eu/) is a network of media organisations from all across Europe, producing and promoting data-driven coverage of European issues. Los datos [aquí](https://www.europeandatajournalism.eu/use/).
+
+
+- [Real World Data Science](https://realworlddatascience.net/), un proyecto de la Royal Statistical Society que presenta real-world applications of data science. [Aquí](https://realworlddatascience.net/case-studies/) están los casos de estudio.
+
+
+- [Information is Beautiful](https://informationisbeautiful.net/) provee de más de 300 datasets: [aquí](https://informationisbeautiful.net/data/) y [aquí](https://informationisbeautiful.net/beautifulnews/data/)
+
+
+- [LIS](https://www.lisdatacenter.org/), The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, [lissyrtools](https://github.com/LIS-Cross-National-Data-Center/lissyrtools).
+
+- [The Global economy](https://www.theglobaleconomy.com/) recopila datos económicos de 200 países. Para descargar los datos, [aquí](https://www.theglobaleconomy.com/download-data.php)
+
+
+## Estadísticas oficiales
+
+En Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc... etc... son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.
+
+<br>
+
+- **Eurostat**: [eurostat](https://ropengov.github.io/eurostat/). Es fantástico. Haremos varios ejemplos en clase. [Aquí](https://ec.europa.eu/eurostat/data/database) el portal de datos de Eurostat.
+
+- **Banco de España**: [tidyBdE](https://ropenspain.github.io/tidyBdE/). No lo he usado. [Aquí](https://www.bde.es/webbe/en/estadisticas/recursos/descargas-completas.html) el portal de datos del Banco de España.
+
+
+```{r}
+#| eval: false
+df <- tidyBdE::bde_catalog_load(
+  catalog = c("ALL"),
+  parse_dates = TRUE,
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+)
+```
+
+- **Banco Central Europeo**:  [ecb](https://cran.r-project.org/web/packages/ecb/index.html). No lo he usado.   [Aquí](https://data.ecb.europa.eu/) el portal de datos del BCE y [aquí](https://data.ecb.europa.eu/data/datasets) los datasets.
+
+
+- [The World Bank](https://data.worldbank.org/). Los indicadores [aquí](https://data.worldbank.org/indicator). hay varios paquetes: [WDI](https://github.com/vincentarelbundock/WDI), [wbstats](https://github.com/gshs-ornl/wbstats). [Aquí](https://econandrew.github.io/wdi-api-R-gettingstarted/index.html) un bookdown sobre la API del Worls Bank.
+
+
+- [OCDE](https://www.oecd.org/). Los datos [aquí](https://data.oecd.org/). Hay un paquete de R, [oecd](https://github.com/expersso/OECD) que facilita el acceso a esos datos. [Aquí](https://rforpoliticalscience.com/2023/05/08/how-to-download-oecd-datasets-in-r/) un post.
+
+- [UN population Dividion](https://population.un.org/wpp/): population estimates from 1950 to the present for 237 countries or áreas. [Aquí](https://github.com/PPgp/wpp2022) un paquete de R. 
+
+
+- [UN comtrade database](https://comtradeplus.un.org/): datos detallados de comercio global. [Aquí](https://comtrade.un.org/data/Doc/api/ex/r) un post sobre cómo usar su API con R.
+
+<br>
+
+## Más datos
+
+Algunos conjuntos de datos que en su día me llamaron la atención, seguramente pensé que podrían usarse para los trabajos.
+
+
+- Datos de **olimpiadas** (medallas, altura y peso) [aquí](https://cran.r-project.org/web/packages/OlympicRshiny/index.html)
+
+
+- Datos de **refugiados** de la UNHCR, la agencia de refugiados de la ONU, [aquí](https://www.unhcr.org/refugee-statistics/insights/explainers/refugees-r-package.html). Hay un paquete de R, [refugees](https://populationstatistics.github.io/refugees/), que facilita el acceso a esos datos. [Aquí](https://fosstodon.org/@nrennie/110932531214282637) un gráfico de Nicola Rennie con estos datos.
+
+
+- [Scrappeando datos del TOUR de Francia](https://www.datannery.com/posts/scraping-tour-de-france-data/)
+
+- [Atlas of the Offshore World](https://atlas-offshore.world/) es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal.
+
+
+<br>
+
+
+## Papers con datos
+
+- [Harvard Dataverse](https://dataverse.harvard.edu/): u servicio de Harvad con artículos científicos que hacen públicos sus datos. 
+
+- [Finding Economic Articles with Data:](http://skranz.github.io//r/2023/03/08/FindingEconomicArticles6.html): un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos.
+
+
+<br>
+
+## Otros listados
+
+- [Rebecca Carter](https://www.rebeccabarter.com/blog/2023-03-28-data_sources.html)
+
+- [Interview Query](https://www.interviewquery.com/p/free-datasets)
+
+- [30+ Free Datasets for Your Data Science Projects in 2024](https://www.knowledgehut.com/blog/data-science/data-science-datasets)
+
+
+<br>
+
+## Para docencia
+
+
+- El paquete[Rdatasets](https://vincentarelbundock.github.io/Rdatasets/) agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está [aquí](https://vincentarelbundock.github.io/Rdatasets/articles/data.html)
+
+- El paquete [HistData](https://github.com/friendly/HistData) contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization
 
 
 
-- Papers con datos: [Harvard Dataverse](https://dataverse.harvard.edu/)
+## API's
 
-- <- encontar papers de economia con datos: http://skranz.github.io//r/2023/03/08/FindingEconomicArticles6.html
+- [Public APIs](https://github.com/public-apis/public-apis) es a collective list of free APIs for use in software and web development. No vamos a ver cómo acceder a API's, pero no está mal tenerlas en este listado.
+
+

@@ -205,7 +205,6 @@ world_outline_robinson |>
     )
 ```
 
-<br>
 
 ### Con `tmap`
 
@@ -272,7 +271,7 @@ map
 
 <br>
 
-Con `leaflet` se pueden hacer muchas mas cosas; ejemplos [aquí](https://rstudio.github.io/leaflet/basemaps.html). Por ejmeplo, vamos a hacer que si pinchas en el marker, se vea una imagen
+Con `leaflet` se pueden hacer muchas mas cosas, ejemplos [aquí](https://rstudio.github.io/leaflet/basemaps.html). Por ejemplo, vamos a hacer que si pinchas en el marker, se vea una imagen. Para ello, vamos a usar el paquete `leafpop`.
 
 
 ```{r}

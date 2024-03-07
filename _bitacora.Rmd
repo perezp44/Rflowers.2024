@@ -38,6 +38,8 @@ Espero que sean mis blog re-definitivos
 
 - Decidir cómo dejar el footer: no m acaba de gustar
 
+- En este blog <https://fediscience.org/@jhelvy/112051784580731414> de helveston puede estar la solución al fondo del TOC y está muy chula
+
 
 
 --------------------------
@@ -48,9 +50,16 @@ Espero que sean mis blog re-definitivos
 
 Tiene q hacer estos `Tbits`:
 
-- Conjuntos de datos. Mete a Civio: <https://datos.civio.es/>
 
 - Puede hacer uno con los vídeos de Youtube que pusieron y poner quien es más popular. En [este post](https://compassionate-benz-9a12b2.netlify.app/blog/automated-youtube-dashboard/) , Isabella hace un fledashboard- El flex final está [aquí](https://ivelasq.github.io/rladies-video-feed/)
+
+- OKUpacion: <https://elpais.com/espana/elecciones-generales/2023-07-09/hechos-probados-esta-descontrolada-la-okupacion-ni-un-fenomeno-creciente-ni-en-aumento.html>   <https://elpais.com/espana/2023-02-27/la-okupacion-de-viviendas-se-frena-pese-a-los-discursos-alarmistas.html>
+
+- okupas no hay: @Hoyuelicos: Los medios de derechas nunca se cansan de sacar bulos sobre okupación, y yo tampoco me canso de desmentirlos. Una vez más, toca divulgación jurídica para que no os la cuelen. Dentro hilo 👇 <https://twitter.com/Hoyuelicos/status/1504498677322293253/photo/1> <https://twitter.com/JulianMaciasT/status/1666349149854507008?t=rqTEKNNSCpX874s9tt2taQ>
+
+
+
+
 
 
 
