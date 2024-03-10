@@ -1,0 +1,218 @@
+---
+title: "Utilidades para la docencia"
+subtitle: | 
+   Un listado donde encontrar datos para los trabajos de clase.
+date: 2024-03-07
+draft: true
+categories: [docencia, recursos]
+image: "imagenes/img_datos_03.png"
+#code-line-numbers: false
+---
+
+En este TBits recopilo scripts/app's/pkgs/ ... con utilidad para la docencia/investigación.
+
+
+
+### Qualtrics pkg
+
+[Qualtrics](https://www.qualtrics.com/es/) ies una plataforma online para realizar encuestas. 
+[qualtRics](https://docs.ropensci.org/qualtRics/) es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc. 
+
+
+### aRxiv
+
+[aRxiv](https://docs.ropensci.org/aRxiv/index.html) es un paqueted e R para acceder a la API de arXiv.
+[arXiv](https://arxiv.org/) es un repositorio de acceso abierto de preprints de artículos científicos en física, matemáticas, ciencias de la computación, biología cuantitativa, finanzas cuantitativas, estadísticas y economía.
+
+
+### Busqueda de G-Schollar
+
+[Aquí](https://github.com/j-5chneider/sysreview/blob/master/scrape_google_scholar/scrape_google_scholar.R), gracias a [Johannes Schneider](https://scicomm.xyz/@jschneider), encontramos un script para escrapear una busqueda en G schollar. 
+
+
+```{r}
+#| eval: false
+
+library(rvest)
+library(stringr)
+library(dplyr)
+library(rio)
+
+############################################################################## #
+###                                                                            #
+### PROVIDE YOUR SETTINGS HERE                                              ####
+### Please fill in your specifications and then run the code                   #
+###                                                                            #
+############################################################################## #
+
+## Insert Search String here!
+# For tips on how to create a good search string for google scholar check out
+# http://musingsaboutlibrarianship.blogspot.com/2015/10/6-common-misconceptions-when-doing.html
+searchstring <- 'intitle:("OPEN SCIENCE BADGES" & "TRUST" & "SCIENTISTS")'
+
+## Which range of results should be exported?
+# Please provide in increments of 10
+# (otherwise this will be enforced, the script can only export entire pages of 10)
+from_result <- 1
+to_result <- 100
+
+
+
+############################################################################## #
+###                                                                            #
+### ONLY RUN THIS CODE                                                      ####
+### Without changing anything                                                  #
+###                                                                            #
+############################################################################## #
+
+# create empty object to save results
+references <- data.frame(authors = as.character(),
+                         year = as.character(),
+                         title = as.character(),
+                         journal = as.character(),
+                         abstract = as.character())
+
+for (i in (seq(from = from_result, to = to_result, by = 10)-1)) { # a loop to scrape from several pages
+  # create URL of google scholar result page
+  url <- URLencode(paste0("https://scholar.google.com/scholar?start=", 
+                          i,              # indicates page
+                          "&as_vis=1&q=", # excludes citations (checkbox on the left)
+                          searchstring),  # passes the search string
+                   reserved = F)    # makes sure special characters are not encoded
+  
+  # scrape this juicy results page
+  page <- read_html(url) 
+  Sys.sleep(1)
+  
+  for (j in 1:10) { # loop over all 10 results
+    # extract certain details from the result
+    references <- references %>% 
+      add_row(authors = gsub("^(.*?)\\W+-\\W+.*", "\\1", 
+                             rvest::html_text(rvest::html_elements(page, ".gs_a")), 
+                             perl = TRUE)[j],
+              year = ifelse(str_detect(rvest::html_text(rvest::html_elements(page, ".gs_a"))[j],
+                                       "(\\d{4})"),   # if year is detected
+                            gsub("^.*(\\d{4}).*", "\\1", # then extract year
+                                 rvest::html_text(rvest::html_elements(page, ".gs_a")),
+                                 perl = TRUE)[j],
+                            as.character(NA)),        # else missing value
+              title = rvest::html_text(rvest::html_elements(page, ".gs_rt"))[j],
+              journal = ifelse(str_detect(rvest::html_text(rvest::html_elements(page, ".gs_a"))[j],
+                                          "(\\d{4})"), # if year is detected
+                               gsub("^.*((?<=-\\s)(.*)(?=,+)).*", "\\1",  # then
+                                    rvest::html_text(rvest::html_elements(page, ".gs_a")),
+                                    perl = TRUE)[j],
+                               gsub("^.*((?<=-\\s)(.*)).*$", "\\1",       # else
+                                    rvest::html_text(rvest::html_elements(page, ".gs_a")),
+                                    perl = TRUE)[j]),
+              abstract = rvest::html_text(rvest::html_nodes(page, ".gs_rs"))[j]
+      )
+  }
+}
+
+
+# clean up the messy titles
+references <- references |>
+  dplyr::mutate(title = stringr::str_replace_all(
+    title,
+    "(\\[PDF\\]\\[PDF\\]\\s|\\[HTML\\]\\[HTML\\]\\s|\\[BUCH\\]\\[B\\]\\s)", 
+    ""))
+
+## Export the data set to the working directory as CSV
+# This CSV is compatible for import to Rayyan and ASReview
+# rio::export(references, "references_googleScholar.csv")
+
+```
+
+
+### G-Schollar rank of co-authors
+
+En este [post](https://quantixed.org/2023/10/21/all-the-right-friends-how-does-google-scholar-rank-co-authors/) hace uso del paquete [scholar](https://github.com/jkeirstead/scholar) para intentar comprender como se calcula el ranking de co-autores en G-Schollar. 
+
+```{r}
+library(scholar)
+
+id <- 'PXaWcW4AAAAJ' #- tú ID de G-Schollar
+
+my_profile <- get_profile(id)
+
+my_citation_h <- get_citation_history(id)
+
+my_pubs <- get_publications(id)
+
+```
+
+
+
+
+
+### Ecuaciones de Word
+
+Con `pandoc` es fácil transformar un archivo `.docx` a Quuarto, pero si sólo quieres coger una ecuación hecha en Word y pegarla en Quarto, puedes hacerlo con [este](https://jgostick.github.io/mml2latex/)  MathML to LaTeX Converter.
+
+### SPSS
+
+El paquete [expss](https://cran.r-project.org/web/packages/expss/index.html) permite generar tablas al estilo SPSS. El paquete [r2spss](https://cran.r-project.org/web/packages/r2spss/vignettes/r2spss-intro.pdf)  allows to create plots and LaTeX tables that look like SPSS
+
+```{r}
+library(expss)
+data(mtcars)
+mtcars = apply_labels(mtcars,
+                      mpg = "Miles/(US) gallon",
+                      cyl = "Number of cylinders",
+                      disp = "Displacement (cu.in.)",
+                      hp = "Gross horsepower",
+                      drat = "Rear axle ratio",
+                      wt = "Weight (1000 lbs)",
+                      qsec = "1/4 mile time",
+                      vs = "Engine",
+                      vs = c("V-engine" = 0,
+                             "Straight engine" = 1),
+                      am = "Transmission",
+                      am = c("Automatic" = 0,
+                             "Manual"=1),
+                      gear = "Number of forward gears",
+                      carb = "Number of carburetors"
+)
+
+cross_cases(mtcars, am, vs)
+```
+
+## SAS
+
+El paquete [procs](https://procs.r-sassy.org/) permite obtener tablasy resultados similares a los obtenidos en SAS. En realidad el paquet forma parte de [sassy](https://r-sassy.org/) un ecosistema, unn integrated set of packages designed to make programmers more productive in R, particularly those with a background in SAS® software
+
+Pb, solo sale en el Viewer de RStudio, no en QMD
+
+```{r, eval = FALSE}
+library(procs)
+
+# Turn off printing for CRAN checks
+options("procs.print" = TRUE)
+
+# Prepare sample data
+dt <- as.data.frame(HairEyeColor, stringsAsFactors = FALSE)
+
+# Assign labels
+labels(dt) <- list(Hair = "Hair Color",
+                   Eye = "Eye Color")
+
+# Produce frequency statistics
+res <- proc_freq(dt, tables = v(Hair, Eye, Hair * Eye),
+                 weight = Freq,
+                 output = report,
+                 options = chisq,
+                 titles = "Hair and Eye Frequency Statistics")
+
+res
+```
+
+
+## Grafico con la ruta a archivos
+
+[dir](https://emitanaka.org/dir/index.html) es un paquete de Emi Tanaka para visualizar la estructura de directorios. Otra alternativa es el paquete [jsTree](https://yonicd.github.io/jsTree/)
+
+```{r, eval = FALSE}
+dir::listing()
+```
+
