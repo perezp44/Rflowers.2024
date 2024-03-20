@@ -21,7 +21,7 @@ Algunos de los trabajos ya hechos por los estudiantes puedes verlos [aquí](http
 
 - [Google Dataset Search](https://datasetsearch.research.google.com/): esta herramienta puede ser útil para encontrar datos.  [Aquí](https://datos.gob.es/es/noticia/google-lanza-un-nuevo-buscador-de-datos-abiertos) tienes un post, [aquí](https://blog.research.google/2018/09/building-google-dataset-search-and.html) el articulo de lanzamiento del producto en 2018 y [aquí](https://support.google.com/webmasters/community?hl=en&gpf=#!topic/webmasters/nPq4BW6iPIA&visit_id=638453437540843694-2557286311&rd=1) las FAQ's. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!
 
-- [Kaggle](https://www.kaggle.com/). Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos [aquí](https://www.kaggle.com/datasets).
+- [Kaggle](https://www.kaggle.com/). Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos [aquí](https://www.kaggle.com/datasets). En [este artículo](https://mlcontests.com/state-of-competitive-machine-learning-2023/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_476) hay más plataformas sobre competiciones de datos, por ejemplo [Coda Lab]](https://codalab.lisn.upsaclay.fr/?ref=mlcontests) o [Driven data](https://www.drivendata.org/?ref=mlcontests).
 
 - [Data is plural](https://www.data-is-plural.com/). Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está [aquí](https://www.data-is-plural.com/archive/) y [aquí](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0) con más información.
 
@@ -106,6 +106,8 @@ Algunos conjuntos de datos que en su día me llamaron la atención, seguramente 
 
 - [Atlas of the Offshore World](https://atlas-offshore.world/) es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal.
 
+- [Datos de la euroliga de Baloncesto](https://flavioleccese92.github.io/euroleaguer/) a través de un paquete de R
+
 
 <br>
 
@@ -116,6 +118,8 @@ Algunos conjuntos de datos que en su día me llamaron la atención, seguramente 
 
 - [Finding Economic Articles with Data:](http://skranz.github.io//r/2023/03/08/FindingEconomicArticles6.html): un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos.
 
+
+- [Journal of Comments and Replications in Economics](https://www.jcr-econ.org/publications/) reemplaza a [International Journal for Re-Views in Empirical Economics](https://www.iree.eu/) JCRE remains the premier journal for publishing replication studies and also publishes commentaries on original studies in Economics.
 
 <br>
 

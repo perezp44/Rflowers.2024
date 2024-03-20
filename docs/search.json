@@ -126,104 +126,6 @@
     "text": "Notas\n\n\nEn esta publicación del INE puede encontrase una pequeña reseña de los principales censos históricos hechos en España↩︎\nLa verdad es que probé los paquetes tesseract y tabulizer y no lo hacían mal, pero hacía falta mucho más trabajo para llegar a algo medio decente. Intenté probar el paquete daiR que da acceso a la Google Cloud Document AI API, que se supone que es la caña para extraer texto y tablas de pdf’s, PERO es un servicio de pago. No parecía muy caro, pero no lo probé.↩︎\nPara censos anteriores puede verse esta publicación del INE↩︎\nConcretamente se ofrece la población de derecho, la población de hecho y el número de hogares.↩︎\nPor ejemplo si son absorbidos por otro municipio; como por ejemplo Vallecas, que existía como municipio independiente en el censo de 1940 pero pasó a estar integrado en el municipio de Madrid en el censo de 1950.↩︎\nY de muchos otros (temas) 🙂.↩︎\nLos 4 municipios son San Quirce de Riopisuerga (09342), Gátova (12066), Rivas de Tereso (26504) y Los Hueros (28511). El fallo consistió en que su código municipal estaba incompleto en la nota que hubiese permitido detectarlos; concretamente su código municipal solo tenía 3 dígitos en lugar de los 5 habituales.↩︎\nSeñalar que existen casos digamos “extraños”, como por ejemplo el municipio de Gatova que cambió su código de 12066 a 46092 al incorporarse a la provincia de Valencia, desde la de Castellón, en el censo de 2001. ¿Son municipios diferentes? Bueno, podemos pensar que sí, ya que tienen códigos municipales diferentes.↩︎\nEsos errores de transcripción se describen en detalle en los apartados 2.2.6, 2.2.7 y 2.2.8 de este libro↩︎\nComo ejemplo, señalar que, en el caso de Madrid, la población que figura en la web del INE para el censo de 1991 es de 2.909.792, mientras que en el Censo original es de 3.010.492. Este error supone un 3,46%.↩︎\nAdemás, seguro que lo que haga ya estará hecho seguramente en este libro. Tiene 354 páginas!!!! No voy a mirar mucho por si acaso!!↩︎"
   },
   {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html",
-    "href": "blog_TBits/003_datos_para_estudiantes.html",
-    "title": "Datos para los trabajos",
-    "section": "",
-    "text": "En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para facilitar la búsqueda de datos a los estudiantes he confeccionado este listado con fuentes de datos.\nAlgunos de los trabajos ya hechos por los estudiantes puedes verlos aquí. La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc…, etc…, pero los deportes y la música nunca faltan."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
-    "title": "Datos para los trabajos",
-    "section": "\n1 Diversas fuentes de datos",
-    "text": "1 Diversas fuentes de datos\n\nGoogle Dataset Search: esta herramienta puede ser útil para encontrar datos. Aquí tienes un post, aquí el articulo de lanzamiento del producto en 2018 y aquí las FAQ’s. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!\nKaggle. Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos aquí.\nData is plural. Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está aquí y aquí con más información.\nHugging Face. Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.\nCivio. Es una ONG que trabaja con datos para intentar aumentar la transparencia y controlar a los poderes públicos. Evidentemente, tienen una sección de datos abiertos.\nTidy Tuesday. Es un proyecto semanal de datos organizado por la comunidad de R. Cada semana se hacen visualizaciones sobre un nuevo conjunto de datos\nFiveThirtyEight. FiveThirtyEight, a veces llamado 538, es un blog estadounidense que se centra en el análisis político y encuestas, aunque también hace análisis de datos sobre otras temáticas. En este repo se encuentran los datos utilizados en los artículos.Aquí tiene un indice de los datos. Hay un paquete de R, también llamado fivethirtyeight que igual puede ayudar a cargar los datos.\nOur World in data. Es una publicación que hace análisis empíricos sobre las condiciones de vida. Trata temas como la pobreza, educación, salud … Hay un paquete de R, owidR que facilita el uso de esos datos.\nGapminder es una fundación sueca sin ánimo que utiliza datos para cambiar ciertas concepciones erróneas sobre problemas globales. Los datos los tiene aquí\nBuzzFeedNews es un periódico que ofrece artículos/historias basadas en datos. Aquí tienes un listado de artículos y datos, y [aquí]((https://github.com/BuzzFeedNews) el repo de Github con el código de los artículos. En clase solemos replicar este gráfico chulo. El artículo donde aparece el gráfico está está aquí,y el código está aquí.\nEuropean Data Journalism Network (EDJNet) is a network of media organisations from all across Europe, producing and promoting data-driven coverage of European issues. Los datos aquí.\nReal World Data Science, un proyecto de la Royal Statistical Society que presenta real-world applications of data science. Aquí están los casos de estudio.\nInformation is Beautiful provee de más de 300 datasets: aquí y aquí\nLIS, The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, lissyrtools.\nThe Global economy recopila datos económicos de 200 países. Para descargar los datos, aquí"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
-    "title": "Datos para los trabajos",
-    "section": "\n2 Estadísticas oficiales",
-    "text": "2 Estadísticas oficiales\nEn Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc… etc… son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.\n\n\nEurostat: eurostat. Es fantástico. Haremos varios ejemplos en clase. Aquí el portal de datos de Eurostat.\nBanco de España: tidyBdE. No lo he usado. Aquí el portal de datos del Banco de España.\n\n\nCódigodf &lt;- tidyBdE::bde_catalog_load(\n  catalog = c(\"ALL\"),\n  parse_dates = TRUE,\n  cache_dir = NULL,\n  update_cache = FALSE,\n  verbose = FALSE\n)\n\n\n\nBanco Central Europeo: ecb. No lo he usado. Aquí el portal de datos del BCE y aquí los datasets.\nThe World Bank. Los indicadores aquí. hay varios paquetes: WDI, wbstats. Aquí un bookdown sobre la API del Worls Bank.\nOCDE. Los datos aquí. Hay un paquete de R, oecd que facilita el acceso a esos datos. Aquí un post.\nUN population Dividion: population estimates from 1950 to the present for 237 countries or áreas. Aquí un paquete de R.\nUN comtrade database: datos detallados de comercio global. Aquí un post sobre cómo usar su API con R."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
-    "title": "Datos para los trabajos",
-    "section": "\n3 Más datos",
-    "text": "3 Más datos\nAlgunos conjuntos de datos que en su día me llamaron la atención, seguramente pensé que podrían usarse para los trabajos.\n\nDatos de olimpiadas (medallas, altura y peso) aquí\nDatos de refugiados de la UNHCR, la agencia de refugiados de la ONU, aquí. Hay un paquete de R, refugees, que facilita el acceso a esos datos. Aquí un gráfico de Nicola Rennie con estos datos.\nScrappeando datos del TOUR de Francia\nAtlas of the Offshore World es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
-    "title": "Datos para los trabajos",
-    "section": "\n4 Papers con datos",
-    "text": "4 Papers con datos\n\nHarvard Dataverse: u servicio de Harvad con artículos científicos que hacen públicos sus datos.\nFinding Economic Articles with Data:: un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
-    "title": "Datos para los trabajos",
-    "section": "\n5 Otros listados",
-    "text": "5 Otros listados\n\nRebecca Carter\nInterview Query\n30+ Free Datasets for Your Data Science Projects in 2024"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
-    "title": "Datos para los trabajos",
-    "section": "\n6 Para docencia",
-    "text": "6 Para docencia\n\nEl paqueteRdatasets agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está aquí\nEl paquete HistData contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#apis",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#apis",
-    "title": "Datos para los trabajos",
-    "section": "\n7 API’s",
-    "text": "7 API’s\n\n\nPublic APIs es a collective list of free APIs for use in software and web development. No vamos a ver cómo acceder a API’s, pero no está mal tenerlas en este listado."
-  },
-  {
-    "objectID": "blog_TBits/001_imagenes_stabilityAI.html",
-    "href": "blog_TBits/001_imagenes_stabilityAI.html",
-    "title": "Imágenes con stabilityAI",
-    "section": "",
-    "text": "Vamos a usar el paquete stabilityAI de David Schoch para conectarnos a la API de stability.ai para generar imágenes partiendo de prompts textuales.\nEste es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes."
-  },
-  {
-    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#conectando-r-con-la-api-de-stability.ai",
-    "href": "blog_TBits/001_imagenes_stabilityAI.html#conectando-r-con-la-api-de-stability.ai",
-    "title": "Imágenes con stabilityAI",
-    "section": "\n1 Conectando R con la API de stability.ai",
-    "text": "1 Conectando R con la API de stability.ai\nPara conectarnos a la API de stability.ai hemos de seguir los siguientes pasos:\n\n\nInstalar el paquete\nremotes::install_github(\"schochastics/stabilityAI\")\n\n\nGenerar una API key en stability.ai. Para ello hay que ir aquí. donde nos logearemos con nuestra cuenta de Google para después generar una API key.\nLa APi key tendrá una pinta como esta: xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU. Guárdala porque tendrás copiarla en el fichero .Renviron\n\n\nUna vez tengas la API-key has de copiarla en el fichero .Renviron. Para ello ejecuta en R:\nusethis::edit_r_environ()\nSe abrirá el fichero .Renviron en RStudio o en el editor de texto que tengas configurado. Has de añadir a ese fichero la siguiente linea:\nSTABILITYAI_API_KEY=\"xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU\"\nYa hemos terminado el proceso de configuración. Ya podemos generar imágenes desde R.\nEste proceso nos da acceso a una serie de modelos. Veamoslos\nstabilityAI::get_engines_list()\n\n\n\n\n                                   description\n1            Real-ESRGAN_x2plus upscaler model\n2        Stability-AI Stable Diffusion XL v0.9\n3        Stability-AI Stable Diffusion XL v1.0\n4           Stability-AI Stable Diffusion v1.6\n5           Stability-AI Stable Diffusion v2.1\n6 Stability-AI Stable Diffusion XL Beta v2.2.2"
-  },
-  {
-    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#generando-imágenes",
-    "href": "blog_TBits/001_imagenes_stabilityAI.html#generando-imágenes",
-    "title": "Imágenes con stabilityAI",
-    "section": "\n2 Generando imágenes",
-    "text": "2 Generando imágenes\nVamos a generar alguna imagen. Para ello usé pequeñas variantes de este promtp:\n\nEl cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público”\n\n\nCódigomy_IA_img &lt;- stabilityAI::generate_txt2img(\n  text_prompts = \"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público\",\n  #style_preset = \"pixel-art\"\n  #- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage\n)\n\n\nLa API de StabilityAI nos devuelve la imagen pero codificada en base64. Para convertirla a un fichero de imagen podemos ejecutar el siguiente código:\n\nCódigostabilityAI::base64_to_img(my_IA_img ,\"./imagenes/my_IA_img_00\")\n\n\nGeneré 4 imágenes modificando ligeramente el promt. Este es el resultado:\n\n\n\n\n\n\n\n\n(A)\n\n\n\n\n\n(B)\n\n\n\n\n\n\n\n(C)\n\n\n\n\n\n(D)"
-  },
-  {
-    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#un-poco-sobre-la-api-de-stability.ai",
-    "href": "blog_TBits/001_imagenes_stabilityAI.html#un-poco-sobre-la-api-de-stability.ai",
-    "title": "Imágenes con stabilityAI",
-    "section": "\n3 Un poco sobre la API de stability.ai",
-    "text": "3 Un poco sobre la API de stability.ai\nLa documentación de la API de stability.ai está aquí pero no he jugado muvho con ella. sólo he probado a cambiar el estilo de la imagen. Por ejemplo, si queremos que la imagen tenga un estilo de pixel-art, hemos de añadir el parámetro style_preset = \"pixel-art\". Los posibles estilos son: 3d-model, analog-film, anime, cinematic, comic-book, digital-art, enhance, fantasy-art, isometric, line-art, low-poly, modeling-compound, neon-punk, origami, photographic, pixel-art, y tile-texture.\n\nCódigomy_IA_img &lt;- stabilityAI::generate_txt2img(\n  text_prompts = \"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar\",\n  style_preset = \"pixel-art\"\n  #- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage\n)\n\n\n\n\n(A)\n\n\nCódigomy_IA_img &lt;- stabilityAI::generate_txt2img(\n  text_prompts = \"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar\",\n  style_preset = \"neon-punk\"\n  #- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage\n)\n\n\n\n\n(A)"
-  },
-  {
-    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#más-cosas",
-    "href": "blog_TBits/001_imagenes_stabilityAI.html#más-cosas",
-    "title": "Imágenes con stabilityAI",
-    "section": "\n4 Más cosas",
-    "text": "4 Más cosas\nEvidentemente se puede acceder a los modelos de stability.ai sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde Dream Studio1. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.\nSí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo The Public Domain Review o Open Culture. Otras como Unsplash o Pexels permiten descargar imágenes de forma gratuita y legal."
-  },
-  {
-    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#footnotes",
-    "href": "blog_TBits/001_imagenes_stabilityAI.html#footnotes",
-    "title": "Imágenes con stabilityAI",
-    "section": "Notas",
-    "text": "Notas\n\nEste link supongo que se quedará obsoleto en nada↩︎"
-  },
-  {
     "objectID": "blog_TBits/002_geolocalizacion.html",
     "href": "blog_TBits/002_geolocalizacion.html",
     "title": "Geolocalización con R",
@@ -271,6 +173,153 @@
     "title": "Geolocalización con R",
     "section": "\n6 Biblio",
     "text": "6 Biblio\n\nGeocode address text strings using tidygeocoder de Ilya Kashnitsky\nGeocoding in R de Andrés García y SESYNC\nR: Mapping and Geospatial. Duke University Libraries"
+  },
+  {
+    "objectID": "blog_TBits/001_imagenes_stabilityAI.html",
+    "href": "blog_TBits/001_imagenes_stabilityAI.html",
+    "title": "Imágenes con stabilityAI",
+    "section": "",
+    "text": "Vamos a usar el paquete stabilityAI de David Schoch para conectarnos a la API de stability.ai para generar imágenes partiendo de prompts textuales.\nEste es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes."
+  },
+  {
+    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#conectando-r-con-la-api-de-stability.ai",
+    "href": "blog_TBits/001_imagenes_stabilityAI.html#conectando-r-con-la-api-de-stability.ai",
+    "title": "Imágenes con stabilityAI",
+    "section": "\n1 Conectando R con la API de stability.ai",
+    "text": "1 Conectando R con la API de stability.ai\nPara conectarnos a la API de stability.ai hemos de seguir los siguientes pasos:\n\n\nInstalar el paquete\nremotes::install_github(\"schochastics/stabilityAI\")\n\n\nGenerar una API key en stability.ai. Para ello hay que ir aquí. donde nos logearemos con nuestra cuenta de Google para después generar una API key.\nLa APi key tendrá una pinta como esta: xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU. Guárdala porque tendrás copiarla en el fichero .Renviron\n\n\nUna vez tengas la API-key has de copiarla en el fichero .Renviron. Para ello ejecuta en R:\nusethis::edit_r_environ()\nSe abrirá el fichero .Renviron en RStudio o en el editor de texto que tengas configurado. Has de añadir a ese fichero la siguiente linea:\nSTABILITYAI_API_KEY=\"xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU\"\nYa hemos terminado el proceso de configuración. Ya podemos generar imágenes desde R.\nEste proceso nos da acceso a una serie de modelos. Veamoslos\nstabilityAI::get_engines_list()\n\n\n\n\n                                   description\n1            Real-ESRGAN_x2plus upscaler model\n2        Stability-AI Stable Diffusion XL v0.9\n3        Stability-AI Stable Diffusion XL v1.0\n4           Stability-AI Stable Diffusion v1.6\n5           Stability-AI Stable Diffusion v2.1\n6 Stability-AI Stable Diffusion XL Beta v2.2.2"
+  },
+  {
+    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#generando-imágenes",
+    "href": "blog_TBits/001_imagenes_stabilityAI.html#generando-imágenes",
+    "title": "Imágenes con stabilityAI",
+    "section": "\n2 Generando imágenes",
+    "text": "2 Generando imágenes\nVamos a generar alguna imagen. Para ello usé pequeñas variantes de este promtp:\n\nEl cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público”\n\n\nCódigomy_IA_img &lt;- stabilityAI::generate_txt2img(\n  text_prompts = \"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar. La perrita Jucar se pasea entre el público\",\n  #style_preset = \"pixel-art\"\n  #- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage\n)\n\n\nLa API de StabilityAI nos devuelve la imagen pero codificada en base64. Para convertirla a un fichero de imagen podemos ejecutar el siguiente código:\n\nCódigostabilityAI::base64_to_img(my_IA_img ,\"./imagenes/my_IA_img_00\")\n\n\nGeneré 4 imágenes modificando ligeramente el promt. Este es el resultado:\n\n\n\n\n\n\n\n\n(A)\n\n\n\n\n\n(B)\n\n\n\n\n\n\n\n(C)\n\n\n\n\n\n(D)"
+  },
+  {
+    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#un-poco-sobre-la-api-de-stability.ai",
+    "href": "blog_TBits/001_imagenes_stabilityAI.html#un-poco-sobre-la-api-de-stability.ai",
+    "title": "Imágenes con stabilityAI",
+    "section": "\n3 Un poco sobre la API de stability.ai",
+    "text": "3 Un poco sobre la API de stability.ai\nLa documentación de la API de stability.ai está aquí pero no he jugado muvho con ella. sólo he probado a cambiar el estilo de la imagen. Por ejemplo, si queremos que la imagen tenga un estilo de pixel-art, hemos de añadir el parámetro style_preset = \"pixel-art\". Los posibles estilos son: 3d-model, analog-film, anime, cinematic, comic-book, digital-art, enhance, fantasy-art, isometric, line-art, low-poly, modeling-compound, neon-punk, origami, photographic, pixel-art, y tile-texture.\n\nCódigomy_IA_img &lt;- stabilityAI::generate_txt2img(\n  text_prompts = \"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar\",\n  style_preset = \"pixel-art\"\n  #- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage\n)\n\n\n\n\n(A)\n\n\nCódigomy_IA_img &lt;- stabilityAI::generate_txt2img(\n  text_prompts = \"El cantautor apodado Pequeño mulo toca la guitarra junto a Laura de Comando autonomo en el pub Volander. El publico aplaude a rabiar\",\n  style_preset = \"neon-punk\"\n  #- https://platform.stability.ai/docs/api-reference#tag/v1generation/operation/textToImage\n)\n\n\n\n\n(A)"
+  },
+  {
+    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#más-cosas",
+    "href": "blog_TBits/001_imagenes_stabilityAI.html#más-cosas",
+    "title": "Imágenes con stabilityAI",
+    "section": "\n4 Más cosas",
+    "text": "4 Más cosas\nEvidentemente se puede acceder a los modelos de stability.ai sin usar un lenguaje de programación; por ejemplo, se puede acceder directamente desde Dream Studio1. Dream Studio es un sitio web para generar imágenes con Stable Diffusion, uno de los modelos de stabilty.ai.\nSí, generar imágenes a partir texto es divertido, pero recuerda que hay multitud de repositorios de imágenes (y otros recursos) públicas, por ejemplo The Public Domain Review o Open Culture. Otras como Unsplash o Pexels permiten descargar imágenes de forma gratuita y legal."
+  },
+  {
+    "objectID": "blog_TBits/001_imagenes_stabilityAI.html#footnotes",
+    "href": "blog_TBits/001_imagenes_stabilityAI.html#footnotes",
+    "title": "Imágenes con stabilityAI",
+    "section": "Notas",
+    "text": "Notas\n\nEste link supongo que se quedará obsoleto en nada↩︎"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html",
+    "href": "blog_TBits/003_datos_para_estudiantes.html",
+    "title": "Datos para los trabajos",
+    "section": "",
+    "text": "En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para facilitar la búsqueda de datos a los estudiantes he confeccionado este listado con fuentes de datos.\nAlgunos de los trabajos ya hechos por los estudiantes puedes verlos aquí. La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc…, etc…, pero los deportes y la música nunca faltan."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n1 Diversas fuentes de datos",
+    "text": "1 Diversas fuentes de datos\n\nGoogle Dataset Search: esta herramienta puede ser útil para encontrar datos. Aquí tienes un post, aquí el articulo de lanzamiento del producto en 2018 y aquí las FAQ’s. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!\nKaggle. Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos aquí. En este artículo hay más plataformas sobre competiciones de datos, por ejemplo [Coda Lab]](https://codalab.lisn.upsaclay.fr/?ref=mlcontests) o Driven data.\nData is plural. Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está aquí y aquí con más información.\nHugging Face. Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.\nCivio. Es una ONG que trabaja con datos para intentar aumentar la transparencia y controlar a los poderes públicos. Evidentemente, tienen una sección de datos abiertos.\nTidy Tuesday. Es un proyecto semanal de datos organizado por la comunidad de R. Cada semana se hacen visualizaciones sobre un nuevo conjunto de datos\nFiveThirtyEight. FiveThirtyEight, a veces llamado 538, es un blog estadounidense que se centra en el análisis político y encuestas, aunque también hace análisis de datos sobre otras temáticas. En este repo se encuentran los datos utilizados en los artículos.Aquí tiene un indice de los datos. Hay un paquete de R, también llamado fivethirtyeight que igual puede ayudar a cargar los datos.\nOur World in data. Es una publicación que hace análisis empíricos sobre las condiciones de vida. Trata temas como la pobreza, educación, salud … Hay un paquete de R, owidR que facilita el uso de esos datos.\nGapminder es una fundación sueca sin ánimo que utiliza datos para cambiar ciertas concepciones erróneas sobre problemas globales. Los datos los tiene aquí\nBuzzFeedNews es un periódico que ofrece artículos/historias basadas en datos. Aquí tienes un listado de artículos y datos, y [aquí]((https://github.com/BuzzFeedNews) el repo de Github con el código de los artículos. En clase solemos replicar este gráfico chulo. El artículo donde aparece el gráfico está está aquí,y el código está aquí.\nEuropean Data Journalism Network (EDJNet) is a network of media organisations from all across Europe, producing and promoting data-driven coverage of European issues. Los datos aquí.\nReal World Data Science, un proyecto de la Royal Statistical Society que presenta real-world applications of data science. Aquí están los casos de estudio.\nInformation is Beautiful provee de más de 300 datasets: aquí y aquí\nLIS, The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, lissyrtools.\nThe Global economy recopila datos económicos de 200 países. Para descargar los datos, aquí"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
+    "title": "Datos para los trabajos",
+    "section": "\n2 Estadísticas oficiales",
+    "text": "2 Estadísticas oficiales\nEn Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc… etc… son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.\n\n\nEurostat: eurostat. Es fantástico. Haremos varios ejemplos en clase. Aquí el portal de datos de Eurostat.\nBanco de España: tidyBdE. No lo he usado. Aquí el portal de datos del Banco de España.\n\n\nCódigodf &lt;- tidyBdE::bde_catalog_load(\n  catalog = c(\"ALL\"),\n  parse_dates = TRUE,\n  cache_dir = NULL,\n  update_cache = FALSE,\n  verbose = FALSE\n)\n\n\n\nBanco Central Europeo: ecb. No lo he usado. Aquí el portal de datos del BCE y aquí los datasets.\nThe World Bank. Los indicadores aquí. hay varios paquetes: WDI, wbstats. Aquí un bookdown sobre la API del Worls Bank.\nOCDE. Los datos aquí. Hay un paquete de R, oecd que facilita el acceso a esos datos. Aquí un post.\nUN population Dividion: population estimates from 1950 to the present for 237 countries or áreas. Aquí un paquete de R.\nUN comtrade database: datos detallados de comercio global. Aquí un post sobre cómo usar su API con R."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n3 Más datos",
+    "text": "3 Más datos\nAlgunos conjuntos de datos que en su día me llamaron la atención, seguramente pensé que podrían usarse para los trabajos.\n\nDatos de olimpiadas (medallas, altura y peso) aquí\nDatos de refugiados de la UNHCR, la agencia de refugiados de la ONU, aquí. Hay un paquete de R, refugees, que facilita el acceso a esos datos. Aquí un gráfico de Nicola Rennie con estos datos.\nScrappeando datos del TOUR de Francia\nAtlas of the Offshore World es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal.\nDatos de la euroliga de Baloncesto a través de un paquete de R"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n4 Papers con datos",
+    "text": "4 Papers con datos\n\nHarvard Dataverse: u servicio de Harvad con artículos científicos que hacen públicos sus datos.\nFinding Economic Articles with Data:: un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos.\nJournal of Comments and Replications in Economics reemplaza a International Journal for Re-Views in Empirical Economics JCRE remains the premier journal for publishing replication studies and also publishes commentaries on original studies in Economics."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
+    "title": "Datos para los trabajos",
+    "section": "\n5 Otros listados",
+    "text": "5 Otros listados\n\nRebecca Carter\nInterview Query\n30+ Free Datasets for Your Data Science Projects in 2024"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
+    "title": "Datos para los trabajos",
+    "section": "\n6 Para docencia",
+    "text": "6 Para docencia\n\nEl paqueteRdatasets agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está aquí\nEl paquete HistData contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#apis",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#apis",
+    "title": "Datos para los trabajos",
+    "section": "\n7 API’s",
+    "text": "7 API’s\n\n\nPublic APIs es a collective list of free APIs for use in software and web development. No vamos a ver cómo acceder a API’s, pero no está mal tenerlas en este listado."
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html",
+    "href": "blog_TBits/004_borrando-objetos.html",
+    "title": "Borrando objetos del Global",
+    "section": "",
+    "text": "Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el Global Environment1, por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#intro",
+    "href": "blog_TBits/004_borrando-objetos.html#intro",
+    "title": "Borrando objetos del Global",
+    "section": "",
+    "text": "Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el Global Environment1, por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#borrando-objetos-con-baserm",
+    "href": "blog_TBits/004_borrando-objetos.html#borrando-objetos-con-baserm",
+    "title": "Borrando objetos del Global",
+    "section": "\n2 Borrando objetos con base::rm()\n",
+    "text": "2 Borrando objetos con base::rm()\n\nPodemos hacerlo de varias maneras, siempre usando la función rm():\nBorrando objetos de “uno en uno”\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(aa)   #- borramos el objeto aa\nrm(\"cc\") #- borramos el objeto cc. \n\nFíjate bien que base::rm() admite que pongas el nombre del objeto que quiere borrar, por ejmeplo aa, pero también puedes poner el nombre del objeto entre comillas como carácter (\"aa\"). Utilizando jerga R, puedes poner el name o el quoted names.\nQuiero volver a insistir en este punto, así que si miras la ayuda de la función base::rm() verás que para su primer argumento indica:\n\nthe objects to be removed, as names (unquoted) or character strings (quoted)\n\n\nBorrando varios objetos a la vez\nSi queremos borrar varios objetos a la vez, podemos hacerlo pasándole varios nombres de objetos al primer argumento de la función ... de base::rm()\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(aa, bb)     #- borramos los objetos aa y bb\nrm(cc, \"dd\")   #- borramos los objetos cc y dd\n\nBorrando objetos, pero usando el segundo argumento de base::rm()\n\nVamos a borrar objetos, PERO en lugar de pasar los nombres de los objetos al primer argumento de la función ..., los pasaremos al segundo argumento de la función list.\nImportante: A este segundo argumento de la función hay que pasarle los nombres de los objetos a eliminar como un vector de caracteres; es decir, como “quoted names”.\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(list = \"aa\")     #- borramos el objeto aa. Necesariamente ha de ser quoted\n\nrm(list = c(\"bb\", \"cc\"))   #- podemos pasarle un vector de quoted names\n\nPodemos pasar al argumento list un vector de quoted names. Por ejemplo:\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nmy_objetos_to_borrar &lt;- c( \"bb\", \"dd\")\nrm(list = my_objetos_to_borrar)   #- podemos pasarle un vector de quoted names\n\nFíjate que el objeto my_objetos_to_borrar no se ha borrado.\n\nBorrando todos los objetos del Global Environment\nEn el siguiente chunk borraremos todos los objetos del Global Environment. Para ello usamos la función base::ls() :\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\nrm(list = ls())\n\nPara entenderlo ejecuta base::ls() y verás que devuelve un vector con los nombres (quoted) de todos los objetos que haya en el Global"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#otras-estrategias-de-borrado",
+    "href": "blog_TBits/004_borrando-objetos.html#otras-estrategias-de-borrado",
+    "title": "Borrando objetos del Global",
+    "section": "\n3 Otras estrategias de borrado",
+    "text": "3 Otras estrategias de borrado\nBorrar todo excepto …\nVolvemos a crear 4 objetos y borraremos todos excepto el objeto aa. Para ello utilizamos la función base::setdiff() que devuelve los elementos de un vector que no están en otro vector.\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\n#- borramos todos los objetos excepto aa\n#- Necesariamente tenemos que usar  \"aa\" entre comillas; es decir el quoted name, porque usamos el segundo argumento list\nrm(list = setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\n\nExplicaciones\nEn el anterior chunk, estamos usando 3 funciones (del paquete base); de hecho podríamos ser más explícitos y escribir el chunk como:\n\nbase::rm(list = base::setdiff(base::ls(), \"aa\"))   \n\n\nbase::ls() devuelve un vector con los nombres de los objetos en el Global Environment como character (es decir, quoted)\nbase::setdiff(x, y): coge 2 vectores, x e y, para devolver los elementos de x que no están en y\nbase::rm(): borra los objetos que le pasemos como argumento. Si le pasamos list = ls() borra todos los objetos en el Global Environment.\n\nPara entenderlo del todo vamos a ejecutar las funciones por separado:\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nls()   #- devuelve los nombres de los objetos en el Global Environment (quoted)\n\nsetdiff(ls(), \"aa\")  #- devuelve los nombres de los objetos en el Global Environment que no son \"aa\"\n\nrm(list = setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\nrm(setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\n\n\nEstrategia alternativa: elijiendo qué no borrar\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nobjetos_no_borrar &lt;- c(\"aa\", \"bb\")\nrm(list = ls()[!ls() %in% objetos_no_borrar])\n\nEntender la expresión es un poco más complicado, pero tampoco tanto. Para entenderla es mejor ejecutar la expresión por partes."
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#borrar-los-que-empiezan-por-un-patrón",
+    "href": "blog_TBits/004_borrando-objetos.html#borrar-los-que-empiezan-por-un-patrón",
+    "title": "Borrando objetos del Global",
+    "section": "\n4 Borrar los que empiezan por un patrón",
+    "text": "4 Borrar los que empiezan por un patrón\n\naa &lt;- 1:10 ; bb &lt;- 40:45; tmp_1 &lt;- 100:105; tmp_2 &lt;- 200:205\n\nrm(list = ls()[grep(\"^tmp\", ls())])\n\nrm(list = ls()[grep(\"tm\", ls())])\n\nrm(list = ls(pattern = \"^tmp\"))\n\nrm(list = grep(\"^tmp\", ls(), value = TRUE, invert = TRUE))\n\nrm(list = apropos(\"mp\"))"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#conclusion",
+    "href": "blog_TBits/004_borrando-objetos.html#conclusion",
+    "title": "Borrando objetos del Global",
+    "section": "\n5 Conclusion",
+    "text": "5 Conclusion\nEs bueno mantener el Global Environment limpio. Si estamos trabajando en un proyecto, es mejor borrar los objetos que ya no necesitamos. Para ello podemos usar la función base::rm().\nLa función base::rm() permite borrar todos los objetos en el Global, con rm(list = ls()), o borrar solo algunos objetos; por ejemplo rm(aa, \"bb\").\nTambién podemos utilizar patrones más complejos para borrar solo algunos objetos. Por ejemplo, podemos borrar los objetos que empiezan por un patrón, o borrar todos los objetos excepto algunos que nos interesa mantener.\nNo te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas este hilo de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, oncretamente aquí."
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#footnotes",
+    "href": "blog_TBits/004_borrando-objetos.html#footnotes",
+    "title": "Borrando objetos del Global",
+    "section": "Notas",
+    "text": "Notas\n\nCuando cerremos la sesión de R los objetos desaparecerán, la memoria quedará vacía↩︎"
   },
   {
     "objectID": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html",
@@ -375,7 +424,7 @@
     "href": "blog_TBits.html",
     "title": "TBits",
     "section": "",
-    "text": "La idea es ir colgando aquí pequeños ejercicios/ejemplos etc… que hago en clase, o cosillas que leo y medio aprendo. Si no las apuntas se olvidan más rápido.\n\n\n\n\n\n\n   \n     \n     \n       Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Autor/a\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nImágenes con stabilityAI\n\n\nAprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes. \n\n\n\nIA\n\n\nstabilityAI\n\n\nimágenes\n\n\n\n\n\n\n\n\n\n1 mar 2024\n\n\nPedro J. Pérez\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nGeolocalización con R\n\n\nAprendiendo cómo geolocalizar con R. Suele ser otro de los ejercicios que hago en clase \n\n\n\nGIS\n\n\ngeolocalizacion\n\n\nmapas\n\n\n\n\n\n\n\n\n\n5 mar 2024\n\n\nPedro J. Pérez\n\n\n8 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nDatos para los trabajos\n\n\nUn listado donde encontrar datos para los trabajos de clase. \n\n\n\ndatos\n\n\n\n\n\n\n\n\n\n6 mar 2024\n\n\nPedro J. Pérez\n\n\n6 minutos\n\n\n\n\n\n\nNo hay resultados"
+    "text": "La idea es ir colgando aquí pequeños ejercicios/ejemplos etc… que hago en clase, o cosillas que leo y medio aprendo. Si no las apuntas se olvidan más rápido.\n\n\n\n\n\n\n   \n     \n     \n       Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Autor/a\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nImágenes con stabilityAI\n\n\nAprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes. \n\n\n\nIA\n\n\nstabilityAI\n\n\nimágenes\n\n\n\n\n\n\n\n\n\n1 mar 2024\n\n\nPedro J. Pérez\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nGeolocalización con R\n\n\nAprendiendo cómo geolocalizar con R. Suele ser otro de los ejercicios que hago en clase \n\n\n\nGIS\n\n\ngeolocalizacion\n\n\nmapas\n\n\n\n\n\n\n\n\n\n5 mar 2024\n\n\nPedro J. Pérez\n\n\n8 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nDatos para los trabajos\n\n\nUn listado donde encontrar datos para los trabajos de clase. \n\n\n\ndatos\n\n\n\n\n\n\n\n\n\n6 mar 2024\n\n\nPedro J. Pérez\n\n\n6 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nBorrando objetos del Global\n\n\nHay que saber tener el Clobal medio limpio \n\n\n\nfunciones\n\n\n\n\n\n\n\n\n\n7 mar 2024\n\n\nPedro J. Pérez\n\n\n5 minutos\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "license.html",

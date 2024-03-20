@@ -1,27 +1,31 @@
 ---
 title: "Utilidades para la docencia"
 subtitle: | 
-   Un listado donde encontrar datos para los trabajos de clase.
-date: 2024-03-07
+   Algunos scripts/app's/pkgs/ con utilidad para la docencia/investigación
+date: 2024-03-08
 draft: true
 categories: [docencia, recursos]
 image: "imagenes/img_datos_03.png"
 #code-line-numbers: false
 ---
 
-En este TBits recopilo scripts/app's/pkgs/ ... con utilidad para la docencia/investigación.
+En este TBit recopilo scripts/app's/pkgs/ con potencial utilidad para la docencia/investigación.
 
+### OpenAlexR pkg
 
+[OpenAlexR](https://docs.ropensci.org/openalexR/) es un pkg de R que permite acceder a la API de [OpenAlex](https://openalex.org/) to retrieve bibliographic infomation about publications, authors, venues, institutions and concepts. 
+
+Para entender un poco qué es OpenAlex, [aquí](https://instituciones.sld.cu/faenflidiadoce/2023/06/02/catalogo-openalex/) y [aquí](https://www.lluiscodina.com/openalex-scopus/) tienes información
 
 ### Qualtrics pkg
 
-[Qualtrics](https://www.qualtrics.com/es/) ies una plataforma online para realizar encuestas. 
+[Qualtrics](https://www.qualtrics.com/es/) es una plataforma online para realizar encuestas. 
 [qualtRics](https://docs.ropensci.org/qualtRics/) es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc. 
 
 
 ### aRxiv
 
-[aRxiv](https://docs.ropensci.org/aRxiv/index.html) es un paqueted e R para acceder a la API de arXiv.
+[aRxiv](https://docs.ropensci.org/aRxiv/index.html) es un paquete de R para acceder a la API de arXiv.
 [arXiv](https://arxiv.org/) es un repositorio de acceso abierto de preprints de artículos científicos en física, matemáticas, ciencias de la computación, biología cuantitativa, finanzas cuantitativas, estadísticas y economía.
 
 

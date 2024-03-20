@@ -1,0 +1,203 @@
+---
+title: "Borrando objetos del Global"
+subtitle: | 
+   Hay que saber tener el Clobal medio limpio
+date: 2024-03-07
+#draft: true
+categories: [funciones]
+image: "imagenes/img_datos_03.png"
+code-fold: false
+execute:
+  eval: false
+---
+
+## Intro
+
+Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el **Global Environment**^[Cuando cerremos la sesión de R los objetos desaparecerán, la memoria quedará vacía], por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello
+
+
+
+## Borrando objetos con `base::rm()`
+
+Podemos hacerlo de varias maneras, siempre usando la función `rm()`:
+
+
+### Borrando objetos de "uno en uno"
+
+
+```{r}
+#- creamos 4 objetos
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+rm(aa)   #- borramos el objeto aa
+rm("cc") #- borramos el objeto cc. 
+```
+
+
+
+Fíjate bien que `base::rm()` admite que pongas el nombre del objeto que quiere borrar, por ejmeplo `aa`, pero también puedes poner el nombre del objeto entre comillas como carácter (`"aa"`). Utilizando jerga R, puedes poner el name o el quoted names.
+
+
+Quiero volver a insistir en este punto, así que si miras la ayuda de la función `base::rm()` verás que para su primer argumento indica:
+
+
+> the objects to be removed, as names (unquoted) or character strings (quoted)
+
+<br>
+
+### Borrando varios objetos a la vez
+
+Si queremos borrar varios objetos a la vez, podemos hacerlo pasándole varios nombres de objetos al primer argumento de la función `...` de `base::rm()`
+
+```{r}
+#- creamos 4 objetos
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+rm(aa, bb)     #- borramos los objetos aa y bb
+rm(cc, "dd")   #- borramos los objetos cc y dd
+```
+
+### Borrando objetos, pero usando el segundo argumento de `base::rm()`
+
+Vamos a borrar objetos, **PERO** en lugar de pasar los nombres de los objetos al primer argumento de la función `...`, los pasaremos al segundo argumento de la función `list`. 
+
+Importante: A este segundo argumento de la función hay que pasarle los nombres de los objetos a eliminar como un vector de caracteres; es decir, como "quoted names".
+
+
+```{r}
+#- creamos 4 objetos
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+rm(list = "aa")     #- borramos el objeto aa. Necesariamente ha de ser quoted
+
+rm(list = c("bb", "cc"))   #- podemos pasarle un vector de quoted names
+```
+
+
+Podemos pasar al argumento `list` un vector de quoted names. Por ejemplo:
+
+
+```{r}
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+my_objetos_to_borrar <- c( "bb", "dd")
+rm(list = my_objetos_to_borrar)   #- podemos pasarle un vector de quoted names
+```
+
+Fíjate que el objeto `my_objetos_to_borrar` no se ha borrado.
+
+<br>
+
+#### Borrando todos los objetos del Global Environment
+
+En el siguiente chunk **borraremos todos los objetos** del Global Environment. Para ello usamos la función `base::ls()` :
+
+
+```{r}
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+rm(list = ls())
+```
+
+
+Para entenderlo ejecuta `base::ls()` y verás que devuelve un vector con los nombres (quoted) de todos los objetos que haya en el Global
+
+<br>
+
+
+## Otras estrategias de borrado
+
+### Borrar todo excepto ...
+
+
+Volvemos a crear 4 objetos y borraremos todos excepto el objeto `aa`. Para ello utilizamos la función `base::setdiff()` que devuelve los elementos de un vector que no están en otro vector.
+
+
+```{r}
+#- creamos 4 objetos
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+#- borramos todos los objetos excepto aa
+#- Necesariamente tenemos que usar  "aa" entre comillas; es decir el quoted name, porque usamos el segundo argumento list
+rm(list = setdiff(ls(), "aa"))   #- borra todos los objetos en el Global, excepto aa
+```
+
+
+#### Explicaciones
+
+En el anterior chunk, estamos usando 3 funciones (del paquete base); de hecho podríamos ser más explícitos y escribir el chunk como:
+
+
+```{r}
+base::rm(list = base::setdiff(base::ls(), "aa"))   
+```
+
+
+- `base::ls()` devuelve un vector con los nombres de los objetos en el Global Environment como character (es decir, quoted)
+
+- `base::setdiff(x, y)`: coge 2 vectores, x e y, para devolver los elementos de x que no están en y
+
+- `base::rm()`: borra los objetos que le pasemos como argumento.  Si le pasamos `list = ls()` borra todos los objetos en el Global Environment.
+
+Para entenderlo del todo vamos a ejecutar las funciones por separado:
+
+
+```{r}
+#- creamos 4 objetos
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+ls()   #- devuelve los nombres de los objetos en el Global Environment (quoted)
+
+setdiff(ls(), "aa")  #- devuelve los nombres de los objetos en el Global Environment que no son "aa"
+
+rm(list = setdiff(ls(), "aa"))   #- borra todos los objetos en el Global, excepto aa
+rm(setdiff(ls(), "aa"))   #- borra todos los objetos en el Global, excepto aa
+```
+
+<br>
+
+### Estrategia alternativa: elijiendo qué no borrar
+
+```{r}
+aa <- 1:10 ; bb <- 40:45; cc <- 100:105; dd <- 200:205
+
+objetos_no_borrar <- c("aa", "bb")
+rm(list = ls()[!ls() %in% objetos_no_borrar])
+```
+
+Entender la expresión es un poco más complicado, pero tampoco tanto. Para entenderla es mejor ejecutar la expresión por partes.
+
+<br>
+
+## Borrar los que empiezan por un patrón
+
+```{r}
+#| code-fold: false
+aa <- 1:10 ; bb <- 40:45; tmp_1 <- 100:105; tmp_2 <- 200:205
+
+rm(list = ls()[grep("^tmp", ls())])
+
+rm(list = ls()[grep("tm", ls())])
+
+rm(list = ls(pattern = "^tmp"))
+
+rm(list = grep("^tmp", ls(), value = TRUE, invert = TRUE))
+
+rm(list = apropos("mp"))
+```
+
+
+<br>
+
+## Conclusion
+
+
+Es bueno mantener el Global Environment limpio. Si estamos trabajando en un proyecto, es mejor borrar los objetos que ya no necesitamos. Para ello podemos usar la función `base::rm()`.
+
+La función `base::rm()` permite borrar todos los objetos en el Global, con `rm(list = ls())`, o borrar solo algunos objetos; por ejemplo `rm(aa, "bb")`.
+
+También podemos utilizar patrones más complejos para borrar solo algunos objetos. Por ejemplo, podemos borrar los objetos que empiezan por un patrón, o borrar todos los objetos excepto algunos que nos interesa mantener.
+
+No te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas [este hilo](https://community.rstudio.com/t/first-line-of-every-r-script/799?u=jessemaegan) de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, oncretamente [aquí](https://community.rstudio.com/t/first-line-of-every-r-script/799/36).
+
+  
+
