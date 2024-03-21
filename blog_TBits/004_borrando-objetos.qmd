@@ -5,7 +5,7 @@ subtitle: |
 date: 2024-03-07
 #draft: true
 categories: [funciones]
-image: "imagenes/img_datos_03.png"
+image: "imagenes/thumbnail_borrar-archivos.png"
 code-fold: false
 execute:
   eval: false
