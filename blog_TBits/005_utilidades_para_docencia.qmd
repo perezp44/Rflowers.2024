@@ -7,31 +7,108 @@ draft: true
 categories: [docencia, recursos]
 image: "imagenes/img_datos_03.png"
 #code-line-numbers: false
+execute:
+  eval: false
 ---
 
 En este TBit recopilo scripts/app's/pkgs/ con potencial utilidad para la docencia/investigación.
 
+
+## Bibliometrics
+
+
 ### OpenAlexR pkg
 
-[OpenAlexR](https://docs.ropensci.org/openalexR/) es un pkg de R que permite acceder a la API de [OpenAlex](https://openalex.org/) to retrieve bibliographic infomation about publications, authors, venues, institutions and concepts. 
+[OpenAlexR](https://docs.ropensci.org/openalexR/) es un pkg de R que permite acceder a la API de [OpenAlex](https://openalex.org/) to retrieve **bibliographic infomation** about publications, authors, venues, institutions and concepts. 
 
-Para entender un poco qué es OpenAlex, [aquí](https://instituciones.sld.cu/faenflidiadoce/2023/06/02/catalogo-openalex/) y [aquí](https://www.lluiscodina.com/openalex-scopus/) tienes información
+OpenAlex es una base de datos bibliográficos de acceso libre, creada en 2022 que, según nos cuentan [aquí](https://www.editorialteseo.com/archivos/33215/los-libros-y-las-revistas-cientificas-de-teseo-indexadas-en-openalex/), ha logrado reunir más de 250 millones de textos de múltiples disciplinas. 
+OpenAlex, a veces es presentada como la base de datos académica que puede sustituir a otras bases de datos bibliográficas. [Aquí](https://www.lluiscodina.com/openalex-scopus/) analizan si realmente OpenAlex es una alternativa a otras bases de datos como Scopus o Web of Science.
 
-### Qualtrics pkg
 
-[Qualtrics](https://www.qualtrics.com/es/) es una plataforma online para realizar encuestas. 
-[qualtRics](https://docs.ropensci.org/qualtRics/) es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc. 
+Para entender un poco qué es OpenAlex, [aquí](https://instituciones.sld.cu/faenflidiadoce/2023/06/02/catalogo-openalex/) y [aquí](https://www.lluiscodina.com/openalex-scopus/) tienes información.
+
+
+Como todas las bases de datos bibliometrícas tienen problemas, por ejemplo yo no estoy como autor ... todavía, pero algunos de mis trabajos están adjudicados a otro Pedro. 
+
+Es recomendable ejecutar esta instrucción de R: `options(openalexR.mailto = "tu-email@uv.es")` para si la API tiene mucha carga,  proporcionar a OpenAlex un email to enter the polite pool.
+
+
+Algunas queries que se pueden hacer:
+
+- Das un vector de DOI's de trabajos y te devuelve la información bibliográfica de autores, revista, etc.
+
+```{r}
+#- works from DOI's
+works_from_dois <- oa_fetch(
+  entity = "works",
+  doi = c("10.1016/j.joi.2017.08.007", "https://doi.org/10.1007/s11192-013-1221-3"),
+  verbose = TRUE)
+```
+
+
+- Descargar todos los trabajos de un vector de autores
+
+```{r}
+#- Goal: Download all works published by a set of authors (known ORCIDs).
+works_from_orcids <- oa_fetch(
+  entity = "works",
+  author.orcid = c("0000-0001-6187-6610", "0000-0002-8517-9411"),
+  verbose = TRUE
+)
+```
+
+- Obtener listado de trabajos sobre un determinado tópico que hayan sido citados mas de 50 veces
+
+```{r}
+works_search2 <- oa_fetch(
+  entity = "works",
+  title.search = c("gender gap", "awards"),
+  cited_by_count = ">50",
+  from_publication_date = "2010-01-01",
+  to_publication_date = "2024-12-31",
+  options = list(sort = "cited_by_count:desc"),
+  verbose = TRUE
+)
+```
+
+- En la web del paquete hay más ejemplos. Por ejemplo [aquí](https://docs.ropensci.org/openalexR/#-example-analyses) se hace un análisis de los tópicos/concepts tratado en el tiempo
+
+- El chunk de abajo ordena las instituciones españolas en función del número de citas 
+
+```{r}
+spain_institutions <- oa_fetch(
+  entity = "institutions",
+  country_code = "es",
+  type = "education",
+  verbose = TRUE
+)
+
+spain_institutions |>
+  slice_max(cited_by_count, n = 8) |>
+  mutate(display_name = forcats::fct_reorder(display_name, cited_by_count)) |>
+  ggplot() +
+  aes(x = cited_by_count, y = display_name, fill = display_name) +
+  geom_col() +
+  scale_fill_viridis_d(option = "E") +
+  guides(fill = "none") +
+  labs(
+    x = "Total citations", y = NULL,
+    title = "Spanish references"
+  ) +
+  coord_cartesian(expand = FALSE)
+```
 
 
 ### aRxiv
 
-[aRxiv](https://docs.ropensci.org/aRxiv/index.html) es un paquete de R para acceder a la API de arXiv.
-[arXiv](https://arxiv.org/) es un repositorio de acceso abierto de preprints de artículos científicos en física, matemáticas, ciencias de la computación, biología cuantitativa, finanzas cuantitativas, estadísticas y economía.
+[aRxiv](https://docs.ropensci.org/aRxiv/index.html) es un paquete de R para acceder a la API de arXiv. [arXiv](https://arxiv.org/) es un repositorio de acceso abierto de preprints de artículos científicos en física, matemáticas, ciencias de la computación, biología cuantitativa, finanzas cuantitativas, estadísticas y economía.
+
+Este paquete no lo he usado, ni siquiera he jugado un poco con él.
 
 
 ### Busqueda de G-Schollar
 
-[Aquí](https://github.com/j-5chneider/sysreview/blob/master/scrape_google_scholar/scrape_google_scholar.R), gracias a [Johannes Schneider](https://scicomm.xyz/@jschneider), encontramos un script para escrapear una busqueda en G schollar. 
+[Aquí](https://github.com/j-5chneider/sysreview/blob/master/scrape_google_scholar/scrape_google_scholar.R), gracias a [Johannes Schneider](https://scicomm.xyz/@jschneider), encontramos un script para escrapear una busqueda en G schollar. Tiene el código abajo.
 
 
 ```{r}
@@ -147,7 +224,13 @@ my_pubs <- get_publications(id)
 ```
 
 
+## Otros
 
+
+### Qualtrics pkg
+
+[Qualtrics](https://www.qualtrics.com/es/) es una plataforma online para realizar encuestas. 
+[qualtRics](https://docs.ropensci.org/qualtRics/) es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc. 
 
 
 ### Ecuaciones de Word

@@ -1,0 +1,313 @@
+---
+title: "¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata"
+subtitle: | 
+  (Aún en elaboración) Un análisis con datos de Wikidata sobre la ubicación de los cuadros de Goya en el mundo.
+date: 2024-03-25
+categories: [Wikidata, SPARQL, obras de Goya]
+image: "imagenes/thumbnail.jpg"
+---
+
+
+```{r}
+#| include: false
+library(tidyverse)
+library(rvest)
+library(wikifacts) 
+```
+
+## Intro
+
+Creo/espero que, en breve, hagamos un trabajo medio serio sobre sesgo de genero en premios literarios, será algo relacionado con [esto](https://perezp44.github.io/slides.2023/jornadasR_2023_barcelona/index.html#/title-slide) pero más en formato artículo científico.
+
+Para ello, quiero refrescar cómo hacer consultas a [Wikidata](https://www.wikidata.org/), así que aquí voy a jugar un poco con Wikidata y [SPARQL](https://es.wikipedia.org/wiki/SPARQL), el lenguaje que permite hacer consultas a Wikidata, para obtener información sobre las obras de Goya.
+
+En lugar de empezar directamente a rehacer mis consultas sobre premios literarios, se me ha ocurrido practicar recopilando datos sobre las obras de [Goya](https://es.wikipedia.org/wiki/Francisco_de_Goya) que están documentadas en Wikidata. La idea es hacer con ellos 2 ejercicios: 1) un mapa para ver como están repartidas por el mundo las obras de Goya, y 2) hacer un collage con todas, bueno, ya veremos si todas o solo con unas pocas, las obras de Goya que tengan una imagen accesible desde Wikidata.
+
+
+Pero ¿y esto no está ya hecho? No lo sé, seguramente sí, pero seguro que también de forma diferente a como lo voy a hacer yo. Os recuerdo que yo no soy para nada un experto en Goya: repito, el objetivo del post solamente es aprender/recordar a hacer consultas a Wikidata.
+
+Y ... ¿porqué Goya? Pues porque me gusta Goya; ¿a quien no? ¿verdad? Además, soy aragonés y he estado en Fuendetodos y ...  además, hace como 2 años, se hizo un taller sobre Goya en mi pueblo, [Pancrudo](https://www.pancrudo.com/). Uno de los encargados del taller era mi sobrino [David Sancho](https://davidsancho83.myportfolio.com/) ... además, una de las ilustraciones del taller era el cuadro de Goya [Niños con perros de presa](https://fundaciongoyaenaragon.es/obra/ninos-con-perros-de-presa/64). En el cuadro se ven 2 niños y **2 mastines**. ¿Eres capaz de ver el segundo mastín? nosotros no lo veíamos hasta que otro sobrino mio, Adríán Tena, se dio cuenta. Vamos que me ha salido "espontaneo" hacer el post sobre Goya, aunque el objetivo es *to learn sobre Wikidata y SPARQL*.
+
+
+<br>
+
+## Obras de Goya
+
+Antes de ir a Wikidata he mirado en la Web para documentarme un poco sobre Goya y sus obras. Lo primero que me hubiese gustado saber es cuantas obras de Goya, pero no me ha resultado fácil averiguarlo. En la [Fundación Goya en Aragón](https://fundaciongoyaenaragon.es/) hay un [catálogo](https://fundaciongoyaenaragon.es/catalogo/) pero en el poco tiempo que le he dedicado no he podido ver el número de obras que contiene. Igual les pregunto por mail. Vorem!! 
+
+Lo segundo que se me ha ocurrido es preguntar a una IA y me ha contestado lo siguiente:
+
+> Es difícil proporcionar un número exacto de obras de Francisco de Goya en el mundo, ya que su obra es extensa y algunas piezas pueden estar en colecciones privadas o en lugares menos accesibles. Sin embargo, se estima que Goya produjo alrededor de 700 pinturas y más de 2800 dibujos a lo largo de su carrera. 
+
+
+Después he ido a la Wikipedia y he encontrado un [anexo](https://es.wikipedia.org/wiki/Anexo:Cuadros_de_Goya) con 422 cuadros/obras de Goya. Además, también en la Wikipedia, hay una [categoría de "Cuadros de Goya"](https://es.wikipedia.org/wiki/Categor%C3%ADa:Cuadros_de_Francisco_de_Goya) con 143 registros, así que parece que hay 143 obras de Goya con su propia página en Wikipedia; por ejemplo [aquí](https://es.wikipedia.org/wiki/La_captura_del_bandido_%E2%80%9CMaragato%E2%80%9D_por_fray_Pedro_de_Zaldivia) está en la página de Wikipedia  del cuadro  titulado "La captura del bandido 'Maragato' por fray Pedro de Zaldivia".^[En realidad, "La captura del bandido Maragato por fray Pedro de Zaldivia", es una serie de 6 cuadros.]
+
+Como veis, no es tan-tan fácil^[Al menos no ha sido instantáneo para mi.] obtener, para un profano en el tema, el número de obras de Goya que existen en el mundo. 
+
+Repito, mi objetivo es simplemente ver cuantas obras de Goya están registradas en Wikidata y jugar un poco con ellas para recordar SPARQL.
+
+Los ítems/objetos de Wikidata pueden tener identificadores que los conectan a bases de datos externas; por ejemplo, algunas de las obras de Goya existentes en Wikidata tienen un identificador que los vincula con la base de datos de la [Fundación Goya en Aragón](https://fundaciongoyaenaragon.es/). El código de Wikidata para el identificador es [P7229](https://www.wikidata.org/wiki/Property:P7229).
+
+<br>
+
+## Obras de Goya en Wikidata
+
+Sí buscamos el número de obras de Goya en Wikidata, podemos hacerlo con la siguiente consulta SPARQL:
+
+```sql
+#obras de Goya
+SELECT DISTINCT ?item ?itemLabel ?itemDescription
+WHERE {
+    ?item  wdt:P170 wd:Q5432.   # items cuyo creador es Goya
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "es", "en", "de", "fr", "it" }
+}
+```
+
+Si quieres ejecutar la consulta, puedes hacerlo [aquí](https://w.wiki/9Y$M).^[Sólo tienes que pinchar en la flecha/triangulito.] En su día, en marzo de 2024, yo obtuve **1.052 registros**. Estas son las obras de Goya que están registradas en Wikidata. Muchas menos de las que me dijo la IA.
+
+
+Pues ya estaría, pero ... vamos a enriquecer un poco más la información sobre estas obras; voy a tratar de incorporar información sobre donde está el cuadro/obra (museo, ciudad y país), cuando se creó, si existe una imagen de la obra en Wikidata, etc ...
+
+Al final me decidí por esta consulta: 
+
+```{sql}
+#| eval: false
+#obras de Goya
+SELECT DISTINCT ?item ?itemLabel ?itemDescription  ?paisLabel ?ciudadLabel ?link_esp ?link_eng 
+                ?ubicacionLabel ?long ?lat ?idGoya ?image  (year(?date) as ?year) 
+WHERE {
+    ?item  wdt:P170 wd:Q5432;   # items cuyo creador es Goya
+           wdt:P276 ?ubicacion.  
+
+    ?ubicacion wdt:P131 ?ciudad.
+    ?ciudad wdt:P17 ?pais.
+  
+    ?ubicacion p:P625 ?coords .
+    ?coords psv:P625 ?coordinate_node .
+    ?coordinate_node wikibase:geoLatitude ?lat .
+    ?coordinate_node wikibase:geoLongitude ?long .               
+  
+    OPTIONAL { ?item wdt:P7229 ?idGoya}       # id en Fundación Goya en Aragón
+    OPTIONAL { ?item wdt:P18 ?image }         # con imagen
+    OPTIONAL { ?item wdt:P571 ?date }         # con fecha de creacion
+    #OPTIONAL { ?item wdt:P195/wdt:P361* ?coleccion }  # la colección
+
+    OPTIONAL {  ?link_esp schema:about ?item;
+         schema:isPartOf <https://es.wikipedia.org/>;} #- link en Wikipedia española
+    OPTIONAL {  ?link_eng schema:about ?item;
+         schema:isPartOf <https://en.wikipedia.org/>;} #- link en Wikipedia inglesa
+ 
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "es", "en", "de", "fr", "it" }
+}
+
+ORDER BY desc(?year)
+```
+
+
+La query la fui refinando en el [Wikidata Query Serive](https://query.wikidata.org/), pero cuando tuve la versión final, ejecute la consulta desde R con la función `wikifacts::wiki_query()`. Algo como:
+
+
+```{r}
+#| eval: false
+
+my_query_goya <- '#obras de Goya
+SELECT DISTINCT ?item ?itemLabel ?itemDescription  ?paisLabel ?ciudadLabel ?link_esp ?link_eng 
+                ?ubicacionLabel ?long ?lat ?idGoya ?image  (year(?date) as ?year) 
+WHERE {
+    ?item  wdt:P170 wd:Q5432;   # items cuyo creador es Goya
+           wdt:P276 ?ubicacion.  
+
+    ?ubicacion wdt:P131 ?ciudad.
+    ?ciudad wdt:P17 ?pais.
+  
+    ?ubicacion p:P625 ?coords .
+    ?coords psv:P625 ?coordinate_node .
+    ?coordinate_node wikibase:geoLatitude ?lat .
+    ?coordinate_node wikibase:geoLongitude ?long .               
+  
+    OPTIONAL { ?item wdt:P7229 ?idGoya}       # id en Fundación Goya en Aragón
+    OPTIONAL { ?item wdt:P18 ?image }         # con imagen
+    OPTIONAL { ?item wdt:P571 ?date }         # con fecha de creacion
+    #OPTIONAL { ?item wdt:P195/wdt:P361* ?coleccion }  # la colección
+
+    OPTIONAL {  ?link_esp schema:about ?item;
+         schema:isPartOf <https://es.wikipedia.org/>;} #- link en Wikipedia española
+    OPTIONAL {  ?link_eng schema:about ?item;
+         schema:isPartOf <https://en.wikipedia.org/>;} #- link en Wikipedia inglesa
+ 
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "es", "en", "de", "fr", "it" }
+}
+
+ORDER BY desc(?year)'
+
+df_goya <- wikifacts::wiki_query(my_query_goya)  
+```
+
+
+La consulta la hice el 25 de marzo de 2024 obteniendo **1.088 registros**, pero hay que tener en cuenta que no son registros únicos de obras de Goya porque pueden haber obras de Goya en Wikidata con, por ejemplo, 2 registros para las coordenadas, o para la fecha de creación, o ...^[Sí, ni el mundo ni Wikidata son perfectos, pero ... el mundo es, de momento, el único que tenemos y Wikidata es, a pesar de todos sus "fallos", **super-FABULOSA**. Ojala mejoren los 2, tanto el mundo como Wikidata!!]. 
+
+Realmente con mi "final-query" conseguí recuperar **799 obras** de Goya **distintas**. ¿Que porqué 799 si con la primera query salían 1.052 obras? Pues porqué en mi query final obligo a que las obras tengan registrado donde se encuentran; es decir, su localización. Recuerda que el objetivo es ver en un mapa donde están las obras actualmente y despues hacer un collage con las que tengan imagen.
+
+
+## ¿Donde están las obras de Goya?
+
+
+```{r}
+#| eval: true
+#my_ruta_datos_orig <- fs::dir_ls(here::here("datos", "orig_wikidata"))
+my_ruta_datos_orig <- fs::dir_ls("./datos/orig_wikidata")
+
+df_orig <- rio::import(my_ruta_datos_orig)
+```
+
+Ya tengo los datos de las obras de Goya en Wikidata que tienen registrada su localización, pero antes de mirarlos, he buscado en la Web y he encontrado artículos/posts que hablan del tema. Por ejemplo:
+
+- [Dónde ver los cuadros de Goya a lo largo del mundo](https://www.liligo.es/magazine-viajes/donde-ver-los-cuadros-de-goya-a-lo-largo-del-mundo-164709.html)], en este post del "El Magazine del Viajero" se indican los 6 museos donde más obras de Goya hay: Museo del Prado, Museo Lázaro Galdiano (Madrid), Museo de la Academia de Bellas Artes de San Fernando (Madrid), National Gallery (Londres), Metropolitan Museum of Art de Nueva York y National Gallery de Washington, además de señalar los principales cuadros de Goya existentes en ellos; 
+
+- [Goyas por el mundo: todos los lugares (que no son pocos) a los que llega el pintor aragonés](https://www.enjoyzaragoza.es/goyas-por-el-mundo/) es un post de "Enjoy Zaragoza" donde indica los principales museos del mundo, empezando por los de Aragón, donde se pueden ver obras de Goya
+
+- [La capital a pinceladas de Francisco de Goya](https://www.guiarepsol.com/es/viajar/nos-gusta/el-madrid-de-goya/) 
+- [Goya en Madrid: una ruta por sus obras maestras en la capital](https://saltaconmigo.com/blog/2020/09/goya-en-madrid/),
+
+- [Los 5 lugares donde ver obras de Francisco de Goya sin salir de Zaragoza](https://hoyaragon.es/cultura-aragon/donde-ver-obras-de-goya-en-zaragoza/).
+
+
+Todos ellos muy interesantes pero ... me hubiese gustado ver algo más cuantitativo, algo como una tabla con el número de obras que hay en cada museo. Vamos a ello.
+
+
+Os recuerdo que tengo información de la localización (museo, ciudad y país) de 799 obras de Goya que están registradas en Wikidata. Vamos a ver cuantas obras hay en cada museo. 
+
+Como no puede ser de otra manera, hay problemillas con los datos que he obtenido de Wikidata, por ejemplo, hay 14 obras de Goya que en Wikidata figuran que están ubicadas en varios museos. Por ejemplo, [Contra el bien general](https://www.wikidata.org/wiki/Q47533444) tiene registradas en Wikidata 3 ubicaciones: Museo Boymans Van Beuningen, Chester Beatty Library y Museo de Arte de Cleveland. ¿Qué donde está realmente? No lo sé, he mirado un poco y creo que está en Cleveland pero ... no estoy seguro 100%. Recordad que soy un profano en Goya y el objetivo es solo jugar un poco; es o sí, aún así, creo que los resultados que obtengamos van a ser interesantes.
+
+Otros "fallos" en la información que he recogido de Wikidata son debidos a mis conocimientos de Wikidata y SPARQL: por ejemplo, el cuadro [La familia de Carlos IV](https://www.wikidata.org/wiki/Q920030) figura en Wikidata en 2 ubicaciones: Museo del Prado y Palacio Real. ¿Qué donde está? pues en la actualidad en el Museo del Prado, pero en 1814, según Wikidata, estaba en el Palacio Real. Podría haber filtrado las ubicaciones para que mi consulta solo recogiese la ubicación actual, pero no se me ocurrió y ahora ya quiero ir cerrando el post. Lo tendré en cuenta para próximas consultas a Wikidata.
+
+
+Algo similar ocurre con la ciudad en la que están ubicadas las obras de Goya según Wikidata: hay 35 obras que, en mi consulta a Wikidata, figuran como que están en 2 "municipios". En realidad lo que ocurre es que mi consulta ha recogido la ubicación más precisa (por ejemplo el barrio o distrito), además de la ciudad en la que está la obra ^[Como veis este fallo también se debe a que Wikidata, muchas veces, tiene información muy precisa y exhaustiva, junto a que mis conocimientos de la taxonomía de Wikidata y de SPARQL los tengo un poco oxidados, pero estoy prácticando!!. Esto también podía haberlo evitado, o eso creo, puliendo un poco más mi consulta a Wikidata, pero también lo tendré en cuenta en futuras consultas ... 😅].
+
+
+¿Qué cómo lo he arreglado? Pues he decidido eliminar las obras que tenían problemas/duplicidades en su ubicación^[Muerto el peroo muerta la rabía]. De esta forma pasamos de un total de 799 obras a 756: tampoco hemos perdido tanto, sólo he dejado fuera a cuadros como [Contra el bien general](https://www.wikidata.org/wiki/Q47533444) o [La familia de Carlos IV](https://www.wikidata.org/wiki/Q920030), nah!!! 😅
+
+
+Después de todo este proceso de "limpieza" de los datos, me quedo con un conjunto de datos con 756 obras de Goya que sabemos en que museo, ciudad y país están; al menos según la información que hay en Wikidata. Veamos donde están: ¿en Zaragoza, en Madrid?
+
+
+
+```{r}
+#| include: false
+#- MAPA ------------------------------------------------------------------------
+#- algunos cuadros. Por ejmeplo: https://www.wikidata.org/wiki/Q47533444  están en 3 ubicaciones  y por tanto, cuando recupero el pais salen 3 paises
+zz <- df_orig %>% filter(item == "http://www.wikidata.org/entity/Q47533444")
+
+#- Hay 7 ( 1 con 3 y 6 con 2) cuadros con varias ubicaciones
+
+##- cuadros en varios museos ----
+zz_varios_museos_id <- df_orig %>%  #- obtengo los id's de los cuadros que están en varios museos
+  distinct(item, itemLabel, ubicacionLabel) %>% 
+  group_by(item, itemLabel) %>% summarise(n = n()) %>% 
+  arrange(desc(n)) %>% filter(n > 1)  %>% pull(1) #- 14 id's
+
+# veo los cuadros q están en varios museos
+zz_varios_museos <- df_orig %>% filter(item %in% zz_varios_museos_id) %>% 
+  select(1:2, paisLabel, ciudadLabel, ubicacionLabel) %>% distinct()  #- 29 registros
+
+gt::gt(zz_varios_museos)
+
+##- quito esos 14 cuadros (q tienen ubicación en varios museos)
+df_orig_x <- df_orig %>% filter(!item %in% zz_varios_museos_id)
+
+
+##- cuadros en varios ciudades ----
+#- ahora ya empiezo en df_orig_x
+zz_varias_ciudades_id <- df_orig_x %>%  #- obtengo los id's de los cuadros que están en varios ciudades
+  distinct(item, itemLabel, ciudadLabel) %>% 
+  group_by(item, itemLabel) %>% summarise(n = n()) %>% 
+  arrange(desc(n)) %>% filter(n > 1)  %>% pull(1) #- 29 id's
+
+# veo los cuadros q están en varias ciudades
+zz_varias_ciudades <- df_orig_x %>% filter(item %in% zz_varias_ciudades_id) %>% 
+  select(1:2, paisLabel, ciudadLabel, ubicacionLabel) %>% distinct()  #- 61 registros
+
+gt::gt(zz_varias_ciudades)
+
+# quito los cuadros con varias ciudades
+df_orig_x <- df_orig_x %>% filter(!item %in% zz_varias_ciudades_id) #- 958 rows
+zz <- df_orig_x %>% janitor::tabyl(ciudadLabel)
+#- cuantos id's unicos quedan
+zz <- df_orig_x %>% distinct(item)  #- 754 , pero deberian ser 756 = 799 - (14 + 29)
+
+
+##- cuadros en varios países ----
+zz_varios_paises_id <- df_orig_x %>%  #- obtengo los id's de los cuadros que están en varios paises
+  distinct(item, itemLabel, paisLabel) %>% 
+  group_by(item, itemLabel) %>% summarise(n = n()) %>% 
+  arrange(desc(n)) %>% filter(n > 1) %>% pull(1) #- no hay, asi q no quito nada
+
+#- ya no me caliento el cap más con los duplicados
+
+#- OK ya empiezo el análisis de las ubicaciones (habiendo quitado los duplicados)
+#- En df_orig_x quedan 756 cuadros únicos, PERO 958 rows (puede ser x imagens etc)
+#- ME QUEDO CON LA PRIMERA ROW DE CADA CUADRO
+
+df_ubicaciones <- df_orig_x %>% distinct(item, .keep_all = TRUE) #-
+
+```
+
+
+Lo primero que voy a mostrar es un **mapa con la situación geográfica** de todos los museos/ubicaciones donde hay alguna obra de Goya. El mapa es muy sencillito^[Algún día lo mejoraré!! Ya te digo yo que sí 😅 .], se podría mejorar mucho, por ejemplo, haciendo que en los popups aparezca el número de obras en cada museo etc... etc... pero ... no tengo tiempo, ni ganas, de hacerlo ahora. Eso sí, a pesar de ser sencillito se ve claramente que, si quieres ver Goyas, no te vayas a África ni a Sudamérica. Si la información de Wikidata es cierta, no hay ningún Goya en África y **en Sudamérica solo se pueden ver Goyas en Argentina, concretamente 5 en Buenos Aires y 1 en Rosario. 
+
+
+Si haces zoom en el mapa parece que en **Madrid** hay 10 lugares/museos donde ver obras de Goya, y en **Zaragoza** 4, me parecen pocos, seguramente haya más, pero estos son los datos de los que dispongo.
+
+
+
+```{r}
+#- MAPA
+df_plot <- df_ubicaciones %>% 
+  sf::st_as_sf(coords = c("long", "lat"), crs = 4326)
+
+mapview::mapview(df_plot)
+```
+
+<br>
+
+Veamos algunas tabla. Primero una tabla con el núemro de Goyas en cada museo:
+
+```{r}
+#| label: tablas
+#| eval: true
+zz_museos <- df_ubicaciones %>% janitor::tabyl(ubicacionLabel)
+zz_unir_museos <- df_ubicaciones %>% distinct(ubicacionLabel, ciudadLabel, paisLabel)
+zz_museos <- dplyr::left_join(zz_unir_museos, zz_museos) %>% dplyr::arrange(desc(n))
+```
+
+
+Las tabla están hechas pero no se muestran. Aún no se el perquè
+
+
+- una DT table
+
+```{r}
+DT::datatable(zz_museos)
+```
+
+- ahora una reactable
+
+
+```{r}
+reactable::reactable(zz_museos)
+```
+
+
+- las DT y recatable no se ven, asi que provisionalmente una gt::gt()
+
+```{r}
+gt::gt(zz_museos)
+```
+
+Faltan las tablas por ciudades y por paises . Están hechas pero se acab el tiempo 
+
+<br>
+
+## Collage de obras de Goya
+
+Me queda hacer el collage, será para otro día ....

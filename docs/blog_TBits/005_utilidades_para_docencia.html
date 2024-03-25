@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Fecha de modificación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">20 de marzo de 2024</p>
+        <p class="date-modified">21 de marzo de 2024</p>
       </div>
     </div>
       
@@ -230,8 +230,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-right" id="quarto-document-content"><p>En este TBit recopilo scripts/app’s/pkgs/ con potencial utilidad para la docencia/investigación.</p>
 <section id="openalexr-pkg" class="level3"><h3 class="anchored" data-anchor-id="openalexr-pkg">OpenAlexR pkg</h3>
-<p><a href="https://docs.ropensci.org/openalexR/">OpenAlexR</a> es un pkg de R que permite acceder a la API de <a href="https://openalex.org/">OpenAlex</a> to retrieve bibliographic infomation about publications, authors, venues, institutions and concepts.</p>
-<p>Para entender un poco qué es OpenAlex, <a href="https://instituciones.sld.cu/faenflidiadoce/2023/06/02/catalogo-openalex/">aquí</a> y <a href="https://www.lluiscodina.com/openalex-scopus/">aquí</a> tienes información</p>
+<p><a href="https://docs.ropensci.org/openalexR/">OpenAlexR</a> es un pkg de R que permite acceder a la API de <a href="https://openalex.org/">OpenAlex</a> to retrieve <strong>bibliographic infomation</strong> about publications, authors, venues, institutions and concepts.</p>
+<p>OpenAlex es una base de datos bibliográficos de acceso libre, creada en 2022 que, según nos cuentan <a href="https://www.editorialteseo.com/archivos/33215/los-libros-y-las-revistas-cientificas-de-teseo-indexadas-en-openalex/">aquí</a>, ha logrado reunir más de 250 millones de textos de múltiples disciplinas. OpenAlex, a veces es presentada como la base de datos académica que puede sustituir a otras bases de datos bibliográficas. <a href="https://www.lluiscodina.com/openalex-scopus/">Aquí</a> analizan si realmente OpenAlex es una alternativa a otras bases de datos como Scopus o Web of Science.</p>
+<p>Para entender un poco qué es OpenAlex, <a href="https://instituciones.sld.cu/faenflidiadoce/2023/06/02/catalogo-openalex/">aquí</a> y <a href="https://www.lluiscodina.com/openalex-scopus/">aquí</a> tienes información.</p>
+<p>Como todas las bases de datos bibliometrícas tienen problemas, por ejemplo yo no estoy como autor … todavía, pero algunos de mis trabajos están adjudicados a otro Pedro.</p>
+<p>Es recomendable ejecutar esta instrucción de R: <code>options(openalexR.mailto = "tu-email@uv.es")</code> para si la API tiene mucha carga, proporcionar a OpenAlex un email to enter the polite pool.</p>
+<p>Algunas queries que se pueden hacer:</p>
+<ul>
+<li>Das un vector de DOI’s de trabajos y te devuelve la información bibliográfica de autores, revista, etc.</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#- works from DOI's</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>works_from_dois <span class="ot">&lt;-</span> <span class="fu">oa_fetch</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">entity =</span> <span class="st">"works"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">doi =</span> <span class="fu">c</span>(<span class="st">"10.1016/j.joi.2017.08.007"</span>, <span class="st">"https://doi.org/10.1007/s11192-013-1221-3"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Descargar todos los trabajos de un vector de autores</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#- Goal: Download all works published by a set of authors (known ORCIDs).</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>works_from_orcids <span class="ot">&lt;-</span> <span class="fu">oa_fetch</span>(</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">entity =</span> <span class="st">"works"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="at">author.orcid =</span> <span class="fu">c</span>(<span class="st">"0000-0001-6187-6610"</span>, <span class="st">"0000-0002-8517-9411"</span>),</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Obtener listado de trabajos sobre un determinado tópico que hayan sido citados mas de 50 veces</li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>works_search2 <span class="ot">&lt;-</span> <span class="fu">oa_fetch</span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="at">entity =</span> <span class="st">"works"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="at">title.search =</span> <span class="fu">c</span>(<span class="st">"gender gap"</span>, <span class="st">"awards"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">cited_by_count =</span> <span class="st">"&gt;50"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="at">from_publication_date =</span> <span class="st">"2010-01-01"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="at">to_publication_date =</span> <span class="st">"2024-12-31"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">sort =</span> <span class="st">"cited_by_count:desc"</span>),</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li><p>En la web del paquete hay más ejemplos. Por ejemplo <a href="https://docs.ropensci.org/openalexR/#-example-analyses">aquí</a> se hace un análisis de los tópicos/concepts tratado en el tiempo</p></li>
+<li><p>El chunk de abajo ordena las instituciones españolas en función del número de citas</p></li>
+</ul>
+<div class="cell">
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>spain_institutions <span class="ot">&lt;-</span> <span class="fu">oa_fetch</span>(</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="at">entity =</span> <span class="st">"institutions"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">country_code =</span> <span class="st">"es"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="at">type =</span> <span class="st">"education"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>spain_institutions <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">slice_max</span>(cited_by_count, <span class="at">n =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="fu">mutate</span>(<span class="at">display_name =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(display_name, cited_by_count)) <span class="sc">|&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>  <span class="fu">aes</span>(<span class="at">x =</span> cited_by_count, <span class="at">y =</span> display_name, <span class="at">fill =</span> display_name) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"E"</span>) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="at">x =</span> <span class="st">"Total citations"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    <span class="at">title =</span> <span class="st">"Spanish references"</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section><section id="qualtrics-pkg" class="level3"><h3 class="anchored" data-anchor-id="qualtrics-pkg">Qualtrics pkg</h3>
 <p><a href="https://www.qualtrics.com/es/">Qualtrics</a> es una plataforma online para realizar encuestas. <a href="https://docs.ropensci.org/qualtRics/">qualtRics</a> es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc.</p>
 </section><section id="arxiv" class="level3"><h3 class="anchored" data-anchor-id="arxiv">aRxiv</h3>
@@ -239,108 +308,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="busqueda-de-g-schollar" class="level3"><h3 class="anchored" data-anchor-id="busqueda-de-g-schollar">Busqueda de G-Schollar</h3>
 <p><a href="https://github.com/j-5chneider/sysreview/blob/master/scrape_google_scholar/scrape_google_scholar.R">Aquí</a>, gracias a <a href="https://scicomm.xyz/@jschneider">Johannes Schneider</a>, encontramos un script para escrapear una busqueda en G schollar.</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="do">############################################################################## #</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="do">###                                                                            #</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="do">### PROVIDE YOUR SETTINGS HERE                                              ####</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="do">### Please fill in your specifications and then run the code                   #</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="do">###                                                                            #</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="do">############################################################################## #</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="do">## Insert Search String here!</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># For tips on how to create a good search string for google scholar check out</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co"># http://musingsaboutlibrarianship.blogspot.com/2015/10/6-common-misconceptions-when-doing.html</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>searchstring <span class="ot">&lt;-</span> <span class="st">'intitle:("OPEN SCIENCE BADGES" &amp; "TRUST" &amp; "SCIENTISTS")'</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="do">## Which range of results should be exported?</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Please provide in increments of 10</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># (otherwise this will be enforced, the script can only export entire pages of 10)</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>from_result <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>to_result <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a></span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="do">############################################################################## #</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="do">###                                                                            #</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="do">### ONLY RUN THIS CODE                                                      ####</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="do">### Without changing anything                                                  #</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="do">###                                                                            #</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="do">############################################################################## #</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># create empty object to save results</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>references <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">authors =</span> <span class="fu">as.character</span>(),</span>
-<span id="cb1-35"><a href="#cb1-35"></a>                         <span class="at">year =</span> <span class="fu">as.character</span>(),</span>
-<span id="cb1-36"><a href="#cb1-36"></a>                         <span class="at">title =</span> <span class="fu">as.character</span>(),</span>
-<span id="cb1-37"><a href="#cb1-37"></a>                         <span class="at">journal =</span> <span class="fu">as.character</span>(),</span>
-<span id="cb1-38"><a href="#cb1-38"></a>                         <span class="at">abstract =</span> <span class="fu">as.character</span>())</span>
-<span id="cb1-39"><a href="#cb1-39"></a></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="fu">seq</span>(<span class="at">from =</span> from_result, <span class="at">to =</span> to_result, <span class="at">by =</span> <span class="dv">10</span>)<span class="sc">-</span><span class="dv">1</span>)) { <span class="co"># a loop to scrape from several pages</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a>  <span class="co"># create URL of google scholar result page</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a>  url <span class="ot">&lt;-</span> <span class="fu">URLencode</span>(<span class="fu">paste0</span>(<span class="st">"https://scholar.google.com/scholar?start="</span>, </span>
-<span id="cb1-43"><a href="#cb1-43"></a>                          i,              <span class="co"># indicates page</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a>                          <span class="st">"&amp;as_vis=1&amp;q="</span>, <span class="co"># excludes citations (checkbox on the left)</span></span>
-<span id="cb1-45"><a href="#cb1-45"></a>                          searchstring),  <span class="co"># passes the search string</span></span>
-<span id="cb1-46"><a href="#cb1-46"></a>                   <span class="at">reserved =</span> F)    <span class="co"># makes sure special characters are not encoded</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a>  </span>
-<span id="cb1-48"><a href="#cb1-48"></a>  <span class="co"># scrape this juicy results page</span></span>
-<span id="cb1-49"><a href="#cb1-49"></a>  page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) </span>
-<span id="cb1-50"><a href="#cb1-50"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a>  </span>
-<span id="cb1-52"><a href="#cb1-52"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) { <span class="co"># loop over all 10 results</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a>    <span class="co"># extract certain details from the result</span></span>
-<span id="cb1-54"><a href="#cb1-54"></a>    references <span class="ot">&lt;-</span> references <span class="sc">%&gt;%</span> </span>
-<span id="cb1-55"><a href="#cb1-55"></a>      <span class="fu">add_row</span>(<span class="at">authors =</span> <span class="fu">gsub</span>(<span class="st">"^(.*?)</span><span class="sc">\\</span><span class="st">W+-</span><span class="sc">\\</span><span class="st">W+.*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, </span>
-<span id="cb1-56"><a href="#cb1-56"></a>                             rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)), </span>
-<span id="cb1-57"><a href="#cb1-57"></a>                             <span class="at">perl =</span> <span class="cn">TRUE</span>)[j],</span>
-<span id="cb1-58"><a href="#cb1-58"></a>              <span class="at">year =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>))[j],</span>
-<span id="cb1-59"><a href="#cb1-59"></a>                                       <span class="st">"(</span><span class="sc">\\</span><span class="st">d{4})"</span>),   <span class="co"># if year is detected</span></span>
-<span id="cb1-60"><a href="#cb1-60"></a>                            <span class="fu">gsub</span>(<span class="st">"^.*(</span><span class="sc">\\</span><span class="st">d{4}).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, <span class="co"># then extract year</span></span>
-<span id="cb1-61"><a href="#cb1-61"></a>                                 rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)),</span>
-<span id="cb1-62"><a href="#cb1-62"></a>                                 <span class="at">perl =</span> <span class="cn">TRUE</span>)[j],</span>
-<span id="cb1-63"><a href="#cb1-63"></a>                            <span class="fu">as.character</span>(<span class="cn">NA</span>)),        <span class="co"># else missing value</span></span>
-<span id="cb1-64"><a href="#cb1-64"></a>              <span class="at">title =</span> rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_rt"</span>))[j],</span>
-<span id="cb1-65"><a href="#cb1-65"></a>              <span class="at">journal =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>))[j],</span>
-<span id="cb1-66"><a href="#cb1-66"></a>                                          <span class="st">"(</span><span class="sc">\\</span><span class="st">d{4})"</span>), <span class="co"># if year is detected</span></span>
-<span id="cb1-67"><a href="#cb1-67"></a>                               <span class="fu">gsub</span>(<span class="st">"^.*((?&lt;=-</span><span class="sc">\\</span><span class="st">s)(.*)(?=,+)).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>,  <span class="co"># then</span></span>
-<span id="cb1-68"><a href="#cb1-68"></a>                                    rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)),</span>
-<span id="cb1-69"><a href="#cb1-69"></a>                                    <span class="at">perl =</span> <span class="cn">TRUE</span>)[j],</span>
-<span id="cb1-70"><a href="#cb1-70"></a>                               <span class="fu">gsub</span>(<span class="st">"^.*((?&lt;=-</span><span class="sc">\\</span><span class="st">s)(.*)).*$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>,       <span class="co"># else</span></span>
-<span id="cb1-71"><a href="#cb1-71"></a>                                    rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)),</span>
-<span id="cb1-72"><a href="#cb1-72"></a>                                    <span class="at">perl =</span> <span class="cn">TRUE</span>)[j]),</span>
-<span id="cb1-73"><a href="#cb1-73"></a>              <span class="at">abstract =</span> rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_nodes</span>(page, <span class="st">".gs_rs"</span>))[j]</span>
-<span id="cb1-74"><a href="#cb1-74"></a>      )</span>
-<span id="cb1-75"><a href="#cb1-75"></a>  }</span>
-<span id="cb1-76"><a href="#cb1-76"></a>}</span>
-<span id="cb1-77"><a href="#cb1-77"></a></span>
-<span id="cb1-78"><a href="#cb1-78"></a></span>
-<span id="cb1-79"><a href="#cb1-79"></a><span class="co"># clean up the messy titles</span></span>
-<span id="cb1-80"><a href="#cb1-80"></a>references <span class="ot">&lt;-</span> references <span class="sc">|&gt;</span></span>
-<span id="cb1-81"><a href="#cb1-81"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">title =</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(</span>
-<span id="cb1-82"><a href="#cb1-82"></a>    title,</span>
-<span id="cb1-83"><a href="#cb1-83"></a>    <span class="st">"(</span><span class="sc">\\</span><span class="st">[PDF</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">[PDF</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">s|</span><span class="sc">\\</span><span class="st">[HTML</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">[HTML</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">s|</span><span class="sc">\\</span><span class="st">[BUCH</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">[B</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">s)"</span>, </span>
-<span id="cb1-84"><a href="#cb1-84"></a>    <span class="st">""</span>))</span>
-<span id="cb1-85"><a href="#cb1-85"></a></span>
-<span id="cb1-86"><a href="#cb1-86"></a><span class="do">## Export the data set to the working directory as CSV</span></span>
-<span id="cb1-87"><a href="#cb1-87"></a><span class="co"># This CSV is compatible for import to Rayyan and ASReview</span></span>
-<span id="cb1-88"><a href="#cb1-88"></a><span class="co"># rio::export(references, "references_googleScholar.csv")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">library</span>(rio)</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="do">############################################################################## #</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="do">###                                                                            #</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="do">### PROVIDE YOUR SETTINGS HERE                                              ####</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="do">### Please fill in your specifications and then run the code                   #</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="do">###                                                                            #</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="do">############################################################################## #</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="do">## Insert Search String here!</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co"># For tips on how to create a good search string for google scholar check out</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># http://musingsaboutlibrarianship.blogspot.com/2015/10/6-common-misconceptions-when-doing.html</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>searchstring <span class="ot">&lt;-</span> <span class="st">'intitle:("OPEN SCIENCE BADGES" &amp; "TRUST" &amp; "SCIENTISTS")'</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="do">## Which range of results should be exported?</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co"># Please provide in increments of 10</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co"># (otherwise this will be enforced, the script can only export entire pages of 10)</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>from_result <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>to_result <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a></span>
+<span id="cb5-24"><a href="#cb5-24"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="do">############################################################################## #</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="do">###                                                                            #</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="do">### ONLY RUN THIS CODE                                                      ####</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="do">### Without changing anything                                                  #</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="do">###                                                                            #</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="do">############################################################################## #</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co"># create empty object to save results</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a>references <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">authors =</span> <span class="fu">as.character</span>(),</span>
+<span id="cb5-35"><a href="#cb5-35"></a>                         <span class="at">year =</span> <span class="fu">as.character</span>(),</span>
+<span id="cb5-36"><a href="#cb5-36"></a>                         <span class="at">title =</span> <span class="fu">as.character</span>(),</span>
+<span id="cb5-37"><a href="#cb5-37"></a>                         <span class="at">journal =</span> <span class="fu">as.character</span>(),</span>
+<span id="cb5-38"><a href="#cb5-38"></a>                         <span class="at">abstract =</span> <span class="fu">as.character</span>())</span>
+<span id="cb5-39"><a href="#cb5-39"></a></span>
+<span id="cb5-40"><a href="#cb5-40"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="fu">seq</span>(<span class="at">from =</span> from_result, <span class="at">to =</span> to_result, <span class="at">by =</span> <span class="dv">10</span>)<span class="sc">-</span><span class="dv">1</span>)) { <span class="co"># a loop to scrape from several pages</span></span>
+<span id="cb5-41"><a href="#cb5-41"></a>  <span class="co"># create URL of google scholar result page</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a>  url <span class="ot">&lt;-</span> <span class="fu">URLencode</span>(<span class="fu">paste0</span>(<span class="st">"https://scholar.google.com/scholar?start="</span>, </span>
+<span id="cb5-43"><a href="#cb5-43"></a>                          i,              <span class="co"># indicates page</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a>                          <span class="st">"&amp;as_vis=1&amp;q="</span>, <span class="co"># excludes citations (checkbox on the left)</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a>                          searchstring),  <span class="co"># passes the search string</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a>                   <span class="at">reserved =</span> F)    <span class="co"># makes sure special characters are not encoded</span></span>
+<span id="cb5-47"><a href="#cb5-47"></a>  </span>
+<span id="cb5-48"><a href="#cb5-48"></a>  <span class="co"># scrape this juicy results page</span></span>
+<span id="cb5-49"><a href="#cb5-49"></a>  page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url) </span>
+<span id="cb5-50"><a href="#cb5-50"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb5-51"><a href="#cb5-51"></a>  </span>
+<span id="cb5-52"><a href="#cb5-52"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) { <span class="co"># loop over all 10 results</span></span>
+<span id="cb5-53"><a href="#cb5-53"></a>    <span class="co"># extract certain details from the result</span></span>
+<span id="cb5-54"><a href="#cb5-54"></a>    references <span class="ot">&lt;-</span> references <span class="sc">%&gt;%</span> </span>
+<span id="cb5-55"><a href="#cb5-55"></a>      <span class="fu">add_row</span>(<span class="at">authors =</span> <span class="fu">gsub</span>(<span class="st">"^(.*?)</span><span class="sc">\\</span><span class="st">W+-</span><span class="sc">\\</span><span class="st">W+.*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, </span>
+<span id="cb5-56"><a href="#cb5-56"></a>                             rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)), </span>
+<span id="cb5-57"><a href="#cb5-57"></a>                             <span class="at">perl =</span> <span class="cn">TRUE</span>)[j],</span>
+<span id="cb5-58"><a href="#cb5-58"></a>              <span class="at">year =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>))[j],</span>
+<span id="cb5-59"><a href="#cb5-59"></a>                                       <span class="st">"(</span><span class="sc">\\</span><span class="st">d{4})"</span>),   <span class="co"># if year is detected</span></span>
+<span id="cb5-60"><a href="#cb5-60"></a>                            <span class="fu">gsub</span>(<span class="st">"^.*(</span><span class="sc">\\</span><span class="st">d{4}).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, <span class="co"># then extract year</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a>                                 rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)),</span>
+<span id="cb5-62"><a href="#cb5-62"></a>                                 <span class="at">perl =</span> <span class="cn">TRUE</span>)[j],</span>
+<span id="cb5-63"><a href="#cb5-63"></a>                            <span class="fu">as.character</span>(<span class="cn">NA</span>)),        <span class="co"># else missing value</span></span>
+<span id="cb5-64"><a href="#cb5-64"></a>              <span class="at">title =</span> rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_rt"</span>))[j],</span>
+<span id="cb5-65"><a href="#cb5-65"></a>              <span class="at">journal =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>))[j],</span>
+<span id="cb5-66"><a href="#cb5-66"></a>                                          <span class="st">"(</span><span class="sc">\\</span><span class="st">d{4})"</span>), <span class="co"># if year is detected</span></span>
+<span id="cb5-67"><a href="#cb5-67"></a>                               <span class="fu">gsub</span>(<span class="st">"^.*((?&lt;=-</span><span class="sc">\\</span><span class="st">s)(.*)(?=,+)).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>,  <span class="co"># then</span></span>
+<span id="cb5-68"><a href="#cb5-68"></a>                                    rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)),</span>
+<span id="cb5-69"><a href="#cb5-69"></a>                                    <span class="at">perl =</span> <span class="cn">TRUE</span>)[j],</span>
+<span id="cb5-70"><a href="#cb5-70"></a>                               <span class="fu">gsub</span>(<span class="st">"^.*((?&lt;=-</span><span class="sc">\\</span><span class="st">s)(.*)).*$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>,       <span class="co"># else</span></span>
+<span id="cb5-71"><a href="#cb5-71"></a>                                    rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_elements</span>(page, <span class="st">".gs_a"</span>)),</span>
+<span id="cb5-72"><a href="#cb5-72"></a>                                    <span class="at">perl =</span> <span class="cn">TRUE</span>)[j]),</span>
+<span id="cb5-73"><a href="#cb5-73"></a>              <span class="at">abstract =</span> rvest<span class="sc">::</span><span class="fu">html_text</span>(rvest<span class="sc">::</span><span class="fu">html_nodes</span>(page, <span class="st">".gs_rs"</span>))[j]</span>
+<span id="cb5-74"><a href="#cb5-74"></a>      )</span>
+<span id="cb5-75"><a href="#cb5-75"></a>  }</span>
+<span id="cb5-76"><a href="#cb5-76"></a>}</span>
+<span id="cb5-77"><a href="#cb5-77"></a></span>
+<span id="cb5-78"><a href="#cb5-78"></a></span>
+<span id="cb5-79"><a href="#cb5-79"></a><span class="co"># clean up the messy titles</span></span>
+<span id="cb5-80"><a href="#cb5-80"></a>references <span class="ot">&lt;-</span> references <span class="sc">|&gt;</span></span>
+<span id="cb5-81"><a href="#cb5-81"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">title =</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(</span>
+<span id="cb5-82"><a href="#cb5-82"></a>    title,</span>
+<span id="cb5-83"><a href="#cb5-83"></a>    <span class="st">"(</span><span class="sc">\\</span><span class="st">[PDF</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">[PDF</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">s|</span><span class="sc">\\</span><span class="st">[HTML</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">[HTML</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">s|</span><span class="sc">\\</span><span class="st">[BUCH</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">[B</span><span class="sc">\\</span><span class="st">]</span><span class="sc">\\</span><span class="st">s)"</span>, </span>
+<span id="cb5-84"><a href="#cb5-84"></a>    <span class="st">""</span>))</span>
+<span id="cb5-85"><a href="#cb5-85"></a></span>
+<span id="cb5-86"><a href="#cb5-86"></a><span class="do">## Export the data set to the working directory as CSV</span></span>
+<span id="cb5-87"><a href="#cb5-87"></a><span class="co"># This CSV is compatible for import to Rayyan and ASReview</span></span>
+<span id="cb5-88"><a href="#cb5-88"></a><span class="co"># rio::export(references, "references_googleScholar.csv")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="g-schollar-rank-of-co-authors" class="level3"><h3 class="anchored" data-anchor-id="g-schollar-rank-of-co-authors">G-Schollar rank of co-authors</h3>
 <p>En este <a href="https://quantixed.org/2023/10/21/all-the-right-friends-how-does-google-scholar-rank-co-authors/">post</a> hace uso del paquete <a href="https://github.com/jkeirstead/scholar">scholar</a> para intentar comprender como se calcula el ranking de co-autores en G-Schollar.</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(scholar)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>id <span class="ot">&lt;-</span> <span class="st">'PXaWcW4AAAAJ'</span> <span class="co">#- tú ID de G-Schollar</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>my_profile <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(id)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>my_citation_h <span class="ot">&lt;-</span> <span class="fu">get_citation_history</span>(id)</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a>my_pubs <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(id)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(scholar)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>id <span class="ot">&lt;-</span> <span class="st">'PXaWcW4AAAAJ'</span> <span class="co">#- tú ID de G-Schollar</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>my_profile <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(id)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>my_citation_h <span class="ot">&lt;-</span> <span class="fu">get_citation_history</span>(id)</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a>my_pubs <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(id)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="ecuaciones-de-word" class="level3"><h3 class="anchored" data-anchor-id="ecuaciones-de-word">Ecuaciones de Word</h3>
@@ -348,97 +417,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="spss" class="level3"><h3 class="anchored" data-anchor-id="spss">SPSS</h3>
 <p>El paquete <a href="https://cran.r-project.org/web/packages/expss/index.html">expss</a> permite generar tablas al estilo SPSS. El paquete <a href="https://cran.r-project.org/web/packages/r2spss/vignettes/r2spss-intro.pdf">r2spss</a> allows to create plots and LaTeX tables that look like SPSS</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(expss)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>mtcars <span class="ot">=</span> <span class="fu">apply_labels</span>(mtcars,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                      <span class="at">mpg =</span> <span class="st">"Miles/(US) gallon"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>                      <span class="at">cyl =</span> <span class="st">"Number of cylinders"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6"></a>                      <span class="at">disp =</span> <span class="st">"Displacement (cu.in.)"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7"></a>                      <span class="at">hp =</span> <span class="st">"Gross horsepower"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8"></a>                      <span class="at">drat =</span> <span class="st">"Rear axle ratio"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9"></a>                      <span class="at">wt =</span> <span class="st">"Weight (1000 lbs)"</span>,</span>
-<span id="cb3-10"><a href="#cb3-10"></a>                      <span class="at">qsec =</span> <span class="st">"1/4 mile time"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11"></a>                      <span class="at">vs =</span> <span class="st">"Engine"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12"></a>                      <span class="at">vs =</span> <span class="fu">c</span>(<span class="st">"V-engine"</span> <span class="ot">=</span> <span class="dv">0</span>,</span>
-<span id="cb3-13"><a href="#cb3-13"></a>                             <span class="st">"Straight engine"</span> <span class="ot">=</span> <span class="dv">1</span>),</span>
-<span id="cb3-14"><a href="#cb3-14"></a>                      <span class="at">am =</span> <span class="st">"Transmission"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15"></a>                      <span class="at">am =</span> <span class="fu">c</span>(<span class="st">"Automatic"</span> <span class="ot">=</span> <span class="dv">0</span>,</span>
-<span id="cb3-16"><a href="#cb3-16"></a>                             <span class="st">"Manual"</span><span class="ot">=</span><span class="dv">1</span>),</span>
-<span id="cb3-17"><a href="#cb3-17"></a>                      <span class="at">gear =</span> <span class="st">"Number of forward gears"</span>,</span>
-<span id="cb3-18"><a href="#cb3-18"></a>                      <span class="at">carb =</span> <span class="st">"Number of carburetors"</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a>)</span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="fu">cross_cases</span>(mtcars, am, vs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<table class="gmisc_table table table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="border-top: 2px solid grey"></th>
-<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey;">&nbsp;Engine&nbsp;</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" style="text-align: center; border-bottom: 1px solid grey; font-weight: 900;"></th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: 900; border-bottom: 1px solid grey;">&nbsp;V-engine&nbsp;</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: 900; border-bottom: 1px solid grey;">&nbsp;Straight engine&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td colspan="3" style="font-weight: 900">&nbsp;Transmission&nbsp;</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">&nbsp;&nbsp;&nbsp;Automatic&nbsp;</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">&nbsp;&nbsp;&nbsp;Manual&nbsp;</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; border-bottom: 2px solid grey;">&nbsp;&nbsp;&nbsp;#Total cases&nbsp;</td>
-<td style="text-align: right; border-bottom: 2px solid grey;">18</td>
-<td style="text-align: right; border-bottom: 2px solid grey;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(expss)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>mtcars <span class="ot">=</span> <span class="fu">apply_labels</span>(mtcars,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>                      <span class="at">mpg =</span> <span class="st">"Miles/(US) gallon"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>                      <span class="at">cyl =</span> <span class="st">"Number of cylinders"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>                      <span class="at">disp =</span> <span class="st">"Displacement (cu.in.)"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>                      <span class="at">hp =</span> <span class="st">"Gross horsepower"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8"></a>                      <span class="at">drat =</span> <span class="st">"Rear axle ratio"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>                      <span class="at">wt =</span> <span class="st">"Weight (1000 lbs)"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10"></a>                      <span class="at">qsec =</span> <span class="st">"1/4 mile time"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11"></a>                      <span class="at">vs =</span> <span class="st">"Engine"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12"></a>                      <span class="at">vs =</span> <span class="fu">c</span>(<span class="st">"V-engine"</span> <span class="ot">=</span> <span class="dv">0</span>,</span>
+<span id="cb7-13"><a href="#cb7-13"></a>                             <span class="st">"Straight engine"</span> <span class="ot">=</span> <span class="dv">1</span>),</span>
+<span id="cb7-14"><a href="#cb7-14"></a>                      <span class="at">am =</span> <span class="st">"Transmission"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15"></a>                      <span class="at">am =</span> <span class="fu">c</span>(<span class="st">"Automatic"</span> <span class="ot">=</span> <span class="dv">0</span>,</span>
+<span id="cb7-16"><a href="#cb7-16"></a>                             <span class="st">"Manual"</span><span class="ot">=</span><span class="dv">1</span>),</span>
+<span id="cb7-17"><a href="#cb7-17"></a>                      <span class="at">gear =</span> <span class="st">"Number of forward gears"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18"></a>                      <span class="at">carb =</span> <span class="st">"Number of carburetors"</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>)</span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="fu">cross_cases</span>(mtcars, am, vs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section><section id="sas" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="sas">
 <span class="header-section-number">1</span> SAS</h2>
 <p>El paquete <a href="https://procs.r-sassy.org/">procs</a> permite obtener tablasy resultados similares a los obtenidos en SAS. En realidad el paquet forma parte de <a href="https://r-sassy.org/">sassy</a> un ecosistema, unn integrated set of packages designed to make programmers more productive in R, particularly those with a background in SAS® software</p>
 <p>Pb, solo sale en el Viewer de RStudio, no en QMD</p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(procs)</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Turn off printing for CRAN checks</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">options</span>(<span class="st">"procs.print"</span> <span class="ot">=</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Prepare sample data</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>dt <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(HairEyeColor, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Assign labels</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="fu">labels</span>(dt) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Hair =</span> <span class="st">"Hair Color"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11"></a>                   <span class="at">Eye =</span> <span class="st">"Eye Color"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12"></a></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co"># Produce frequency statistics</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a>res <span class="ot">&lt;-</span> <span class="fu">proc_freq</span>(dt, <span class="at">tables =</span> <span class="fu">v</span>(Hair, Eye, Hair <span class="sc">*</span> Eye),</span>
-<span id="cb4-15"><a href="#cb4-15"></a>                 <span class="at">weight =</span> Freq,</span>
-<span id="cb4-16"><a href="#cb4-16"></a>                 <span class="at">output =</span> report,</span>
-<span id="cb4-17"><a href="#cb4-17"></a>                 <span class="at">options =</span> chisq,</span>
-<span id="cb4-18"><a href="#cb4-18"></a>                 <span class="at">titles =</span> <span class="st">"Hair and Eye Frequency Statistics"</span>)</span>
-<span id="cb4-19"><a href="#cb4-19"></a></span>
-<span id="cb4-20"><a href="#cb4-20"></a>res</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(procs)</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co"># Turn off printing for CRAN checks</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">options</span>(<span class="st">"procs.print"</span> <span class="ot">=</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># Prepare sample data</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>dt <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(HairEyeColor, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># Assign labels</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="fu">labels</span>(dt) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Hair =</span> <span class="st">"Hair Color"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11"></a>                   <span class="at">Eye =</span> <span class="st">"Eye Color"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co"># Produce frequency statistics</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a>res <span class="ot">&lt;-</span> <span class="fu">proc_freq</span>(dt, <span class="at">tables =</span> <span class="fu">v</span>(Hair, Eye, Hair <span class="sc">*</span> Eye),</span>
+<span id="cb8-15"><a href="#cb8-15"></a>                 <span class="at">weight =</span> Freq,</span>
+<span id="cb8-16"><a href="#cb8-16"></a>                 <span class="at">output =</span> report,</span>
+<span id="cb8-17"><a href="#cb8-17"></a>                 <span class="at">options =</span> chisq,</span>
+<span id="cb8-18"><a href="#cb8-18"></a>                 <span class="at">titles =</span> <span class="st">"Hair and Eye Frequency Statistics"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19"></a></span>
+<span id="cb8-20"><a href="#cb8-20"></a>res</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="grafico-con-la-ruta-a-archivos" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="grafico-con-la-ruta-a-archivos">
 <span class="header-section-number">2</span> Grafico con la ruta a archivos</h2>
 <p><a href="https://emitanaka.org/dir/index.html">dir</a> es un paquete de Emi Tanaka para visualizar la estructura de directorios. Otra alternativa es el paquete <a href="https://yonicd.github.io/jsTree/">jsTree</a></p>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dir<span class="sc">::</span><span class="fu">listing</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dir<span class="sc">::</span><span class="fu">listing</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
