@@ -24,7 +24,7 @@ Voy a mostrar en una tabla y un gráfico el ranking de los municipios mas poblad
 ### Tabla
 
 ```{r, include = FALSE}
-my_folder_post <- "/blog_01/2022-07-14_censos-historicos_03/"
+my_folder_post <- "/blog_Rflowers/2022-07-14_censos-historicos_03/"
 my_script <- "01_script_tabla_rankings.R" 
 path_file <- paste0(here::here(), my_folder_post,  my_script)
 ```
@@ -57,7 +57,7 @@ En el primer gráfico mostraré la evolución del ranking de población para los
 
 
 ```{r, include = FALSE}
-my_folder_post <- "/blog_01/2022-07-14_censos-historicos_03/"
+my_folder_post <- "/blog_Rflowers/2022-07-14_censos-historicos_03/"
 my_script <- "02_script_rank-plot_01.R" 
 path_file <- paste0(here::here(), my_folder_post,  my_script)
 ```

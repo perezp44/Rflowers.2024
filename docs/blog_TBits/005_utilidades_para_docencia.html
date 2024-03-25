@@ -213,15 +213,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Índice</h2>
    
   <ul>
-<li><a href="#openalexr-pkg" id="toc-openalexr-pkg" class="nav-link active" data-scroll-target="#openalexr-pkg">OpenAlexR pkg</a></li>
-  <li><a href="#qualtrics-pkg" id="toc-qualtrics-pkg" class="nav-link" data-scroll-target="#qualtrics-pkg">Qualtrics pkg</a></li>
+<li>
+<a href="#bibliometrics" id="toc-bibliometrics" class="nav-link active" data-scroll-target="#bibliometrics"><span class="header-section-number">1</span> Bibliometrics</a>
+  <ul class="collapse">
+<li><a href="#openalexr-pkg" id="toc-openalexr-pkg" class="nav-link" data-scroll-target="#openalexr-pkg">OpenAlexR pkg</a></li>
   <li><a href="#arxiv" id="toc-arxiv" class="nav-link" data-scroll-target="#arxiv">aRxiv</a></li>
   <li><a href="#busqueda-de-g-schollar" id="toc-busqueda-de-g-schollar" class="nav-link" data-scroll-target="#busqueda-de-g-schollar">Busqueda de G-Schollar</a></li>
   <li><a href="#g-schollar-rank-of-co-authors" id="toc-g-schollar-rank-of-co-authors" class="nav-link" data-scroll-target="#g-schollar-rank-of-co-authors">G-Schollar rank of co-authors</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#otros" id="toc-otros" class="nav-link" data-scroll-target="#otros"><span class="header-section-number">2</span> Otros</a>
+  <ul class="collapse">
+<li><a href="#qualtrics-pkg" id="toc-qualtrics-pkg" class="nav-link" data-scroll-target="#qualtrics-pkg">Qualtrics pkg</a></li>
   <li><a href="#ecuaciones-de-word" id="toc-ecuaciones-de-word" class="nav-link" data-scroll-target="#ecuaciones-de-word">Ecuaciones de Word</a></li>
   <li><a href="#spss" id="toc-spss" class="nav-link" data-scroll-target="#spss">SPSS</a></li>
-  <li><a href="#sas" id="toc-sas" class="nav-link" data-scroll-target="#sas"><span class="header-section-number">1</span> SAS</a></li>
-  <li><a href="#grafico-con-la-ruta-a-archivos" id="toc-grafico-con-la-ruta-a-archivos" class="nav-link" data-scroll-target="#grafico-con-la-ruta-a-archivos"><span class="header-section-number">2</span> Grafico con la ruta a archivos</a></li>
+  </ul>
+</li>
+  <li><a href="#sas" id="toc-sas" class="nav-link" data-scroll-target="#sas"><span class="header-section-number">3</span> SAS</a></li>
+  <li><a href="#grafico-con-la-ruta-a-archivos" id="toc-grafico-con-la-ruta-a-archivos" class="nav-link" data-scroll-target="#grafico-con-la-ruta-a-archivos"><span class="header-section-number">4</span> Grafico con la ruta a archivos</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/perezp44/Rflowers.2024/edit/master/blog_TBits/005_utilidades_para_docencia.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/perezp44/Rflowers.2024/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -229,6 +239,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-right" id="quarto-document-content"><p>En este TBit recopilo scripts/app’s/pkgs/ con potencial utilidad para la docencia/investigación.</p>
+<section id="bibliometrics" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="bibliometrics">
+<span class="header-section-number">1</span> Bibliometrics</h2>
 <section id="openalexr-pkg" class="level3"><h3 class="anchored" data-anchor-id="openalexr-pkg">OpenAlexR pkg</h3>
 <p><a href="https://docs.ropensci.org/openalexR/">OpenAlexR</a> es un pkg de R que permite acceder a la API de <a href="https://openalex.org/">OpenAlex</a> to retrieve <strong>bibliographic infomation</strong> about publications, authors, venues, institutions and concepts.</p>
 <p>OpenAlex es una base de datos bibliográficos de acceso libre, creada en 2022 que, según nos cuentan <a href="https://www.editorialteseo.com/archivos/33215/los-libros-y-las-revistas-cientificas-de-teseo-indexadas-en-openalex/">aquí</a>, ha logrado reunir más de 250 millones de textos de múltiples disciplinas. OpenAlex, a veces es presentada como la base de datos académica que puede sustituir a otras bases de datos bibliográficas. <a href="https://www.lluiscodina.com/openalex-scopus/">Aquí</a> analizan si realmente OpenAlex es una alternativa a otras bases de datos como Scopus o Web of Science.</p>
@@ -301,12 +313,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="qualtrics-pkg" class="level3"><h3 class="anchored" data-anchor-id="qualtrics-pkg">Qualtrics pkg</h3>
-<p><a href="https://www.qualtrics.com/es/">Qualtrics</a> es una plataforma online para realizar encuestas. <a href="https://docs.ropensci.org/qualtRics/">qualtRics</a> es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc.</p>
 </section><section id="arxiv" class="level3"><h3 class="anchored" data-anchor-id="arxiv">aRxiv</h3>
 <p><a href="https://docs.ropensci.org/aRxiv/index.html">aRxiv</a> es un paquete de R para acceder a la API de arXiv. <a href="https://arxiv.org/">arXiv</a> es un repositorio de acceso abierto de preprints de artículos científicos en física, matemáticas, ciencias de la computación, biología cuantitativa, finanzas cuantitativas, estadísticas y economía.</p>
+<p>Este paquete no lo he usado, ni siquiera he jugado un poco con él.</p>
 </section><section id="busqueda-de-g-schollar" class="level3"><h3 class="anchored" data-anchor-id="busqueda-de-g-schollar">Busqueda de G-Schollar</h3>
-<p><a href="https://github.com/j-5chneider/sysreview/blob/master/scrape_google_scholar/scrape_google_scholar.R">Aquí</a>, gracias a <a href="https://scicomm.xyz/@jschneider">Johannes Schneider</a>, encontramos un script para escrapear una busqueda en G schollar.</p>
+<p><a href="https://github.com/j-5chneider/sysreview/blob/master/scrape_google_scholar/scrape_google_scholar.R">Aquí</a>, gracias a <a href="https://scicomm.xyz/@jschneider">Johannes Schneider</a>, encontramos un script para escrapear una busqueda en G schollar. Tiene el código abajo.</p>
 <div class="cell">
 <details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(rvest)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(stringr)</span>
@@ -412,6 +423,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-9"><a href="#cb6-9"></a>my_pubs <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(id)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section></section><section id="otros" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="otros">
+<span class="header-section-number">2</span> Otros</h2>
+<section id="qualtrics-pkg" class="level3"><h3 class="anchored" data-anchor-id="qualtrics-pkg">Qualtrics pkg</h3>
+<p><a href="https://www.qualtrics.com/es/">Qualtrics</a> es una plataforma online para realizar encuestas. <a href="https://docs.ropensci.org/qualtRics/">qualtRics</a> es un paquete de R para trabajar con la API de Qualtrics. Permite descargar datos de encuestas, crear encuestas, modificarlas, etc.</p>
 </section><section id="ecuaciones-de-word" class="level3"><h3 class="anchored" data-anchor-id="ecuaciones-de-word">Ecuaciones de Word</h3>
 <p>Con <code>pandoc</code> es fácil transformar un archivo <code>.docx</code> a Quuarto, pero si sólo quieres coger una ecuación hecha en Word y pegarla en Quarto, puedes hacerlo con <a href="https://jgostick.github.io/mml2latex/">este</a> MathML to LaTeX Converter.</p>
 </section><section id="spss" class="level3"><h3 class="anchored" data-anchor-id="spss">SPSS</h3>
@@ -440,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-21"><a href="#cb7-21"></a><span class="fu">cross_cases</span>(mtcars, am, vs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="sas" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="sas">
-<span class="header-section-number">1</span> SAS</h2>
+</section></section><section id="sas" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="sas">
+<span class="header-section-number">3</span> SAS</h2>
 <p>El paquete <a href="https://procs.r-sassy.org/">procs</a> permite obtener tablasy resultados similares a los obtenidos en SAS. En realidad el paquet forma parte de <a href="https://r-sassy.org/">sassy</a> un ecosistema, unn integrated set of packages designed to make programmers more productive in R, particularly those with a background in SAS® software</p>
 <p>Pb, solo sale en el Viewer de RStudio, no en QMD</p>
 <div class="cell">
@@ -467,8 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-20"><a href="#cb8-20"></a>res</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="grafico-con-la-ruta-a-archivos" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="grafico-con-la-ruta-a-archivos">
-<span class="header-section-number">2</span> Grafico con la ruta a archivos</h2>
+</section><section id="grafico-con-la-ruta-a-archivos" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="grafico-con-la-ruta-a-archivos">
+<span class="header-section-number">4</span> Grafico con la ruta a archivos</h2>
 <p><a href="https://emitanaka.org/dir/index.html">dir</a> es un paquete de Emi Tanaka para visualizar la estructura de directorios. Otra alternativa es el paquete <a href="https://yonicd.github.io/jsTree/">jsTree</a></p>
 <div class="cell">
 <details class="code-fold"><summary>Código</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dir<span class="sc">::</span><span class="fu">listing</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

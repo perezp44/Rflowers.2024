@@ -91,7 +91,7 @@ Para ahondar un poco más en la dinámica de la evolución del número de munici
 
 
 ```{r, include = FALSE}
-my_folder_post <- "/blog_01/2022-07-13_censos-historicos_02/"
+my_folder_post <- "/blog_Rflowers/2022-07-13_censos-historicos_02/"
 my_script <- "02_script_crear-tabla-01.R" 
 path_file <- paste0(here::here(), my_folder_post,  my_script)
 ```
@@ -138,7 +138,7 @@ En las @fig-nn-muni-censo y @fig-nn-muni-padron se muestran datos sobre la evolu
 
 
 ```{r, include = FALSE}
-my_folder_post <- "/blog_01/2022-07-13_censos-historicos_02/"
+my_folder_post <- "/blog_Rflowers/2022-07-13_censos-historicos_02/"
 my_script <- "02_script_crear-tabla-01.R" 
 path_file <- paste0(here::here(), my_folder_post ,  my_script)
 source(path_file, local = knitr::knit_global())
