@@ -1,7 +1,7 @@
 ---
 title: "¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata"
 subtitle: | 
-  (Aún en elaboración) Un análisis con datos de Wikidata sobre la ubicación de los cuadros de Goya en el mundo.
+  Un análisis con datos de Wikidata sobre la ubicación de los cuadros de Goya en el mundo. Es imporatnte que recordeís que uso datos de Wikidata y que yo no soy, para nada, experto en Goya.
 date: 2024-03-25
 categories: [Wikidata, SPARQL, obras de Goya]
 image: "imagenes/thumbnail.jpg"
@@ -153,7 +153,7 @@ Realmente con mi "final-query" conseguí recuperar **799 obras** de Goya **disti
 
 
 ```{r}
-#| eval: true
+#| include: false
 #my_ruta_datos_orig <- fs::dir_ls(here::here("datos", "orig_wikidata"))
 my_ruta_datos_orig <- fs::dir_ls("./datos/orig_wikidata")
 
@@ -252,12 +252,15 @@ df_ubicaciones <- df_orig_x %>% distinct(item, .keep_all = TRUE) #-
 
 ```
 
+### Mapa con la ubicación de los museos con obras de Goya
+
 
 Lo primero que voy a mostrar es un **mapa con la situación geográfica** de todos los museos/ubicaciones donde hay alguna obra de Goya. El mapa es muy sencillito^[Algún día lo mejoraré!! Ya te digo yo que sí 😅 .], se podría mejorar mucho, por ejemplo, haciendo que en los popups aparezca el número de obras en cada museo etc... etc... pero ... no tengo tiempo, ni ganas, de hacerlo ahora. Eso sí, a pesar de ser sencillito se ve claramente que, si quieres ver Goyas, no te vayas a África ni a Sudamérica. Si la información de Wikidata es cierta, no hay ningún Goya en África y **en Sudamérica solo se pueden ver Goyas en Argentina, concretamente 5 en Buenos Aires y 1 en Rosario. 
 
 
 Si haces zoom en el mapa parece que en **Madrid** hay 10 lugares/museos donde ver obras de Goya, y en **Zaragoza** 4, me parecen pocos, seguramente haya más, pero estos son los datos de los que dispongo.
 
+<br>
 
 
 ```{r}
@@ -270,44 +273,162 @@ mapview::mapview(df_plot)
 
 <br>
 
-Veamos algunas tabla. Primero una tabla con el núemro de Goyas en cada museo:
+Veamos algunas tabla. Primero una tabla con el número de Goyas en cada museo:
 
 ```{r}
 #| label: tablas
 #| eval: true
-zz_museos <- df_ubicaciones %>% janitor::tabyl(ubicacionLabel)
+zz_museos <- df_ubicaciones %>% janitor::tabyl(ubicacionLabel) 
 zz_unir_museos <- df_ubicaciones %>% distinct(ubicacionLabel, ciudadLabel, paisLabel)
-zz_museos <- dplyr::left_join(zz_unir_museos, zz_museos) %>% dplyr::arrange(desc(n))
+zz_museos <- dplyr::left_join(zz_unir_museos, zz_museos) %>% dplyr::arrange(desc(n)) %>% select(-percent)
 ```
 
 
-Las tabla están hechas pero no se muestran. Aún no se el perquè
+### Obras de Goya por museos
 
+La primera tabla muestra el número de obras de Goya que hay en cada museo. Yo esperaba que el Museo del Prado fuese el que más tuviese, pero no, es el Museo de Bellas Artes de Zaragoza. ¿Porqué? Pues lo primero a tener en cuenta es que sólo tengo las 756 obras de Goya registradas en Wikidata y que además tienen su ubicación. Sí, llama la atención, al menos a mi, que el museo que mas Goyas tiene es la Galería Nacional de Arte de Washington, pero ... ¿es correcto? No lo sé, pero si miramos en su (catálogo](https://www.nga.gov/global-site-search-page.html?searchterm=Goya) parece que tiene incluso más de los que pone en la tabla. Si me pongo en plan cabezota/investigador es poisble que hallase la respuesta pero no tengo tanto tiempo para este post, así que  le he preguntado a una IA y me ha dicho que:
 
-- una DT table
+> En la Galería Nacional de Arte de Washington, D.C., hay una colección significativa de obras de Francisco de Goya. Sin embargo, el número exacto de obras de Goya en exhibición puede variar debido a préstamos, rotaciones de exhibiciones y otras consideraciones curatoriales. 
 
-```{r}
-DT::datatable(zz_museos)
-```
-
-- ahora una reactable
 
 
 ```{r}
-reactable::reactable(zz_museos)
+DT::datatable(zz_museos,
+              caption = 'Cuadro 1: Número de obras de Goya por museo',
+              filter = 'top', options = list(pagegeLength = 5, autoWidth = TRUE),
+              class = 'cell-border stripe',
+              colnames = c('Ubicación (museo)', 'Ciudad', 'País', 'Nº de obras'))
 ```
 
 
-- las DT y recatable no se ven, asi que provisionalmente una gt::gt()
+
 
 ```{r}
-gt::gt(zz_museos)
+#| eval: false
+#| echo: false
+library(reactable)
+reactable::reactable(zz_museos, 
+    defaultColDef = colDef(headerStyle = list(background = "#f7f7f8")),
+   columns = list(
+       ubicacionLabel = colDef(name = "Ubicación (Museo)"),
+       ciudadLabel = colDef(name = "Ciudad"),
+       paisLabel = colDef(name = "País"),
+      n = colDef(name = "Nº de obras")),
+   bordered = TRUE,
+  highlight = TRUE
+  )
+
 ```
 
-Faltan las tablas por ciudades y por paises . Están hechas pero se acab el tiempo 
+
+### Obras de Goya por ciudades
+
+
+Veamos como queda el ranking de ciudades con más obras de Goya^[Recuerda siempre que trabajo con los datos que hay en Wikidata.]
+
+```{r}
+#| include: false
+zz_ciudades <- df_ubicaciones %>% 
+  group_by(ciudadLabel, paisLabel) %>% summarise(n = n()) %>% arrange(desc(n))
+
+zz_unir_ciudades <- df_ubicaciones %>% distinct(ciudadLabel, paisLabel) 
+
+zz_ciudades <- left_join(zz_unir_ciudades, zz_ciudades) %>% arrange(desc(n))
+```
+
+
+```{r}
+DT::datatable(zz_ciudades,
+              caption = 'Cuadro 2: Número de obras de Goya por ciudad',
+              filter = 'top', options = list(pagegeLength = 5, autoWidth = TRUE),
+              class = 'cell-border stripe',
+              colnames = c( 'Ciudad', 'País', 'Nº de obras'))
+```
+
+
+Simplemente comentar que sigue en cabez Whatshington, en segundo lugar está Madrid, y Róterdam en tercer lugar. ¿Róterdam? Sí, Róterdam, tiene bastantes obras de Goya, puedes verlo en su catálogo [aquí](https://www.boijmans.nl/en/collection/artists/7527/francisco-goya). En un, para mi, decepcionante sexto puesto aparece Zaragoza con tan sólo 17 obras. Seguramente faltarán obras de Goya en Wikidata. De todas formas, para mi, la mejor forma de acercarse a Goya es ir a Fuendetodos, su pueblo natal, y después visitar el Prado, 🤔 ¿o mejor al revés? Aunque Whashington, con 292 obras, puede estar requete-bien 😉 . 
+
+Como nota técnica para mi, y que tengo que recordar, es que tengo que refinar mis consultas de Wikidata relativas a la ubicación. Por ejemplo, en el cuadro anterior, en lugar de aparecer Nueva York, figuran Manhattan (Museo Metropolitano de Arte, Sociedad Hispánica de América y Colección Frick) y Brooklyn (Museo Brooklyn). Otro detalle, el Museo de Arte de Ponce, en mi consulta a Wikidata aparece como que está en Ponce, EE.UU, pero en realidad el municipio de Ponce está en la isla de Puerto Rico, oficialmente Estado Libre Asociado de Puerto Rico. Otro detalle: el Museo de Bellas Artes de Budapest, en mi consulta a Wikidata aparece como que está en Zugló, cuando debería parecer Budapest; el problema consiste en que Zugló debe ser un distrito o barrio de Budapest. Como veís tengo que refinar mis habilidades con las queries a Wikidata, pero ... , otra vez, no será ahora mismo.
+
+
+
+
+
+### Obras de Goya por países
+
+Veamos qué países tienen más obras de Goya. 
+
+```{r}
+#| include: false
+zz_paises <- df_ubicaciones %>% 
+  group_by(paisLabel) %>% summarise(n = n()) %>% arrange(desc(n))
+
+
+```
+
+
+
+```{r}
+DT::datatable(zz_paises,
+              caption = 'Cuadro 3: Número de obras de Goya por países',
+              filter = 'top', options = list(pagegeLength = 5, autoWidth = TRUE),
+              class = 'cell-border stripe',
+              colnames = c( 'País', 'Nº de obras'))
+```
+
 
 <br>
+
+Nada, no hay manera la Galería Nacional de Arte de Washington hace que Estados Unidos esté en cabeza 😮!!
+
+
+Bueno que cada cual saque sus impresiones y conclusiones ... y si algún experto en Goya lee el post, que no sea muy duro conmigo: recuerda que son datos de Wikidata y que el objetivo del post es aprender/recordar a hacer consultas a Wikidata no sentar cátedra sobre la ubicación de las obras de Goya en el mundo.
+
+
+Wikidata está genial pero sería de desear la colaboración de organismos/fundaciones como la Fundación Goya en Aragón para que ayudará a hacer que el catalogó de obras de Goya en Wikidata fuese más completo y preciso. Ojala!!!
+
+
+
+
 
 ## Collage de obras de Goya
 
 Me queda hacer el collage, será para otro día ....
+
+
+Lo que sí voy a hacer es una tabla con links a las imagenes de las obras de Goya que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:  
+
+```{r}
+#| include: false
+df_con_img <- df_ubicaciones %>% 
+  filter(!is.na(image)) %>% 
+  distinct(item, .keep_all = TRUE) %>% 
+  select(itemLabel, ubicacionLabel, ciudadLabel , link_esp, link_eng, image, idGoya,  item)
+```
+
+
+```{r}
+DT::datatable(df_con_img,
+              caption = 'Cuadro 4: Imagén y links a las obras de Goya en Wikidata',
+              filter = 'top', options = list(pagegeLength = 5, autoWidth = TRUE),
+              class = 'cell-border stripe',
+              colnames = c( 'Cuadro', "Museo","Ciudad", "Imagén en Wikidata", " Link a Wikipedia" , "Link a Wiki inglesa", 'id, "Link a Wikidata"'))
+```
+
+
+<br>
+
+
+```{r}
+DT::datatable(df_con_img)
+```
+
+
+## Conclusiones
+
+Simplemente repetir lo que he dicho más arriba: que cada cual saque sus propias impresiones y conclusiones ... y si algún experto en Goya lee el post, que no sea muy duro conmigo: recuerda que son datos de Wikidata^[Repito, Wikidata es super-fantástica, pero evidentemente tiene lagunas y algunos errores] y que el objetivo del post es aprender/recordar a hacer consultas a Wikidata no sentar cátedra sobre la ubicación de las obras de Goya en el mundo.
+
+
+Wikidata es fabulosa, pero sería de desear la colaboración de organismos/fundaciones como la Fundación Goya en Aragón para que ayudarán a hacer que el catálogo de obras de Goya en Wikidata fuese más completo y preciso. Ojala!!!
+
+

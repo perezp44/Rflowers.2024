@@ -170,11 +170,12 @@ DT::datatable(tabla_cuadros, rownames = FALSE, options = list(pageLength = 10))
 #- el entierro de la sardina no puede ser de 1900 !!
 
 #- IMAGENES - Collage  ---------------------------------------------------------
-
+names(df_con_img)
 #- ver las que SI tienen imagen
-df_con_img <- df_orig %>% 
+df_con_img <- df_ubicaciones %>% 
   filter(!is.na(image)) %>% 
-  distinct(item, .keep_all = TRUE) 
+  distinct(item, .keep_all = TRUE) %>% 
+  select(itemLabel, ubicacionLabel, ciudadLabel , link_esp, link_eng, image, idGoya,  item)
 
 
 
