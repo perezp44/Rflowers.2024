@@ -1,7 +1,7 @@
 ---
 title: "Collage con las obras de Goya que existen en Wikidata"
 subtitle: | 
-  En el anterior post he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. Aquí presento una tabla para poder visualizarlas.
+  En el anterior post he recopilado las obras de Goya en Wikidata que tienen imagen disponible. Aquí presento una tabla para poder visualizarlas.
 date: 2024-03-27
 categories: [Wikidata, obras de Goya]
 image: "imagenes/thumbnail.jpg"
@@ -17,7 +17,7 @@ library(wikifacts)
 
 ## Intro
 
-En el [anterior post](../2024-03-25_wikidata-Goya/index.qmd) he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. El objetivo era simplemente ver donde están ubicadas las obras de Goya. Ahora, en este post, quiero hacer un collage con las obras de Goya que tienen imagen disponible en Wikidata; bueno, en realidad quería hacer un collage, lo haré, pero de momento solo presento una tabla para poder visualizar de manera sencilla las obras de Goya disponibles en Wikidata.
+En el [anterior post](../2024-03-25_wikidata-Goya/index.qmd) he recopilado las obras de Goya en Wikidata que tienen imagen disponible. El objetivo era simplemente ver donde están ubicadas las obras de Goya. Ahora, en este post, quiero hacer un collage con las obras de Goya con imagen en Wikidata; bueno, en realidad quería hacer un collage, lo haré, pero de momento solo presento una tabla para poder visualizar de manera sencilla las obras de Goya disponibles en Wikidata.
 
 
 ```{r}
@@ -97,9 +97,10 @@ df_ubicaciones <- df_orig_x %>% distinct(item, .keep_all = TRUE) #-
 
 ## Collage de obras de Goya
 
-Me queda hacer el collage, será para otro día .... no, la verdad es que de momento no voy a hacer el collage.
+Sí, me queda hacer el collage, será para otro día .... 
 
-Lo que sí voy a hacer es una **tabla con links a las imágenes de las obras de Goya** que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:  
+Lo que sí voy a hacer es una **tabla con links a las imágenes de las obras de Goya** que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata y tienen registrada su ubicación, pero sí, más o menos la mitad de ellas, concretamente 482 obras. Ahí van:  
+
 <br>
 
 **Cuadro 1:** Links a imágenes y a páginas web de las obras de Goya en Wikidata
@@ -151,12 +152,12 @@ La verdad es que me encantaría ver el listado de obras en el catálogo de la Fu
 
 ```{r}
 DT::datatable(df_con_img_ok,  escape = FALSE,
+              options = list(pageLength = 50),
               caption = 'Cuadro 4: Links a imágenes y a páginas web de las obras de Goya en Wikidata',
               filter = 'top',
               class = 'cell-border stripe',
               colnames = c("Cuadro", "Ficha",  "Museo", "Ciudad", "Link a Wikipedia" , "Link a Wiki inglesa", "Link a Wikidata", "id"))
 ```
-
 
 
 
