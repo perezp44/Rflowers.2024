@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Fecha de modificación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">21 de marzo de 2024</p>
+        <p class="date-modified">26 de marzo de 2024</p>
       </div>
     </div>
       
@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">rm</span>(aa)   <span class="co">#- borramos el objeto aa</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">rm</span>(<span class="st">"cc"</span>) <span class="co">#- borramos el objeto cc. </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Fíjate bien que <code><a href="https://rdrr.io/r/base/rm.html">base::rm()</a></code> admite que pongas el nombre del objeto que quiere borrar, por ejmeplo <code>aa</code>, pero también puedes poner el nombre del objeto entre comillas como carácter (<code>"aa"</code>). Utilizando jerga R, puedes poner el name o el quoted names.</p>
+<p>Fíjate bien que <code><a href="https://rdrr.io/r/base/rm.html">base::rm()</a></code> admite que pongas el nombre del objeto que quieres borrar, por ejemplo <code>aa</code>, pero también puedes poner el nombre del objeto entre comillas como carácter (<code>"aa"</code>). Utilizando jerga R, puedes poner el name o el quoted name.</p>
 <p>Quiero volver a insistir en este punto, así que si miras la ayuda de la función <code><a href="https://rdrr.io/r/base/rm.html">base::rm()</a></code> verás que para su primer argumento indica:</p>
 <blockquote class="blockquote">
 <p>the objects to be removed, as names (unquoted) or character strings (quoted)</p>
@@ -360,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es bueno mantener el Global Environment limpio. Si estamos trabajando en un proyecto, es mejor borrar los objetos que ya no necesitamos. Para ello podemos usar la función <code><a href="https://rdrr.io/r/base/rm.html">base::rm()</a></code>.</p>
 <p>La función <code><a href="https://rdrr.io/r/base/rm.html">base::rm()</a></code> permite borrar todos los objetos en el Global, con <code>rm(list = ls())</code>, o borrar solo algunos objetos; por ejemplo <code>rm(aa, "bb")</code>.</p>
 <p>También podemos utilizar patrones más complejos para borrar solo algunos objetos. Por ejemplo, podemos borrar los objetos que empiezan por un patrón, o borrar todos los objetos excepto algunos que nos interesa mantener.</p>
-<p>No te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas <a href="https://community.rstudio.com/t/first-line-of-every-r-script/799?u=jessemaegan">este hilo</a> de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, oncretamente <a href="https://community.rstudio.com/t/first-line-of-every-r-script/799/36">aquí</a>.</p>
+<p>No te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas <a href="https://community.rstudio.com/t/first-line-of-every-r-script/799?u=jessemaegan">este hilo</a> de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, concretamente <a href="https://community.rstudio.com/t/first-line-of-every-r-script/799/36">aquí</a>.</p>
 
 
 </section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>

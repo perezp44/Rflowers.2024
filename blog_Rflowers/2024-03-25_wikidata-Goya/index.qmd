@@ -4,7 +4,7 @@ subtitle: |
   Un análisis con datos de Wikidata sobre la ubicación de los cuadros de Goya en el mundo. Es importante que recordeís que utilizo datos de Wikidata y que yo no soy, para nada, experto en Goya.
 date: 2024-03-25
 categories: [Wikidata, SPARQL, obras de Goya]
-image: "imagenes/thumbnail.jpg"
+image: "imagenes/thumbnail.png"
 ---
 
 
@@ -398,45 +398,9 @@ Wikidata está genial pero sería de desear la colaboración de organismos/funda
 
 ## Collage de obras de Goya
 
-Me queda hacer el collage, será para otro día ....
-
-
-Lo que sí voy a hacer es una tabla con links a las imagenes de las obras de Goya que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:  
-
-```{r}
-#| include: false
-df_con_img <- df_ubicaciones %>% 
-  filter(!is.na(image)) %>% 
-  distinct(item, .keep_all = TRUE) %>% 
-  select(itemLabel, ubicacionLabel, ciudadLabel, image, link_esp, link_eng, idGoya,  item) 
-
- # mutate(image = paste0('<href="', image, '">', image,  '</a>')) %>% 
- # mutate(image = stringr::str_replace_all(image, "\\\\", ""))
-  
-```
+Me queda hacer el collage, pero al final, el collage no lo he hecho, lo dejo para otra vez, pero lo que sí he hecho es una tabla con links a las imágenes de las obras de Goya que hay en Wikidata. Puedes verlas en el siguiente post del blog, concretamente [aquí](../2024-03-27_collage-Goya/index.qmd)
 
 <br>
-
-
-
-
-
-
-```{r}
-DT::datatable(df_con_img,  
-              caption = 'Cuadro 4: Imagén y links a las obras de Goya en Wikidata',
-              filter = 'top',
-              class = 'cell-border stripe',
-              colnames = c("Cuadro", "Museo", "Ciudad", "Imagen en Wikidata", "Link a Wikipedia" , "Link a Wiki inglesa", "id", "Link a Wikidata"))
-```
-
-<br>
-
-Me falta hacer que los hiperlinks de la tabla anterior funciones, que sean cliclables.
-
-
-
-<br><br>
 
 
 ## Conclusiones
@@ -445,5 +409,4 @@ Simplemente repetir lo que he dicho más arriba: que cada cual saque sus propias
 
 
 Wikidata es fabulosa, pero sería de desear la colaboración de organismos/fundaciones como la Fundación Goya en Aragón para que ayudarán a hacer que el catálogo de obras de Goya en Wikidata fuese más completo y preciso. Ojala!!!
-
 

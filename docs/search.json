@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Pedro J. Pérez",
-    "section": "",
-    "text": "Mi nombre es Pedro J. Pérez. Soy profesor del departamento de Análisis Económico de la Universitat de València. Mi página web en la UV es: https://www.uv.es/pjperez/\nMe gusta aprender y trastear con R; vamos, que aún soy un entusiasta de R. Me divierto!!\nA pesar de haber tenido ya unos cuantos blogs, no soy bloguero, mas bien soy un creador y liquidador de blogs. Aquí, puedes ver un listado no exhaustivo de los blogs que he liquidado.\nLa verdad es que me gusta escribir posts, tienes mucha más libertad que al escribir un informe o un artículo académico; además, los posts no tienen porque estar perfectos, cuando te apetece los puedes dejar; además, aunque los posts no estén acabados del todo, el pensar que alguien puede leerlos te hace pensar y reflexionar sobre lo que escribes.\n\nRemember kids, the only difference between screwing around and science is writing it down — Adam Savage de MythBusters"
-  },
-  {
-    "objectID": "blog_Rflowers.html",
-    "href": "blog_Rflowers.html",
-    "title": "R & flowers (2024)",
-    "section": "",
-    "text": "Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata\n\n\nUn análisis con datos de Wikidata sobre la ubicación de los cuadros de Goya en el mundo. Es importante que recordeís que utilizo datos de Wikidata y que yo no soy, para nada, experto en Goya. \n\n\n\nWikidata\n\n\nSPARQL\n\n\nobras de Goya\n\n\n\n\n\n\n25 mar 2024\n\n\n21 minutos\n\n\n\n\n\n\n\n\n\n\n\n\n¿Existe sesgo de género en los premios literarios?\n\n\nSe analiza la presencia y posibles pautas del sesgo de género en los premios literarios usando R y datos de Wikidata \n\n\n\npremios literarios\n\n\nWikidata\n\n\n\n\n\n\n22 ene 2024\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nPremios literarios: obtención de los datos\n\n\nSe describe (un poco) el proceso de obtención de datos referentes a premios literarios en Wikidata \n\n\n\npremios literarios\n\n\nWikidata\n\n\n\n\n\n\n10 jul 2023\n\n\n3 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nAtlethic World Record’s: obtención de los datos y algunas curiosidades\n\n\nEn el post se describe (un poco) el proceso de obtención de los datos referentes a los récords mundiales de atletismo de la página web de la IAAF. Con los datos obtenidos se presentan algunas curiosidades referentes a los récords mundiales \n\n\n\nWR atletismo\n\n\nweb scraping\n\n\n\n\n\n\n10 jul 2023\n\n\n3 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nMunicipios españoles más poblados (1842-2021)\n\n\nUtilizando datos de los censos históricos y del Padrón se presentan visualizaciones con el el ranking de ciudades españolas más pobladas desde el censo de 1842 hasta la actualidad. \n\n\n\ndatos INE\n\n\nCensos históricos\n\n\npoblación\n\n\nmunicipios\n\n\nranking de población\n\n\n\n\n\n\n14 jul 2022\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nEvolución del número de municipios en España (1842-2021)\n\n\nUtilizando datos de los censos históricos y del Padrón se realizan visualizaciones de la evolución del número de municipios españoles en el tiempo, desde el censo de 1842 hasta la actualidad. \n\n\n\ndatos INE\n\n\nCensos históricos\n\n\nmunicipios\n\n\nnúmero de municipios\n\n\n\n\n\n\n13 jul 2022\n\n\n6 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nCensos históricos (1842-2011): obtención de los datos\n\n\n\n\n\n\ndatos INE\n\n\nCensos históricos\n\n\npoblación\n\n\nmunicipios\n\n\nweb scraping\n\n\n\n\n\n\n12 jul 2022\n\n\n10 minutos\n\n\n\n\n\n\nNo hay resultados"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "My last blog's (2024-9999)",
@@ -21,18 +7,74 @@
     "text": "Bienvenidos a mi nueva web con (I hope) mis últimos 2 blogs:\n\n\nR & flowers (2024) : es un blog para registrar algunos análisis que hago pero que, si no los escribo para el blog, se acaban perdiendo.\n\n\n\nTBits: es un blog para escribir pequeñas píldoras/post para mis cursos\n\n\nAnd …\n\nRemember kids, the only difference between screwing around and science is writing it down — Adam Savage de MythBusters"
   },
   {
-    "objectID": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html",
-    "href": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html",
-    "title": "¿Existe sesgo de género en los premios literarios?",
+    "objectID": "blog_Rflowers.html",
+    "href": "blog_Rflowers.html",
+    "title": "R & flowers (2024)",
     "section": "",
-    "text": "El objetivo del post es analizar, utilizando datos de Wikidata, la existencia y pautas del posible sesgo de genero en los premios literarios.\nEn el post anterior hablé (un poco) de cómo obtuve los datos y que los resultados que obtuve fueron presentados en las XIII Jornadas de usuarios de R en noviembre de 2023.\nLa versión final de las slides que utilicé para hacer la presentación en las Jornadas pueden verse aquí o en el iframe de más abajo.\nAquí simplemente me apoyaré en las slides para mostrar algunos de los principales resultados. Mucho mejor ver las slides!! 😉"
+    "text": "Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCollage con las obras de Goya que existen en Wikidata\n\n\nEn el anterior post he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. Aquí presento una tabla para poder visualizarlas. \n\n\n\nWikidata\n\n\nobras de Goya\n\n\n\n\n\n\n27 mar 2024\n\n\n6 minutos\n\n\n\n\n\n\n\n\n\n\n\n\n¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata\n\n\nUn análisis con datos de Wikidata sobre la ubicación de los cuadros de Goya en el mundo. Es importante que recordeís que utilizo datos de Wikidata y que yo no soy, para nada, experto en Goya. \n\n\n\nWikidata\n\n\nSPARQL\n\n\nobras de Goya\n\n\n\n\n\n\n25 mar 2024\n\n\n20 minutos\n\n\n\n\n\n\n\n\n\n\n\n\n¿Existe sesgo de género en los premios literarios?\n\n\nSe analiza la presencia y posibles pautas del sesgo de género en los premios literarios usando R y datos de Wikidata \n\n\n\npremios literarios\n\n\nWikidata\n\n\n\n\n\n\n22 ene 2024\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nPremios literarios: obtención de los datos\n\n\nSe describe (un poco) el proceso de obtención de datos referentes a premios literarios en Wikidata \n\n\n\npremios literarios\n\n\nWikidata\n\n\n\n\n\n\n10 jul 2023\n\n\n3 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nAtlethic World Record’s: obtención de los datos y algunas curiosidades\n\n\nEn el post se describe (un poco) el proceso de obtención de los datos referentes a los récords mundiales de atletismo de la página web de la IAAF. Con los datos obtenidos se presentan algunas curiosidades referentes a los récords mundiales \n\n\n\nWR atletismo\n\n\nweb scraping\n\n\n\n\n\n\n10 jul 2023\n\n\n3 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nMunicipios españoles más poblados (1842-2021)\n\n\nUtilizando datos de los censos históricos y del Padrón se presentan visualizaciones con el el ranking de ciudades españolas más pobladas desde el censo de 1842 hasta la actualidad. \n\n\n\ndatos INE\n\n\nCensos históricos\n\n\npoblación\n\n\nmunicipios\n\n\nranking de población\n\n\n\n\n\n\n14 jul 2022\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nEvolución del número de municipios en España (1842-2021)\n\n\nUtilizando datos de los censos históricos y del Padrón se realizan visualizaciones de la evolución del número de municipios españoles en el tiempo, desde el censo de 1842 hasta la actualidad. \n\n\n\ndatos INE\n\n\nCensos históricos\n\n\nmunicipios\n\n\nnúmero de municipios\n\n\n\n\n\n\n13 jul 2022\n\n\n6 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nCensos históricos (1842-2011): obtención de los datos\n\n\n\n\n\n\ndatos INE\n\n\nCensos históricos\n\n\npoblación\n\n\nmunicipios\n\n\nweb scraping\n\n\n\n\n\n\n12 jul 2022\n\n\n10 minutos\n\n\n\n\n\n\nNo hay resultados"
   },
   {
-    "objectID": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html#footnotes",
-    "href": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html#footnotes",
-    "title": "¿Existe sesgo de género en los premios literarios?",
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "Licencia",
+    "section": "",
+    "text": "My posts from the blogs R & flowers and TBits are released under a Creative Commons Attribution-ShareAlike 4.0 International License."
+  },
+  {
+    "objectID": "blog_Rflowers/2024-03-27_collage-Goya/index.html",
+    "href": "blog_Rflowers/2024-03-27_collage-Goya/index.html",
+    "title": "Collage con las obras de Goya que existen en Wikidata",
+    "section": "",
+    "text": "En el anterior post he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. El objetivo era simplemente ver donde están ubicadas las obras de Goya. Ahora, en este post, quiero hacer un collage con las obras de Goya que tienen imagen disponible en Wikidata; bueno, en realidad quería hacer un collage, lo haré, pero de momento solo presento una tabla para poder visualizar de manera sencilla las obras de Goya disponibles en Wikidata."
+  },
+  {
+    "objectID": "blog_Rflowers/2024-03-27_collage-Goya/index.html#intro",
+    "href": "blog_Rflowers/2024-03-27_collage-Goya/index.html#intro",
+    "title": "Collage con las obras de Goya que existen en Wikidata",
+    "section": "",
+    "text": "En el anterior post he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. El objetivo era simplemente ver donde están ubicadas las obras de Goya. Ahora, en este post, quiero hacer un collage con las obras de Goya que tienen imagen disponible en Wikidata; bueno, en realidad quería hacer un collage, lo haré, pero de momento solo presento una tabla para poder visualizar de manera sencilla las obras de Goya disponibles en Wikidata."
+  },
+  {
+    "objectID": "blog_Rflowers/2024-03-27_collage-Goya/index.html#collage-de-obras-de-goya",
+    "href": "blog_Rflowers/2024-03-27_collage-Goya/index.html#collage-de-obras-de-goya",
+    "title": "Collage con las obras de Goya que existen en Wikidata",
+    "section": "\n2 Collage de obras de Goya",
+    "text": "2 Collage de obras de Goya\nMe queda hacer el collage, será para otro día ….\nLo que sí voy a hacer es una tabla con links a las imágenes de las obras de Goya que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:\nCuadro 1: Links a imágenes y a páginas web de las obras de Goya en Wikidata\nSi pinchas en la primera columna verás una imagen de la obra. La segunda columna te ofrece una visualización esplendida de toda la información que hay en Wikidata sobre esa obra. Los links a Wikipedia (española e inglesa) te llevan a los artículos de Wikipedia de la obra, si es que estos existen\nLa columna id hace referencia al identificador de la obra en la Fundación Goya en Aragón. Estaría bien tener el link a la ficha de las obras de Goya en la Fundación Goya en Aragón, son muy chulas, por ejemplo esta, son como artículos completos, pero … resulta que los links incluyen los nombres de las obras y eso me haría tener que hacer un webscraping para poder tener todos los links a la obras de Goya en el catalogo de la Fundación, no way!!!\nLa verdad es que me encantaría ver el listado de obras en el catálogo de la Fundación, pero no lo he encontrado facilmente, seguramente no he sabido buscarlo.\n\n\nCódigoDT::datatable(df_con_img_ok,  escape = FALSE,\n              caption = 'Cuadro 4: Links a imágenes y a páginas web de las obras de Goya en Wikidata',\n              filter = 'top',\n              class = 'cell-border stripe',\n              colnames = c(\"Cuadro\", \"Ficha\",  \"Museo\", \"Ciudad\", \"Link a Wikipedia\" , \"Link a Wiki inglesa\", \"Link a Wikidata\", \"id\"))"
+  },
+  {
+    "objectID": "blog_Rflowers/2024-03-27_collage-Goya/index.html#conclusiones",
+    "href": "blog_Rflowers/2024-03-27_collage-Goya/index.html#conclusiones",
+    "title": "Collage con las obras de Goya que existen en Wikidata",
+    "section": "\n3 Conclusiones",
+    "text": "3 Conclusiones\nSimplemente repetir lo que he dicho más arriba: que cada cual saque sus propias impresiones y conclusiones … y si algún experto en Goya lee el post, que no sea muy duro conmigo. Recordad que se usan datos de Wikidata1 y que el objetivo del post es aprender/recordar a hacer consultas a Wikidata no sentar cátedra sobre la ubicación de las obras de Goya en el mundo.\nWikidata es fabulosa, pero sería de desear la colaboración de organismos/fundaciones como la Fundación Goya en Aragón para que ayudarán a hacer que el catálogo de obras de Goya en Wikidata fuese más completo y preciso. Ojala!!!"
+  },
+  {
+    "objectID": "blog_Rflowers/2024-03-27_collage-Goya/index.html#biblio",
+    "href": "blog_Rflowers/2024-03-27_collage-Goya/index.html#biblio",
+    "title": "Collage con las obras de Goya que existen en Wikidata",
+    "section": "\n4 Biblio",
+    "text": "4 Biblio\nVoy a dejar aquí apuntadas algunas referencias para, más adelante, no sé cuando, hacer el collage … o mejor aún una shiny app como hace Nicola Rennie aquí. El shiny muestra solo un plot, pero puedes elegir cual y puedes elegir una categoría, que en mi caso podría ser un museo o país.\nYo ya hice hace años un collage con las imágenes que aparecían en la cuenta de Twitter de Nacho Vegas, pero quiero ver nuevas formas de hacerlo así que:\n\nScrap de memes en R: bajar multimedia de twitter. Esto ya lo he hecho yo. Lo que no he hecho es hacer un gif con las imágenes.\nUn script para hacer collages de imágenes con R\nProcess Profile Pictures with magick: coge fotos perfil de asistentes a un congreso, las redondea, para eso ha de centrar las caras, y hace un collage. Para detectar las caras, puede que use esto\nNicola Rennie tambien hace collage de imágenes aquí"
+  },
+  {
+    "objectID": "blog_Rflowers/2024-03-27_collage-Goya/index.html#footnotes",
+    "href": "blog_Rflowers/2024-03-27_collage-Goya/index.html#footnotes",
+    "title": "Collage con las obras de Goya que existen en Wikidata",
     "section": "Notas",
-    "text": "Notas\n\n\n… premios más tochos 😉↩︎"
+    "text": "Notas\n\nRepito, Wikidata es super-fantástica, pero evidentemente tiene lagunas y algunos errores↩︎"
+  },
+  {
+    "objectID": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html",
+    "href": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html",
+    "title": "Premios literarios: obtención de los datos",
+    "section": "",
+    "text": "Resulta que vi este tweet que mostraba los pocos premios Nobel que ganan las mujeres y pensé que por qué no hacerlo para los principales premios literarios españoles."
+  },
+  {
+    "objectID": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html#footnotes",
+    "href": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html#footnotes",
+    "title": "Premios literarios: obtención de los datos",
+    "section": "Notas",
+    "text": "Notas\n\n\nahora estoy retomando el blog en enero de 2024↩︎\nNota para mi: los análisis los hice en el proyecto ./slides_Barcelona_R-2023↩︎"
   },
   {
     "objectID": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html",
@@ -74,7 +116,7 @@
     "href": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html#collage-de-obras-de-goya",
     "title": "¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata",
     "section": "\n5 Collage de obras de Goya",
-    "text": "5 Collage de obras de Goya\nMe queda hacer el collage, será para otro día ….\nLo que sí voy a hacer es una tabla con links a las imagenes de las obras de Goya que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:\n\n\nCódigoDT::datatable(df_con_img,  \n              caption = 'Cuadro 4: Imagén y links a las obras de Goya en Wikidata',\n              filter = 'top',\n              class = 'cell-border stripe',\n              colnames = c(\"Cuadro\", \"Museo\", \"Ciudad\", \"Imagen en Wikidata\", \"Link a Wikipedia\" , \"Link a Wiki inglesa\", \"id\", \"Link a Wikidata\"))\n\n\n\n\n\n\nMe falta hacer que los hiperlinks de la tabla anterior funciones, que sean cliclables."
+    "text": "5 Collage de obras de Goya\nMe queda hacer el collage, será para otro día ….\nLo que sí voy a hacer es una tabla con links a las imágenes de las obras de Goya que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:\nCuadro 4: Links a imágenes y a páginas web de las obras de Goya en Wikidata\nSi pinchas en la primera columna verás una imagen de la obra. La segunda columna te ofrece una visualización esplendida de toda la información que hay en Wikidata sobre esa obra. Los links a Wikipedia (española e inglesa) te llevan a los artículos de Wikipedia de la obra, si es que estos existen\nLa columna id hace referencia al identificador de la obra en la Fundación Goya en Aragón. Estaría bien tener el link a la ficha de las obras de Goya en la Fundación Goya en Aragón, son muy chulas, por ejemplo esta, son como artículos completos, pero … resulta que los links incluyen los nombres de las obras y eso me haría tener que hacer un webscraping para poder tener todos los links a la obras de Goya en el catalogo de la Fundación, no way!!!\nLa verdad es que me encantaría ver el listado de obras en el catálogo de la Fundación, pero no lo he encontrado facilmente, seguramente no he sabido buscarlo.\n\n\nCódigoDT::datatable(df_con_img_ok,  escape = FALSE,\n              caption = 'Cuadro 4: Links a imágenes y a páginas web de las obras de Goya en Wikidata',\n              filter = 'top',\n              class = 'cell-border stripe',\n              colnames = c(\"Cuadro\", \"Ficha\",  \"Museo\", \"Ciudad\", \"Link a Wikipedia\" , \"Link a Wiki inglesa\", \"Link a Wikidata\", \"id\"))"
   },
   {
     "objectID": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html#conclusiones",
@@ -84,6 +126,13 @@
     "text": "6 Conclusiones\nSimplemente repetir lo que he dicho más arriba: que cada cual saque sus propias impresiones y conclusiones … y si algún experto en Goya lee el post, que no sea muy duro conmigo. Recordad que se usan datos de Wikidata9 y que el objetivo del post es aprender/recordar a hacer consultas a Wikidata no sentar cátedra sobre la ubicación de las obras de Goya en el mundo.\nWikidata es fabulosa, pero sería de desear la colaboración de organismos/fundaciones como la Fundación Goya en Aragón para que ayudarán a hacer que el catálogo de obras de Goya en Wikidata fuese más completo y preciso. Ojala!!!"
   },
   {
+    "objectID": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html#biblio",
+    "href": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html#biblio",
+    "title": "¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata",
+    "section": "\n7 Biblio",
+    "text": "7 Biblio\nVoy a dejar aquí apuntadas algunas referencias para, más adelante, no sé cuando, hacer el collage … o mejor aún una shiny app como hace Nicola Rennie aquí. El shiny muestra solo un plot, pero puedes elegir cual y puedes elegir una categoría, que en mi caso podría ser un museo o país.\nYo ya hice hace años un collage con las imágenes que aparecían en la cuenta de Twitter de Nacho Vegas, pero quiero ver nuevas formas de hacerlo así que:\n\nScrap de memes en R: bajar multimedia de twitter. Esto ya lo he hecho yo. Lo que no he hecho es hacer un gif con las imágenes.\nUn script para hacer collages de imágenes con R\nProcess Profile Pictures with magick: coge fotos perfil de asistentes a un congreso, las redondea, para eso ha de centrar las caras, y hace un collage. Para detectar las caras, puede que use esto\nNicola Rennie tambien hace collage de imágenes aquí"
+  },
+  {
     "objectID": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html#footnotes",
     "href": "blog_Rflowers/2024-03-25_wikidata-Goya/index.html#footnotes",
     "title": "¿Donde están los cuadros de Goya? Un análisis con datos de Wikidata",
@@ -91,123 +140,53 @@
     "text": "Notas\n\nEn realidad, “La captura del bandido Maragato por fray Pedro de Zaldivia”, es una serie de 6 cuadros.↩︎\nAl menos no ha sido instantáneo para mi.↩︎\nSólo tienes que pinchar en la flecha/triangulito.↩︎\nSí, ni el mundo ni Wikidata son perfectos, pero … el mundo es, de momento, el único que tenemos y Wikidata es, a pesar de todos sus “fallos”, super-FABULOSA. Ojala mejoren los 2, tanto el mundo como Wikidata!!↩︎\nComo veis este fallo también se debe a que Wikidata, muchas veces, tiene información muy precisa y exhaustiva, junto a que mis conocimientos de la taxonomía de Wikidata y de SPARQL los tengo un poco oxidados, pero estoy prácticando!!. Esto también podía haberlo evitado, o eso creo, puliendo un poco más mi consulta a Wikidata, pero también lo tendré en cuenta en futuras consultas … 😅↩︎\nMuerto el peroo muerta la rabía↩︎\nAlgún día lo mejoraré!! Ya te digo yo que sí 😅 .↩︎\nRecuerda siempre que trabajo con los datos que hay en Wikidata.↩︎\nRepito, Wikidata es super-fantástica, pero evidentemente tiene lagunas y algunos errores↩︎"
   },
   {
-    "objectID": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html",
-    "href": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html",
-    "title": "Premios literarios: obtención de los datos",
-    "section": "",
-    "text": "Resulta que vi este tweet que mostraba los pocos premios Nobel que ganan las mujeres y pensé que por qué no hacerlo para los principales premios literarios españoles."
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#introducción",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#introducción",
+    "title": "Evolución del número de municipios en España (1842-2021)",
+    "section": "\n1 Introducción",
+    "text": "1 Introducción\nEn el post anterior describí el proceso para obtener los datos de los censos históricos del INE. Los censos proporcionan datos de población a nivel municipal1, de forma que ahora utilizaré esos datos para analizar como ha evolucionado el número de municipios en España en el tiempo.\n\n\nObjetivo: ver la evolución del número de municipios en España.\nEl municipio en España es una entidad administrativa de nivel local que puede agrupar a una o varias localidades; por ejemplo el municipio de Pancrudo agrupa cuatro localidades2.Los municipios no son entidades fijas, sino que por distintos motivos hay municipios que desaparecen y otros que aparecen. Por ejemplo, Torremolinos existió como municipio hasta el censo de 1920, para desaparecer en el de 1930 por su integración en el municipio de Málaga, para posteriormente, en el censo de 1991, volver a ser municipio tras segregarse de Málaga.\n\n\nEl número de municipios cambia en el tiempo."
   },
   {
-    "objectID": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html#footnotes",
-    "href": "blog_Rflowers/2023-07-12_premios-literarios_01/index.html#footnotes",
-    "title": "Premios literarios: obtención de los datos",
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#cuantos-municipios-han-existido-en-españa",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#cuantos-municipios-han-existido-en-españa",
+    "title": "Evolución del número de municipios en España (1842-2021)",
+    "section": "\n2 ¿Cuantos municipios han existido en España?",
+    "text": "2 ¿Cuantos municipios han existido en España?\nDebería ser una pregunta fácil de responder pero no lo es; como ejemplo este documento. Hasta donde yo sé, no existe en España un registro del que pueda obtenerse el número de municipios que han existido en el tiempo; así que, trataré de dar una respuesta utilizando los datos de los Censos históricos y del Padrón.\n\n\nNo es una pregunta fácil.\nLo que si puedo decir es que, con datos del Padrón de 2021, actualmente hay en España 8.131 municipios.\n\n\nActualmente hay 8.131 municipios.\nEl INE proporciona datos de 18 censos de población, el primero en 1842 y el último en 2011. En el censo de 1842 hay datos de 11.291 municipios, mientras que en el de 2021, hay 8.116; es decir, una reducción de 3.175 municipios a lo largo de este periodo. Con esta información parece que la respuesta debería ser 11.291, pero no es así, la dinámica de creación y desaparición de municipios es más compleja, hay municipios como Torremolinos, que desaparecen y vuelven a aparecer.\nEn los 18 censos que proporciona el INE podemos encontrar un total de 11.910 códigos municipales únicos, así que parece que han existido en ese periodo el mismo número de municipios. Digo parece porque la respuesta no es tan clara, ya que hay casos como la localidad Gatova, que cambió su código municipal de 12066 a 46092 al incorporarse a la provincia de Valencia, desde la de Castellón, en el censo de 2001. ¿Son municipios diferentes? Bueno, podemos pensar que sí, ya que tienen códigos municipales diferentes.\nAsí que, según mis cuentas y utilizando datos de los Censos3, han existido4 en España 11.910 municipios.\n\n\nCon datos de los Censos, de 1842 a 2011, han existido 11.910 municipios.\nSin embargo, el último censo publicado es de 2011 y estamos en 2022, así que se han podido crear más municipios desde 2011 hasta la actualidad. Efectivamente, si utilizamos los datos del Padrón5, desde 2011 a 2022 se crearon en España 16 municipios que no existían antes, por lo que la respuesta final es: han existido 11.926 municipios en Spain.\n\n\nAñadiendo los datos del Padrón, ese número aumenta hasta los 11.926 municipios.\nComo actualmente, con datos del Padrón de 2021, existen 8.131 municipios6, eso quiere decir que desde el censo de 1842 se ha reducido el número de municipios en 3.795."
+  },
+  {
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-censos",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-censos",
+    "title": "Evolución del número de municipios en España (1842-2021)",
+    "section": "\n3 Evolución del número de municipios (Censos)",
+    "text": "3 Evolución del número de municipios (Censos)\nUtilizando los datos de los 18 censos de población disponibles en la web del INE, la evolución del número de municipios puede verse en Figura 1 .\n\n\n\n\n\n\n\nGráfico 1: Evolución del número de municipios (datos de los Censos). Juro que mejoraré el gráfico!!!!\n\n\n\n\nEn la Figura 1 se aprecia que desde 1842 se ha reducido el número de municipios, principalmente entre el censo de 1842 y el de 1933, y en los censos de 1979 y 1981. De las explicaciones no sé mucho: 1) el censo de 1842 fue, como leí no sé donde, un censo extraño, y 2) A partir de 1970 se hizo un esfuerzo político por reducir el número de municipios …..\nPara ahondar un poco más en la dinámica de la evolución del número de municipios en el tiempo, en la siguiente tabla se muestra más información.\n\n\n\nCódigolibrary(tidyverse)\n\ndf &lt;- pjpv.datos.2022::ine_censos_historicos #- censos históricos (1842-2011)\n\n# TABLA GOOD del CENSO: \ntabla_0 &lt;- df %&gt;% drop_na(pob) %&gt;% \n  group_by(year) %&gt;% summarise(nn = n_distinct(ine_muni))\n\ntabla_1 &lt;- df %&gt;% \n  filter(indicador %in% c(\"aparece\", \"desaparece\")) %&gt;% \n  count(year, indicador) %&gt;% \n  pivot_wider(names_from = indicador, values_from = n) %&gt;% \n  mutate(nn_netos = aparece - desaparece) %&gt;% \n  add_case(year = 1842, .before = 1)\n\ntabla_1a &lt;- left_join(tabla_0, tabla_1) %&gt;% \n  mutate(comprobacion = nn_netos) %&gt;% \n  mutate(comprobacion = ifelse(year == \"1842\", first(nn), comprobacion)) %&gt;% \n  mutate(comprobacion = cumsum(comprobacion) - nn)\n\ntabla_censo_ok &lt;- tabla_1a %&gt;% select(-comprobacion)\nnames(tabla_censo_ok) &lt;- c(\"Censo\", \"Nº municipios\", \"desaparecen\", \"aparecen\", \"Incremento\")\ntabla_censo_ok &lt;- tabla_censo_ok %&gt;% select(1, 2, \"Incremento\", everything())\n\ntable_ok &lt;- tabla_censo_ok %&gt;% \n  reactable::reactable(defaultPageSize = 18, theme = reactablefmtr::fivethirtyeight()) \n\ntable_ok\n\n\n\n\n\n\n\n\nLa Figura 1 proporciona información, pero la tabla anterior amplia un poco esa información, apreciándose que del censo de 1842 al siguiente se redujo el número de municipios en 1933; pero esa reducción, como se aprecia en la tabla, es resultado de que desaparecieron 2.199 municipios mientras que aparecieron, o se crearon, 266."
+  },
+  {
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-padrón",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-padrón",
+    "title": "Evolución del número de municipios en España (1842-2021)",
+    "section": "\n4 Evolución del número de municipios (Padrón)",
+    "text": "4 Evolución del número de municipios (Padrón)\nSi en lugar de los datos de los Censos, utilizamos los datos del Padrón (1996, 1998-2021) la evolución del número de municipios en España quedaría como:\n\n\n\n\n\n\n\nGráfico 2: Evolución del número de municipios (datos del Padrón) Juro que mejoraré el gráfico!!!\n\n\n\n\nLa Figura 2 muestra que a partir de 1996, el número de municipios ha aumentado de forma muy suave pero continuada, hasta llegar a los 8.131 municipios en 2021."
+  },
+  {
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#curiosidades",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#curiosidades",
+    "title": "Evolución del número de municipios en España (1842-2021)",
+    "section": "\n5 Curiosidades",
+    "text": "5 Curiosidades\nEn las Figura 1 y Figura 2 se muestran datos sobre la evolución del número de municipios, y hay 2 años (2001 y 2011) en que tenemos cifras para el número de municipios procedentes de 2 fuentes: Censos y padrón. ¿Coincidirán? No . Ya diré porqué. Es “logico”, bueno, puede pasar."
+  },
+  {
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#biblio",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#biblio",
+    "title": "Evolución del número de municipios en España (1842-2021)",
+    "section": "\n6 Biblio",
+    "text": "6 Biblio\nBiblio:\n\nartículo PAIS: https://elpais.com/elpais/2017/02/02/media/1486066904_389254.html La mitad de municipios puede desaparecer"
+  },
+  {
+    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#footnotes",
+    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#footnotes",
+    "title": "Evolución del número de municipios en España (1842-2021)",
     "section": "Notas",
-    "text": "Notas\n\n\nahora estoy retomando el blog en enero de 2024↩︎\nNota para mi: los análisis los hice en el proyecto ./slides_Barcelona_R-2023↩︎"
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html",
-    "href": "blog_TBits/004_borrando-objetos.html",
-    "title": "Borrando objetos del Global",
-    "section": "",
-    "text": "Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el Global Environment1, por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello"
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html#intro",
-    "href": "blog_TBits/004_borrando-objetos.html#intro",
-    "title": "Borrando objetos del Global",
-    "section": "",
-    "text": "Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el Global Environment1, por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello"
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html#borrando-objetos-con-baserm",
-    "href": "blog_TBits/004_borrando-objetos.html#borrando-objetos-con-baserm",
-    "title": "Borrando objetos del Global",
-    "section": "\n2 Borrando objetos con base::rm()\n",
-    "text": "2 Borrando objetos con base::rm()\n\nPodemos hacerlo de varias maneras, siempre usando la función rm():\nBorrando objetos de “uno en uno”\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(aa)   #- borramos el objeto aa\nrm(\"cc\") #- borramos el objeto cc. \n\nFíjate bien que base::rm() admite que pongas el nombre del objeto que quiere borrar, por ejmeplo aa, pero también puedes poner el nombre del objeto entre comillas como carácter (\"aa\"). Utilizando jerga R, puedes poner el name o el quoted names.\nQuiero volver a insistir en este punto, así que si miras la ayuda de la función base::rm() verás que para su primer argumento indica:\n\nthe objects to be removed, as names (unquoted) or character strings (quoted)\n\n\nBorrando varios objetos a la vez\nSi queremos borrar varios objetos a la vez, podemos hacerlo pasándole varios nombres de objetos al primer argumento de la función ... de base::rm()\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(aa, bb)     #- borramos los objetos aa y bb\nrm(cc, \"dd\")   #- borramos los objetos cc y dd\n\nBorrando objetos, pero usando el segundo argumento de base::rm()\n\nVamos a borrar objetos, PERO en lugar de pasar los nombres de los objetos al primer argumento de la función ..., los pasaremos al segundo argumento de la función list.\nImportante: A este segundo argumento de la función hay que pasarle los nombres de los objetos a eliminar como un vector de caracteres; es decir, como “quoted names”.\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(list = \"aa\")     #- borramos el objeto aa. Necesariamente ha de ser quoted\n\nrm(list = c(\"bb\", \"cc\"))   #- podemos pasarle un vector de quoted names\n\nPodemos pasar al argumento list un vector de quoted names. Por ejemplo:\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nmy_objetos_to_borrar &lt;- c( \"bb\", \"dd\")\nrm(list = my_objetos_to_borrar)   #- podemos pasarle un vector de quoted names\n\nFíjate que el objeto my_objetos_to_borrar no se ha borrado.\n\nBorrando todos los objetos del Global Environment\nEn el siguiente chunk borraremos todos los objetos del Global Environment. Para ello usamos la función base::ls() :\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\nrm(list = ls())\n\nPara entenderlo ejecuta base::ls() y verás que devuelve un vector con los nombres (quoted) de todos los objetos que haya en el Global"
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html#otras-estrategias-de-borrado",
-    "href": "blog_TBits/004_borrando-objetos.html#otras-estrategias-de-borrado",
-    "title": "Borrando objetos del Global",
-    "section": "\n3 Otras estrategias de borrado",
-    "text": "3 Otras estrategias de borrado\nBorrar todo excepto …\nVolvemos a crear 4 objetos y borraremos todos excepto el objeto aa. Para ello utilizamos la función base::setdiff() que devuelve los elementos de un vector que no están en otro vector.\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\n#- borramos todos los objetos excepto aa\n#- Necesariamente tenemos que usar  \"aa\" entre comillas; es decir el quoted name, porque usamos el segundo argumento list\nrm(list = setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\n\nExplicaciones\nEn el anterior chunk, estamos usando 3 funciones (del paquete base); de hecho podríamos ser más explícitos y escribir el chunk como:\n\nbase::rm(list = base::setdiff(base::ls(), \"aa\"))   \n\n\nbase::ls() devuelve un vector con los nombres de los objetos en el Global Environment como character (es decir, quoted)\nbase::setdiff(x, y): coge 2 vectores, x e y, para devolver los elementos de x que no están en y\nbase::rm(): borra los objetos que le pasemos como argumento. Si le pasamos list = ls() borra todos los objetos en el Global Environment.\n\nPara entenderlo del todo vamos a ejecutar las funciones por separado:\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nls()   #- devuelve los nombres de los objetos en el Global Environment (quoted)\n\nsetdiff(ls(), \"aa\")  #- devuelve los nombres de los objetos en el Global Environment que no son \"aa\"\n\nrm(list = setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\nrm(setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\n\n\nEstrategia alternativa: elijiendo qué no borrar\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nobjetos_no_borrar &lt;- c(\"aa\", \"bb\")\nrm(list = ls()[!ls() %in% objetos_no_borrar])\n\nEntender la expresión es un poco más complicado, pero tampoco tanto. Para entenderla es mejor ejecutar la expresión por partes."
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html#borrar-los-que-empiezan-por-un-patrón",
-    "href": "blog_TBits/004_borrando-objetos.html#borrar-los-que-empiezan-por-un-patrón",
-    "title": "Borrando objetos del Global",
-    "section": "\n4 Borrar los que empiezan por un patrón",
-    "text": "4 Borrar los que empiezan por un patrón\n\naa &lt;- 1:10 ; bb &lt;- 40:45; tmp_1 &lt;- 100:105; tmp_2 &lt;- 200:205\n\nrm(list = ls()[grep(\"^tmp\", ls())])\n\nrm(list = ls()[grep(\"tm\", ls())])\n\nrm(list = ls(pattern = \"^tmp\"))\n\nrm(list = grep(\"^tmp\", ls(), value = TRUE, invert = TRUE))\n\nrm(list = apropos(\"mp\"))"
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html#conclusion",
-    "href": "blog_TBits/004_borrando-objetos.html#conclusion",
-    "title": "Borrando objetos del Global",
-    "section": "\n5 Conclusion",
-    "text": "5 Conclusion\nEs bueno mantener el Global Environment limpio. Si estamos trabajando en un proyecto, es mejor borrar los objetos que ya no necesitamos. Para ello podemos usar la función base::rm().\nLa función base::rm() permite borrar todos los objetos en el Global, con rm(list = ls()), o borrar solo algunos objetos; por ejemplo rm(aa, \"bb\").\nTambién podemos utilizar patrones más complejos para borrar solo algunos objetos. Por ejemplo, podemos borrar los objetos que empiezan por un patrón, o borrar todos los objetos excepto algunos que nos interesa mantener.\nNo te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas este hilo de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, oncretamente aquí."
-  },
-  {
-    "objectID": "blog_TBits/004_borrando-objetos.html#footnotes",
-    "href": "blog_TBits/004_borrando-objetos.html#footnotes",
-    "title": "Borrando objetos del Global",
-    "section": "Notas",
-    "text": "Notas\n\nCuando cerremos la sesión de R los objetos desaparecerán, la memoria quedará vacía↩︎"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html",
-    "href": "blog_TBits/003_datos_para_estudiantes.html",
-    "title": "Datos para los trabajos",
-    "section": "",
-    "text": "En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para facilitar la búsqueda de datos a los estudiantes he confeccionado este listado con fuentes de datos.\nAlgunos de los trabajos ya hechos por los estudiantes puedes verlos aquí. La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc…, etc…, pero los deportes y la música nunca faltan."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
-    "title": "Datos para los trabajos",
-    "section": "\n1 Diversas fuentes de datos",
-    "text": "1 Diversas fuentes de datos\n\nGoogle Dataset Search: esta herramienta puede ser útil para encontrar datos. Aquí tienes un post, aquí el articulo de lanzamiento del producto en 2018 y aquí las FAQ’s. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!\nKaggle. Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos aquí. En este artículo hay más plataformas sobre competiciones de datos, por ejemplo [Coda Lab]](https://codalab.lisn.upsaclay.fr/?ref=mlcontests) o Driven data.\nData is plural. Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está aquí y aquí con más información.\nHugging Face. Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.\nCivio. Es una ONG que trabaja con datos para intentar aumentar la transparencia y controlar a los poderes públicos. Evidentemente, tienen una sección de datos abiertos.\nTidy Tuesday. Es un proyecto semanal de datos organizado por la comunidad de R. Cada semana se hacen visualizaciones sobre un nuevo conjunto de datos\nFiveThirtyEight. FiveThirtyEight, a veces llamado 538, es un blog estadounidense que se centra en el análisis político y encuestas, aunque también hace análisis de datos sobre otras temáticas. En este repo se encuentran los datos utilizados en los artículos.Aquí tiene un indice de los datos. Hay un paquete de R, también llamado fivethirtyeight que igual puede ayudar a cargar los datos.\nOur World in data. Es una publicación que hace análisis empíricos sobre las condiciones de vida. Trata temas como la pobreza, educación, salud … Hay un paquete de R, owidR que facilita el uso de esos datos.\nGapminder es una fundación sueca sin ánimo que utiliza datos para cambiar ciertas concepciones erróneas sobre problemas globales. Los datos los tiene aquí\nBuzzFeedNews es un periódico que ofrece artículos/historias basadas en datos. Aquí tienes un listado de artículos y datos, y [aquí]((https://github.com/BuzzFeedNews) el repo de Github con el código de los artículos. En clase solemos replicar este gráfico chulo. El artículo donde aparece el gráfico está está aquí,y el código está aquí.\nEuropean Data Journalism Network (EDJNet) is a network of media organisations from all across Europe, producing and promoting data-driven coverage of European issues. Los datos aquí.\nReal World Data Science, un proyecto de la Royal Statistical Society que presenta real-world applications of data science. Aquí están los casos de estudio.\nInformation is Beautiful provee de más de 300 datasets: aquí y aquí\nLIS, The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, lissyrtools.\nThe Global economy recopila datos económicos de 200 países. Para descargar los datos, aquí"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
-    "title": "Datos para los trabajos",
-    "section": "\n2 Estadísticas oficiales",
-    "text": "2 Estadísticas oficiales\nEn Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc… etc… son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.\n\n\nEurostat: eurostat. Es fantástico. Haremos varios ejemplos en clase. Aquí el portal de datos de Eurostat.\nBanco de España: tidyBdE. No lo he usado. Aquí el portal de datos del Banco de España.\n\n\nCódigodf &lt;- tidyBdE::bde_catalog_load(\n  catalog = c(\"ALL\"),\n  parse_dates = TRUE,\n  cache_dir = NULL,\n  update_cache = FALSE,\n  verbose = FALSE\n)\n\n\n\nBanco Central Europeo: ecb. No lo he usado. Aquí el portal de datos del BCE y aquí los datasets.\nThe World Bank. Los indicadores aquí. hay varios paquetes: WDI, wbstats. Aquí un bookdown sobre la API del Worls Bank.\nOCDE. Los datos aquí. Hay un paquete de R, oecd que facilita el acceso a esos datos. Aquí un post.\nUN population Dividion: population estimates from 1950 to the present for 237 countries or áreas. Aquí un paquete de R.\nUN comtrade database: datos detallados de comercio global. Aquí un post sobre cómo usar su API con R."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
-    "title": "Datos para los trabajos",
-    "section": "\n3 Más datos",
-    "text": "3 Más datos\nAlgunos conjuntos de datos que en su día me llamaron la atención, seguramente pensé que podrían usarse para los trabajos.\n\nDatos de olimpiadas (medallas, altura y peso) aquí\nDatos de refugiados de la UNHCR, la agencia de refugiados de la ONU, aquí. Hay un paquete de R, refugees, que facilita el acceso a esos datos. Aquí un gráfico de Nicola Rennie con estos datos.\nScrappeando datos del TOUR de Francia\nAtlas of the Offshore World es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal.\nDatos de la euroliga de Baloncesto a través de un paquete de R"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
-    "title": "Datos para los trabajos",
-    "section": "\n4 Papers con datos",
-    "text": "4 Papers con datos\n\nHarvard Dataverse: u servicio de Harvad con artículos científicos que hacen públicos sus datos.\nFinding Economic Articles with Data:: un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos.\nJournal of Comments and Replications in Economics reemplaza a International Journal for Re-Views in Empirical Economics JCRE remains the premier journal for publishing replication studies and also publishes commentaries on original studies in Economics."
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
-    "title": "Datos para los trabajos",
-    "section": "\n5 Otros listados",
-    "text": "5 Otros listados\n\nRebecca Carter\nInterview Query\n30+ Free Datasets for Your Data Science Projects in 2024"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
-    "title": "Datos para los trabajos",
-    "section": "\n6 Para docencia",
-    "text": "6 Para docencia\n\nEl paqueteRdatasets agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está aquí\nEl paquete HistData contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization"
-  },
-  {
-    "objectID": "blog_TBits/003_datos_para_estudiantes.html#apis",
-    "href": "blog_TBits/003_datos_para_estudiantes.html#apis",
-    "title": "Datos para los trabajos",
-    "section": "\n7 API’s",
-    "text": "7 API’s\n\n\nPublic APIs es a collective list of free APIs for use in software and web development. No vamos a ver cómo acceder a API’s, pero no está mal tenerlas en este listado."
+    "text": "Notas\n\nPara obtener datos de población a nivel de localidad o núcleos de población hay que acudir al Nomenclátor del INE.↩︎\nUna localidad es una división administrativa o territorial formada por un núcleo de población con identidad propia, ya sea esta una aldea, pueblo o ciudad↩︎\nEn realidad según los códigos municipales únicos que he encontrado en la web de los censos históricos del INE↩︎\nEn realidad debería decir han sido censados.↩︎\nUtilizo datos de población del Padrón continuo 1996 y 1998 a 2021↩︎\nHay otra forma de obtener el listado de municipios actuales; a través del Registro de entidades locales, concrétamente el listado de municipios se puede obtener aquí. Pues bien otra complicación más, de la que me enteré también por Paco Goerlich: en el REL existe un “municipio” (Tharsis, con código 21901) que nunca ha estado presente en el Padrón. Misterios de las estadísticas oficiales!!! Igual esta noticia puede arrojar algo de luz, parece que la Junta de Andalucia aprobó la segregación de Tharsis de Alosno, pero finalmente el Tribunal Supremo confirmó la sentencia del TSJA anulando el decreto de segregación de Tharsis de Alosno; sin embargo, a pesar de estar en una situación similar, si aparece en el Padrón el municipio de La Zarza-Perrunal (21902)↩︎"
   },
   {
     "objectID": "blog_TBits/001_imagenes_stabilityAI.html",
@@ -301,6 +280,111 @@
     "text": "6 Biblio\n\nGeocode address text strings using tidygeocoder de Ilya Kashnitsky\nGeocoding in R de Andrés García y SESYNC\nR: Mapping and Geospatial. Duke University Libraries"
   },
   {
+    "objectID": "blog_TBits/004_borrando-objetos.html",
+    "href": "blog_TBits/004_borrando-objetos.html",
+    "title": "Borrando objetos del Global",
+    "section": "",
+    "text": "Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el Global Environment1, por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#intro",
+    "href": "blog_TBits/004_borrando-objetos.html#intro",
+    "title": "Borrando objetos del Global",
+    "section": "",
+    "text": "Ya sabemos que en R, los objetos que se van creando al hacer un análisis se guardan en el Global Environment1, por lo que si creamos muchos objetos intermedios y/o trabajamos con objetos muy grandes, podemos llegar a tener problemas de memoria; así que hay que aprender a borrar los objetos que ya no necesitamos y tener el Global medio limpio. Vamos a ello"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#borrando-objetos-con-baserm",
+    "href": "blog_TBits/004_borrando-objetos.html#borrando-objetos-con-baserm",
+    "title": "Borrando objetos del Global",
+    "section": "\n2 Borrando objetos con base::rm()\n",
+    "text": "2 Borrando objetos con base::rm()\n\nPodemos hacerlo de varias maneras, siempre usando la función rm():\nBorrando objetos de “uno en uno”\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(aa)   #- borramos el objeto aa\nrm(\"cc\") #- borramos el objeto cc. \n\nFíjate bien que base::rm() admite que pongas el nombre del objeto que quieres borrar, por ejemplo aa, pero también puedes poner el nombre del objeto entre comillas como carácter (\"aa\"). Utilizando jerga R, puedes poner el name o el quoted name.\nQuiero volver a insistir en este punto, así que si miras la ayuda de la función base::rm() verás que para su primer argumento indica:\n\nthe objects to be removed, as names (unquoted) or character strings (quoted)\n\n\nBorrando varios objetos a la vez\nSi queremos borrar varios objetos a la vez, podemos hacerlo pasándole varios nombres de objetos al primer argumento de la función ... de base::rm()\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(aa, bb)     #- borramos los objetos aa y bb\nrm(cc, \"dd\")   #- borramos los objetos cc y dd\n\nBorrando objetos, pero usando el segundo argumento de base::rm()\n\nVamos a borrar objetos, PERO en lugar de pasar los nombres de los objetos al primer argumento de la función ..., los pasaremos al segundo argumento de la función list.\nImportante: A este segundo argumento de la función hay que pasarle los nombres de los objetos a eliminar como un vector de caracteres; es decir, como “quoted names”.\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nrm(list = \"aa\")     #- borramos el objeto aa. Necesariamente ha de ser quoted\n\nrm(list = c(\"bb\", \"cc\"))   #- podemos pasarle un vector de quoted names\n\nPodemos pasar al argumento list un vector de quoted names. Por ejemplo:\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nmy_objetos_to_borrar &lt;- c( \"bb\", \"dd\")\nrm(list = my_objetos_to_borrar)   #- podemos pasarle un vector de quoted names\n\nFíjate que el objeto my_objetos_to_borrar no se ha borrado.\n\nBorrando todos los objetos del Global Environment\nEn el siguiente chunk borraremos todos los objetos del Global Environment. Para ello usamos la función base::ls() :\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\nrm(list = ls())\n\nPara entenderlo ejecuta base::ls() y verás que devuelve un vector con los nombres (quoted) de todos los objetos que haya en el Global"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#otras-estrategias-de-borrado",
+    "href": "blog_TBits/004_borrando-objetos.html#otras-estrategias-de-borrado",
+    "title": "Borrando objetos del Global",
+    "section": "\n3 Otras estrategias de borrado",
+    "text": "3 Otras estrategias de borrado\nBorrar todo excepto …\nVolvemos a crear 4 objetos y borraremos todos excepto el objeto aa. Para ello utilizamos la función base::setdiff() que devuelve los elementos de un vector que no están en otro vector.\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\n#- borramos todos los objetos excepto aa\n#- Necesariamente tenemos que usar  \"aa\" entre comillas; es decir el quoted name, porque usamos el segundo argumento list\nrm(list = setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\n\nExplicaciones\nEn el anterior chunk, estamos usando 3 funciones (del paquete base); de hecho podríamos ser más explícitos y escribir el chunk como:\n\nbase::rm(list = base::setdiff(base::ls(), \"aa\"))   \n\n\nbase::ls() devuelve un vector con los nombres de los objetos en el Global Environment como character (es decir, quoted)\nbase::setdiff(x, y): coge 2 vectores, x e y, para devolver los elementos de x que no están en y\nbase::rm(): borra los objetos que le pasemos como argumento. Si le pasamos list = ls() borra todos los objetos en el Global Environment.\n\nPara entenderlo del todo vamos a ejecutar las funciones por separado:\n\n#- creamos 4 objetos\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nls()   #- devuelve los nombres de los objetos en el Global Environment (quoted)\n\nsetdiff(ls(), \"aa\")  #- devuelve los nombres de los objetos en el Global Environment que no son \"aa\"\n\nrm(list = setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\nrm(setdiff(ls(), \"aa\"))   #- borra todos los objetos en el Global, excepto aa\n\n\nEstrategia alternativa: elijiendo qué no borrar\n\naa &lt;- 1:10 ; bb &lt;- 40:45; cc &lt;- 100:105; dd &lt;- 200:205\n\nobjetos_no_borrar &lt;- c(\"aa\", \"bb\")\nrm(list = ls()[!ls() %in% objetos_no_borrar])\n\nEntender la expresión es un poco más complicado, pero tampoco tanto. Para entenderla es mejor ejecutar la expresión por partes."
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#borrar-los-que-empiezan-por-un-patrón",
+    "href": "blog_TBits/004_borrando-objetos.html#borrar-los-que-empiezan-por-un-patrón",
+    "title": "Borrando objetos del Global",
+    "section": "\n4 Borrar los que empiezan por un patrón",
+    "text": "4 Borrar los que empiezan por un patrón\n\naa &lt;- 1:10 ; bb &lt;- 40:45; tmp_1 &lt;- 100:105; tmp_2 &lt;- 200:205\n\nrm(list = ls()[grep(\"^tmp\", ls())])\n\nrm(list = ls()[grep(\"tm\", ls())])\n\nrm(list = ls(pattern = \"^tmp\"))\n\nrm(list = grep(\"^tmp\", ls(), value = TRUE, invert = TRUE))\n\nrm(list = apropos(\"mp\"))"
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#conclusion",
+    "href": "blog_TBits/004_borrando-objetos.html#conclusion",
+    "title": "Borrando objetos del Global",
+    "section": "\n5 Conclusion",
+    "text": "5 Conclusion\nEs bueno mantener el Global Environment limpio. Si estamos trabajando en un proyecto, es mejor borrar los objetos que ya no necesitamos. Para ello podemos usar la función base::rm().\nLa función base::rm() permite borrar todos los objetos en el Global, con rm(list = ls()), o borrar solo algunos objetos; por ejemplo rm(aa, \"bb\").\nTambién podemos utilizar patrones más complejos para borrar solo algunos objetos. Por ejemplo, podemos borrar los objetos que empiezan por un patrón, o borrar todos los objetos excepto algunos que nos interesa mantener.\nNo te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas este hilo de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, concretamente aquí."
+  },
+  {
+    "objectID": "blog_TBits/004_borrando-objetos.html#footnotes",
+    "href": "blog_TBits/004_borrando-objetos.html#footnotes",
+    "title": "Borrando objetos del Global",
+    "section": "Notas",
+    "text": "Notas\n\nCuando cerremos la sesión de R los objetos desaparecerán, la memoria quedará vacía↩︎"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html",
+    "href": "blog_TBits/003_datos_para_estudiantes.html",
+    "title": "Datos para los trabajos",
+    "section": "",
+    "text": "En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para facilitar la búsqueda de datos a los estudiantes he confeccionado este listado con fuentes de datos.\nAlgunos de los trabajos ya hechos por los estudiantes puedes verlos aquí. La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc…, etc…, pero los deportes y la música nunca faltan."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#diversas-fuentes-de-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n1 Diversas fuentes de datos",
+    "text": "1 Diversas fuentes de datos\n\nGoogle Dataset Search: esta herramienta puede ser útil para encontrar datos. Aquí tienes un post, aquí el articulo de lanzamiento del producto en 2018 y aquí las FAQ’s. Lo he usado poco (o nada) pero te da hasta una lista de artículos que han usado un conjunto de datos!!!\nKaggle. Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos aquí. En este artículo hay más plataformas sobre competiciones de datos, por ejemplo [Coda Lab]](https://codalab.lisn.upsaclay.fr/?ref=mlcontests) o Driven data.\nData is plural. Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está aquí y aquí con más información.\nHugging Face. Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.\nCivio. Es una ONG que trabaja con datos para intentar aumentar la transparencia y controlar a los poderes públicos. Evidentemente, tienen una sección de datos abiertos.\nTidy Tuesday. Es un proyecto semanal de datos organizado por la comunidad de R. Cada semana se hacen visualizaciones sobre un nuevo conjunto de datos\nFiveThirtyEight. FiveThirtyEight, a veces llamado 538, es un blog estadounidense que se centra en el análisis político y encuestas, aunque también hace análisis de datos sobre otras temáticas. En este repo se encuentran los datos utilizados en los artículos.Aquí tiene un indice de los datos. Hay un paquete de R, también llamado fivethirtyeight que igual puede ayudar a cargar los datos.\nOur World in data. Es una publicación que hace análisis empíricos sobre las condiciones de vida. Trata temas como la pobreza, educación, salud … Hay un paquete de R, owidR que facilita el uso de esos datos.\nGapminder es una fundación sueca sin ánimo que utiliza datos para cambiar ciertas concepciones erróneas sobre problemas globales. Los datos los tiene aquí\nBuzzFeedNews es un periódico que ofrece artículos/historias basadas en datos. Aquí tienes un listado de artículos y datos, y [aquí]((https://github.com/BuzzFeedNews) el repo de Github con el código de los artículos. En clase solemos replicar este gráfico chulo. El artículo donde aparece el gráfico está está aquí,y el código está aquí.\nEuropean Data Journalism Network (EDJNet) is a network of media organisations from all across Europe, producing and promoting data-driven coverage of European issues. Los datos aquí.\nReal World Data Science, un proyecto de la Royal Statistical Society que presenta real-world applications of data science. Aquí están los casos de estudio.\nInformation is Beautiful provee de más de 300 datasets: aquí y aquí\nLIS, The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, lissyrtools.\nThe Global economy recopila datos económicos de 200 países. Para descargar los datos, aquí"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#estadísticas-oficiales",
+    "title": "Datos para los trabajos",
+    "section": "\n2 Estadísticas oficiales",
+    "text": "2 Estadísticas oficiales\nEn Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc… etc… son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.\n\n\nEurostat: eurostat. Es fantástico. Haremos varios ejemplos en clase. Aquí el portal de datos de Eurostat.\nBanco de España: tidyBdE. No lo he usado. Aquí el portal de datos del Banco de España.\n\n\nCódigodf &lt;- tidyBdE::bde_catalog_load(\n  catalog = c(\"ALL\"),\n  parse_dates = TRUE,\n  cache_dir = NULL,\n  update_cache = FALSE,\n  verbose = FALSE\n)\n\n\n\nBanco Central Europeo: ecb. No lo he usado. Aquí el portal de datos del BCE y aquí los datasets.\nThe World Bank. Los indicadores aquí. hay varios paquetes: WDI, wbstats. Aquí un bookdown sobre la API del Worls Bank.\nOCDE. Los datos aquí. Hay un paquete de R, oecd que facilita el acceso a esos datos. Aquí un post.\nUN population Dividion: population estimates from 1950 to the present for 237 countries or áreas. Aquí un paquete de R.\nUN comtrade database: datos detallados de comercio global. Aquí un post sobre cómo usar su API con R."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#más-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n3 Más datos",
+    "text": "3 Más datos\nAlgunos conjuntos de datos que en su día me llamaron la atención, seguramente pensé que podrían usarse para los trabajos.\n\nDatos de olimpiadas (medallas, altura y peso) aquí\nDatos de refugiados de la UNHCR, la agencia de refugiados de la ONU, aquí. Hay un paquete de R, refugees, que facilita el acceso a esos datos. Aquí un gráfico de Nicola Rennie con estos datos.\nScrappeando datos del TOUR de Francia\nAtlas of the Offshore World es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal.\nDatos de la euroliga de Baloncesto a través de un paquete de R"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#papers-con-datos",
+    "title": "Datos para los trabajos",
+    "section": "\n4 Papers con datos",
+    "text": "4 Papers con datos\n\nHarvard Dataverse: u servicio de Harvad con artículos científicos que hacen públicos sus datos.\nFinding Economic Articles with Data:: un shiny de Sebastian Kranz que te ayuda a encontrar artículos con datos.\nJournal of Comments and Replications in Economics reemplaza a International Journal for Re-Views in Empirical Economics JCRE remains the premier journal for publishing replication studies and also publishes commentaries on original studies in Economics."
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#otros-listados",
+    "title": "Datos para los trabajos",
+    "section": "\n5 Otros listados",
+    "text": "5 Otros listados\n\nRebecca Carter\nInterview Query\n30+ Free Datasets for Your Data Science Projects in 2024"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#para-docencia",
+    "title": "Datos para los trabajos",
+    "section": "\n6 Para docencia",
+    "text": "6 Para docencia\n\nEl paqueteRdatasets agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está aquí\nEl paquete HistData contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization"
+  },
+  {
+    "objectID": "blog_TBits/003_datos_para_estudiantes.html#apis",
+    "href": "blog_TBits/003_datos_para_estudiantes.html#apis",
+    "title": "Datos para los trabajos",
+    "section": "\n7 API’s",
+    "text": "7 API’s\n\n\nPublic APIs es a collective list of free APIs for use in software and web development. No vamos a ver cómo acceder a API’s, pero no está mal tenerlas en este listado."
+  },
+  {
     "objectID": "blog_Rflowers/2022-07-12_censos-historicos_01/index.html",
     "href": "blog_Rflowers/2022-07-12_censos-historicos_01/index.html",
     "title": "Censos históricos (1842-2011): obtención de los datos",
@@ -357,88 +441,18 @@
     "text": "Notas\n\n\nEn esta publicación del INE puede encontrase una pequeña reseña de los principales censos históricos hechos en España↩︎\nLa verdad es que probé los paquetes tesseract y tabulizer y no lo hacían mal, pero hacía falta mucho más trabajo para llegar a algo medio decente. Intenté probar el paquete daiR que da acceso a la Google Cloud Document AI API, que se supone que es la caña para extraer texto y tablas de pdf’s, PERO es un servicio de pago. No parecía muy caro, pero no lo probé.↩︎\nPara censos anteriores puede verse esta publicación del INE↩︎\nConcretamente se ofrece la población de derecho, la población de hecho y el número de hogares.↩︎\nPor ejemplo si son absorbidos por otro municipio; como por ejemplo Vallecas, que existía como municipio independiente en el censo de 1940 pero pasó a estar integrado en el municipio de Madrid en el censo de 1950.↩︎\nY de muchos otros (temas) 🙂.↩︎\nLos 4 municipios son San Quirce de Riopisuerga (09342), Gátova (12066), Rivas de Tereso (26504) y Los Hueros (28511). El fallo consistió en que su código municipal estaba incompleto en la nota que hubiese permitido detectarlos; concretamente su código municipal solo tenía 3 dígitos en lugar de los 5 habituales.↩︎\nSeñalar que existen casos digamos “extraños”, como por ejemplo el municipio de Gatova que cambió su código de 12066 a 46092 al incorporarse a la provincia de Valencia, desde la de Castellón, en el censo de 2001. ¿Son municipios diferentes? Bueno, podemos pensar que sí, ya que tienen códigos municipales diferentes.↩︎\nEsos errores de transcripción se describen en detalle en los apartados 2.2.6, 2.2.7 y 2.2.8 de este libro↩︎\nComo ejemplo, señalar que, en el caso de Madrid, la población que figura en la web del INE para el censo de 1991 es de 2.909.792, mientras que en el Censo original es de 3.010.492. Este error supone un 3,46%.↩︎\nAdemás, seguro que lo que haga ya estará hecho seguramente en este libro. Tiene 354 páginas!!!! No voy a mirar mucho por si acaso!!↩︎"
   },
   {
-    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html",
-    "href": "blog_Rflowers/2023-07-10_WR_01/index.html",
-    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "objectID": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html",
+    "href": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html",
+    "title": "¿Existe sesgo de género en los premios literarios?",
     "section": "",
-    "text": "Según cuenta la Wikipedia aquí, las plusmarcas del mundo de atletismo, o récords mundiales de atletismo, son ratificadas por World Athletics1 desde 1912. Aquí nos cuentan que la primera lista de récords mundiales masculinos se publicó por primera vez en 1914 y las primeras listas de mujeres en 1936 . Desde 1987, la IAAF estableció una lista de récords mundiales en pista cubierta, aunque desde el 1 de enero de 2000, La regla 260.18a de la IAAF se modificó para que ahora se puedan establecer récords mundiales en un estadio deportivo con o sin techo."
+    "text": "El objetivo del post es analizar, utilizando datos de Wikidata, la existencia y pautas del posible sesgo de genero en los premios literarios.\nEn el post anterior hablé (un poco) de cómo obtuve los datos y que los resultados que obtuve fueron presentados en las XIII Jornadas de usuarios de R en noviembre de 2023.\nLa versión final de las slides que utilicé para hacer la presentación en las Jornadas pueden verse aquí o en el iframe de más abajo.\nAquí simplemente me apoyaré en las slides para mostrar algunos de los principales resultados. Mucho mejor ver las slides!! 😉"
   },
   {
-    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#intro",
-    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#intro",
-    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
-    "section": "",
-    "text": "Según cuenta la Wikipedia aquí, las plusmarcas del mundo de atletismo, o récords mundiales de atletismo, son ratificadas por World Athletics1 desde 1912. Aquí nos cuentan que la primera lista de récords mundiales masculinos se publicó por primera vez en 1914 y las primeras listas de mujeres en 1936 . Desde 1987, la IAAF estableció una lista de récords mundiales en pista cubierta, aunque desde el 1 de enero de 2000, La regla 260.18a de la IAAF se modificó para que ahora se puedan establecer récords mundiales en un estadio deportivo con o sin techo."
-  },
-  {
-    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#obtención-de-los-datos",
-    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#obtención-de-los-datos",
-    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
-    "section": "\n2 Obtención de los datos",
-    "text": "2 Obtención de los datos\nLos datos se obtuvieron de la página web de World Athletics. Concretamente la página de acceso a los récords está aquí. En esta página se pueden acceder a 53 categorías de WR para mujeres y 46 para los hombres2.\nDescarté las pruebas de relevos, las pruebas combinadas (heptalon, decathlon) y pruebas digamos “extrañas”, como por ejemplo, 1.000 metros, 2.000 metros, 50 kilómetros , etc … Además como en futuros post quiero hacer una comparativa de rendimineto entre hombres y muyjeres, descarté las carreras de 100 y 110 metros vallas. Finalmente me quedé con las siguientes pruebas:\n\nCódigolibrary(tidyverse)\ndf_2022 &lt;- pjpv.datos.2022::IAAF_WR_2022\ndf &lt;- df_2022 %&gt;% \n  filter(!(prueba.f.9 %in% c(\"Relevos\", \"Combinadas\",  \"Race-walk\",  \"Carreras (raras)\" ))) %&gt;% \n  filter(!prueba.f %in% c(\"1000-metres\", \"2000-metres\",\"one-mile\", \"3000-metres\", \"half-marathon\", \"5-kilometres\", \"10-kilometres\", \"50-kilometres\" ,\"100-kilometres\"))\ntable &lt;- df %&gt;% \n  distinct( prueba, prueba.f.9) %&gt;% \n  mutate(prueba.f.9 = as.character(prueba.f.9)) %&gt;% \n  mutate(prueba.f.9 = ifelse(!(prueba.f.9 %in% c(\"Saltos\", \"Lanzamientos\")) , \"Carreras\",  prueba.f.9  )) %&gt;% \n  arrange(prueba) %&gt;% \n  group_by(prueba.f.9) %&gt;% \n  summarise(from_country = paste(prueba, collapse = \", \")) \ngt::gt(table)\n\n\n\n\n\n\nprueba.f.9\nfrom_country\n\n\n\nCarreras\n100-metres, 100-metres-hurdles, 10000-metres, 110-metres-hurdles, 1500-metres, 200-metres, 3000-metres-steeplechase, 400-metres, 400-metres-hurdles, 5000-metres, 800-metres, marathon\n\n\nLanzamientos\ndiscus-throw, hammer-throw, javelin-throw, shot-put\n\n\nSaltos\nhigh-jump, long-jump, pole-vault, triple-jump"
-  },
-  {
-    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#análisis",
-    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#análisis",
-    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
-    "section": "\n3 Análisis",
-    "text": "3 Análisis\nVeremos cuando tengo tiempo para jugar un poco con los datos."
-  },
-  {
-    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#footnotes",
-    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#footnotes",
-    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "objectID": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html#footnotes",
+    "href": "blog_Rflowers/2024-01-22_premios-literarios_02/index.html#footnotes",
+    "title": "¿Existe sesgo de género en los premios literarios?",
     "section": "Notas",
-    "text": "Notas\n\nantes Asociación Internacional de Federaciones de Atletismo (IAAF)↩︎\nHay más categorías en las mujeres, entre otras razones porque en ciertas pruebas como el maratón hay WR para carreras mixtas y carreras donde solo participan mujeres↩︎"
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#introducción",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#introducción",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "\n1 Introducción",
-    "text": "1 Introducción\nEn el post anterior describí el proceso para obtener los datos de los censos históricos del INE. Los censos proporcionan datos de población a nivel municipal1, de forma que ahora utilizaré esos datos para analizar como ha evolucionado el número de municipios en España en el tiempo.\n\n\nObjetivo: ver la evolución del número de municipios en España.\nEl municipio en España es una entidad administrativa de nivel local que puede agrupar a una o varias localidades; por ejemplo el municipio de Pancrudo agrupa cuatro localidades2.Los municipios no son entidades fijas, sino que por distintos motivos hay municipios que desaparecen y otros que aparecen. Por ejemplo, Torremolinos existió como municipio hasta el censo de 1920, para desaparecer en el de 1930 por su integración en el municipio de Málaga, para posteriormente, en el censo de 1991, volver a ser municipio tras segregarse de Málaga.\n\n\nEl número de municipios cambia en el tiempo."
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#cuantos-municipios-han-existido-en-españa",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#cuantos-municipios-han-existido-en-españa",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "\n2 ¿Cuantos municipios han existido en España?",
-    "text": "2 ¿Cuantos municipios han existido en España?\nDebería ser una pregunta fácil de responder pero no lo es; como ejemplo este documento. Hasta donde yo sé, no existe en España un registro del que pueda obtenerse el número de municipios que han existido en el tiempo; así que, trataré de dar una respuesta utilizando los datos de los Censos históricos y del Padrón.\n\n\nNo es una pregunta fácil.\nLo que si puedo decir es que, con datos del Padrón de 2021, actualmente hay en España 8.131 municipios.\n\n\nActualmente hay 8.131 municipios.\nEl INE proporciona datos de 18 censos de población, el primero en 1842 y el último en 2011. En el censo de 1842 hay datos de 11.291 municipios, mientras que en el de 2021, hay 8.116; es decir, una reducción de 3.175 municipios a lo largo de este periodo. Con esta información parece que la respuesta debería ser 11.291, pero no es así, la dinámica de creación y desaparición de municipios es más compleja, hay municipios como Torremolinos, que desaparecen y vuelven a aparecer.\nEn los 18 censos que proporciona el INE podemos encontrar un total de 11.910 códigos municipales únicos, así que parece que han existido en ese periodo el mismo número de municipios. Digo parece porque la respuesta no es tan clara, ya que hay casos como la localidad Gatova, que cambió su código municipal de 12066 a 46092 al incorporarse a la provincia de Valencia, desde la de Castellón, en el censo de 2001. ¿Son municipios diferentes? Bueno, podemos pensar que sí, ya que tienen códigos municipales diferentes.\nAsí que, según mis cuentas y utilizando datos de los Censos3, han existido4 en España 11.910 municipios.\n\n\nCon datos de los Censos, de 1842 a 2011, han existido 11.910 municipios.\nSin embargo, el último censo publicado es de 2011 y estamos en 2022, así que se han podido crear más municipios desde 2011 hasta la actualidad. Efectivamente, si utilizamos los datos del Padrón5, desde 2011 a 2022 se crearon en España 16 municipios que no existían antes, por lo que la respuesta final es: han existido 11.926 municipios en Spain.\n\n\nAñadiendo los datos del Padrón, ese número aumenta hasta los 11.926 municipios.\nComo actualmente, con datos del Padrón de 2021, existen 8.131 municipios6, eso quiere decir que desde el censo de 1842 se ha reducido el número de municipios en 3.795."
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-censos",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-censos",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "\n3 Evolución del número de municipios (Censos)",
-    "text": "3 Evolución del número de municipios (Censos)\nUtilizando los datos de los 18 censos de población disponibles en la web del INE, la evolución del número de municipios puede verse en Figura 1 .\n\n\n\n\n\n\n\nGráfico 1: Evolución del número de municipios (datos de los Censos). Juro que mejoraré el gráfico!!!!\n\n\n\n\nEn la Figura 1 se aprecia que desde 1842 se ha reducido el número de municipios, principalmente entre el censo de 1842 y el de 1933, y en los censos de 1979 y 1981. De las explicaciones no sé mucho: 1) el censo de 1842 fue, como leí no sé donde, un censo extraño, y 2) A partir de 1970 se hizo un esfuerzo político por reducir el número de municipios …..\nPara ahondar un poco más en la dinámica de la evolución del número de municipios en el tiempo, en la siguiente tabla se muestra más información.\n\n\n\nCódigolibrary(tidyverse)\n\ndf &lt;- pjpv.datos.2022::ine_censos_historicos #- censos históricos (1842-2011)\n\n# TABLA GOOD del CENSO: \ntabla_0 &lt;- df %&gt;% drop_na(pob) %&gt;% \n  group_by(year) %&gt;% summarise(nn = n_distinct(ine_muni))\n\ntabla_1 &lt;- df %&gt;% \n  filter(indicador %in% c(\"aparece\", \"desaparece\")) %&gt;% \n  count(year, indicador) %&gt;% \n  pivot_wider(names_from = indicador, values_from = n) %&gt;% \n  mutate(nn_netos = aparece - desaparece) %&gt;% \n  add_case(year = 1842, .before = 1)\n\ntabla_1a &lt;- left_join(tabla_0, tabla_1) %&gt;% \n  mutate(comprobacion = nn_netos) %&gt;% \n  mutate(comprobacion = ifelse(year == \"1842\", first(nn), comprobacion)) %&gt;% \n  mutate(comprobacion = cumsum(comprobacion) - nn)\n\ntabla_censo_ok &lt;- tabla_1a %&gt;% select(-comprobacion)\nnames(tabla_censo_ok) &lt;- c(\"Censo\", \"Nº municipios\", \"desaparecen\", \"aparecen\", \"Incremento\")\ntabla_censo_ok &lt;- tabla_censo_ok %&gt;% select(1, 2, \"Incremento\", everything())\n\ntable_ok &lt;- tabla_censo_ok %&gt;% \n  reactable::reactable(defaultPageSize = 18, theme = reactablefmtr::fivethirtyeight()) \n\ntable_ok\n\n\n\n\n\n\n\n\nLa Figura 1 proporciona información, pero la tabla anterior amplia un poco esa información, apreciándose que del censo de 1842 al siguiente se redujo el número de municipios en 1933; pero esa reducción, como se aprecia en la tabla, es resultado de que desaparecieron 2.199 municipios mientras que aparecieron, o se crearon, 266."
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-padrón",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#evolución-del-número-de-municipios-padrón",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "\n4 Evolución del número de municipios (Padrón)",
-    "text": "4 Evolución del número de municipios (Padrón)\nSi en lugar de los datos de los Censos, utilizamos los datos del Padrón (1996, 1998-2021) la evolución del número de municipios en España quedaría como:\n\n\n\n\n\n\n\nGráfico 2: Evolución del número de municipios (datos del Padrón) Juro que mejoraré el gráfico!!!\n\n\n\n\nLa Figura 2 muestra que a partir de 1996, el número de municipios ha aumentado de forma muy suave pero continuada, hasta llegar a los 8.131 municipios en 2021."
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#curiosidades",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#curiosidades",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "\n5 Curiosidades",
-    "text": "5 Curiosidades\nEn las Figura 1 y Figura 2 se muestran datos sobre la evolución del número de municipios, y hay 2 años (2001 y 2011) en que tenemos cifras para el número de municipios procedentes de 2 fuentes: Censos y padrón. ¿Coincidirán? No . Ya diré porqué. Es “logico”, bueno, puede pasar."
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#biblio",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#biblio",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "\n6 Biblio",
-    "text": "6 Biblio\nBiblio:\n\nartículo PAIS: https://elpais.com/elpais/2017/02/02/media/1486066904_389254.html La mitad de municipios puede desaparecer"
-  },
-  {
-    "objectID": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#footnotes",
-    "href": "blog_Rflowers/2022-07-13_censos-historicos_02/index.html#footnotes",
-    "title": "Evolución del número de municipios en España (1842-2021)",
-    "section": "Notas",
-    "text": "Notas\n\nPara obtener datos de población a nivel de localidad o núcleos de población hay que acudir al Nomenclátor del INE.↩︎\nUna localidad es una división administrativa o territorial formada por un núcleo de población con identidad propia, ya sea esta una aldea, pueblo o ciudad↩︎\nEn realidad según los códigos municipales únicos que he encontrado en la web de los censos históricos del INE↩︎\nEn realidad debería decir han sido censados.↩︎\nUtilizo datos de población del Padrón continuo 1996 y 1998 a 2021↩︎\nHay otra forma de obtener el listado de municipios actuales; a través del Registro de entidades locales, concrétamente el listado de municipios se puede obtener aquí. Pues bien otra complicación más, de la que me enteré también por Paco Goerlich: en el REL existe un “municipio” (Tharsis, con código 21901) que nunca ha estado presente en el Padrón. Misterios de las estadísticas oficiales!!! Igual esta noticia puede arrojar algo de luz, parece que la Junta de Andalucia aprobó la segregación de Tharsis de Alosno, pero finalmente el Tribunal Supremo confirmó la sentencia del TSJA anulando el decreto de segregación de Tharsis de Alosno; sin embargo, a pesar de estar en una situación similar, si aparece en el Padrón el municipio de La Zarza-Perrunal (21902)↩︎"
+    "text": "Notas\n\n\n… premios más tochos 😉↩︎"
   },
   {
     "objectID": "blog_Rflowers/2022-07-14_censos-historicos_03/index.html",
@@ -476,6 +490,41 @@
     "text": "Notas\n\nEn este post expliqué el proceso que seguí para obtener los datos↩︎"
   },
   {
+    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html",
+    "href": "blog_Rflowers/2023-07-10_WR_01/index.html",
+    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "section": "",
+    "text": "Según cuenta la Wikipedia aquí, las plusmarcas del mundo de atletismo, o récords mundiales de atletismo, son ratificadas por World Athletics1 desde 1912. Aquí nos cuentan que la primera lista de récords mundiales masculinos se publicó por primera vez en 1914 y las primeras listas de mujeres en 1936 . Desde 1987, la IAAF estableció una lista de récords mundiales en pista cubierta, aunque desde el 1 de enero de 2000, La regla 260.18a de la IAAF se modificó para que ahora se puedan establecer récords mundiales en un estadio deportivo con o sin techo."
+  },
+  {
+    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#intro",
+    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#intro",
+    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "section": "",
+    "text": "Según cuenta la Wikipedia aquí, las plusmarcas del mundo de atletismo, o récords mundiales de atletismo, son ratificadas por World Athletics1 desde 1912. Aquí nos cuentan que la primera lista de récords mundiales masculinos se publicó por primera vez en 1914 y las primeras listas de mujeres en 1936 . Desde 1987, la IAAF estableció una lista de récords mundiales en pista cubierta, aunque desde el 1 de enero de 2000, La regla 260.18a de la IAAF se modificó para que ahora se puedan establecer récords mundiales en un estadio deportivo con o sin techo."
+  },
+  {
+    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#obtención-de-los-datos",
+    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#obtención-de-los-datos",
+    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "section": "\n2 Obtención de los datos",
+    "text": "2 Obtención de los datos\nLos datos se obtuvieron de la página web de World Athletics. Concretamente la página de acceso a los récords está aquí. En esta página se pueden acceder a 53 categorías de WR para mujeres y 46 para los hombres2.\nDescarté las pruebas de relevos, las pruebas combinadas (heptalon, decathlon) y pruebas digamos “extrañas”, como por ejemplo, 1.000 metros, 2.000 metros, 50 kilómetros , etc … Además como en futuros post quiero hacer una comparativa de rendimineto entre hombres y muyjeres, descarté las carreras de 100 y 110 metros vallas. Finalmente me quedé con las siguientes pruebas:\n\nCódigolibrary(tidyverse)\ndf_2022 &lt;- pjpv.datos.2022::IAAF_WR_2022\ndf &lt;- df_2022 %&gt;% \n  filter(!(prueba.f.9 %in% c(\"Relevos\", \"Combinadas\",  \"Race-walk\",  \"Carreras (raras)\" ))) %&gt;% \n  filter(!prueba.f %in% c(\"1000-metres\", \"2000-metres\",\"one-mile\", \"3000-metres\", \"half-marathon\", \"5-kilometres\", \"10-kilometres\", \"50-kilometres\" ,\"100-kilometres\"))\ntable &lt;- df %&gt;% \n  distinct( prueba, prueba.f.9) %&gt;% \n  mutate(prueba.f.9 = as.character(prueba.f.9)) %&gt;% \n  mutate(prueba.f.9 = ifelse(!(prueba.f.9 %in% c(\"Saltos\", \"Lanzamientos\")) , \"Carreras\",  prueba.f.9  )) %&gt;% \n  arrange(prueba) %&gt;% \n  group_by(prueba.f.9) %&gt;% \n  summarise(from_country = paste(prueba, collapse = \", \")) \ngt::gt(table)\n\n\n\n\n\n\nprueba.f.9\nfrom_country\n\n\n\nCarreras\n100-metres, 100-metres-hurdles, 10000-metres, 110-metres-hurdles, 1500-metres, 200-metres, 3000-metres-steeplechase, 400-metres, 400-metres-hurdles, 5000-metres, 800-metres, marathon\n\n\nLanzamientos\ndiscus-throw, hammer-throw, javelin-throw, shot-put\n\n\nSaltos\nhigh-jump, long-jump, pole-vault, triple-jump"
+  },
+  {
+    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#análisis",
+    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#análisis",
+    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "section": "\n3 Análisis",
+    "text": "3 Análisis\nVeremos cuando tengo tiempo para jugar un poco con los datos."
+  },
+  {
+    "objectID": "blog_Rflowers/2023-07-10_WR_01/index.html#footnotes",
+    "href": "blog_Rflowers/2023-07-10_WR_01/index.html#footnotes",
+    "title": "Atlethic World Record’s: obtención de los datos y algunas curiosidades",
+    "section": "Notas",
+    "text": "Notas\n\nantes Asociación Internacional de Federaciones de Atletismo (IAAF)↩︎\nHay más categorías en las mujeres, entre otras razones porque en ciertas pruebas como el maratón hay WR para carreras mixtas y carreras donde solo participan mujeres↩︎"
+  },
+  {
     "objectID": "blog_TBits.html",
     "href": "blog_TBits.html",
     "title": "TBits",
@@ -483,10 +532,10 @@
     "text": "La idea es ir colgando aquí pequeños ejercicios/ejemplos etc… que hago en clase, o cosillas que leo y medio aprendo. Si no las apuntas se olvidan más rápido.\n\n\n\n\n\n\n   \n     \n     \n       Ordenar por\n       Pre-seleccionado\n         \n          Título\n        \n         \n          Fecha - Menos reciente\n        \n         \n          Fecha - Más reciente\n        \n         \n          Autor/a\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nImágenes con stabilityAI\n\n\nAprendiendo cómo generar imágenes con R y stabilityAI. Este es uno de los ejercicios que hicimos en clase y creo que les gustó a los estudiantes. \n\n\n\nIA\n\n\nstabilityAI\n\n\nimágenes\n\n\n\n\n\n\n\n\n\n1 mar 2024\n\n\nPedro J. Pérez\n\n\n4 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nGeolocalización con R\n\n\nAprendiendo cómo geolocalizar con R. Suele ser otro de los ejercicios que hago en clase \n\n\n\nGIS\n\n\ngeolocalizacion\n\n\nmapas\n\n\n\n\n\n\n\n\n\n5 mar 2024\n\n\nPedro J. Pérez\n\n\n8 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nDatos para los trabajos\n\n\nUn listado donde encontrar datos para los trabajos de clase. \n\n\n\ndatos\n\n\n\n\n\n\n\n\n\n6 mar 2024\n\n\nPedro J. Pérez\n\n\n6 minutos\n\n\n\n\n\n\n\n\n\n\n\n\nBorrando objetos del Global\n\n\nHay que saber tener el Clobal medio limpio \n\n\n\nfunciones\n\n\n\n\n\n\n\n\n\n7 mar 2024\n\n\nPedro J. Pérez\n\n\n5 minutos\n\n\n\n\n\n\nNo hay resultados"
   },
   {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "Licencia",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Pedro J. Pérez",
     "section": "",
-    "text": "My posts from the blogs R & flowers and TBits are released under a Creative Commons Attribution-ShareAlike 4.0 International License."
+    "text": "Mi nombre es Pedro J. Pérez. Soy profesor del departamento de Análisis Económico de la Universitat de València. Mi página web en la UV es: https://www.uv.es/pjperez/\nMe gusta aprender y trastear con R; vamos, que aún soy un entusiasta de R. Me divierto!!\nA pesar de haber tenido ya unos cuantos blogs, no soy bloguero, mas bien soy un creador y liquidador de blogs. Aquí, puedes ver un listado no exhaustivo de los blogs que he liquidado.\nLa verdad es que me gusta escribir posts, tienes mucha más libertad que al escribir un informe o un artículo académico; además, los posts no tienen porque estar perfectos, cuando te apetece los puedes dejar; además, aunque los posts no estén acabados del todo, el pensar que alguien puede leerlos te hace pensar y reflexionar sobre lo que escribes.\n\nRemember kids, the only difference between screwing around and science is writing it down — Adam Savage de MythBusters"
   }
 ]

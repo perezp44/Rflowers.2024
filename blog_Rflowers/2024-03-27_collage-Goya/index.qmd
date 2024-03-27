@@ -1,0 +1,183 @@
+---
+title: "Collage con las obras de Goya que existen en Wikidata"
+subtitle: | 
+  En el anterior post he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. Aquí presento una tabla para poder visualizarlas.
+date: 2024-03-27
+categories: [Wikidata, obras de Goya]
+image: "imagenes/thumbnail.jpg"
+---
+
+
+```{r}
+#| include: false
+library(tidyverse)
+library(rvest)
+library(wikifacts) 
+```
+
+## Intro
+
+En el [anterior post](../2024-03-25_wikidata-Goya/index.qmd) he recopilado las obras de Goya en Wikidata y que tienen imagen disponible. El objetivo era simplemente ver donde están ubicadas las obras de Goya. Ahora, en este post, quiero hacer un collage con las obras de Goya que tienen imagen disponible en Wikidata; bueno, en realidad quería hacer un collage, lo haré, pero de momento solo presento una tabla para poder visualizar de manera sencilla las obras de Goya disponibles en Wikidata.
+
+
+```{r}
+#| include: false
+#my_ruta_datos_orig <- fs::dir_ls(here::here("datos", "orig_wikidata"))
+#my_ruta_datos_orig <- fs::dir_ls("./datos/orig_wikidata")
+my_ruta_datos_orig <-  fs::dir_ls(here::here("blog_Rflowers", "2024-03-25_wikidata-Goya", "datos", "orig_wikidata"))
+
+df_orig <- rio::import(my_ruta_datos_orig)
+```
+
+
+
+```{r}
+#| include: false
+#- MAPA ------------------------------------------------------------------------
+#- algunos cuadros. Por ejmeplo: https://www.wikidata.org/wiki/Q47533444  están en 3 ubicaciones  y por tanto, cuando recupero el pais salen 3 paises
+zz <- df_orig %>% filter(item == "http://www.wikidata.org/entity/Q47533444")
+
+#- Hay 7 ( 1 con 3 y 6 con 2) cuadros con varias ubicaciones
+
+##- cuadros en varios museos ----
+zz_varios_museos_id <- df_orig %>%  #- obtengo los id's de los cuadros que están en varios museos
+  distinct(item, itemLabel, ubicacionLabel) %>% 
+  group_by(item, itemLabel) %>% summarise(n = n()) %>% 
+  arrange(desc(n)) %>% filter(n > 1)  %>% pull(1) #- 14 id's
+
+# veo los cuadros q están en varios museos
+zz_varios_museos <- df_orig %>% filter(item %in% zz_varios_museos_id) %>% 
+  select(1:2, paisLabel, ciudadLabel, ubicacionLabel) %>% distinct()  #- 29 registros
+
+gt::gt(zz_varios_museos)
+
+##- quito esos 14 cuadros (q tienen ubicación en varios museos)
+df_orig_x <- df_orig %>% filter(!item %in% zz_varios_museos_id)
+
+
+##- cuadros en varios ciudades ----
+#- ahora ya empiezo en df_orig_x
+zz_varias_ciudades_id <- df_orig_x %>%  #- obtengo los id's de los cuadros que están en varios ciudades
+  distinct(item, itemLabel, ciudadLabel) %>% 
+  group_by(item, itemLabel) %>% summarise(n = n()) %>% 
+  arrange(desc(n)) %>% filter(n > 1)  %>% pull(1) #- 29 id's
+
+# veo los cuadros q están en varias ciudades
+zz_varias_ciudades <- df_orig_x %>% filter(item %in% zz_varias_ciudades_id) %>% 
+  select(1:2, paisLabel, ciudadLabel, ubicacionLabel) %>% distinct()  #- 61 registros
+
+gt::gt(zz_varias_ciudades)
+
+# quito los cuadros con varias ciudades
+df_orig_x <- df_orig_x %>% filter(!item %in% zz_varias_ciudades_id) #- 958 rows
+zz <- df_orig_x %>% janitor::tabyl(ciudadLabel)
+#- cuantos id's unicos quedan
+zz <- df_orig_x %>% distinct(item)  #- 754 , pero deberian ser 756 = 799 - (14 + 29)
+
+
+##- cuadros en varios países ----
+zz_varios_paises_id <- df_orig_x %>%  #- obtengo los id's de los cuadros que están en varios paises
+  distinct(item, itemLabel, paisLabel) %>% 
+  group_by(item, itemLabel) %>% summarise(n = n()) %>% 
+  arrange(desc(n)) %>% filter(n > 1) %>% pull(1) #- no hay, asi q no quito nada
+
+#- ya no me caliento el cap más con los duplicados
+
+#- OK ya empiezo el análisis de las ubicaciones (habiendo quitado los duplicados)
+#- En df_orig_x quedan 756 cuadros únicos, PERO 958 rows (puede ser x imagens etc)
+#- ME QUEDO CON LA PRIMERA ROW DE CADA CUADRO
+
+df_ubicaciones <- df_orig_x %>% distinct(item, .keep_all = TRUE) #-
+
+```
+
+
+
+<br>
+
+## Collage de obras de Goya
+
+Me queda hacer el collage, será para otro día .... no, la verdad es que de momento no voy a hacer el collage.
+
+Lo que sí voy a hacer es una **tabla con links a las imágenes de las obras de Goya** que hay en Wikidata. No todas las obras de Goya tienen una imagen en Wikidata, pero sí muchas de ellas, concretamente 482. Ahí van:  
+<br>
+
+**Cuadro 1:** Links a imágenes y a páginas web de las obras de Goya en Wikidata
+
+
+```{r}
+#| include: false
+df_con_img <- df_ubicaciones %>% 
+  filter(!is.na(image)) %>% 
+  distinct(item, .keep_all = TRUE) %>% 
+  select(itemLabel, ubicacionLabel, ciudadLabel, image, link_esp, link_eng, idGoya,  item) 
+
+ # mutate(image = paste0('<href="', image, '">', image,  '</a>')) %>% 
+ # mutate(image = stringr::str_replace_all(image, "\\\\", ""))
+```
+
+
+```{r}
+#| include: false
+#- genero el texto para q los links sean clicables
+df_con_img_ok <- df_con_img %>% 
+  mutate(image = paste0('<a href="', image, '">', itemLabel ,  '</a>')) %>% 
+  mutate(knolbase = stringr::str_replace_all(item, "http://www.wikidata.org/entity/", "https://ringgaard.com/kb/")) %>%
+  mutate(knolbase = paste0('<a href="', knolbase, '">', 'Ficha en KnolBase',  '</a>')) %>%
+  mutate(link_esp = ifelse(is.na(link_esp), "---", 
+                           paste0('<a href="', link_esp, '">', 'Link a Wikipedia',  '</a>'))) %>%
+ mutate(link_eng = ifelse(is.na(link_eng), "---",
+                          paste0('<a href="', link_eng, '">', 'Wikipedia inglesa',  '</a>'))) %>%
+ mutate(item = paste0('<a href="', item, '">', 'Link a Wikidata',  '</a>')) %>%
+    select(image, knolbase, ubicacionLabel, ciudadLabel, link_esp, link_eng, item, idGoya)
+```
+
+
+Si pinchas en la primera columna verás una imagen de la obra. La segunda columna te ofrece una visualización esplendida de toda la información que hay en Wikidata sobre esa obra. Los links a Wikipedia (española e inglesa) te llevan a los artículos de Wikipedia de la obra, si es que estos existen
+
+
+
+La columna `id` hace referencia al identificador de la obra en la **Fundación Goya en Aragón**. Estaría bien tener el link a la ficha de las obras de Goya en la Fundación Goya en Aragón, son muy chulas, por ejemplo [esta](https://fundaciongoyaenaragon.es/obra/saturno-devorando-a-un-hijo/660), son como artículos completos, pero ... resulta que los links incluyen los nombres de las obras y eso me haría tener que hacer un webscraping para poder tener todos los links a la obras de Goya en el catalogo de la Fundación, no way!!!
+
+La verdad es que me encantaría ver el listado de obras en el catálogo de la Fundación, pero no lo he encontrado facilmente, seguramente no he sabido buscarlo.
+
+
+<br>
+
+
+
+
+
+
+```{r}
+DT::datatable(df_con_img_ok,  escape = FALSE,
+              caption = 'Cuadro 4: Links a imágenes y a páginas web de las obras de Goya en Wikidata',
+              filter = 'top',
+              class = 'cell-border stripe',
+              colnames = c("Cuadro", "Ficha",  "Museo", "Ciudad", "Link a Wikipedia" , "Link a Wiki inglesa", "Link a Wikidata", "id"))
+```
+
+
+
+
+
+<br><br>
+
+
+## Biblio
+
+
+Voy a dejar aquí apuntadas algunas referencias para, más adelante, no sé cuando, hacer el collage ... o mejor aún una **shiny app** como hace Nicola Rennie [aquí](https://nrennie.rbind.io/blog/webr-shiny-tidytuesday/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_478). El shiny muestra solo un plot, pero puedes elegir cual y puedes elegir una categoría, que en mi caso podría ser un museo o país.
+
+Yo ya hice hace años un collage con las imágenes que aparecían en la cuenta de Twitter de Nacho Vegas, pero quiero ver nuevas formas de hacerlo así que:
+
+- [Scrap de memes en R](https://juvenalcampos.com/2022/03/10/scrap-de-memes-en-r/): bajar multimedia de twitter. Esto ya lo he hecho yo. Lo que no he hecho es hacer un gif con las imágenes.
+
+- Un [script](https://github.com/z3tt/30DayChartChallenge_Collection2021/blob/main/R/create_collages.R) para hacer collages de imágenes con R
+
+- [Process Profile Pictures with magick](https://www.garrickadenbuie.com/blog/process-profile-picture-magick/): coge fotos perfil de asistentes a un congreso, las redondea, para eso ha de centrar las caras, y hace un collage. Para detectar las caras, puede que use [esto](https://github.com/bnosac/image/tree/master/image.libfacedetection#readme)
+
+
+   
+- Nicola Rennie tambien hace collage de imágenes [aquí](https://fosstodon.org/@nrennie/111872614837307022)																									  
+

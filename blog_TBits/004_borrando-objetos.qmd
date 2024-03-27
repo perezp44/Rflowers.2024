@@ -35,7 +35,7 @@ rm("cc") #- borramos el objeto cc.
 
 
 
-Fíjate bien que `base::rm()` admite que pongas el nombre del objeto que quiere borrar, por ejmeplo `aa`, pero también puedes poner el nombre del objeto entre comillas como carácter (`"aa"`). Utilizando jerga R, puedes poner el name o el quoted names.
+Fíjate bien que `base::rm()` admite que pongas el nombre del objeto que quieres borrar, por ejemplo `aa`, pero también puedes poner el nombre del objeto entre comillas como carácter (`"aa"`). Utilizando jerga R, puedes poner el name o el quoted name.
 
 
 Quiero volver a insistir en este punto, así que si miras la ayuda de la función `base::rm()` verás que para su primer argumento indica:
@@ -197,7 +197,7 @@ La función `base::rm()` permite borrar todos los objetos en el Global, con `rm(
 
 También podemos utilizar patrones más complejos para borrar solo algunos objetos. Por ejemplo, podemos borrar los objetos que empiezan por un patrón, o borrar todos los objetos excepto algunos que nos interesa mantener.
 
-No te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas [este hilo](https://community.rstudio.com/t/first-line-of-every-r-script/799?u=jessemaegan) de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, oncretamente [aquí](https://community.rstudio.com/t/first-line-of-every-r-script/799/36).
+No te lo recomiendo ahora mismo, pero si tienes ganas de profundizar en el tema, te recomiendo que leas [este hilo](https://community.rstudio.com/t/first-line-of-every-r-script/799?u=jessemaegan) de la comunidad de RStudio. Aparecen ideas sobre los conceptos de clean environment y reproducibilidad. En el hilo también aparece Hadley dando su opinión sobre el tema, concretamente [aquí](https://community.rstudio.com/t/first-line-of-every-r-script/799/36).
 
   
 

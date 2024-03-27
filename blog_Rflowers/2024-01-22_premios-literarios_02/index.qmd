@@ -4,6 +4,7 @@ subtitle: |
    Se analiza la presencia y posibles pautas del sesgo de género en los premios literarios usando R y datos de Wikidata
 date: 2024-01-22
 categories: [premios literarios, Wikidata]
+image: "imagenes/thumbnail_resized.png"
 ---
 
 # Intro
