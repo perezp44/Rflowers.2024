@@ -34,7 +34,7 @@ df_orig <- rio::import(my_ruta_datos_orig)
 ```{r}
 #| include: false
 #- MAPA ------------------------------------------------------------------------
-#- algunos cuadros. Por ejmeplo: https://www.wikidata.org/wiki/Q47533444  están en 3 ubicaciones  y por tanto, cuando recupero el pais salen 3 paises
+#- algunos cuadros. Por ejemplo: https://www.wikidata.org/wiki/Q47533444  están en 3 ubicaciones  y por tanto, cuando recupero el país salen 3 países
 zz <- df_orig %>% filter(item == "http://www.wikidata.org/entity/Q47533444")
 
 #- Hay 7 ( 1 con 3 y 6 con 2) cuadros con varias ubicaciones
@@ -71,20 +71,20 @@ gt::gt(zz_varias_ciudades)
 # quito los cuadros con varias ciudades
 df_orig_x <- df_orig_x %>% filter(!item %in% zz_varias_ciudades_id) #- 958 rows
 zz <- df_orig_x %>% janitor::tabyl(ciudadLabel)
-#- cuantos id's unicos quedan
-zz <- df_orig_x %>% distinct(item)  #- 754 , pero deberian ser 756 = 799 - (14 + 29)
+#- cuantos id's únicos quedan
+zz <- df_orig_x %>% distinct(item)  #- 754 , pero deberían ser 756 = 799 - (14 + 29)
 
 
 ##- cuadros en varios países ----
-zz_varios_paises_id <- df_orig_x %>%  #- obtengo los id's de los cuadros que están en varios paises
+zz_varios_paises_id <- df_orig_x %>%  #- obtengo los id's de los cuadros que están en varios países
   distinct(item, itemLabel, paisLabel) %>% 
   group_by(item, itemLabel) %>% summarise(n = n()) %>% 
-  arrange(desc(n)) %>% filter(n > 1) %>% pull(1) #- no hay, asi q no quito nada
+  arrange(desc(n)) %>% filter(n > 1) %>% pull(1) #- no hay, así q no quito nada
 
 #- ya no me caliento el cap más con los duplicados
 
 #- OK ya empiezo el análisis de las ubicaciones (habiendo quitado los duplicados)
-#- En df_orig_x quedan 756 cuadros únicos, PERO 958 rows (puede ser x imagens etc)
+#- En df_orig_x quedan 756 cuadros únicos, PERO 958 rows (puede ser x imágenes etc)
 #- ME QUEDO CON LA PRIMERA ROW DE CADA CUADRO
 
 df_ubicaciones <- df_orig_x %>% distinct(item, .keep_all = TRUE) #-
@@ -140,7 +140,7 @@ Si pinchas en la primera columna verás una imagen de la obra. La segunda column
 
 La columna `id` hace referencia al identificador de la obra en la **Fundación Goya en Aragón**. Estaría bien tener el link a la ficha de las obras de Goya en la Fundación Goya en Aragón, son muy chulas, por ejemplo [esta](https://fundaciongoyaenaragon.es/obra/saturno-devorando-a-un-hijo/660), son como artículos completos, pero ... resulta que los links incluyen los nombres de las obras y eso me haría tener que hacer un webscraping para poder tener todos los links a la obras de Goya en el catalogo de la Fundación, no way!!!
 
-La verdad es que me encantaría ver el listado de obras en el catálogo de la Fundación, pero no lo he encontrado facilmente, seguramente no he sabido buscarlo.
+La verdad es que me encantaría ver el listado de obras en el catálogo de la Fundación, pero no lo he encontrado fácilmente, seguramente no he sabido buscarlo.
 
 
 <br>
@@ -179,6 +179,27 @@ Yo ya hice hace años un collage con las imágenes que aparecían en la cuenta d
 - [Process Profile Pictures with magick](https://www.garrickadenbuie.com/blog/process-profile-picture-magick/): coge fotos perfil de asistentes a un congreso, las redondea, para eso ha de centrar las caras, y hace un collage. Para detectar las caras, puede que use [esto](https://github.com/bnosac/image/tree/master/image.libfacedetection#readme)
 
 
-   
-- Nicola Rennie tambien hace collage de imágenes [aquí](https://fosstodon.org/@nrennie/111872614837307022)																									  
+- Nicola Rennie también hace collage de imágenes [aquí](https://fosstodon.org/@nrennie/111872614837307022)																									  
 
+<br>
+
+## Epílogo
+
+
+Una vez que me bajó el furor de escribir los post, busque de forma más sosegada en la web de la Fundación de Goya y encontré el link a su catálogo online, concretamente [aquí](https://fundaciongoyaenaragon.es/) donde, en un banner, pone bien grande:
+
+> Conoce nuestro catálogo online: más de 1800 obras de Francisco de Goya
+
+Si pinchas en el catálogo online, se muestra un buscador por título o palabra clave, con la posibilidad de aplicar filtros por categoría, ubicación etc...
+
+
+También encontré un "WikiProject", para recopilar en una tabla las obras de creadores. El Wikiproject está [aquí](https://m.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings/Creator) y el caso de Goya, [aquí](https://m.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings/Creator/Francisco_de_Goya).
+
+En la tabla con las obras de Goya, que incluye imágenes, hay actualmente, abril de 2024, 527 obras porque en su querie se excluyen las series. La querie es:
+
+```{sql}
+#| eval: false
+SELECT ?item WHERE { ?item wdt:P31 wd:Q3305213 . ?item wdt:P170 wd:Q5432 . MINUS { ?item wdt:P31 wd:Q15727816 } }
+```
+
+Descanso ya de Goya!! 
