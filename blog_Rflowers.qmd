@@ -1,6 +1,6 @@
 ---
 title: "R & flowers (2024)"
-subtitle: "Algunos análisis que, si no los recogiese aquí, se perderían"
+subtitle: "Algunos análisis que, si no los recogiese aquí, se perderían en el tiempo, como lagrimas en la lluvia."
 page-layout: full
 title-block-banner: true
 listing:

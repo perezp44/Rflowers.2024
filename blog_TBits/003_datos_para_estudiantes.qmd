@@ -14,7 +14,7 @@ En mis cursos sobre R, una parte importante de la evaluación y del curso son lo
 
 Algunos de los trabajos ya hechos por los estudiantes puedes verlos [aquí](https://perezp44.github.io/intro-ds-23-24-web/05-trabajos-estudiantes.html). La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc..., etc..., pero los deportes y la música nunca faltan.
 
-
+<br>
 
 ## Diversas fuentes de datos
 
@@ -23,7 +23,7 @@ Algunos de los trabajos ya hechos por los estudiantes puedes verlos [aquí](http
 
 - [Kaggle](https://www.kaggle.com/). Es una plataforma de competiciones de machine learning. Puedes encontrar datos, análisis y el código. Impresionante. Hay mucho código en R, pero digamos que es más territorio Phyton. Los datos [aquí](https://www.kaggle.com/datasets). En [este artículo](https://mlcontests.com/state-of-competitive-machine-learning-2023/?utm_campaign=Data_Elixir&utm_source=Data_Elixir_476) hay más plataformas sobre competiciones de datos, por ejemplo [Coda Lab]](https://codalab.lisn.upsaclay.fr/?ref=mlcontests) o [Driven data](https://www.drivendata.org/?ref=mlcontests).
 
-- [Data is plural](https://www.data-is-plural.com/). Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está [aquí](https://www.data-is-plural.com/archive/) y [aquí](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0) con más información.
+- [Data is plural](https://www.data-is-plural.com/). Es una newsletter semanal con datos interesantes. Puedes buscar en el archivo de la newsletter. El archivo está [aquí](https://www.data-is-plural.com/archive/) y [aquí](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0) con más información.  
 
 - [Hugging Face](https://huggingface.co/datasets). Es una plataforma de IA. Puedes encontrar datasets y modelos, pero no os lo recomiendo, suelen ser conjuntos de datos para tareas de audio, visión por computadora y procesamiento del lenguaje natural (NLP). Se nos, al menos a mi, escapa un poco.
 
@@ -53,6 +53,7 @@ Algunos de los trabajos ya hechos por los estudiantes puedes verlos [aquí](http
 
 - [The Global economy](https://www.theglobaleconomy.com/) recopila datos económicos de 200 países. Para descargar los datos, [aquí](https://www.theglobaleconomy.com/download-data.php)
 
+<br>
 
 ## Estadísticas oficiales
 
@@ -76,10 +77,10 @@ df <- tidyBdE::bde_catalog_load(
 )
 ```
 
-- **Banco Central Europeo**:  [ecb](https://cran.r-project.org/web/packages/ecb/index.html). No lo he usado.   [Aquí](https://data.ecb.europa.eu/) el portal de datos del BCE y [aquí](https://data.ecb.europa.eu/data/datasets) los datasets.
+- **Banco Central Europeo**:  [ecb](https://cran.r-project.org/web/packages/ecb/index.html). No lo he usado, pero [aquí](https://cran.r-project.org/web/packages/ecb/vignettes/ecb_sdw.html) tienes una vignette. [Aquí](https://data.ecb.europa.eu/) el portal de datos del BCE y [aquí](https://data.ecb.europa.eu/data/datasets) los datasets.
 
 
-- [The World Bank](https://data.worldbank.org/). Los indicadores [aquí](https://data.worldbank.org/indicator). hay varios paquetes: [WDI](https://github.com/vincentarelbundock/WDI), [wbstats](https://github.com/gshs-ornl/wbstats). [Aquí](https://econandrew.github.io/wdi-api-R-gettingstarted/index.html) un bookdown sobre la API del Worls Bank.
+- [The World Bank](https://data.worldbank.org/). Los indicadores [aquí](https://data.worldbank.org/indicator). hay varios paquetes: [WDI](https://github.com/vincentarelbundock/WDI), [wbstats](https://github.com/gshs-ornl/wbstats) y [wordbankr](https://langcog.github.io/wordbankr/articles/wordbankr.html) [Aquí](https://econandrew.github.io/wdi-api-R-gettingstarted/index.html) un bookdown sobre la API del World Bank.
 
 
 - [OCDE](https://www.oecd.org/). Los datos [aquí](https://data.oecd.org/). Hay un paquete de R, [oecd](https://github.com/expersso/OECD) que facilita el acceso a esos datos. [Aquí](https://rforpoliticalscience.com/2023/05/08/how-to-download-oecd-datasets-in-r/) un post.
@@ -87,7 +88,10 @@ df <- tidyBdE::bde_catalog_load(
 - [UN population Dividion](https://population.un.org/wpp/): population estimates from 1950 to the present for 237 countries or áreas. [Aquí](https://github.com/PPgp/wpp2022) un paquete de R. 
 
 
-- [UN comtrade database](https://comtradeplus.un.org/): datos detallados de comercio global. [Aquí](https://comtrade.un.org/data/Doc/api/ex/r) un post sobre cómo usar su API con R.
+- [UN comtrade database](https://comtradeplus.un.org/): datos detallados de comercio global. [Aquí](https://comtrade.un.org/data/Doc/api/ex/r) un post sobre cómo usar su API con R, y [aquí](https://github.com/ropensci/comtradr) un paquete.
+
+
+- [UNHCR’s refugees R package](https://www.unhcr.org/refugee-statistics/insights/explainers/refugees-r-package.html). Paquete de R para acceder a los datos de la UNHCR, la agencia la ONU para los refugiados. [Aquí](https://populationstatistics.github.io/refugees/) el paquete y [aquí](https://fosstodon.org/@nrennie/110932531214282637) un gráfico de Nicola Rennie con estos datos.
 
 <br>
 
@@ -108,6 +112,17 @@ Algunos conjuntos de datos que en su día me llamaron la atención, seguramente 
 
 - [Datos de la euroliga de Baloncesto](https://flavioleccese92.github.io/euroleaguer/) a través de un paquete de R
 
+- [f1dataR](https://scasanova.github.io/f1dataR/) es un paquete de R para acceder a datos de la Fórmula 1.
+
+- [Gastos militares](https://vis.social/@yotka/112197285006107533) del [SIPRI](https://www.sipri.org/databases/milex/sources-and-methods), el Instituto Internacional de Investigación para la Paz de Estocolmo.
+
+- [democracyData](https://github.com/xmarquez/democracyData?utm_source=3mw.albert-rapp.de&utm_medium=referral&utm_campaign=3mw-tips-for-the-30-day-chart-challenge): un paquete con diversos datos relacionados con la calidad democrática.
+
+- [ACLED](https://acleddata.com/about-acled/): datos sobre violencia política y protestas en todo el mundo. The Armed Conflict Location & Event Data Project (ACLED) is a disaggregated data collection, analysis, and crisis mapping project. [Aquí](https://sinpermiso.info/textos/paz-guerra-y-vuelta-a-la-historia-en-2023) un artículo que usa estos datos. En [Vision of Humanity](https://www.visionofhumanity.org/), concretamente [aquí](https://www.visionofhumanity.org/maps/#/) proveen datos relacionados con la paz y la seguridad.
+
+- [Desastres naturales](https://sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018/data-download). la NASA, en Geocoded Disasters (GDIS) Dataset, v1 (1960–2018) proporciona 39,953 locations for 9,924 disasters that occurred worldwide for the years 1960 to 2018. Una vissualización con estos datos [aquí](https://public.tableau.com/app/profile/george.gorczynski/viz/naturaldisasters_country/NaturalDisasters)
+
+- [OpenLandMap](https://openlandmap.github.io/book/012-compendium.html) es un proyecto que hade un Compendium of Global Gridded Environmental Data Sets. Me entere por este [toot](https://fosstodon.org/@tomhengl/111654580107485689)
 
 <br>
 
@@ -141,7 +156,7 @@ Algunos conjuntos de datos que en su día me llamaron la atención, seguramente 
 
 - El paquete [HistData](https://github.com/friendly/HistData) contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization
 
-
+<br>
 
 ## API's
 

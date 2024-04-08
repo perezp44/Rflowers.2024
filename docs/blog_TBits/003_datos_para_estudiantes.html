@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Pedro J. Pérez">
 <title>My last blog’s (2024-9999) - Datos para los trabajos</title>
@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Fecha de modificación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">17 de marzo de 2024</p>
+        <p class="date-modified">8 de abril de 2024</p>
       </div>
     </div>
       
@@ -227,6 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-right" id="quarto-document-content"><p>En mis cursos sobre R, una parte importante de la evaluación y del curso son los trabajos en equipo e individuales; así que para <strong>facilitar la búsqueda de datos</strong> a los estudiantes he confeccionado este listado con fuentes de datos.</p>
 <p>Algunos de los trabajos ya hechos por los estudiantes puedes verlos <a href="https://perezp44.github.io/intro-ds-23-24-web/05-trabajos-estudiantes.html">aquí</a>. La temática y, por tanto, los datos utilizados varían mucho, pero últimamente se han hecho más trabajos sobre temas relacionados con la economía. El último año 3 trabajos en equipo, de un total de 9 se centraron en la situación de los jóvenes. Había preocupación!! En los trabajos individuales hay más variedad: tiburones, meteoritos, etc…, etc…, pero los deportes y la música nunca faltan.</p>
+<p><br></p>
 <section id="diversas-fuentes-de-datos" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="diversas-fuentes-de-datos">
 <span class="header-section-number">1</span> Diversas fuentes de datos</h2>
 <ul>
@@ -245,7 +246,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://informationisbeautiful.net/">Information is Beautiful</a> provee de más de 300 datasets: <a href="https://informationisbeautiful.net/data/">aquí</a> y <a href="https://informationisbeautiful.net/beautifulnews/data/">aquí</a></p></li>
 <li><p><a href="https://www.lisdatacenter.org/">LIS</a>, The Luxembourg Income Study, is a data archive and research center dedicated to cross-national analysis and is home to two databases sobre Renta y Riqueza. Hay un paquete de R, <a href="https://github.com/LIS-Cross-National-Data-Center/lissyrtools">lissyrtools</a>.</p></li>
 <li><p><a href="https://www.theglobaleconomy.com/">The Global economy</a> recopila datos económicos de 200 países. Para descargar los datos, <a href="https://www.theglobaleconomy.com/download-data.php">aquí</a></p></li>
-</ul></section><section id="estadísticas-oficiales" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="estadísticas-oficiales">
+</ul>
+<p><br></p>
+</section><section id="estadísticas-oficiales" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="estadísticas-oficiales">
 <span class="header-section-number">2</span> Estadísticas oficiales</h2>
 <p>En Economía, las estadísticas oficiales de organismos como Eurostat, INE, ONU, FMI etc… etc… son una fuente de datos importante. Aquí presentaré algunos paquetes de R que facilitan el acceso a esos datos.</p>
 <p><br></p>
@@ -264,11 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <ul>
-<li><p><strong>Banco Central Europeo</strong>: <a href="https://cran.r-project.org/web/packages/ecb/index.html">ecb</a>. No lo he usado. <a href="https://data.ecb.europa.eu/">Aquí</a> el portal de datos del BCE y <a href="https://data.ecb.europa.eu/data/datasets">aquí</a> los datasets.</p></li>
-<li><p><a href="https://data.worldbank.org/">The World Bank</a>. Los indicadores <a href="https://data.worldbank.org/indicator">aquí</a>. hay varios paquetes: <a href="https://github.com/vincentarelbundock/WDI">WDI</a>, <a href="https://github.com/gshs-ornl/wbstats">wbstats</a>. <a href="https://econandrew.github.io/wdi-api-R-gettingstarted/index.html">Aquí</a> un bookdown sobre la API del Worls Bank.</p></li>
+<li><p><strong>Banco Central Europeo</strong>: <a href="https://cran.r-project.org/web/packages/ecb/index.html">ecb</a>. No lo he usado, pero <a href="https://cran.r-project.org/web/packages/ecb/vignettes/ecb_sdw.html">aquí</a> tienes una vignette. <a href="https://data.ecb.europa.eu/">Aquí</a> el portal de datos del BCE y <a href="https://data.ecb.europa.eu/data/datasets">aquí</a> los datasets.</p></li>
+<li><p><a href="https://data.worldbank.org/">The World Bank</a>. Los indicadores <a href="https://data.worldbank.org/indicator">aquí</a>. hay varios paquetes: <a href="https://github.com/vincentarelbundock/WDI">WDI</a>, <a href="https://github.com/gshs-ornl/wbstats">wbstats</a> y <a href="https://langcog.github.io/wordbankr/articles/wordbankr.html">wordbankr</a> <a href="https://econandrew.github.io/wdi-api-R-gettingstarted/index.html">Aquí</a> un bookdown sobre la API del World Bank.</p></li>
 <li><p><a href="https://www.oecd.org/">OCDE</a>. Los datos <a href="https://data.oecd.org/">aquí</a>. Hay un paquete de R, <a href="https://github.com/expersso/OECD">oecd</a> que facilita el acceso a esos datos. <a href="https://rforpoliticalscience.com/2023/05/08/how-to-download-oecd-datasets-in-r/">Aquí</a> un post.</p></li>
 <li><p><a href="https://population.un.org/wpp/">UN population Dividion</a>: population estimates from 1950 to the present for 237 countries or áreas. <a href="https://github.com/PPgp/wpp2022">Aquí</a> un paquete de R.</p></li>
-<li><p><a href="https://comtradeplus.un.org/">UN comtrade database</a>: datos detallados de comercio global. <a href="https://comtrade.un.org/data/Doc/api/ex/r">Aquí</a> un post sobre cómo usar su API con R.</p></li>
+<li><p><a href="https://comtradeplus.un.org/">UN comtrade database</a>: datos detallados de comercio global. <a href="https://comtrade.un.org/data/Doc/api/ex/r">Aquí</a> un post sobre cómo usar su API con R, y <a href="https://github.com/ropensci/comtradr">aquí</a> un paquete.</p></li>
+<li><p><a href="https://www.unhcr.org/refugee-statistics/insights/explainers/refugees-r-package.html">UNHCR’s refugees R package</a>. Paquete de R para acceder a los datos de la UNHCR, la agencia la ONU para los refugiados. <a href="https://populationstatistics.github.io/refugees/">Aquí</a> el paquete y <a href="https://fosstodon.org/@nrennie/110932531214282637">aquí</a> un gráfico de Nicola Rennie con estos datos.</p></li>
 </ul>
 <p><br></p>
 </section><section id="más-datos" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="más-datos">
@@ -280,6 +284,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://www.datannery.com/posts/scraping-tour-de-france-data/">Scrappeando datos del TOUR de Francia</a></p></li>
 <li><p><a href="https://atlas-offshore.world/">Atlas of the Offshore World</a> es un nuevo proyecto de the EU Tax Observatory sobre evasión fiscal.</p></li>
 <li><p><a href="https://flavioleccese92.github.io/euroleaguer/">Datos de la euroliga de Baloncesto</a> a través de un paquete de R</p></li>
+<li><p><a href="https://scasanova.github.io/f1dataR/">f1dataR</a> es un paquete de R para acceder a datos de la Fórmula 1.</p></li>
+<li><p><a href="https://vis.social/@yotka/112197285006107533">Gastos militares</a> del <a href="https://www.sipri.org/databases/milex/sources-and-methods">SIPRI</a>, el Instituto Internacional de Investigación para la Paz de Estocolmo.</p></li>
+<li><p><a href="https://github.com/xmarquez/democracyData?utm_source=3mw.albert-rapp.de&amp;utm_medium=referral&amp;utm_campaign=3mw-tips-for-the-30-day-chart-challenge">democracyData</a>: un paquete con diversos datos relacionados con la calidad democrática.</p></li>
+<li><p><a href="https://acleddata.com/about-acled/">ACLED</a>: datos sobre violencia política y protestas en todo el mundo. The Armed Conflict Location &amp; Event Data Project (ACLED) is a disaggregated data collection, analysis, and crisis mapping project. <a href="https://sinpermiso.info/textos/paz-guerra-y-vuelta-a-la-historia-en-2023">Aquí</a> un artículo que usa estos datos. En <a href="https://www.visionofhumanity.org/">Vision of Humanity</a>, concretamente <a href="https://www.visionofhumanity.org/maps/#/">aquí</a> proveen datos relacionados con la paz y la seguridad.</p></li>
+<li><p><a href="https://sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018/data-download">Desastres naturales</a>. la NASA, en Geocoded Disasters (GDIS) Dataset, v1 (1960–2018) proporciona 39,953 locations for 9,924 disasters that occurred worldwide for the years 1960 to 2018. Una vissualización con estos datos <a href="https://public.tableau.com/app/profile/george.gorczynski/viz/naturaldisasters_country/NaturalDisasters">aquí</a></p></li>
+<li><p><a href="https://openlandmap.github.io/book/012-compendium.html">OpenLandMap</a> es un proyecto que hade un Compendium of Global Gridded Environmental Data Sets. Me entere por este <a href="https://fosstodon.org/@tomhengl/111654580107485689">toot</a></p></li>
 </ul>
 <p><br></p>
 </section><section id="papers-con-datos" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="papers-con-datos">
@@ -303,7 +313,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>El paquete<a href="https://vincentarelbundock.github.io/Rdatasets/">Rdatasets</a> agrupa 2264 conjuntos de datos relacionados con el entorno R. Quizás sean más adecuados con fines didácticos. El listado de datos está <a href="https://vincentarelbundock.github.io/Rdatasets/articles/data.html">aquí</a></p></li>
 <li><p>El paquete <a href="https://github.com/friendly/HistData">HistData</a> contiene un conjunto da collection of small data sets that are interesting and important in the history of statistics and data visualization</p></li>
-</ul></section><section id="apis" class="level2" data-number="7"><h2 data-number="7" class="anchored" data-anchor-id="apis">
+</ul>
+<p><br></p>
+</section><section id="apis" class="level2" data-number="7"><h2 data-number="7" class="anchored" data-anchor-id="apis">
 <span class="header-section-number">7</span> API’s</h2>
 <ul>
 <li>

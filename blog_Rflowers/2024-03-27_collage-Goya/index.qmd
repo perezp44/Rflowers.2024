@@ -176,6 +176,8 @@ Yo ya hice hace años un collage con las imágenes que aparecían en la cuenta d
 
 - Un [script](https://github.com/z3tt/30DayChartChallenge_Collection2021/blob/main/R/create_collages.R) para hacer collages de imágenes con R
 
+- Un [paquete](https://github.com/VincentGuyader/collage) para hacer collages de imágenes con R
+
 - [Process Profile Pictures with magick](https://www.garrickadenbuie.com/blog/process-profile-picture-magick/): coge fotos perfil de asistentes a un congreso, las redondea, para eso ha de centrar las caras, y hace un collage. Para detectar las caras, puede que use [esto](https://github.com/bnosac/image/tree/master/image.libfacedetection#readme)
 
 
@@ -203,3 +205,7 @@ SELECT ?item WHERE { ?item wdt:P31 wd:Q3305213 . ?item wdt:P170 wd:Q5432 . MINUS
 ```
 
 Descanso ya de Goya!! 
+
+
+Sí, quería acabar con el post, pero parece que Goya me persigue. Ayer llegó a mi Twitter una noticia antigua sobre Goya y Esperanza Aguirre, sí la presidenta de las ranas, en el que hablaban de un retrato hecho por Goya a [Valentín Bellvís de Moncada y Pizarro](https://es.wikipedia.org/wiki/Valent%C3%ADn_Belvis_de_Moncada_y_Pizarro). Este cuadro no figura aún en Wikidata, pero en su [ficha](https://fundaciongoyaenaragon.es/obra/retrato-de-valentin-bellvis-de-moncada-y-pizarro/2010) en la Fundación Goya en Aragón explica que es una obra "unánimemente reconocida como un Goya" que durante mucho tiempo estuvo colgada sobre una chimenea, en el salón principal del suegro de Esperanza Aguirre y que actualmente está en el Fondo Cultural Villar Mir. Si te quieres enterar de la historia que incluye acusaciones de delito fiscal, finalmente desestimadas por el juez, puedes leer [este](https://www.eldiario.es/politica/esperanza-aguirre-marido-vendieron-goya-inedito-cinco-millones-protegerlo-cultural-ahorrarse-impuestos_1_7832152.html) artículo. Posteriormente, [aquí](https://elpais.com/cultura/2023-03-04/el-juez-cierra-el-caso-del-goya-del-marido-de-esperanza-aguirre-aunque-reconoce-que-fue-una-donacion-falsa.html) nos informan de que "El juez cierra el caso del ‘goya’ del marido de Esperanza Aguirre aunque reconoce que fue una donación falsa", para finalmente, según puede leerse  [aquí](https://www.heraldo.es/noticias/ocio-y-cultura/2023/03/19/madrid-declara-bic-el-goya-que-vendio-el-marido-de-esperanza-aguirre-1639058.html), el cuadro fue declarado Bien de Interés Cultural por la Comunidad de Madrid.
+
