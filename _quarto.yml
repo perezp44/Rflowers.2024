@@ -24,9 +24,9 @@ website:
     #background: primary #- pink
     collapse-below: lg
     logo: "imagenes/ababol_redondeado.png"
-    left: 
-      - icon: house-door
-        href: index.html
+    # left: 
+    #   - icon: house-door
+    #     href: index.qmd
     right:
       - text: "R & flowers"
         href: blog_Rflowers.qmd 

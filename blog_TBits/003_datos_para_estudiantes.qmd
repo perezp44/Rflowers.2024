@@ -80,7 +80,7 @@ df <- tidyBdE::bde_catalog_load(
 - **Banco Central Europeo**:  [ecb](https://cran.r-project.org/web/packages/ecb/index.html). No lo he usado, pero [aquí](https://cran.r-project.org/web/packages/ecb/vignettes/ecb_sdw.html) tienes una vignette. [Aquí](https://data.ecb.europa.eu/) el portal de datos del BCE y [aquí](https://data.ecb.europa.eu/data/datasets) los datasets.
 
 
-- [The World Bank](https://data.worldbank.org/). Los indicadores [aquí](https://data.worldbank.org/indicator). hay varios paquetes: [WDI](https://github.com/vincentarelbundock/WDI), [wbstats](https://github.com/gshs-ornl/wbstats) y [wordbankr](https://langcog.github.io/wordbankr/articles/wordbankr.html) [Aquí](https://econandrew.github.io/wdi-api-R-gettingstarted/index.html) un bookdown sobre la API del World Bank.
+- [The World Bank](https://data.worldbank.org/). Los indicadores [aquí](https://data.worldbank.org/indicator). hay dos paquetes: [WDI](https://github.com/vincentarelbundock/WDI) y [wbstats](https://github.com/gshs-ornl/wbstats).  [Aquí](https://econandrew.github.io/wdi-api-R-gettingstarted/index.html) un bookdown sobre la API del World Bank.
 
 
 - [OCDE](https://www.oecd.org/). Los datos [aquí](https://data.oecd.org/). Hay un paquete de R, [oecd](https://github.com/expersso/OECD) que facilita el acceso a esos datos. [Aquí](https://rforpoliticalscience.com/2023/05/08/how-to-download-oecd-datasets-in-r/) un post.
@@ -122,7 +122,10 @@ Algunos conjuntos de datos que en su día me llamaron la atención, seguramente 
 
 - [Desastres naturales](https://sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018/data-download). la NASA, en Geocoded Disasters (GDIS) Dataset, v1 (1960–2018) proporciona 39,953 locations for 9,924 disasters that occurred worldwide for the years 1960 to 2018. Una vissualización con estos datos [aquí](https://public.tableau.com/app/profile/george.gorczynski/viz/naturaldisasters_country/NaturalDisasters)
 
-- [OpenLandMap](https://openlandmap.github.io/book/012-compendium.html) es un proyecto que hade un Compendium of Global Gridded Environmental Data Sets. Me entere por este [toot](https://fosstodon.org/@tomhengl/111654580107485689)
+- [OpenLandMap](https://openlandmap.github.io/book/012-compendium.html) es un proyecto que hace un Compendium of Global Gridded Environmental Data Sets. Me entere por este [toot](https://fosstodon.org/@tomhengl/111654580107485689)
+
+
+- [wordbankr](https://langcog.github.io/wordbankr/articles/wordbankr.html), un paquete de R para acceder a [Wordbank](https://wordbank.stanford.edu/), an open database of children's vocabulary development.
 
 <br>
 
