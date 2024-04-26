@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Fecha de modificación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">7 de marzo de 2024</p>
+        <p class="date-modified">26 de abril de 2024</p>
       </div>
     </div>
       
@@ -235,8 +235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <p>Una vez tengas la API-key has de copiarla en el fichero <code>.Renviron</code>. Para ello ejecuta en R:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Se abrirá el fichero <code>.Renviron</code> en RStudio o en el editor de texto que tengas configurado. Has de añadir a ese fichero la siguiente linea:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">STABILITYAI_API_KEY</span><span class="op">=</span><span class="st">"xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se abrirá el fichero <code>.Renviron</code> en RStudio o en el editor de texto que tengas configurado. Es fácil que este fichero lo tengas completamente vacio porque no lo has usado antes. Bien, has de escribir en el fichero <code>.Renviron</code> la siguiente linea:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">STABILITYAI_TOKEN</span><span class="op">=</span><span class="st">"xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Además, deja una linea vacia al final del documento <code>.Renviron</code>.</p>
 <p>Ya hemos terminado el proceso de configuración. Ya podemos generar imágenes desde R.</p>
 <p>Este proceso nos da acceso a una serie de modelos. Veamoslos</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">stabilityAI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stabilityAI/man/get_engines_list.html">get_engines_list</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

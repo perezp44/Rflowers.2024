@@ -35,11 +35,14 @@ Para conectarnos a la API de `stability.ai` hemos de seguir los siguientes pasos
     usethis::edit_r_environ()
     ```
 
-    Se abrirá el fichero `.Renviron` en RStudio o en el editor de texto que tengas configurado. Has de añadir a ese fichero la siguiente linea:
+    Se abrirá el fichero `.Renviron` en RStudio o en el editor de texto que tengas configurado. Es fácil que este fichero lo tengas completamente vacio porque no lo has usado antes. Bien, has de escribir en el fichero `.Renviron` la siguiente linea:
 
     ```r
-    STABILITYAI_API_KEY="xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU"
+    STABILITYAI_TOKEN="xx-sbbbbbsbsbbsbbsbsbbsbsbbsbsbsbbsbsbsbbsbsbsbsbU"
     ```
+    
+    Además, deja una linea vacia al final del documento `.Renviron`.
+
 
     Ya hemos terminado el proceso de configuración. Ya podemos generar imágenes desde R.
 
