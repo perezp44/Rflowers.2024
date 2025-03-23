@@ -1,0 +1,13 @@
+#- Procesado de los datos de crimenes de UNDOC
+
+0) Con "00_bajar-datos_UNdoc.R", logicamente me bajo los datos. Me baje 3 categorias de datos
+
+1) Con "01_arreglar-datos_UNdoc.R" me calenté la cabeza para entender los datos
+
+2) Una vez q supe lo q había en cada una de las 3 categorias de datos. 
+Me quede con los datos "by type of offence" y fusione las 3 categorias y las exporté al fichero "./datos/datos_crim_UNDOC_2025_02_04.Rdata"
+Lo hice con el scrip "02_fusonar-y-exportar-datos.Rdata"
+
+
+3) Ya se puede cargar los datos y empezar el analisis con el script "03_cargar-datos_UNdoc.R"
+

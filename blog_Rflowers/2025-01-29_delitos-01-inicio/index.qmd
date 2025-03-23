@@ -1,0 +1,472 @@
+---
+title: "Delitos en España (I): inicio del proyecto y procesado de datos"
+subtitle: | 
+  Con este post inicio una serie en la que pretendo compararar los datos de delitos en España con los de otros países. En términos coloquiales pretendo intentar dar una respuesta a la pregunta: ¿es España un país seguro? Este primer post de la serie simplemente sirve de introducción al proyecto de investigación. Finalmente también detalló aquí el proceso de obtención y procesado de datos.
+date: 2025-01-29
+categories: [delitos]
+image: "imagenes/thumbnail_resized.jpeg"
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# Intro
+
+No veo mucho la tele, pero hace un par de años cuando de casualidad veía un telediario, siempre aparecía alguna noticia sobre `okupación` y/o `MENAS`[^1], o sobre la situación alarmante en cuanto a criminalidad en Barcelona[^2]. Ahora parece que menos, ahora se vuelcan con la guerra y la necesidad de rearmarse.
+
+La sensación que a mi me daba es que las teles, los medios, quieren, o al menos contribuyen (mucho) a crear la sensación de que España es un país inseguro; sin embargo, esta idea contrasta con mi impresión (avalada con la lectura de algunos informes sustentados en datos oficiales) de que España es un país bastante/relativamente seguro. Bueno, por lo que veo, esta idea no es sólo una sensación mía, [@nasi_crime_2021]. 
+
+
+
+::: {.column-margin}
+Quiero ver, usando datos oficiales, cómo es la situación de España en cuanto a incidencia delictiva
+:::
+
+[^1]: En realidad habría que decir, Menores Extranjeros No Acompañados, termino que hace evidente que los llamados MENAS son menores; además, como se explica [aquí](https://maldita.es/migracion/20210421/tenemos-que-dejar-de-llamar-mena-a-los-ninos-y-adolescentes-extranjeros-que-llegan-solos-a-espana/), el término MENA es "deshumanizante": según el defensor del pueblo, «Les cosifica y contribuye a quitarles dignidad». Sí, en general, los medios solo presentan a estos menores en contextos de criminalidad y rara vez nos acercan a su problemática de exclusión y falta de recursos como menores no acompañados.
+
+[^2]: Al menos hace unos años, cuando gobernaba Ada Colau
+
+Esta contradicción entre lo que veo en los medios y mi impresión/opinión me ha llevado a iniciar este post cuyo objetivo es comparar la incidencia delictiva en España con la de otros países. No soy, para nada, un experto en comportamientos y datos delictivos, pero sí estoy acostumbrado a trabajar con datos. Veremos que nos dicen los datos!!
+
+
+Creo que este proyecto no me ocupará un solo post sino que me planteo hacer una serie de posts y posiblemente, al final, un artículo científico, vorem!!!. Este primer post sirve solo para iniciar el proyecto de investigación. 
+
+Mi intención es hacer una serie de **tres posts**: en el primero de ellos utilizaré datos internacionales con el mayor número de países posibles, vamos utilizaré datos del "mundo"; en el segundo post utilizaré datos de nuestro entorno europeo, concretamente de Eurostat y, finalmente, utilizaré datos oficiales españoles, tanto del INE como del Ministerio del Interior. 
+
+
+# Datos
+
+Lógicamente para realizar el proyecto, me hacían falta datos, así que me puse a buscar. Podía haber ido a Eurostat pero como quería datos del "mundo" empecé buscando en la web del Banco Mundial (WB), pero finalmente acabé encontrando los datos que necesitaba en la [`UNDOC`](https://dataunodc.un.org/).
+
+
+::: {.column-margin}
+Empece buscando datos en la web del WB pero...
+:::
+
+## Busqueda de datos
+
+Como he dicho, empecé buscando datos sobre delitos en el [Banco Mundial](https://databank.worldbank.org/home.aspx). La razón es que en clase hacemos un ejercicio con datos de homicidios provenientes del Banco Mundial^[El ejemplo de clase lo tengo en el script `52_script_WDI_homicidios.R`]. El Banco mundial (WB) es una organización multinacional creada en 1944, actualmente con 189 países miembros, cuyo propósito declarado es reducir la pobreza, [Wikipedia, @2024wlel].
+
+
+
+La web del Banco Mundial tiene muuuuuuchos datos, están [aquí](https://data.worldbank.org/indicator), pero sobre criminalidad solo ví[^4] datos sobre [Intentional homicides](https://data.worldbank.org/indicator/VC.IHR.PSRC.P5?end=2023&start=2008&view=map&year=2021)[^5], [Battle-related deaths](https://data.worldbank.org/indicator/VC.BTL.DETH?end=2023&start=2008&view=map&year=2022)[^6] y [Internally displaced persons, new displacement associated with disasters](https://data.worldbank.org/indicator/VC.IDP.NWDS?view=map)[^7]; salvo el primero, no es lo que estamos acostumbrados a pensar cuando pensamos en delitos/violencia.
+
+[^4]: Vuelvo a insistir en que, como he dicho anteriormente, no soy un experto; de hecho sé muy poquito sobre datos de delitos, pero ... seguro que aprendo durante el proceso
+
+[^5]: Estos datos en realidad provienen de [aquí](https://dataunodc.un.org/)
+
+[^6]: En realidad estos datos vienen del proyecto "The Uppsala Conflict Data Program (UCDP)", que puedes visitar [aquí](https://www.uu.se/en/department/peace-and-conflict-research/research/ucdp/)
+
+[^7]: Estos datos provienen de The Internal Displacement Monitoring Centre, que puedes visitar [aquí](https://www.internal-displacement.org/)
+
+Hay varios [paquetes de R para acceder a la API del WB]{.underline}, concretamente 4: [WDI](https://github.com/vincentarelbundock/WDI), [wbstats](https://github.com/gshs-ornl/wbstats), [worldbank](https://m-muecke.github.io/worldbank/) y [wbwdi](https://github.com/tidy-intelligence/r-wbwdi). En clase uso [WDI](https://github.com/vincentarelbundock/WDI) para hacer algunos ejemplos; por eso empecé a buscar datos en la web del Banco Mundial, pero resulta que finalmente me dirigieron a la Oficina de las Naciones Unidas para drogas y crimen: [`UNDOC`](https://dataunodc.un.org/).
+
+Durante el proceso de búsqueda de datos, también encontré el paquete [crimedata](http://pkgs.lesscrime.info/crimedata/index.html) que permite acceder a police-recorded crime data from large US cities using the Crime Open Database ([CODE](https://osf.io/zyaqn/))[^8]
+
+[^8]: CODE es un proyecto alojado en [OSF](https://osf.io/) una plataforma/servicio que pretende apoyar la investigación. Puedes leer sobre ella en Wikipedia, concretamente [aquí](https://es.wikipedia.org/wiki/Open_Society_Foundations)
+
+
+
+# Intenciones
+
+Tras esta búsqueda inicial de datos, **mi intención es hacer tres posts**:
+
+::: {.column-margin}
+Espero hacer **3 posts sobre delitos**:  
+1. con datos UNDOC  
+2. con datos de Eurostat  
+3. con datos del Mº del Interior  
+:::
+
+1. Comparativa a nivel internacional usando datos de la [`UNDOC`](https://dataunodc.un.org/). Los datos están [aquí](https://dataunodc.un.org/)
+
+![](imagenes/undoc_temas.png){fig-align="center" width="70%"}
+
+<br>
+
+2. Comparativa a nivel europeo con datos de Eurostat. Concretamente de la [Crime and criminal justice database](https://ec.europa.eu/eurostat/web/crime/database)
+
+![](imagenes/eurostat.png){fig-align="center" width="70%"}
+
+<br>
+
+3. Comparativa interna entre las provincias y municipios españoles usando datos del Ministerio del Interior. Los datos están [aquí](https://estadisticasdecriminalidad.ses.mir.es/publico/portalestadistico/)
+
+![](imagenes/ministerio.png){fig-align="center" width="70%"}
+
+<br>
+
+ ... y si al final me animo a escribir un "paper", pues mejor que mejor.
+
+
+Bueno, pues vamos al lío, esto me va a llevar tiempo!!! Espero divertirme!!
+
+
+# Procesado de datos
+
+Finalmente he decidido explicar aquí cómo llevé a cabo el procesado de datos
+
+
+## UNDOC
+
+Para la comparación internacional, utilizaré datos de la Oficina de las Naciones Unidas para drogas y crimen: [`UNDOC`](https://dataunodc.un.org/). Hay un paquete de R para acceder a su API, es el paquete [DDSQLtools](https://timriffe.github.io/DDSQLtools/articles/Downloading-UNPD-data-into-R.html#exploring-indicators), pero no se actualiza desde hace 4 años, así que me decidí a procesar los datos por mis propios medios.
+
+
+::: {.column-margin}
+Para la comparación internacional usaré datos de la UNDOC
+:::
+
+
+### Categorías de delitos
+
+La UNDOC tiene muchos datos sobre delitos, además organizados en varias categorías.
+
+
+Entre los datos que me llamaron la atención (y que voy a procesar) están las categorías:
+
+::: {.column-margin}
+Me centré en 3 categorías de delitos, descargando y procesando un total de [27 tipos de delitos]{.underline}
+:::
+
+-   **Intentional Homicide**: los datos están [aquí](https://dataunodc.un.org/dp-intentional-homicide-victims). Son datos con mucho detalle porque tiene posibilidad de filtrar por genero, edad, medio, situación etc... etc... pero me centré en un **único indicador** sin tener en cuenta los "detalles": "Victims of intentional homicide"
+
+
+-   **Violent & Sexual Crime**: los datos están [aquí](https://dataunodc.un.org/dp-crime-violent-offences). Contienen también mucho detalle, pero me centré en procesar [10 indicadores]{.underline}: Serious assault, Kidnapping, Sexual violence, Sexual violence: Rape, Sexual violence: Sexual assault, Sexual violence: Other acts of sexual violence, Sexual Exploitation, Acts intended to induce fear or emotional distress y Acts intended to induce fear or emotional distress: Cyber-related
+
+-   **Corruption & Economic Crime**: los datos están [aquí](https://dataunodc.un.org/dp-crime-corruption-offences). Contienen [16 indicadores]{.underline}: Corruption, Corruption: Bribery, Corruption: Other acts of corruption, Smuggling of migrants, Burglary, Theft, Theft: of a motorized vehicle, Fraud, Fraud: Cyber-related (Cy), Money laundering, Unlawful access to a computer system, Unlawful interference with a computer system or computer data, Acts that cause environmental pollution or degradation, Acts involving the movement of dumping of waste, Trade or possession of protected or prohibited species of faune and flora, Acts that result in the depletion of degradation of natural resources
+
+Además, no los voy a procesar, pero también me llamó la atención la categoría:
+
+-   **Prisons & Prisoners**: los datos están [aquí](https://dataunodc.un.org/dp-prisons-persons-held). Contiene datos sobre personas en la carcel por Intentional Homicide, Rape, Drug trafficking y Bribery; además diferencia entre personas con y sin sentencia, etc ... etc ...
+
+
+
+### Procesamiento de los datos
+
+Los datos los descargué en febrero de 2025 y los procesé con el script `/my_mungings.2024a/blog_01_INE/007_UNDOC_crimenes/02_fusionar-y-exportar-datos_UNdoc.R`. Allí generé 2 conjuntos de datos que posteriormente alojé en mi paquete de datos `pjpv.pkg.datos.2024`; concretamente son los ficheros:
+
+
+1.  `UNDOC_delitos_tipologia_1990_2023`: contiene datos de 1990 a 2023 de 212 países (o regiones) sobre 27 tipos de delitos. Es el conjunto de datos que voy a usar en el post
+
+2. `UNDOC_delitos_x_relacion_2013_23`; contiene datos de 2013 a 2022 de 49 países sobre 2 tipos de delitos: Victims of serious assault y Victims of sexual violence. En este data.frame sí que mantuve la información sobre la relación de la victima con el perpretador del delito, pero en principio no voy a usar estos datos.
+
+En este post solo voy a usar los datos del primer dataset. Los 27 tipos de delitos que contiene son:
+
+```{r}
+#| echo: true
+#| code-fold: true
+zz <- pjpv.pkg.datos.2024::delitos_UNDOC_tipologia_delitos_2023 |>
+  dplyr::distinct(indicator, category)
+DT::datatable(zz)
+```
+
+<br>
+
+### Más procesamiento de los datos
+
+Como he dicho más arriba, los datos que descargué de la UNDOC los procesé^[En realidad los datos tuvieron poco procesamiento, solo tuve que quitar y homogeneizar cositas y tener cuidado porque, en mi opinión los datos en este caso era "demasiado largos" y estaban como preparados para contener información de edad, genero, relación con el delincuente, etc... que a mi no me hacía falta] en mi blog local "`my_mungins`" y los 2 data.frames resultantes los alojé en mi paquete de datos. 
+
+Después de procesar los datos me di cuenta que solo iba a usar el dataset `UNDOC_delitos_tipologia_1990_2023` que como he dicho, contiene datos de 1990 a 2023 de 212 países (o regiones) sobre 27 tipos de delitos. También me di cuenta que iba a necesitar geometrías de esos 212 países/regiones para poder hacer coropletas. 
+
+#### Obtención de las geometrías
+
+Para obtener geometrías utilice el paquete [giscoR](https://ropengov.github.io/giscoR/) que facilita usar en R los datos de GISCO, the Geographic Information System de la Commisión Europea. Concretamente utilice este dataset que contiene 259 geometrías.
+
+```{r}
+#| eval: false
+world <- giscoR::gisco_get_countries(year = 2024) %>% 
+  select(ISO3_CODE, CNTR_ID, NAME_ENGL, CAPT, SVRG_UN, EU_STAT, geometry)
+#- fusiono con crimenes
+world_crime <- left_join(df, world, by = c("iso3_code" = "ISO3_CODE")) 
+```
+
+He de recordar que en los datos que voy a usar de UNDOC habían 212 países/territorios. Cuando fusioné estos datos con las geometrías de GISCO, se obtuvieron las geometrías de 200 de ellos, pero quedaron sin fusionar 12 entidades territoriales. Habían 4 tipos de problemas:
+
+
+::: {.column-margin}
+Tuve que reconstruir los datos para el Reino Unido (UK) a partir de sus 3 regiones
+:::
+
+
+ 1. Los datos de UNDOC para el Reino Unido estaban separados en 3 entidades (Escocia, Irlanda del Norte y el resto; es decir, Inglaterra y Gales).  Deje esos datos tal cual, pero a partir de ellos [generé los datos para todo el Reino Unido]{.underline}. La geometría del Reino Unido sí se encontraba en GISCO, pero para obtener las geometrías de las 3 entidades territoriales originales para UK tuve que usar otro dataset de GISCO, concretamente:
+ 
+```{r}
+#| eval: false
+UK_geo_3 <- giscoR::gisco_nuts %>% 
+  filter(LEVL_CODE == 1)  %>% filter(CNTR_CODE == "UK") #- 12 geometrías para UK
+```
+ 
+ 
+ 
+ 
+ 2. Los datos de UNDOC para Francia hacían referencia a Francia, pero también, para algunos delitos, a los territorios de ultramar franceses. En concreto hay datos para los siguientes territorios `"France"`, `"Guadeloupe"`,  `"French Guiana"`, `"Martinique"`, `"Réunion"`, `"Mayotte"` y `"Saint Martin (French Part)"`. Deje todos los datos tal cual, pero claro, al intentar fusionar con las geometrías de GISCO, solo se fusionaba con `"France"`. Para encontrar geometrías para el resto de entidades francesas (los territorios de ultramar) tuve que usar otro dataset de GISCO, consiguiendo finalmente enlazar todas las entidades territoriales francesas excepto `"Saint Martin (French Part)"`. El dataset que usé para ello fue: 
+ 
+ 
+```{r}
+#| eval: false
+fra_ultramar <- giscoR::gisco_nuts() %>% filter(LEVL_CODE == 2) %>% 
+  filter(CNTR_CODE == "FR")  %>% 
+  filter(NUTS_ID %in% c("FRY1", "FRY2","FRY3","FRY4","FRY5")) 
+```
+ 
+
+ 3. En los datos de delitos de la UNDOC hay datos referentes a Kosovo ("Kosovo under UNSCR 1244"). Kosovo tiene datos para algunos tipos de delitos para el periodo  de 2008 a 2021. Deje estos datos tal cual, pero no encontré su geometría en GISCO. Finalmente encontré geometría para Kosovo en otro dataset (no de GISCO) pero decidí no incorporarla al análisis; es decir, los datos de Kosovo sí estarán en el análisis, pero no se mostrarán en las coropletas que vaya haciendo.
+ 
+
+ 4. En el caso de Irak, los datos de delitos de la UNDOC, tienen 3 entidades territoriales: `"Iraq", "Iraq (Kurdistan Region)" e "Iraq (Central Iraq)"`. Decidí quitar las observaciones, no eran muchas, de `"Iraq (Kurdistan Region)" e "Iraq (Central Iraq)"`, dejando sólo las de "Iraq". Estas observaciones lógicamente se fusionaron con la geometría de Irak obtenida de GISCO. 
+
+<br>
+
+
+::: {.column-margin}
+Las geometrías para los datos UNDOC están en `pjpv.pkg.datos.2024::UNDOC_geometrias`
+:::
+
+
+Finalmente, exporté el dataset de geometrías ya preparado para trabajar con los datos de crímenes de UNDOC, concretamente está en `pjpv.pkg.datos.2024::UNDOC_geometrias`
+
+
+
+
+## Eurostat
+
+
+Encontré 2 bases de datos: 1) [Crime and criminal justice  database](https://ec.europa.eu/eurostat/web/crime/database), y 2) [Gender based violence](https://ec.europa.eu/eurostat/web/gender-based-violence/database). De momento me [centraré en la primera]{.unedrline}
+
+
+::: {.column-margin}
+Me centro en la "Crime and criminal justice"  database
+:::
+
+
+::: {layout="[50, 50]"}
+![](imagenes/eurostat_crime.png)
+
+![](imagenes/eurostat_gender-violence.png)
+:::
+
+
+
+
+### Procesado de los datos
+
+Utilicé el paquete `eurostat` para buscar tablas y descargarlas. Procese los datos con el script `01_bajar-datos-y-exportar_Eurostat.R` 
+
+Buscando en Eurostat al final [seleccioné 6 tablas]{.underline} de datos (pero finalmente solo exporté 5 de ellas:
+
+1. `crim_off_cat`: "Police-recorded offences by offence category" [son datos de **41 países** (no estaba UK, pero sí England y Walles, Scothland y N.Ireland; UK lo añadí a mano) para [2008-2022]{.underline} y para **21 categorías de delitos**. Añadí a mano las observaciones de UK (creados a partir de sus 3 regiones). Si quieres hacer un mapa, usa las geometrías: `pkg::geo_eurostat_crime_paises`. Una vez arreglados los datos de esta tabla, los exporté a mi paquete de datos; concretamente al fichero `crime_1_eurostat_paises_2008_22`
+
+
+
+2. `crim_gen_reg`: "Police-recorded offences by NUTS 3 regions" [son datos de **1834 entidades**  para [2008-2022]{.underline} y para **7 categorías de delitos**.  
+  Tiene datos de NUTS0 (países), NUTS1, NUTS2 (CC.AA) y NUTS3 (provincias):  [España tiene 89 filas]{.underline}. No hay datos para UK ni para England o Scothland.  Una vez arreglados los datos de esta tabla, los exporté a mi paquete de datos; concretamente al fichero `crime_2_eurostat_nuts3_2008_22`
+  Si quieres hacer mapas, usa `giscoR::gisco_get_nuts()`. Con esto se enlazan 1747 entidades territoriales /incluidos los países NUTS0) no se enlazan 87 entidades (fundamentalmente son las "Extra-regions")
+
+3. `crim_gen`: "Crimes recorded by the police by offence category" [son datos de **39 países**  para [1993-2007]{.underline} y para **7 categorías de delitos**. Tenía datos de nº de delitos pero [no tenía datos para las tasas]{.underline}, pero conseguí crearlas usando datos de población de la tabla `demo_pjan` ("Average annual population to calculate regional GDP data by metropolitan region").  Hay datos para UK pero no para England ... Evidentemente esta FRA, pero también está Francia metropolitana ("FX"). Añadí a mano las observaciones de UK (creados a partir de sus 3 regiones) Si quieres hacer un mapa, usa las geometrías: `pkg::geo_eurostat_crime_paises`. Una vez arreglados los datos de esta tabla, los exporté a mi paquete de datos; concretamente al fichero `crime_3_eurostat_paises_1993_07`
+
+
+
+    
+4. `met_crim_gen`: "Crimes recorded by the police by metropolitan regions" [son datos de  **318 "ciudades"** para [2008-2022]{.underline} y para **7 categorías de delitos**. UK no esta para nada (ni England ...). Para España hay 25 filas: 1 para el país, 23 para ciudades (bueno son más bien áreas metropolitanas), y la última fila es "Non-metropolitan regions in Spain". La tabla 4 tampoco tenía [datos para las tasas]{.underline} así que tuve que construirlas usando datos de población de la tabla `met_10r_3pgdp`. Una vez arreglados los datos de esta tabla, los exporté a mi paquete de datos; concretamente al fichero `crime_4_eurostat_ciudades_2008_22`
+
+Intenté encontrar una geometría para hacer mapas, pero solo se enlazaban los países con `giscoR::gisco_get_countries(year = 2024, resolution = "20")`; concretamente con `geo_paises$CNTR_ID` se enlazan 35 (los países); 283 no se enlazan
+
+
+
+6. `sdg_16_20`: "Population reporting occurrence of crime, violence or vandalism in their area by poverty status" [son datos del % de personas que reporta crímenes: para **43 países** para [2003-2023]{.underline} y para **3 categorías de personas** (Total, arriba y abajo del 60% de la mediana). Si quieres hacer un mapa, usa las geometrías: `pjpv.pkg.datos.2024::geo_eurostat_crime_paises`. Una vez arreglados los datos de esta tabla, los exporté a mi paquete de datos; concretamente al fichero `crime_6_eurostat_reporting_2003_23`
+
+
+
+- Al final [**fusioné las tablas 1 y 3**]{.underline} para tener datos de países con periodo muestral amplio, pero [sólo se pueden fusionar 4 de los 7 tipos de delitos que tiene la tabla 3]{.underline}. Quedaron 39 países. Una vez arreglados los datos de esta tabla, los exporté a mi paquete de datos; concretamente al fichero `crime_1_3_eurostat_paises_1993_22`
+
+
+<br>
+
+### Geometrías
+
+Me preparé las geometrías en mi blog interno, concretamente con  `/008_Eurostat_crimenes/02_obtener-geometrias.R`. Usé el paquete [giscoR](https://ropengov.github.io/giscoR/). Las funciones de `giscoR` que puedo usar son:
+
+```{r}
+#| eval: false
+giscoR::gisco_get_countries(year = 2024, resolution = "20")  #- 259 países
+giscoR::gisco_get_nuts()        #- 2.016 (NUTS 0, 1, 2 y 3)
+giscoR::gisco_get_urban_audit() #- 1.364 ciudades
+giscoR::gisco_get_lau()         #- 98.188 
+
+#- para encontrar una única geometría usamos:
+giscoR::gisco_get_units(unit = "UK")
+```
+
+
+Construí el dataset `pjpv.pkg.datos.2024::geo_eurostat_crime_paises` que me sirve para hacer mapas con las tablas: `crime_1_eurostat_paises_2008_22`,  `crime_3_eurostat_paises_1993_07`, `crime_1_3_eurostat_paises_1993_22` y `crime_6_eurostat_reporting_2003_23`
+
+
+Para cargar las geometrías arregladas:
+
+```{r}
+#| eval: false
+df <- pjpv.pkg.datos.2024::geo_eurostat_crime_paises
+```
+
+
+
+
+
+<br>
+
+### Detalles
+
+- Trabajé también la tabla `crim_hom_ocit`: "Intentional homicide offences in largest cities"; pero no la exporté porqué eran datos de ciudades y para ESP sólo estaba Madrid
+
+- La tabla 1 y tabla 2 se podían fusionar (para países y 5 tipos de delitos) pero al final no lo hice. me planteé hacerlo porque entre la tabla 1 y la tabla 2 (en los datos de países) había pequeñas diferencias a veces. Al final pensé que no merecía la pena fusionarlas
+
+<br>
+
+
+### Datos al pkg
+
+Grabé 6 df's en el pkg de datos, veámoslos un poco:
+
+
+
+#### 1. `crime_1_eurostat_paises_2008_22`
+
+Añadí a mano las observaciones de UK (creados a partir de sus 3 regiones) Si quieres hacer un mapa, usa las geometrías: `pkg::geo_eurostat_crime_paises`
+
+Tiene  14 variables, aquí muestro las 5 primeras: se ve que hay datos de 42 "países" y de 21 tipos de delitos:
+
+```{r}
+df <- pjpv.pkg.datos.2024::crime_1_eurostat_paises_2008_22
+bb <- pjpv.pkg.ff.2024::pjp_unique_values(df, truncate = TRUE, nn = 1500)
+gt::gt(bb[c(1:5),])
+```
+
+Abajo, el detalle de los 21 tipos de delitos: 
+
+
+```{r}
+aa <- df |> dplyr::distinct(iccs_code,iccs)
+gt::gt(aa)
+```
+
+<br>
+
+
+#### 2. `crime_2_eurostat_nuts3_2008_22`
+
+
+- Si quieres hacer mapa, usa `giscoR::gisco_get_nuts()`. Con esto se enlazan 1747 entidades territoriales /incluidos los países NUTS0) no se enlazan 87 entidades (fundamentalmente son las "Extra-regions")
+
+```{r}
+df <- pjpv.pkg.datos.2024::crime_2_eurostat_nuts3_2008_22
+bb <- pjpv.pkg.ff.2024::pjp_unique_values(df, truncate = TRUE, nn = 300)
+gt::gt(bb[c(1:5),])
+```
+
+
+
+Abajo, el detalle de los 7 tipos de delitos: 
+
+
+```{r}
+aa <- df |> dplyr::distinct(iccs_code,iccs)
+gt::gt(aa)
+```
+
+
+
+<br>
+
+
+#### 3. `crime_3_eurostat_paises_1993_07`
+
+Añadí a mano las observaciones de UK (creados a partir de sus 3 regiones) Si quieres hacer un mapa, usa las geometrías: `pkg::geo_eurostat_crime_paises`
+
+
+```{r}
+df <- pjpv.pkg.datos.2024::crime_3_eurostat_paises_1993_07
+bb <- pjpv.pkg.ff.2024::pjp_unique_values(df, truncate = TRUE, nn = 1500)
+gt::gt(bb[c(1:5),])
+```
+
+
+
+
+Abajo, el detalle de los 7 tipos de delitos: 
+
+
+```{r}
+aa <- df |> dplyr::distinct(iccs_code,iccs)
+gt::gt(aa)
+```
+
+<br>
+
+
+#### 4. `crime_4_eurostat_ciudades_2008_22`
+
+- `met_crim_gen`: "Crimes recorded by the police by metropolitan regions" [son datos de 318 "ciudades" para 2008-2022 y para 7 categorías de delitos. UK no esta para nada (ni England ...). Para España hay 25 filas: 1 para el país, 23 para ciudades (bueno son más bien áreas metropolitanas), y la última fila es "Non-metropolitan regions in Spain". La tabla 4 tampoco tenía datos para las tasas así que tuve que construirlas usando datos de población de la tabla `met_10r_3pgdp`
+
+
+```{r}
+df <- pjpv.pkg.datos.2024::crime_4_eurostat_ciudades_2008_22
+bb <- pjpv.pkg.ff.2024::pjp_unique_values(df, truncate = TRUE, nn = 500)
+gt::gt(bb[c(1:5),])
+```
+
+
+
+<br>
+
+
+#### 5. `crime_6_eurostat_reporting_2003_23`
+
+Son datos del % de gente que reporta crímenes a la policía:
+
+Si quieres hacer un mapa, usa las geometrías: `pjpv.pkg.datos.2024::geo_eurostat_crime_paises`
+
+```{r}
+df <- pjpv.pkg.datos.2024::crime_6_eurostat_reporting_2003_23
+bb <- pjpv.pkg.ff.2024::pjp_unique_values(df, truncate = TRUE, nn = 1000)
+gt::gt(bb[c(1:3),])
+```
+
+
+<br>
+
+
+#### 6. `crime_1_3_eurostat_paises_1993_22`
+
+Al final fusioné las tablas 1 y 3 : crime_1_eurostat_paises_2008_22 y crime_3_eurostat_paises_1993_07 para tener datos de países con periodo muestral amplio, pero sólo se pueden fusionar 4 de los 7 tipos de delitos que tiene la tabla 3; pero claro al fusionar los 21 + 7 tipos de delitos, quedaron 24 tipos de delitos (3 delitos de la segunda tabla que no estaban en la primera)
+
+Quedaron 43 países
+
+Añadí a mano las observaciones de UK (creados a partir de sus 3 regiones) Si quieres hacer un mapa, usa las geometrías: "pkg::geo_eurostat_crime_paises"
+
+
+```{r}
+df <- pjpv.pkg.datos.2024::crime_1_3_eurostat_paises_1993_22
+bb <- pjpv.pkg.ff.2024::pjp_unique_values(df, truncate = TRUE, nn = 1000)
+gt::gt(bb[c(1:5),])
+```
+
+
+
+
+## Ministerio del Interior
+
+Son los primeros datos que procesé. Tengo registrado el proceso de limpieza de los datos en mi blog interno y por supuesto tengo los scripts, pero ... veremos cuando tendré tiempo para [contar]{.underline} aquí cómo procesé estos datos; antes quiero analizar los datos de la UNDOC y de Eurostat
+
+::: {.column-margin}
+Veremos cuando tendré tiempo para [contar]{.underline} como procesé estos datos
+:::
+
+# Referencias {.unnumbered}
+
+::: {#refs}
+:::

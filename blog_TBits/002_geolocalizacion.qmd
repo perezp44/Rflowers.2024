@@ -108,7 +108,7 @@ rio::export(df_geocoded, paste0(my_carpeta, "/datos/df_geocoded.rds"))
 ```{r}
 #| echo: false
 #- importo los datos ya geolocalizados
-df_geocoded <- rio::import(paste0("./datos/df_geocoded.rds"))
+df_geocoded <- rio::import(here::here("./blog_TBits/datos/df_geocoded.rds"))
 ```
 
 
@@ -321,7 +321,7 @@ Por supuesto, hay más paquetes, como por ejemplo [rgeocodio](https://github.com
 Recientemente ha salido un nuevo paquete para geolocalizar: [arcgeocoder](https://dieghernan.github.io/arcgeocoder/), pero tampoco lo he usado.
 
 
-
+Aún más recientemente ha salido otro paquete para geolocalizar: [arcgisgeocode](https://josiahparry.com/posts/2024-06-06-designing-arcgisgeocode), it is an R interface to the ArcGIS World Geocoder, the “official” Esri geocoding. The ArcGIS World Geocoder is made avialable through `tidygeocoder` as well as `arcgeocode`, pero, según dice su author, `arcgisgeocode` es super-mega-fast, y además, provides the full functionality of the World Geocoder which includes bulk geocoding functionality which the other two do not. pero ... tampoco lo he usado 😆. 
 
 
 

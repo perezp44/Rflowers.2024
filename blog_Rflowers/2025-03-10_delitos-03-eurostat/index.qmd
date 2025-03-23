@@ -1,0 +1,69 @@
+---
+title: "Delitos en España (III): una comparativa con datos de Eurostat"
+subtitle: | 
+  Este tercer post sobre incidencia delictiva en España haré una comparación de los datos de delitos en España con los de otros países usando datos de Eurostat En términos coloquiales pretendo intentar dar una respuesta a la pregunta: ¿es España un país seguro?
+date: 2025-03-10
+categories: [delitos]
+image: "imagenes/thumbnail_resized.png"
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+## Intro
+
+En este post voy a utilizar los datos de Eurostat sobre delitos para ver la situación de España en estos temas. Ya conté cómo procese estos datos en el anterior post, concretamente [aquí](../2025-01-29_delitos-01-inicio/#undoc){target="_blank"}.
+
+Solo recordaré  aquí que los datos de la UNDOC contienen observaciones de 212 países/regiones, 27 tipos de delitos para el periodo 1990-2023; aunque es evidente que solo algunos países presentan datos para todos los indicadores y periodo muestral. Lo vamos viendo poco a poco.
+
+## Un vistazo rápido a los datos
+
+
+### Categorías de delitos
+
+Entre los datos que me llamaron la atención (y que voy a procesar) están las categorías:
+
+::: {.column-margin}
+Me centré en 3 categorías de delitos, descargando y procesando un total de  [27 tipos de delitos]{.underline}
+:::
+
+-   **Intentional Homicide**: los datos están [aquí](https://dataunodc.un.org/dp-intentional-homicide-victims). Son datos con mucho detalle porque tiene posibilidad de filtrar por genero, edad, medio, situación etc... etc... pero me centré en un **único indicador** sin tener en cuenta los "detalles": "Victims of intentional homicide"
+
+
+-   **Violent & Sexual Crime**: los datos están [aquí](https://dataunodc.un.org/dp-crime-violent-offences). Contienen también mucho detalle, pero me centré en procesar [10 indicadores]{.underline}: Serious assault, Kidnapping, Sexual violence, Sexual violence: Rape, Sexual violence: Sexual assault, Sexual violence: Other acts of sexual violence, Sexual Exploitation, Acts intended to induce fear or emotional distress y Acts intended to induce fear or emotional distress: Cyber-related
+
+-   **Corruption & Economic Crime**: los datos están [aquí](https://dataunodc.un.org/dp-crime-corruption-offences). Contienen [16 indicadores]{.underline}: Corruption, Corruption: Bribery, Corruption: Other acts of corruption, Smuggling of migrants, Burglary, Theft, Theft: of a motorized vehicle, Fraud, Fraud: Cyber-related (Cy), Money laundering, Unlawful access to a computer system, Unlawful interference with a computer system or computer data, Acts that cause environmental pollution or degradation, Acts involving the movement of dumping of waste, Trade or possession of protected or prohibited species of faune and flora, Acts that result in the depletion of degradation of natural resources
+
+Además, no los voy a procesar, pero también me llamó la atención la categoría:
+
+-   **Prisons & Prisoners**: los datos están [aquí](https://dataunodc.un.org/dp-prisons-persons-held). Contiene datos sobre personas en la carcel por Intentional Homicide, Rape, Drug trafficking y Bribery; además diferencia entre personas con y sin sentencia, etc ... etc ...
+
+<br>
+
+### Procesamiento de los datos
+
+Los datos los descargué en febrero de 2025 y los procesé con el script `/my_mungings.2024a/blog_01_INE/007_UNDOC_crimenes/02_fusionar-y-exportar-datos_UNdoc.R`. Allí generé 2 conjuntos de datos que posteriormente alojé en mi paquete de datos `pjpv.pkg.datos.2024`; concretamente son los ficheros:
+
+
+1.  `delitos_UNDOC_tipologia_delitos_2023`: contiene datos de 1990 a 2023 de 212 países (o regiones) sobre 27 tipos de delitos. Es el conjunto de datos que voy a usar en el post
+
+2. `delitos_UNDOC_tipologia_delitos_2023_relacion`; contiene datos de 2013 a 2022 de 49 países sobre 2 tipos de delitos: Victims of serious assault y Victims of sexual violence. En este data.frame que mantuve la información sobre la relación de la victima con el perpretador del delito, pero finalmente no voy a usar estos datos
+
+En este post solo voy a usar los datos del primer dataset. Los 27 tipos de delitos que contiene son:
+
+```{r}
+#| echo: true
+#| code-fold: true
+zz <- pjpv.pkg.datos.2024::UNDOC_delitos_tipologia_1990_2023 |>
+  dplyr::distinct(indicator, tipo_delito)
+DT::datatable(zz)
+```
+
+
+
+### Más procesamiento de los datos

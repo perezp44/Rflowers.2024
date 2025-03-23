@@ -1,0 +1,59 @@
+---
+title: "Delitos en España (II): una comparativa internacional"
+subtitle: | 
+  ESte segundo post sobre incidencia delictiva en España haré una comparación de los datos de delitos en España con los de otros países usando datos de la UNDOC. En términos coloquiales pretendo intentar dar una respuesta a la pregunta: ¿es España un país seguro?
+date: 2025-03-07
+categories: [delitos]
+image: "imagenes/thumbnail_resized.png"
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+## Intro
+
+En este post voy a utilizar los datos de la la Oficina de las Naciones Unidas para drogas y crimen ([UNDOC](https://www.unodc.org/)) sobre delitos para ver la situación de España en estos temas. Ya conté cómo procese estos datos en el anterior post, concretamente [aquí](../2025-01-29_delitos-01-inicio/#undoc){target="_blank"}.
+
+Solo recordaré  aquí que los datos de la UNDOC contienen observaciones de 212 países/regiones sobre 27 tipos de delitos para el periodo 1990-2023; aunque es evidente que solo algunos países presentan datos para todos los indicadores y periodo muestral. Lo vamos viendo poco a poco.
+
+## Un vistazo rápido a los datos
+
+
+### Categorías de delitos
+
+Entre los datos que me llamaron la atención (y que voy a procesar) están las categorías:
+
+::: {.column-margin}
+Me centré en 3 categorías de delitos, descargando y procesando un total de  [27 tipos de delitos]{.underline}
+:::
+
+-   **Intentional Homicide**: los datos están [aquí](https://dataunodc.un.org/dp-intentional-homicide-victims). Son datos con mucho detalle porque tiene posibilidad de filtrar por genero, edad, medio, situación etc... etc... pero me centré en un **único indicador** sin tener en cuenta los "detalles": "Victims of intentional homicide"
+
+
+-   **Violent & Sexual Crime**: los datos están [aquí](https://dataunodc.un.org/dp-crime-violent-offences). Contienen también mucho detalle, pero me centré en procesar [10 indicadores]{.underline}: Serious assault, Kidnapping, Sexual violence, Sexual violence: Rape, Sexual violence: Sexual assault, Sexual violence: Other acts of sexual violence, Sexual Exploitation, Acts intended to induce fear or emotional distress y Acts intended to induce fear or emotional distress: Cyber-related
+
+-   **Corruption & Economic Crime**: los datos están [aquí](https://dataunodc.un.org/dp-crime-corruption-offences). Contienen [16 indicadores]{.underline}: Corruption, Corruption: Bribery, Corruption: Other acts of corruption, Smuggling of migrants, Burglary, Theft, Theft: of a motorized vehicle, Fraud, Fraud: Cyber-related (Cy), Money laundering, Unlawful access to a computer system, Unlawful interference with a computer system or computer data, Acts that cause environmental pollution or degradation, Acts involving the movement of dumping of waste, Trade or <br>
+
+## Algunos resultados
+
+Voy a utilizar el dataset `delitos_UNDOC_tipologia_delitos_2023` que como dije, contiene datos de 27 tipos de delitos para un conjunto de 212 países. Es demasiado grande para poder mostrarlo todo, así que supongo que haré un [shiny](https://shiny.posit.co/) y aquí solo mostraré algunos resultados para ver cómo está España.
+
+### Coropletas
+
+Voy a empezar con el delito más grave: "Victims of intentional homicide". OK, solo un indicador, pero ... ¿qué año muestro? hay datos para el periodo 1990-2023, pero en 2023 solo hay 49 países con datos; mientras que para 2022 hay 101^[El año que más países tienen datos es 2008 con 165.
+
+### Tablas
+
+
+
+
+
+## Referencias {.unnumbered}
+
+::: {#refs}
+:::

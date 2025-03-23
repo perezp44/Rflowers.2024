@@ -2,6 +2,7 @@
 title: "Utilidades para la docencia"
 subtitle: | 
    Algunos scripts/app's/pkgs/ con utilidad para la docencia/investigación
+description: |
 date: 2024-03-08
 draft: true
 categories: [docencia, recursos]
@@ -235,7 +236,7 @@ my_pubs <- get_publications(id)
 
 ### Ecuaciones de Word
 
-Con `pandoc` es fácil transformar un archivo `.docx` a Quuarto, pero si sólo quieres coger una ecuación hecha en Word y pegarla en Quarto, puedes hacerlo con [este](https://jgostick.github.io/mml2latex/)  MathML to LaTeX Converter.
+Con `pandoc` es fácil transformar un archivo `.docx` a Quarto, pero si sólo quieres coger una ecuación hecha en Word y pegarla en Quarto, puedes hacerlo con [este](https://jgostick.github.io/mml2latex/)  MathML to LaTeX Converter.
 
 ### SPSS
 
@@ -265,9 +266,9 @@ mtcars = apply_labels(mtcars,
 cross_cases(mtcars, am, vs)
 ```
 
-## SAS
+### SAS
 
-El paquete [procs](https://procs.r-sassy.org/) permite obtener tablasy resultados similares a los obtenidos en SAS. En realidad el paquet forma parte de [sassy](https://r-sassy.org/) un ecosistema, unn integrated set of packages designed to make programmers more productive in R, particularly those with a background in SAS® software
+El paquete [procs](https://procs.r-sassy.org/) permite obtener tablas y resultados similares a los obtenidos en SAS. En realidad el paquete forma parte de [sassy](https://r-sassy.org/) un ecosistema, un integrated set of packages designed to make programmers more productive in R, particularly those with a background in SAS® software
 
 Pb, solo sale en el Viewer de RStudio, no en QMD
 
@@ -295,11 +296,36 @@ res
 ```
 
 
-## Grafico con la ruta a archivos
+### Grafico con la ruta a archivos
 
 [dir](https://emitanaka.org/dir/index.html) es un paquete de Emi Tanaka para visualizar la estructura de directorios. Otra alternativa es el paquete [jsTree](https://yonicd.github.io/jsTree/)
 
 ```{r, eval = FALSE}
 dir::listing()
 ```
+
+
+### pdf a docx
+
+El paquete [Convert2Docx](https://github.com/Ifeanyi55/Convert2Docx) permite convertir pdf's, ya sea un documento entero o una selección de páginas a `.docx`
+
+### trabajar con pdf's
+
+El paquete [pdftools](https://docs.ropensci.org/pdftools/) permite trabajar con pdf's. Por ejemplo, extraer texto de un pdf, extraer imágenes, etc.
+
+
+Para extraer tablas de pdf's el paquete [tabulapdf](https://github.com/ropensci/tabulapdf)
+
+El paquete [cpp11qpdf](https://pacha.dev/cpp11qpdf/articles/cpp11qpdf.html) permite comprimir, extraer páginas y combinar pdf's
+
+
+### diferencias entre dos archivos
+
+- [diffdiff](https://diffdiff.net/) es fantástica según dice Julia Evans [aquí](https://social.jvns.ca/@b0rk/113192842485203057)
+
+
+
+## Imágenes
+
+- [Public.work](https://public.work/) es un archivo de más de 100.000 imágenes de dominio público. Tiene buscador. [Aquí](https://www.openculture.com/2024/08/public-work-a-smoothly-searchable-archive-of-100000-copyright-free-images.html) hablan de él
 

@@ -58,6 +58,12 @@ Espero que sean mis blog re-definitivos
 
 ## TBits
 
+- En el post de geolocalización, puse un último párrafo porque apareció un nuevo geocoder y ya no procesa: le falta un enlace a una dependencia??, así que **no borres la carpeta del cache**. En el `.qmd` sí está el nuevo párrafo con el nuevo geocoder
+
+
+
+### TODO
+
 Tiene q hacer estos `Tbits`:
 
 

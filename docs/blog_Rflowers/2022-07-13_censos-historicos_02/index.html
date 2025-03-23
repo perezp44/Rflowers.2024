@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Pedro J. Pérez">
-<title>My last blog’s (2024-9999) - Evolución del número de municipios en España (1842-2021)</title>
+<title>Evolución del número de municipios en España (1842-2021) – My last blog’s (2024-9999)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,13 +103,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/core-js-2.5.3/shim.min.js"></script><script src="../../site_libs/react-18.2.0/react.min.js"></script><script src="../../site_libs/react-18.2.0/react-dom.min.js"></script><script src="../../site_libs/reactwidget-1.0.0/react-tools.js"></script><script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="../../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
 <script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script><link rel="stylesheet" href="../../assets/quarto_yaml_styles.css">
 <link rel="stylesheet" href="../assets/my_css_file.css">
-<meta property="og:title" content="My last blog’s (2024-9999) - Evolución del número de municipios en España (1842-2021)">
+<meta property="og:title" content="Evolución del número de municipios en España (1842-2021) – My last blog’s (2024-9999)">
 <meta property="og:description" content="Utilizando datos de los censos históricos y del Padrón se realizan visualizaciones de la evolución del número de municipios españoles en el tiempo, desde el censo de 1842 hasta la actualidad.">
 <meta property="og:image" content="https://perezp44.github.io/Rflowers.2024/blog_Rflowers/2022-07-13_censos-historicos_02/imagenes/thumbnail.png">
 <meta property="og:site_name" content="My last blog's (2024-9999)">
 <meta property="og:image:height" content="426">
 <meta property="og:image:width" content="640">
-<meta name="twitter:title" content="My last blog’s (2024-9999) - Evolución del número de municipios en España (1842-2021)">
+<meta name="twitter:title" content="Evolución del número de municipios en España (1842-2021) – My last blog’s (2024-9999)">
 <meta name="twitter:description" content="Utilizando datos de los censos históricos y del Padrón se realizan visualizaciones de la evolución del número de municipios españoles en el tiempo, desde el censo de 1842 hasta la actualidad.">
 <meta name="twitter:image" content="https://perezp44.github.io/Rflowers.2024/blog_Rflowers/2022-07-13_censos-historicos_02/imagenes/thumbnail.png">
 <meta name="twitter:creator" content="@pjpv4444">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools tools-wide">
+            <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/perezp44" title="" class="quarto-navigation-tool px-1" aria-label="" target="_blank"><i class="bi bi-github"></i></a>
     <a href="mailto:pedro.j.perez@uv.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope"></i></a>
     <a href="https://fosstodon.org/@pjperez" title="Mastodon" class="quarto-navigation-tool px-1" aria-label="Mastodon" target="_blank"><i class="bi bi-mastodon"></i></a>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/perezp44/Rflowers.2024/edit/master/blog_Rflowers/2022-07-13_censos-historicos_02/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/perezp44/Rflowers.2024/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full column-body" id="quarto-document-content"><p><br></p>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Utilizando los datos de los 18 censos de población disponibles en la web del INE, la evolución del número de municipios puede verse en <a href="#fig-nn-muni-censo" class="quarto-xref">Figura&nbsp;1</a> .</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-nn-muni-censo" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-nn-muni-censo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nn-muni-censo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="./imagenes/plot_nn_muni_censo.png" class="img-fluid figure-img" width="1890">
 </div>
@@ -315,7 +315,7 @@ Gráfico&nbsp;1: Evolución del número de municipios (datos de los Censos). Jur
 <p>Si en lugar de los datos de los Censos, utilizamos los datos del Padrón (1996, 1998-2021) la evolución del número de municipios en España quedaría como:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-nn-muni-padron" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-nn-muni-padron" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-nn-muni-padron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="./imagenes/plot_nn_muni_padron.png" class="img-fluid figure-img" width="1890">
 </div>
@@ -380,18 +380,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -423,7 +412,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/perezp44\.github\.io\/Rflowers\.2024\/");
@@ -431,7 +442,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
