@@ -1,10 +1,11 @@
 ---
-title: "Delitos en España (II): una comparativa internacional"
+title: "Delitos en España (II): una comparativa internacional (completamente provisional)"
 subtitle: | 
   ESte segundo post sobre incidencia delictiva en España haré una comparación de los datos de delitos en España con los de otros países usando datos de la UNDOC. En términos coloquiales pretendo intentar dar una respuesta a la pregunta: ¿es España un país seguro?
 date: 2025-03-07
 categories: [delitos]
 image: "imagenes/thumbnail_resized.png"
+draft: true
 bibliography: references.bib
 nocite: |
   @*
