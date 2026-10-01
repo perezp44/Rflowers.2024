@@ -200,7 +200,7 @@ También encontré un "WikiProject", para recopilar en una tabla las obras de cr
 En la tabla con las obras de Goya, que incluye imágenes, hay actualmente, abril de 2024, 527 obras porque en su querie se excluyen las series. La querie es:
 
 ```{sql}
-#| eval: false
+--| eval: false
 SELECT ?item WHERE { ?item wdt:P31 wd:Q3305213 . ?item wdt:P170 wd:Q5432 . MINUS { ?item wdt:P31 wd:Q15727816 } }
 ```
 

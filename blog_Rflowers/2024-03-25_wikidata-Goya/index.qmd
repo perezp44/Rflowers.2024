@@ -71,7 +71,7 @@ Pues ya estaría, pero ... vamos a enriquecer un poco más la información sobre
 Al final me decidí por esta consulta: 
 
 ```{sql}
-#| eval: false
+--| eval: false
 #obras de Goya
 SELECT DISTINCT ?item ?itemLabel ?itemDescription  ?paisLabel ?ciudadLabel ?link_esp ?link_eng 
                 ?ubicacionLabel ?long ?lat ?idGoya ?image  (year(?date) as ?year) 

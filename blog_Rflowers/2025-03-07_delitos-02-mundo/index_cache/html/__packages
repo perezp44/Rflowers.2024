@@ -8,3 +8,12 @@ dplyr
 stringr
 forcats
 lubridate
+sf
+rlang
+leaflet
+htmltools
+echarts4r
+highcharter
+viridisLite
+ggiraph
+patchwork

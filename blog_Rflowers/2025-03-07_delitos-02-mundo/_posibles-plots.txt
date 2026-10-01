@@ -1,0 +1,27 @@
+#- posibles plots --------------------------------------------------------------
+
+1) un gráfico como este: https://graphics.social/@sponce1/114075314799919407
+cada uno de los plots de la izquierda podría ser la evolución en ESP de un tipo de delito
+en la derecha puedo poner 2 geom_density ( uno del año inicial y otroa al final) con la posicion de ESP
+
+2) puedes poner un dumbell plot (el de los 2 puntitos unidos): https://www.youtube.com/watch?v=F0POeYm8KPQ
+
+
+3) paralel coordinates (para ver España) quizas un samll multiple para cada año
+dentro de cada año, cada valor de X seria un delito y en Y el valor de la tasa
+https://github.com/selkamand/gg1d
+
+4) plot superchulo para ver los delitos de Barcelona: https://graphics.social/@sponce1/113617279013844686
+
+5) plot radial: https://graphics.social/@sponce1/113268429760098794
+https://datageeek.com/2024/02/28/homicide-rates-from-gender-perspective-understanding-with-radar-chart-and-bootstrap-intervals/
+
+6) ranking: https://github.com/poncest/30DayChartChallenge/tree/main/2024/day_03
+https://vis.social/@georgios/112745992995934860
+
+7) SI: https://genomic.social/@lwpembleton/112788838276202250
+
+- (podria estar guay) plot con nº de delitos x ciudad, el minimo, el maximo y la media: https://mastodon.social/@adityadahiya/111754280849813435
+
+8) leflet tricolore guapo: https://cran.r-project.org/web/packages/tricolore/vignettes/choropleth_maps_with_tricolore.html
+https://graphics.social/@sponce1/113788567730606010

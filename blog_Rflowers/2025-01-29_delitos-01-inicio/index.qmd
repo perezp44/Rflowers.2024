@@ -160,8 +160,8 @@ En este post solo voy a usar los datos del primer dataset. Los 27 tipos de delit
 ```{r}
 #| echo: true
 #| code-fold: true
-zz <- pjpv.pkg.datos.2024::delitos_UNDOC_tipologia_delitos_2023 |>
-  dplyr::distinct(indicator, category)
+zz <- pjpv.pkg.datos.2024::UNDOC_delitos_tipologia_1990_2023 |>
+  dplyr::distinct(indicator, tipo_delito)
 DT::datatable(zz)
 ```
 

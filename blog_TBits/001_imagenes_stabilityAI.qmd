@@ -57,6 +57,7 @@ Para conectarnos a la API de `stability.ai` hemos de seguir los siguientes pasos
 
 ```{r}
 #| echo: false
+#| eval: false
 aa <- stabilityAI::get_engines_list() |> dplyr::select(1)
 aa
 ```

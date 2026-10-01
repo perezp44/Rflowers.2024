@@ -1,7 +1,29 @@
 #- 1er plot de ranks ------------------------------------------------------------
 #- https://twitter.com/ThomIvar/status/1518289166026616832
 #- https://twitter.com/jburnmurdoch/status/1250538655707430913
-library(ftplottools) #- remotes::install_github("Financial-Times/ftplottools")
+#- el repo oficial de ftplottools ya no está en GitHub; si no está instalado,
+#- se definen equivalentes con ggplot2 para poder renderizar el post
+if (requireNamespace("ftplottools", quietly = TRUE)) {
+  library(ftplottools) #- remotes::install_github("Financial-Times/ftplottools")
+} else {
+  ft_colors <- function(x = "oxford") {
+    switch(x,
+      "black-20" = "#CCC1B7", "black-30" = "#99928C",
+      "oxford" = "#002147", "oxford-60" = "#66666F",
+      "paper" = "#FFF1E5",
+      "#333333")  # valor por defecto
+  }
+  ft_theme <- function(legend_right = FALSE, base_size = 11) {
+    theme_minimal(base_size = base_size) +
+      theme(
+        legend.position = if (isTRUE(legend_right)) "right" else "top",
+        panel.grid.minor = element_blank(),
+        plot.title = element_text(face = "bold"),
+        plot.subtitle = element_text(color = "grey30"),
+        strip.text = element_text(hjust = 0, face = "bold")
+      )
+  }
+}
 
 df_para_labels <- df_table %>% filter(year %in% c(1842, 1860, 1887, 1910, 1930, 1950, 1970, 1991, 2011))
 p <- ggplot(df_table, aes(x = year, y = rank_1, color = ine_muni.n.h)) +
@@ -24,7 +46,7 @@ p <- ggplot(df_table, aes(x = year, y = rank_1, color = ine_muni.n.h)) +
         subtitle = glue::glue("{min(df$year)} to {max(df$year)}"),
         caption = 'graphic: @pjpv4444\ninspiración: @ThomIvar\ntheme: Financial Times',
         x = 'Periodo', y = 'Ranking') +
-  ftplottools::ft_theme() +
+  ft_theme() +
   theme(plot.background = element_rect(fill = ft_colors('paper'), color = ft_colors('paper')),
         strip.text = element_text(hjust = 0, color = ft_colors('oxford-60'), face = 'bold'),
         plot.margin = margin(1, 1, 0.25, 1, 'cm'),
