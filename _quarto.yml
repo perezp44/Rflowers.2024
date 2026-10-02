@@ -116,7 +116,7 @@ lang: es   #- {es, en}
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 execute:
-  freeze: true  # re-render only when source changes
+  freeze: auto  # re-render only when source changes
   echo: true
   message: false
   warning: false

@@ -542,10 +542,6 @@ Algunos conjuntos de datos que en su día me llamaron la atención; seguramente 
 
 - [#30DayMapChallenge](https://30daymapchallenge.com/): reto que se celebra cada noviembre: hacer un mapa al día durante 30 días, cada día con un tema distinto. Buena fuente de ideas para hacer mapas.
 
-- [Los mapas del #30DayMapChallenge de Federica Gazzelloni](https://bookdown.org/fede_gazzelloni/UPDVwR/content/mapchallenge/): mogollón de mapas hechos con R, con su código.
-
-- [Mapas de áreas metropolitanas de Chile](https://bastianolea.rbind.io/blog/mapas_areas_metropolitanas/): Bastián Olea muestra los mapas que hizo para visualizar las propuestas de áreas metropolitanas en distintas regiones de Chile, junto con algunas estadísticas relacionadas.
-
 - [Data Viz Showcase](https://github.com/SchmidtPaul/DataVizShowcase#--data-viz-showcase) de Paul Schmidt: solo 3 visualizaciones, pero muy chulas, con el código y los datos para reproducirlas.
 
 - [#30DayChartChallenge](https://github.com/30DayChartChallenge/Edition2025): parecido al de mapas, pero con gráficos y en abril: un gráfico al día durante 30 días, cada día con un tema distinto.
@@ -560,6 +556,8 @@ Algunos conjuntos de datos que en su día me llamaron la atención; seguramente 
   - Egor Kotov: [30DayMapChallenge 2024](https://github.com/e-kotov/2024-30DayMapChallenge/tree/main).
   - Michal Kinel: [30DayChartChallenge 2024](https://github.com/michal0091/dataviz/tree/main/R/30DayChartChallenge2024).
   - Aditya Dahiya: [Data Viz Collective](https://aditya-dahiya.github.io/projects_presentations/data_vizs.html), su galería de visualizaciones.
+  - Federica Gazzelloni: [sus mapas del 30DayMapChallenge](https://bookdown.org/fede_gazzelloni/UPDVwR/content/mapchallenge/), muchos mapas hechos con R, con su código.
+  - Bastián Olea: [Mapas de áreas metropolitanas de Chile](https://bastianolea.rbind.io/blog/mapas_areas_metropolitanas/), los mapas que hizo para visualizar las propuestas de áreas metropolitanas en distintas regiones de Chile, junto con algunas estadísticas relacionadas.
 
 - [r.iresmi.net](https://r.iresmi.net/): blog de iresmi con muchos posts cortos de R, varios de ellos con mapas y gráficos.
 
